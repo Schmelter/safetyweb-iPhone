@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+		android:id="@+id/mitBlog"
+		android:title="@string/blog" />
+	<item
+		android:id="@+id/mitAbout"
+		android:title="@string/about_us" />
+	<item
+		android:id="@+id/mitPrivacy"
+		android:title="@string/privacy_policy" />
+	<item
+		android:id="@+id/mitTerms"
+		android:title="@string/terms" />
+	<item
+		android:id="@+id/mitLogout"
+		android:title="@string/logout" />
+	<item
+		android:id="@+id/mitExit"
+		android:title="@string/exit" />
+</menu>

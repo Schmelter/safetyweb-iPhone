@@ -1,0 +1,8 @@
+#Fri Sep 30 11:12:47 MDT 2011
+org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
+org.eclipse.jdt.core.classpathVariable.JRE_LIB=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar
+org.eclipse.jdt.core.classpathVariable.JRE_SRC=
+org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=/Applications/MOTODEV_Studio_for_Android_3.0/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/
+eclipse.preferences.version=1
+org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=/Applications/MOTODEV_Studio_for_Android_3.0
+org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled

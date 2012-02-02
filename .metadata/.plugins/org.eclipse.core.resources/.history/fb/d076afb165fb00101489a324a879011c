@@ -1,0 +1,85 @@
+(function(){
+	wayin.gp.models = {
+		Score: Backbone.Model.extend({
+			initialize: function(user) {
+				var displayName = user.fullName();
+				if (displayName === "") displayName = user.displayName();
+				
+				this.set({"user": user, "displayName": displayName, "score": 0});
+			},
+			defaults: {
+				"user": null,
+				"displayName": "NONE",
+				"score": 0
+			}
+			
+		}),
+		Scoreboard: Backbone.Collection.extend({
+			model: wayin.gp.models.Score,
+			addUser:function(user) {
+				// Make sure we don't already have this user.  If we do, don't add him again
+				for (index in this.models) {
+					
+				}
+					
+			},
+			getSortedScoreList:function() {
+				
+			}
+		}),
+		getScoreboardInstance: function() {
+			if (wayin.gp.models.scoreboardInstance == null) wayin.gp.models.scoreboardInstance = new wayin.gp.models.Scoreboard();
+			return wayin.gp.models.scoreboardInstance;
+		},
+		scoreboardInstance: null
+	};
+	
+})();
+
+
+(function(){
+	wayin.gp.scoreboard = {
+			userIdToScore:{
+			},
+			// Adds the given wayin.models.User to the list of users.  If the user already exists,
+			// then the new user is not added.
+			addUser:function(user) {
+				var score = null;
+				if (typeof this.userIdToScore[user.get('user_id')] === "undefined") {
+					score = new wayin.gp.scoreboard.Score(user);
+					this.userIdToScore[user.get('user_id')] = score;
+				} else {
+					score = this.userIdToScore[user.get('user_id')];
+				}
+				return score;
+			},
+			// Returns a list of the wayin.gp.scoreboard.Scores sorted by score.
+			getSortedScoreList:function() {
+				var scoreToUserIdArr = {};
+				var scoreArr = [];
+				for (userId in wayin.gp.scoreboard.userIdToScore) {
+					if (typeof scoreToUserIdArr[wayin.gp.scoreboard.userIdToScore[userId].score] === "undefined") {
+						scoreToUserIdArr[wayin.gp.scoreboard.userIdToScore[userId].score] = []
+					}
+					scoreToUserIdArr[wayin.gp.scoreboard.userIdToScore[userId].score].push(userId);  
+					scoreArr.push(wayin.gp.scoreboard.userIdToScore[userId].score);
+				}
+				scoreArr = jQuery.unique(scoreArr);
+				scoreArr.sort();
+				var returnArr = [];
+				for (score in scoreArr) {
+					for (index in scoreToUserIdArr[score]) {
+						returnArr.push(wayin.gp.scoreboard.userIdToScore[scoreToUserIdArr[score][index]]);
+					}
+				}
+				return returnArr;
+			},
+			// The user in this function is a wayin.models.User
+			Score:function(user) {
+				this.displayName = user.fullName();
+				if (this.displayName === "") this.displayName = user.displayName();
+				this.score = 0;
+				this.user = user;
+			}
+	}
+})();

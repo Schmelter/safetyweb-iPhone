@@ -1,0 +1,29 @@
+Screenshots (need 2) :
+320w x 480h or 480w x 854h
+24 bit PNG or JPEG (no alpha)
+Full bleed, no border in art
+Landscape thumbnails are cropped
+ 
+
+Promo Graphic:
+180w x 120h
+24 bit PNG or JPEG (no alpha)
+Full bleed, no border in art
+ 
+
+Language: English
+Title (30 Max) : SafetyWeb Parent App
+Description (325 Max) : SafetyWeb for Android traces your child’s online footprint and arms you with the tools, resources, & know-how to be knowledgeable online parents. IMPORTANT: SafetyWeb for Android requires you to have a SafetyWeb account. To sign up for an account, visit www.safetyweb.com.
+Promo Text (80 Max) : SafetyWeb helps parents guard their kid's reputation, privacy & safety online.
+ 
+
+Application Type: Applications
+Category: Social
+Price: Free
+
+Copy Protection: Off
+Locations: All Locations
+
+Website: http://www.safetyweb.com
+Email: support@safetyweb.com
+Phone: 888-SAFE-WEB

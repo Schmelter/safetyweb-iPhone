@@ -1,0 +1,326 @@
+(function() {
+
+    wayin.gp.views = $.extend(wayin.gp.views, {
+        EventListPage:Backbone.View.extend({
+            events:{
+                'click button.start-live':'start'
+            },
+            start:function(ev) {
+                var eventCreator = new wayin.views.EventCreator({
+                    model:new wayin.models.Event(),
+                    cancel:true,
+                    saveText:'Create event'
+                });
+                eventCreator.render();
+                var modal = wayin.modal({
+                    title:'Create an event',
+                    html:eventCreator.el
+                });
+                eventCreator.bind('cancel', function() {
+                    modal.close();
+                });
+                eventCreator.bind('save', function() {
+                    modal.close();
+                    wayin.app.go('#!/events/' + eventCreator.model.id);
+                });
+            },
+            render:function() {
+                var el = $(this.el);
+                el.html(ich['event-list-page-tpl']({
+                    terms:this.options.terms,
+                    can_create:true
+                }));
+                var evList = new wayin.gp.views.EventList(this.options);
+                evList.render();
+                el.find('.evt-list-w').html(evList.el);
+                var smartField = new wayin.gp.views.SmartField({
+                    label:'Search events',
+                    name:'terms',
+                    value:this.options.terms
+                });
+                smartField.render();
+                el.find('.field-w').append(smartField.el);
+                el.find('.evt-search').submit(function() {
+                    var terms = $(this).find('[name=terms]').val();
+                    if (/\S/.test(terms)) {
+                        wayin.app.go('#!/browse-events/' + wayin.misc.escape(terms));
+                    } else {
+                        wayin.app.go('#!/browse-events');
+                    }
+                    return false;
+                });
+            }
+        }),
+        EventList:Backbone.View.extend({
+            initialize:function() {
+                this.pager = new wayin.pagers.Pager(this.collection);
+                this.collection.bind('reset', _.bind(this.render, this));
+            },
+            events:{
+                'click .pager a[href].next':'nextPage',
+                'click .pager a[href].prev':'prevPage'
+            },
+            nextPage:function() {
+                $(document.body).addClass('loading');
+                this.pager.refreshNext()
+                    .onbreak(wayin.dialog.error)
+                    .onresolve(function() {
+                        $(document.body).removeClass('loading');
+                    });
+                return false;
+            },
+            prevPage:function() {
+                $(document.body).addClass('loading');
+                this.pager.refreshPrevious()
+                    .onbreak(wayin.dialog.error)
+                    .onresolve(function() {
+                        $(document.body).removeClass('loading');
+                    });
+                return false;
+            },
+            render:function() {
+                var el = $(this.el);
+                var coll = this.collection;
+                var vobj = {
+                    terms:this.options.terms,
+                    has_prev:this.pager.hasPrevious(),
+                    has_next:this.pager.hasNext(),
+                    has_events:coll.length
+                };
+                el.html(ich['event-list-tpl'](vobj));
+                var eventWrapper = el.find('.evt-list-events');
+                coll.each(function(event) {
+                    var aEvent = event.get('event');
+                    if (aEvent) {
+                        event = new wayin.models.Event(aEvent);
+                    }
+                    var eventTile = new wayin.gp.views.EventTile({model:event});
+                    eventTile.render();
+                    eventWrapper.append(eventTile.el);
+                });
+            }
+        }),
+        EventTile:Backbone.View.extend({
+            className:'evt-tile',
+            events:{
+                'click .eventDiv':'eventClicked'
+            },
+            eventClicked:function() {
+                wayin.app.go("#!/playEvent/" + this.model.attributes.event_id);
+            },
+            render:function() {
+                var el = $(this.el);
+                var event = this.model;
+                var vobj = event.toJSON();
+                try {
+                    var sizes = vobj.media.featured.sizes;
+                    vobj.src = sizes.suggested_small
+                        ? sizes.suggested_small
+                        : sizes.small.toString();
+                } catch (ex) {
+                    vobj.src = '/img/fpo-event.png';
+                }
+                vobj.followers_singular = vobj.members_count === 1;
+                vobj['status_' + vobj.status] = true;
+                el.html(ich['event-tile-tpl'](vobj));
+            }
+        }),
+        EventPage:Backbone.View.extend({
+            events:{
+                'click .event-game-create-link':'showCreateDialog'
+            },
+            initialize:function() {
+                this.model.bind('change', _.bind(this.render, this));
+            },
+            showCreateDialog:function() {
+                var eventId = this.model.id;
+                var game = new wayin.models.Game({
+                    game_type:'poll',
+                    channel_id:wayin.identity.getMe().get('personal_channel_id'),
+                    start_time:'now',
+                    event_id:eventId
+                });
+                var createWidget = new wayin.views.GameCreator({model:game, event_id:eventId});
+                createWidget.render();
+                var modal = wayin.modal({
+                    html:createWidget.el
+                });
+                createWidget.bind('done', function() {
+                    modal.close();
+                    wayin.app.go(location.hash);
+                });
+                return false;
+            },
+            render:function() {
+                var event = this.model;
+                var tab = this.options.tab;
+                var vobj = $.extend({
+                    can_add_games:event.get('status') === 'LIVE' && event.get('creator').user_id === wayin.identity.getMe().id,
+                    can_admin:wayin.identity.amSuper()
+                }, event.toJSON());
+                vobj['is_' + tab] = true;
+                vobj.followers_singular = vobj.members_count === 1;
+                try {
+                    vobj.src = vobj.media.featured.sizes.suggested_small.toString();
+                }
+                catch (ex) {
+                    vobj.src = '/img/fpo-event.png';
+                }
+                var pageEl = ich['event-wrapper-tpl'](vobj);
+                $(this.el).html(pageEl);
+
+                var carousel = new wayin.gp.views.GameCarousel({event:this.model, collection:this.options.eventGames});
+                carousel.render();
+                $(this.el).find('.evt-area-tile-w').html(carousel.el);
+                var updater = new wayin.misc.liveEventUpdater({
+                    event:event,
+                    games:this.options.eventGames,
+                    rankings:this.options.rankings,
+                    comments:this.options.comments
+                });
+                updater.bind('update', function() {
+                    carousel.render();
+                });
+            }
+        }),
+        EventSettingsPage:Backbone.View.extend({
+            events:{
+                'click #close-game':'closeGame',
+                'click #grade-game':'gradeGame',
+                'click #end-event':'endEvent',
+                'click #close-settings':'closeWindow'
+            },
+            gradeGame:function(ev) {
+                var widget = this;
+                // TODO How to get the current game
+                var gradeOptionWidget = new wayin.views.GameOptionsGrading({model:this.model});
+                gradeOptionWidget.render();
+                var optionWidget = $(this.el).find('.options');
+                optionWidget.before(gradeOptionWidget.el);
+                optionWidget.remove();
+                gradeOptionWidget.bind('gradeStart', function() {
+                    $(widget.el).find('.game').addClass('grading');
+                });
+                gradeOptionWidget.bind('gradeEnd', function() {
+                    $(widget.el).find('.game').removeClass('grading');
+                });
+                return false;
+            },
+            closeGame:function(ev) {
+                var widget = this;
+                // TODO How to get the current game
+                wayin.dialog.warning({
+                    html:'Are you sure you want to close this game?',
+                    confirm:true,
+                    confirmText:'Close game',
+                    onUserConfirm:function() {
+                        widget.model.close()
+                            .onbreak(wayin.dialog.error)
+                            .onkeep(function() {
+                                wayin.dialog.success({
+                                    html:"Game is now closed for play."
+                                });
+                            });
+                    }
+                });
+                return false;
+            },
+            endEvent:function() {
+                alert("End Event");
+            },
+            closeWindow:function() {
+                $("#event-settings").remove();
+            },
+            initialize:function() {
+                this.model.bind('change', _.bind(this.render, this));
+            },
+            render:function() {
+                var event = this.model;
+                var vobj;
+                var html = ich['event-settings-tpl'](vobj);
+                $(this.el).html(html);
+            }
+        }),
+        EventWaitPage:Backbone.View.extend({
+            render:function() {
+                var vobj;
+                var html = ich['event-wait-tpl'](vobj);
+                $(this.el).html(html);
+            }
+        }),
+        EventResponsePage:Backbone.View.extend({
+            events:{
+                'click #close-responses':'closeWindow'
+            },
+            closeWindow:function() {
+                $("#event-response").hide();
+            },
+            initialize:function() {
+                this.model.bind('change', _.bind(this.render, this));
+                this.model.bind('carouselNext', _.bind(this.updateSelectedGameId, this));
+                this.model.bind('carouselPrevious', _.bind(this.updateSelectedGameId, this));
+                // TODO Implement the game played event to pass data
+                this.model.bind("gamePlayed", this.render, this);
+            },
+            updateSelectedGameId:function(inSelectedGameId) {
+                this.options.selectedGameId = inSelectedGameId;
+                this.render();
+            },
+            render:function() {
+                var ctrlr = this;
+                var eventGames = this.model;
+                var vobj = {};
+                var html;
+                var selectedGameId;
+                if (this.options && this.options.selectedGameId) {
+                    selectedGameId = this.options.selectedGameId;
+                }
+                if (!selectedGameId) {
+                    if (eventGames) {
+                        selectedGameId = eventGames.selectedGameId;
+                    }
+                }
+                if (selectedGameId) {
+                    // Create a promise to get get some responses
+                    var responsePromise = new wayin.async.Promise({responses:null}, 15000)
+                        .onbreak(ctrlr.errorPageDone)
+                        .onkeep(function(got) {
+                            if (got.responses.length > 0) {
+                                vobj.has_responses = got.responses.length > 0;
+                                vobj.responses = got.responses.toJSON();
+                                vobj.response_count = got.responses.length;
+                                if (got.responses.length == 1) {
+                                    vobj.one_response = true;
+                                }
+                                else {
+                                    vobj.one_response = false;
+                                }
+                            }
+                            html = ich['event-response-tpl'](vobj);
+                            $(ctrlr.el).html(html);
+                        });
+                    // Using the game id get the last 200 responses
+                    new wayin.collections.Responses(null, {
+                        game_id:selectedGameId,
+                        sort:'creation_time',
+                        order:'desc',
+                        limit:200
+                    }).fetch({
+                        success:function(resps) {
+                            responsePromise.dokeep('responses', resps);
+                        },
+                        error:function(r, xhr) {
+                            responsePromise.dobreak("Couldn't fetch responses info. " + wayin.async.getXhrReason(xhr),
+                                wayin.async.getXhrError(xhr));
+                        }
+                    });
+                }
+                else {
+                    vobj;
+                    html = ich['event-response-tpl'](vobj);
+                    $(ctrlr.el).html(html);
+                }
+            }
+        })
+    });
+})();

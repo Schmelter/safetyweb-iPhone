@@ -1,0 +1,11 @@
+#Mon Jan 30 13:24:54 MST 2012
+com.motorolamobility.preflighting.ui.verbosityLevel=2
+com.motorolamobility.preflighting.ui.useAllDevicesPreference=true
+com.motorolamobility.preflighting.ui.eclipseErrorToWarning=true
+com.motorolamobility.preflighting.ui.outputLimit=0
+com.motorolamobility.preflighting.ui.warningLevel=4
+eclipse.preferences.version=1
+com.motorolamobility.preflighting.ui.commandLinePreference=-output text -w4 -v2
+com.motorolamobility.preflighting.ui.devicesPreference=a1260,a1680,atrix-mb860,atrix-me860,backflip-mb300,backflip-me600,bravo,charm-mb502,charm-me502,citrus,cliq,cliq2,cliqxt,defy,defyplus-mb526,devour,dext-mb200,droid-3-xt862,droid-bionic-xt875,droid-x2-mb870,droid,droid2,droid2global,droidpro,droidx,electrify,fire-xt-xt530,fire-xt311,flipout-mb511,flipout-me511,flipside,i1,mb501,me501,me525,me811,milestone-3-xt860,milestone-a853,milestone-qrty-a853,milestone-xt720,milestone2-me722,milestone2,mt620,mt710,mt716,mt720,mt810,mt810lx,mt870,photon-mb855,pro-xt610,quenchxt3,quenchxt5,spice-key-xt316,spice,titanium,triumph-wx435,xoom-mz601,xoom-mz604,xoom-mz605,xoom,xprt-mb612,xt301,xt316,xt319,xt531,xt701,xt702,xt711,xt720,xt800,xt800plus,xt800w,xt806,xt860-4g,xt882,xt883
+com.motorolamobility.preflighting.ui.checkersPreference=androidMarketFilters,buildingBlocksDeclaration,codeChecker,deviceCompatibility,layout,localizationStrings,missingDrawableResources,permissions,singleMainActivity,widgetPreview
+com.motorolamobility.preflighting.ui.outputType=0

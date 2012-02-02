@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class=""> <!--<![endif]-->
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>WayIn Hangout</title>
+<!-- start css bundle -->
+<link rel="stylesheet" type="text/css" href="css/wayin.css">
+<link rel="stylesheet" type="text/css" href="admin/css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/game-tiles.css">
+<link rel="stylesheet" type="text/css" href="css/anon-home.css">
+<link rel="stylesheet" type="text/css" href="/css/dialogs.css">
+<link rel="stylesheet" type="text/css" href="/googleplus/googleplus.css">
+<link rel="stylesheet" type="text/css" href="/css/events.css">
+<!-- end css bundle -->
+<meta name="fragment" content="!">
+<meta name="viewport" content="width=600, initial-scale=0.5">
+<!--[if lt IE 9]><script src="backbone/lib/html5.js"></script><![endif]-->
+</head>
+
+<body class="loading">
+<div id="lightbox-overlay"></div>
+<section id="fullframe">
+</section>
+<div id="w1">
+<div id="w2">
+    <header></header>
+    <section id="content">
+    </section>
+    <footer>
+        <ul>
+            <li><a href="http://wayin.com/posting.html">Posting guidelines</a></li>
+            <li><a href="http://wayin.com/policy.html">Privacy policy</a></li>
+            <li><a href="http://wayin.com/tou.html">Terms of use</a></li>
+        </ul>
+    </footer>
+</div>
+</div>
+<!-- Begin Dialog Templates -->
+<script id="dialog-tpl" type="text/html">
+	<div class="dlg-outer">
+		<div class="dlg">
+			<div class="dlg-content"></div>
+			<p class="dlg-buttons">
+				{{^has_buttons}}
+					{{#confirm}} <button type="button" class="dlg-closer dlg-cancel">{{cancelText}}</button> {{/confirm}}
+					<button type="button" class="dlg-closer dlg-confirm">{{confirmText}}</button>
+				{{/has_buttons}}
+				{{#has_buttons}}
+					{{#buttons}}
+						<button type="button" class="dlg-closer {{className}}">{{text}}</button>
+					{{/buttons}}
+				{{/has_buttons}}
+			</p>
+		</div>
+	</div>
+</script>
+<script id="modal-tpl" type="text/html">
+	<div class="mdl-outer">
+		<div class="mdl">
+			{{#title}}<h2 class="mdl-title">{{title}}</h2>{{/title}}
+			<div class="mdl-content"></div>
+			<p>
+				<a href="#" class="mdl-closer" title="close">X</a>
+			</p>
+			{{#has_buttons}}
+				<p class="modal-buttons">
+					{{#buttons}}
+						<button type="button" class="{{className}}">{{text}}</button>
+					{{/buttons}}
+				</p>
+			{{/has_buttons}}
+		</div>
+	</div>
+</script>
+<!-- End Dialog templates -->
+<!-- Begin Login Template -->
+<script id="login-tpl" type="text/html">
+	<form action="{{action}}" method="POST" class="ahl">
+		<input type="hidden" name="on_success" value="{{on_success}}">
+		<input type="hidden" name="on_fail" value="{{on_fail}}">
+		<h2>Login</h2>
+		<p class="ahl-username labeled-input">
+			<label>
+				<span class="label">Username</span>
+				<span class="input"><input type="text" name="username"></span>
+			</label>
+		</p>
+		<p class="ahl-password labeled-input">
+			<label>
+				<span class="label">Password</span>
+				<span class="input"><input type="password" name="password"></span>
+			</label>
+		</p>
+		<p class="ahl-submit submit">
+			<button type="submit">Login</button>
+		</p>
+		<p class="forgot">
+			<a href="#!/forgot" class="link">Forgot password?</a>
+		</p>
+	</form>
+</script>
+<!-- End Login Template -->
+
+<!--  Begin Login Failed Template -->
+<script id="login-failed-tpl" type="text/html">
+    <div id="login-failed-notice">
+        <h2>Valid login required!</h2>
+        <h3>Please login with a valid user to use this site.</h3>
+    </div>
+</script>
+<!--  End Login Failed Template -->
+<!-- Begin Header template -->
+<script id="regular-header-tpl" type="text/html">
+	<div id="company-name">
+		<h1><a href="#!/home">WayIn</a></h1>
+	</div>
+	<div id="icons">
+	</div>
+	<div id="nav">
+		<ul>
+			<li><a href="#!/browse-events">Events</a></li>
+		</ul>
+	</div>
+	<div id="identity">
+		<ul>
+			<li><span>Welcome, {{username}}</span></li>
+			<li><a href="#" class="logout">Logout</a></li>
+		</ul>
+	</div>
+</script>
+<!-- End Header Template -->
+<!-- Begin dialogs and modals templates -->
+<script id="smart-field-tpl" type="text/html">
+	<span>
+		<label>{{label}}</label>
+		<span class="input"><input name="{{name}}" type="{{type}}" value="{{value}}" {{#maxlength}} maxlength="{{maxlength}}"{{/maxlength}}></span>
+	</span>
+</script>
+<!-- End dialogs and modals templates -->
+
+<!--########################################################################-->
+<!-- event templates -->
+<script id="event-list-page-tpl" type="text/html">
+	<h2 class="content-heading">
+		<span class="part">
+			{{#terms}}Searching events for "{{terms}}"{{/terms}}
+			{{^terms}}Events{{/terms}}
+		</span>
+	</h2>
+	<div class="content-body">
+		<div class="evt-list">
+            <p class="create-event">
+			    {{#can_create}}<button type="button" class="start-live">Create an Event!</button>{{/can_create}}
+            </p>
+			<form class="evt-search">
+				<p class="field-w"></p>
+			</form>
+			<div class="evt-list-w"></div>
+		</div>
+	</div>
+</script>
+<script id="event-list-tpl" type="text/html">
+	<p class="pager">
+		<a {{#has_prev}} href="#" {{/has_prev}} class="prev">prev</a>
+		<a {{#has_next}} href="#" {{/has_next}} class="next">next</a>
+	</p>
+	{{#has_events}}<div class="evt-list-events"></div>{{/has_events}}
+	{{^has_events}}<strong class="none-found">No events found</strong>{{/has_events}}
+	<p class="pager">
+		<a {{#has_prev}} href="#" {{/has_prev}} class="prev">prev</a>
+		<a {{#has_next}} href="#" {{/has_next}} class="next">next</a>
+	</p>
+</script>
+<script id="event-tile-tpl" type="text/html">
+	<div class="eventDiv" event_id="{{event_id}}">
+		<h2 class="evt-title">
+			{{title}}
+		</h2>
+		<p class="evt-img"><img src="{{src}}" alt="{{title}}"></p>
+		<p class="evt-description"><span>
+			{{#creator}}<strong>{{username}}</strong> &#187; {{/creator}}
+			{{description}}
+		</span></p>
+		<div class="stat-bits">
+			<div class="stat-bit" title="number of photos this event currently contains">
+				<h3>Photos</h3>
+				<p>{{open_game_count}}</p>
+			</div>
+			<div class="stat-bit" title="number of comments this event has received">
+				<h3>Comments</h3>
+				<p>{{num_comments}}</p>
+			</div>
+			{{#ranking_counts}}
+				<div class="stat-bit" title="number of votes photos in this event have received">
+					<h3>Wayins</h3>
+					<p>{{response_count}}</p>
+				</div>
+			{{/ranking_counts}}
+		</div>
+	</div>
+</script>
+<script id="event-creator-tpl" type="text/html">
+	<div class="evt-creator">
+		<form>
+			<div class="evt-img-text-area">
+				<div class="evt-img-text-area-w">
+					<div class="evt-img-uploader-w"></div>
+					<div class="evt-text">
+						<p class="labeled-input"><label>
+							<span class="label">Name your event</span>
+							<span class="input"><input type="text" name="title" maxlength="40" value="{{title}}"></span>
+						</label></p>
+						<p class="labeled-input"><label>
+							<span class="label">Give your event a bio</span>
+							<span class="input"><textarea name="description" maxlength="140">{{description}}</textarea></span>
+						</label></p>
+						{{#can_admin}}
+						<div>
+  						<p>
+  						  <label>Start On</label>
+  						  <select name="start_date" id="start_date">
+  						  {{#dates}}
+  						    <option value="{{date}}">{{date}}</option>
+  						  {{/dates}}
+  						  </select>
+    						<input type="text" name="start_time" value="00:00" style="width:40px;" maxlength="5" />
+                <select name="start_is_afternoon" id="start_is_afternoon">
+                  <option value="am">am</option>
+                  <option value="pm">pm</option>
+                </select>
+  						</p>
+  						<p style="margin-top:-20px;">
+                <label>Start Now</label>
+                <input type="checkbox" name="start_now" value="1" id="start_now" style="height:25px; width:25px;" />
+              </p>
+  						<p>
+  						  <label>End On</label>
+  						  &nbsp;<select name="end_date" id="end_date">
+  						  {{#dates}}
+  						    <option value="{{date}}">{{date}}</option>
+  						  {{/dates}}
+  						  </select>
+    						<input type="text" name="end_time" value="00:00" style="width:40px;" maxlength="5" />
+                <select name="end_is_afternoon" id="end_is_afternoon">
+                  <option value="am">am</option>
+                  <option value="pm">pm</option>
+                </select>
+  						</p>
+  					</div>
+						{{/can_admin}}
+						<div class="evt-submit-area">
+							<p>
+								{{#cancel}}<button type="button" class="cancelEventSave">Cancel</button>{{/cancel}}
+								<button type="submit">{{save_text}}</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
+<script id="constrained-media-tpl" type="text/html">
+	<div>
+		{{#is_confirming_discard}}
+			<p>
+				<span class="media-show">
+					<img src="{{#sizes}}{{medium}}{{/sizes}}" alt="" class="media">
+				</span>
+				<span class="media-message">
+					Discard current image?
+				</span>
+				<span class="media-up-btn">
+					<button type="button" class="wantConfirmDiscard">Discard</button>
+					<button type="button" class="wantCancelDiscard">Cancel</button>
+				</span>
+			</p>
+		{{/is_confirming_discard}}
+		{{#is_confused}}
+			<p>
+				<span class="media-message">
+					{{message}}
+				</span>
+			</p>
+		{{/is_confused}}
+		{{#is_showing}}
+			<p>
+				<span class="media-show">
+					<img src="{{#sizes}}{{medium}}{{/sizes}}" alt="" class="media">
+				</span>
+				<span class="media-message">
+					Currently selected image.
+				</span>
+				<span class="media-up-btn">
+					<!--<button type="button" class="wantDiscard">Remove</button>-->
+					<button type="button" class="wantChange">Change</button>
+				</span>
+			</p>
+		{{/is_showing}}
+		{{#is_uncropped}}
+			<p>
+				<span class="media-show">
+					<img src="{{#sizes}}{{medium}}{{/sizes}}" alt="" class="media">
+				</span>
+				<span class="media-message">
+					Use this image as is, or crop?
+				</span>
+				<span class="media-up-btn">
+					<button type="button" class="wantUseAsIs">Use as is</button>
+					<button type="button" class="wantCrop">Crop</button>
+				</span>
+			</p>
+		{{/is_uncropped}}
+		{{#is_getting}}
+			<div class="imfetch">
+				<h3 class="nomedia">image upload area</h3>
+				<span class="media-up-btn">
+					<span class="fileinputbutton">
+						<button type="button" class="fileinputbutton" disabled>{{upload_button_text}}</button>
+						<iframe src="/uploadform.html" class="img_upload_target" scrolling="no" frameborder="0" border="0" style="-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(opacity=0)';"></iframe>
+					</span>
+				</span>
+			</div>
+		{{/is_getting}}
+		{{#is_cropping}}
+			<p>
+				<span class="media-show">
+					<img src="{{#sizes}}{{medium}}{{/sizes}}" alt="" class="media">
+				</span>
+				{{#message}}
+					<span class="media-message">
+						{{message}}
+					</span>
+				{{/message}}
+				<span class="media-up-btn">
+					<button type="button" class="wantSetCrop">Set Crop</button>
+					<button type="button" class="wantCancelCrop">Cancel</button>
+				</span>
+			</p>
+		{{/is_cropping}}
+	</div>
+</script>
+<script id="event-wrapper-tpl" type="text/html">
+	<h2 class="content-heading">
+		<span class="part">Events</span>
+		<span class="part">{{title}}</span>
+	</h2>
+	<div id="event-content" class="content-body">
+		<div class="evt-area">
+			<div class="evt-area-tile-w"></div>
+		</div>
+	</div>
+</script>
+<script id="game-carousel-tpl" type="text/html">
+	{{#has_games}}
+		<p class="gc-selector">
+			<a href="#" class="gc-prev" title="previous">Previous</a>
+			<a href="#" class="gc-next" title="next">Next</a>
+		</p>
+		<div class="gc">
+			<div class="gc-w">
+				<h3>Start Here</h3>
+			</div>
+		</div>
+	{{/has_games}}
+	{{^has_games}}
+		<p class="gc-no-games">There are no photos here yet.</p>
+	{{/has_games}}
+</script>
+<script id="game-options-tile-tpl" type="text/html">
+	<div class="game{{#is_closed}} closed-game {{/is_closed}}{{#is_played}} played-game{{/is_played}}">
+		{{#text}}<h2 class="game-text"><a href="#!/games/{{game_id}}">{{text}}</a></h2>{{/text}}
+		<p class="game-creator">{{#user}}<a href="#!/ppl/{{user_id}}">{{username}}</a>{{/user}}</p>
+		<div class="gphoto-w"></div>
+		{{#logged_in}}{{#show_flag}}<p><a href="#" class="flagGame" title="Flag photo">Flag</a></p>{{/show_flag}}{{/logged_in}}
+	</div>
+</script>
+<script id="game-options-tpl" type="text/html">
+	<ul>
+		{{#options}}
+			<li id="option_{{option_id}}" class="{{#my_answer}} myanswer {{/my_answer}}{{#an_answer}} ananswer {{/an_answer}}{{#my_answer_and_correct}} myanswercorrect {{/my_answer_and_correct}}{{#my_answer_and_incorrect}} myanswerincorrect {{/my_answer_and_incorrect}}{{#not_my_answer_and_correct}} ananswercorrect {{/not_my_answer_and_correct}}{{#not_my_answer_and_incorrect}} ananswerincorrect {{/not_my_answer_and_incorrect}}">
+				<a {{#can_play}} href="#!/games/{{game_id}}"{{/can_play}} class="opt-choice">
+					<span class="text">
+						<span title="{{text}}">{{text}}</span>
+					</span>
+					{{^can_play}}
+						<span class="percent">{{answered_percentage}}<span class="psign">%</span></span>
+						<span class="bar-outer"><span class="bar" style="width:{{display_percentage}}%"></span></span>
+					{{/can_play}}
+				</a>
+			</li>
+		{{/options}}
+	</ul>
+</script>
+<script id="game-photo-tpl" type="text/html">
+	<p class="gphoto-bits">
+		{{#num_responses}}
+			<span class="num-responses" title="{{num_responses}} responses">{{display_num_responses}}</span>
+		{{/num_responses}}
+		{{#num_comments}}
+			<span class="num-comments" title="{{num_comments}} comments">{{display_num_comments}}</span>
+		{{/num_comments}}
+	</p>
+	<p class="img">
+		<a href="#!/games/{{game_id}}">
+			<img src="{{src}}" alt="{{text}}">
+		</a>
+	</p>
+</script>
+<script id="event-settings-tpl" type="text/html">
+    <div id="event-settings" class="event-settings">
+		<div class="event-settings-header">Event Settings</div>
+        <div class="buttondiv">
+           <button id="close-question" class="wide-button" type="submit">Close Question</button>
+        </div>
+        <div class="buttondiv">
+            <button id="grade-question" class="wide-button" type="submit">Grade Question</button>
+        </div>
+        <div class="buttondiv">
+            <button id="end-event" class="wide-button" type="submit">End Event</button>
+        </div>
+        <div class="buttondiv">
+            <button id="close-settings" class="wide-button" type="submit">Close Window</button>
+        </div>
+	</div>
+</script>
+<script id="event-response-tpl" type="text/html">
+    <div id="event-response" class="event-response">
+		<div class="event-response-header">Event Response</div>
+        <div class="buttondiv">
+            <button id="close-responses" class="wide-button" type="submit">Close Window</button>
+        </div>
+	</div>
+</script>
+<!-- End Event templates -->
+<!--########################################################################-->
+
+<!--  Start Scoreboard templates -->
+<script id="scoreboard-tpl" type="text/html">
+	<div class="scoreboard">
+
+		<div class="scoreboard-header">Scoreboard</div>
+
+		<ul class="scorelist">
+			<section id="scoresection">
+			</section>
+		</ul>
+
+		<div class="buttondiv">
+            {{#can_add_games}}<button id="create-photo" class="wide-button" type="submit">Create Photo</button>{{/can_add_games}}
+		</div>
+        <div class="buttondiv">
+            <button id="show-responses" class="wide-button" type="submit">Show Responses</button>
+        </div>
+        {{#can_admin}}
+        <div class="buttondiv">
+            <button id="show-settings" class="wide-button" type="submit">Settings</button>
+        </div>
+        {{/can_admin}}
+		<div class="buttondiv">
+			<button id="exit-event" class="wide-button" type="submit">Exit Event</button>
+		</div>
+	</div>
+</script>
+<script id="scoreboard-entry-tpl" type="text/html">
+<li>
+	<ul class="scoreentry"><li class="displayName">{{displayName}}</li><li class="score">{{score}}</li></ul>
+</li>
+</script>
+<!--  End Scoreboard templates -->
+
+<!-- Start Game Templates -->
+<script id="gamepanel-tpl" type="text/html">
+    <div id="gp-game-wrapper">
+        <div id="gp-next-question">NEXT QUESTION</div>
+	    <div id="game-div"></div>
+    </div>
+</script>
+<script id="game-create-get-media-tpl" type="text/html">
+	<h2>Upload a Photo</h2>
+	<div class="gcreate">
+		<div class="gcreate-w">
+			<div class="gcreate-upload"></div>
+		</div>
+	</div>
+</script>
+<script id="game-create-ask-tpl" type="text/html">
+	<h2>Choose a Question</h2>
+	<div class="gcreate">
+		<div class="gcreate-w">
+			<div class="gcreate-ask">
+				<h3>Choose type</h3>
+				<img src="{{#media}}{{#sizes}}{{medium}}{{/sizes}}{{/media}}" alt="">
+				<p><button type="button" class="dothumbs">Thumbs Up / Down</button></p>
+				<p><button type="button" class="dowouldya">Would Ya?</button></p>
+				<p><button type="button" class="docustom">Create Your Own</button></p>
+			</div>
+		</div>
+		{{#can_admin}}
+			<div>
+				<p>
+					<label>Start On</label>
+					<select name="start_date" id="start_date">
+						{{#dates}}
+							<option value="{{date}}">{{date}}</option>
+						{{/dates}}
+					</select>
+					<select name="start_time" id="start_time">
+						{{#hours}}
+							<option value="{{hour}}"{{selected}}>{{hour}}</option>
+						{{/hours}}
+					</select>
+					<select name="is_afternoon" id="name">
+						<option value="am">am</option>
+						<option value="pm">pm</option>
+					</select>
+				</p>
+				<p>
+					<label>Start Now</label>
+					<input type="checkbox" name="start_now" value="1" id="start_now" style="height:25px; width:25px;" />
+				</p>
+				<!--
+				<p>
+					<label>Create As</label>
+					<select name="create_as" id="create_as">
+						<option value="uuid1">uuid1</option>
+						<option value="uuid2">uuid2</option>
+					</select>
+				</p>
+				-->
+			</div>
+		{{/can_admin}}
+	</div>
+</script>
+<script id="game-create-text-tpl" type="text/html">
+	<h2>Type a Question</h2>
+	<div class="gcreate">
+		<div class="gcreate-w">
+			<form action="" class="gcreate-ask">
+				<h3>Create your own</h3>
+				<img src="{{#media}}{{#sizes}}{{medium}}{{/sizes}}{{/media}}" alt="">
+				<p class="labeled-input gcreate-text">
+					<label>
+						<span class="label">Question</span>
+						<span class="input"><input autofocus maxlength="50" type="text" name="text" value="{{text}}" data-default="type question here"></span>
+					</label>
+				</p>
+				<div class="gedit-options">
+					<p class="labeled-input">
+						<label>
+							<span class="label">Option 1</span>
+							<span class="input"><input maxlength="25" type="text" name="option" data-default="type option here"></span>
+						</label>
+					</p>
+					<p class="labeled-input">
+						<label>
+							<span class="label">Option 2</span>
+							<span class="input"><input maxlength="25" type="text" name="option" data-default="type option here"></span>
+						</label>
+					</p>
+					<p class="labeled-input">
+						<label>
+							<span class="label">Option 3</span>
+							<span class="input"><input maxlength="25" type="text" name="option" data-default="type option here"></span>
+						</label>
+					</p>
+					<p class="labeled-input">
+						<label>
+							<span class="label">Option 4</span>
+							<span class="input"><input maxlength="25" type="text" name="option" data-default="type option here"></span>
+						</label>
+					</p>
+					<p class="submit">
+						<label>
+							<button class="submit">Launch!</button>
+						</label>
+					</p>
+				</div>
+			</form>
+		</div>
+		{{#can_admin}}
+			<div>
+				<p>
+					<label>Start On</label>
+					<select name="start_date" id="start_date">
+						{{#dates}}
+							<option value="{{date}}">{{date}}</option>
+						{{/dates}}
+					</select>
+					<select name="start_time" id="start_time">
+						{{#hours}}
+							<option value="{{hour}}"{{selected}}>{{hour}}</option>
+						{{/hours}}
+					</select>
+					<select name="is_afternoon" id="name">
+						<option value="am">am</option>
+						<option value="pm">pm</option>
+					</select>
+				</p>
+				<p>
+					<label>Start Now</label>
+					<input type="checkbox" name="start_now" value="1" id="start_now" style="height:25px; width:25px;" />
+				</p>
+				<!--
+				<p>
+					<label>Create As</label>
+					<select name="create_as" id="create_as">
+						<option value="uuid1">uuid1</option>
+						<option value="uuid2">uuid2</option>
+					</select>
+				</p>
+				-->
+			</div>
+		{{/can_admin}}
+	</div>
+</script>
+<script id="game-create-done-tpl" type="text/html">
+	<h2>Photo Created</h2>
+	<div class="gcreate">
+		<div class="gcreate-w">
+			<p>Done!</p>
+		</div>
+	</div>
+</script>
+<script id="game-create-error-tpl" type="text/html">
+	<h2>Error Creating Photo</h2>
+	<div class="gcreate">
+		<div class="gcreate-w">
+			<p>{{message}}</p>
+		</div>
+	</div>
+</script>
+<!-- End Game Templates -->
+
+<!-- start js bundle -->
+<script src="/scripts/json2.js"></script>
+<script src="/scripts/jquery.js"></script>
+<script src="/scripts/smallfsm.js"></script>
+<script src="/scripts/jquery-plugins/jquery.Jcrop.js"></script>
+<script src="/scripts/jquery-plugins/jquery.cookie.js"></script>
+<script src="/scripts/jquery-plugins/jquery.timeago.js"></script>
+<script src="/scripts/ICanHaz.js"></script>
+<script src="/scripts/underscore.js"></script>
+<script src="/scripts/backbone.js"></script>
+<script src="/scripts/date.js"></script>
+<script id="wayin-widget" src="/widgets/scripts/widgets.js"></script>
+<script src="/scripts/wayin-helpers.js"></script>
+<script src="/scripts/wayin-model.js"></script>
+<script src="/scripts/wayin-view.js"></script>
+<script src="/scripts/wayin-identity.js"></script>
+<script src="/scripts/wayin-view-games.js"></script>
+<script src="/scripts/wayin-view-events.js"></script>
+<script src="/scripts/wayin-dialogs.js"></script>
+<script src="/googleplus/gp-helpers.js"></script>
+<script src="/googleplus/gp-view.js"></script>
+<script src="/googleplus/gp-view-events.js"></script>
+<script src="/googleplus/gp-view-scoreboard.js"></script>
+<script src="/googleplus/gp-settings.js"></script>
+<script src="/googleplus/gp-router.js"></script>
+<script src="/googleplus/gp-scoreboard.js"></script>
+<script src="/googleplus/gp-view-game.js"></script>
+<script src="/googleplus/gp-setup.js"></script>
+<!-- end js bundle -->
+
+</body>
+</html>

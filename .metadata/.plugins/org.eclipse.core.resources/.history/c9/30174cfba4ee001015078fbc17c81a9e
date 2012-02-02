@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+
+	<!-- start css bundle - stolen from index.html -->
+	<link rel="stylesheet" type="text/css" href="/css/wayin.css">
+	<link rel="stylesheet" type="text/css" href="widgets/css/syndication.css">
+	<!--<link rel="stylesheet" type="text/css" href="/css/game-tiles.css">
+	<link rel="stylesheet" type="text/css" href="/css/anon-home.css">
+	<link rel="stylesheet" type="text/css" href="/css/jquery.Jcrop.css">
+	<link rel="stylesheet" type="text/css" href="/css/dialogs.css">
+	<link rel="stylesheet" type="text/css" href="/css/events.css">-->
+	<!-- end css bundle -->
+
+	<!--templates-->
+	<!--logged-in users can share photo-->
+	<script id="entry" type="text/html">
+		<link rel="stylesheet" href="widgets/css/syndication-entry.css">
+		<h1>Share on Wayin</h1>
+		<img width="290" height="290" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D" alt="transparent"  style="background:url({{imgUrl}}) no-repeat">
+		<div class="questions">
+			<h2>Question:</h2>
+			<!--<textarea name="" id="" cols="30" rows="10">{{hlnTxt}}</textarea>-->
+			<p class="bubble">Or, take this photo and<br><a href="#!/log-in-sign-up">write your own question</a>.</p>
+			<p><span>Wayin turns photos into discussions. Want to know what your friend thinks about this story?</span> Share it now and watch the opinions, comments and followers roll in! The more you share, the more you'll know!</p>
+		</div>
+		<button id="btnShare" class="btnInline">Share</button>
+		<button id="btnSignUp" class="btnPositioned">Sign Up</button>
+		<button id="btnLogIn" class="btnPositioned">Log In</button>
+	</script>
+
+	<!--anonymous users need create an account or login-->
+	<script id="logIn" type="text/html">
+
+		<h1>Log In or get Started</h1>
+		<h2>Log In<h2>
+		<form action="{{action}}" method="POST">
+			<input type="hidden" name="on_success" value="{{successPath}}">
+			<input type="hidden" name="on_fail" value="{{failPath}}">
+			<dl>
+				<dt>User Name</dt><dd><input type="text" name="username"></dd>
+				<dt>Password</dt><dd><input type="text" name="password"></dd>
+			</dl>
+			<button type="submit">Log In</button>
+		</form>
+	</script>
+	<script id="signUp" type="text/html">
+		{{#info_mode}}
+		<div class="register-info">
+			<form class="ahr" action="{{action}}" method="POST">
+				<h2>Join Wayin</h2>
+				<p class="ahr-share">share photos, Get opinions.</p>
+				{{#highlighted_error}}
+					<p class="form-error"><strong>Oops.</strong><br>{{highlighted_error}}</p>
+				{{/highlighted_error}}
+				<p class="labeled-input">
+					<label>
+						<span class="label">User Name</span>
+						<span class="input"><input type="text" name="username" value="{{username}}"></span>
+					</label>
+				</p>
+				<p class="labeled-input">
+					<label>
+						<span class="label">Email</span>
+						<span class="input"><input type="text" name="email" value="{{email}}"></span>
+					</label>
+				</p>
+				<p class="labeled-input">
+					<label>
+						<span class="label">Password</span>
+						<span class="input"><input type="password" name="password" value="{{password}}"></span>
+					</label>
+				</p>
+				<p class="submit">
+					<button type="submit">Next</button>
+				</p>
+			</form>
+		</div>
+	{{/info_mode}}
+	{{#captcha_mode}}
+		<div class="register-captcha">
+			<form class="ahr">
+				<h2>Human?</h2>
+				<div id="captcha-container"></div>
+				<p class="submit">
+					<button type="submit">Register</button>
+				</p>
+			</form>
+		</div>
+	{{/captcha_mode}}
+	<form id="hiddenRegistrationForm" action="{{action}}" 
+		  method="POST" class="ahr" style="display:none">
+		<input type="hidden" name="username" value="{{username}}">
+		<input type="hidden" name="password" value="{{password}}">
+		<input type="hidden" name="email" value="{{email}}">
+		<input type="hidden" name="on_success" value="{{on_success}}">
+		<input type="hidden" name="on_fail" value="{{on_fail}}">
+		<input type="hidden" name="recaptcha_challenge_field">
+		<input type="hidden" name="recaptcha_response_field">
+	</form>
+	</script>
+
+<!--Test-->
+	<script id="checkLogIn" type="text/html">
+		<h1>Check</h1>
+	</script>
+</head>
+<body>
+
+	<!--template catcher-->
+	<div id="content"></div>
+
+	<!-- start js bundle -->
+	<script src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+	
+	<script src="/scripts/json2.js"></script>
+	<script src="/scripts/jquery.js"></script>
+	<script src="/scripts/jquery-plugins/jquery.timeago.js"></script>
+	<script src="/scripts/ICanHaz.js"></script>
+	<script src="/scripts/underscore.js"></script>
+	<script src="/scripts/backbone.js"></script>
+	<script src="/scripts/wayin-helpers.js"></script>
+	<script src="/widgets/scripts/widget-helpers.js"></script>
+	<script src="/scripts/wayin-model.js"></script>
+	<script src="/scripts/wayin-identity.js"></script>
+	<script src="/widgets/scripts/views.js"></script>
+	<script src="/widgets/scripts/controllers.js"></script>
+	<script src="/widgets/scripts/setup.js"></script>
+	<!-- end js bundle -->
+</body>
+</html>

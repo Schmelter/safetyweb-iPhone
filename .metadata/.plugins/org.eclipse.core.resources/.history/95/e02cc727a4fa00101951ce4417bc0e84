@@ -1,0 +1,71 @@
+(function() {
+
+    wayin.gp.views = $.extend(wayin.gp.views, {
+        GameCarousel:wayin.views.GameCarousel.extend({
+        	events:{
+        		'click .close-question':'closeQuestion',
+        		'click .grade-question':'gradeQuestion',
+        		'click .delete-question':'deleteQuestion',
+				'click .gc-next':'goNext',
+				'click .gc-prev':'goPrevious'
+			},
+        	render:function() {
+        		var widget = this;
+				var games = this.collection;
+				var el = $(this.el);
+
+				var event = this.options.event;
+				
+				var html = ich['game-carousel-tpl']({
+					has_games: games.length,
+					is_event_owner: event.get('creator').user_id === wayin.identity.getMe().id
+				});
+				el.html(html);
+				
+				if(games.length){
+					el.hide();
+					games.each(widget.addGame);
+					widget.establish();
+					el.show();
+				}
+        	},
+            goNext:function() {
+                var games = this.collection;
+                var widget = this;
+                var el = $(this.el);
+                if (games.get(games.selectedGameId).nextGame) {
+                    games.selectedGameId = games.get(games.selectedGameId).nextGame.id;
+                    widget.establish();
+                }
+                if (!games.get(games.selectedGameId).nextGame) {
+                    $(document.body).addClass('loading');
+                    games.fillNext()
+                        .onresolve(function() {
+                            $(document.body).removeClass('loading');
+                        })
+                        .onkeep(function(got) {
+                            got.newGames.each(function(game) {
+                                widget.addGame(game);
+                            });
+                            widget.establish();
+                        })
+                        .onbreak(function(r, d) {
+                            wayin.dialog.error("Couldn't fetch next set of games. " + r, d);
+                        });
+                }
+                this.collection.trigger('carouselNext', games.selectedGameId);
+                return false;
+            },
+            goPrevious:function() {
+                var games = this.collection;
+                var widget = this;
+                if (games.get(games.selectedGameId).previousGame) {
+                    games.selectedGameId = games.get(games.selectedGameId).previousGame.id;
+                    widget.establish();
+                }
+                this.collection.trigger('carouselPrevious', games.selectedGameId);
+                return false;
+            }
+        })
+    })
+})();

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;wayin_backend&apos;&#x0A;- Original project: &apos;wayin_backend&apos;&#x0A;- Original elements:&#x0A;     models&#x0A;     views" description="Delete elements" element1="src/main/webapp/googleplus/views" element2="src/main/webapp/googleplus/models" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="2" stamp="1317401502030" subPackages="false" version="1.0"/>
+</session>

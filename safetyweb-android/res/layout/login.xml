@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/FillParent"
+	android:orientation="vertical">
+	<LinearLayout
+		style="@style/FillParent"
+		android:orientation="vertical"
+		android:id="@+id/llytContent"
+		android:focusable="true">
+		<ImageView
+			style="@style/Logo"
+			android:src="@drawable/logo" />
+		<TextView
+			style="@style/LoginMessage"
+			android:id="@+id/txtResult" />
+		<EditText
+			style="@style/LoginInput.Text"
+			android:id="@+id/txtUsername"
+			android:selectAllOnFocus="true"
+			android:hint="@string/username"
+			android:inputType="textVisiblePassword" />
+		<EditText
+			style="@style/LoginInput.Text"
+			android:id="@+id/txtPassword"
+			android:hint="@string/password"
+			android:inputType="textPassword" />
+		<ImageButton
+			style="@style/LoginInput.Button"
+			android:id="@+id/btnLogin"
+			android:src="@drawable/login_button" />
+		<ImageButton
+			style="@style/LoginInput.Button"
+			android:id="@+id/btnLearnMore"
+			android:src="@drawable/learn_more_button" />
+		<FrameLayout
+			style="@style/FillParent">
+			<TextView
+				style="@style/Copyright"
+				android:text="@string/copyright" />
+		</FrameLayout>
+	</LinearLayout>
+</LinearLayout>

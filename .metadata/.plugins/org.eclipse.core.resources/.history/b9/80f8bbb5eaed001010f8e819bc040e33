@@ -1,0 +1,28 @@
+(function(){
+	wayin.gp.views = {
+			LoginForm: Backbone.View.extend({
+				tagName: 'div',
+				id: 'login',
+				render: function(){
+					var loginForm = this;
+					var proto = wayin.gp.settings.useLoginEncryption ? 'https:' : 'http:';
+					var html = ich['login-tpl']({
+						action:proto+'//'+location.host+'/1.1/sessions',
+						on_success: PAGE+'#!/checkLogin',
+						on_fail: PAGE+'#!/login-failed'
+					});
+					$(this.el).html(html);
+					var inp = $(this.el).find('.ahl .labeled-input input');
+					inp.each(function(){
+						if (this.value) { $(this).closest('.labeled-input').addClass('inputting'); }
+					}).focus(function(e){
+						$(this).closest('.labeled-input').addClass('inputting');
+					}).blur(function(e){
+						if (this.value) { return; }
+						$(this).closest('.labeled-input').removeClass('inputting');
+					});
+					return this;
+				}
+			})	
+	};
+})();

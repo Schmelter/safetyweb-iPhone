@@ -1,0 +1,64 @@
+(function(){
+	wayin.gp.models = $.extend(wayin.gp.models, {
+		Score: Backbone.Model.extend({
+			idAttribute: 'user_id', // I have no idea if this will work
+			initialize: function(user) {
+				var displayName = user.fullName();
+				if (displayName === "") displayName = user.displayName();
+				
+				this.set({"user_id": user.get("user_id"), "displayName": displayName, "score": 0});
+			},
+			initialize: function(displayName, user_id) {
+				this.set({"user_id": user_id, "displayName": displayName, "score": 0});
+			},
+			defaults: {
+				"user_id": null,
+				"displayName": "NONE",
+				"score": 0
+			}
+			
+		}),
+		Scoreboard: Backbone.Collection.extend({
+			model: wayin.gp.models.Score,
+			addUser:function(user) {
+				// Make sure we don't already have this user.  If we do, don't add him again
+				for (index in this.models) {
+					if (this.models[index].get("user_id") == user.get("user_id")) return;
+				}
+				
+				var displayName = user.fullName();
+				if (displayName === "") displayName = user.displayName();
+				
+				var newScore = new wayin.gp.models.Score();
+				newScore.set({"displayName": displayName, "user_id": user.get("user_id")});
+				
+				this.add(newScore);
+			},
+			addOtherPlayer:function(displayName, user_id) {
+				for (index in this.models) {
+					if (this.models[index].get("user_id") == user_id) return;
+				}
+				this.add(new wayin.gp.models.Score(displayName, user_id));
+			},
+			getSortedScoreList:function() {
+				return _.sortBy(this.models, function(score){ return score.get("score"); });
+			}
+		}),
+		getScoreboardInstance: function() {
+			if (wayin.gp.models.scoreboardInstance == null) wayin.gp.models.scoreboardInstance = new wayin.gp.models.Scoreboard();
+			return wayin.gp.models.scoreboardInstance;
+		},
+		scoreboardInstance: null
+	});
+})();
+
+
+setTimeout("testScoreboard()", 1000);
+function testScoreboard() {
+	for (index in wayin.gp.models.getScoreboardInstance().models) {
+		var newScore = wayin.gp.models.getScoreboardInstance().models[index].get("score");
+		newScore++;
+    	wayin.gp.models.getScoreboardInstance().models[index].set({"score": newScore});
+    }
+	setTimeout("testScoreboard()", 1000);
+}

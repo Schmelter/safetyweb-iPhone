@@ -1,0 +1,53 @@
+gapi.hangout.addApiReadyListener(function() {
+	alert('Hangout ready');
+    $('#game-create-link').live('click', function() {
+        var game = new wayin.models.Game({
+            game_type:'poll',
+            //channel_id: wayin.identity.getMe().get('personal_channel_id'),
+            start_time:'now'
+        });
+        var createWidget = new wayin.views.GameCreator({model:game});
+        createWidget.render();
+        var modal = wayin.modal({
+            html:createWidget.el
+        });
+        createWidget.bind('done', function() {
+            modal.close();
+            wayin.app.go('#!/games/' + game.id);
+            setTimeout(function() {
+                wayin.dialog.success({
+                    html:"Your game has been created. Share this game with your friends using the sharing buttons shown below.",
+                    timeout:10000
+                });
+            }, 100);
+        });
+        if (wayin.identity.getMe().get('hosted_event_id') && !wayin.identity.storage.getItem('game_creation_live_notification')) {
+            setTimeout(function() {
+                wayin.dialog.info({
+                    html:"Photos you create while hosting a Live Event will automatically appear in your Live Event.",
+                    onUserDismiss:function() {
+                        wayin.identity.storage.setItem('game_creation_live_notification', true)
+                    }
+                });
+            }, 500);
+        }
+        return false;
+    });
+    // send worrisome browsers away
+    if (wayin.misc.clientIsBlacklisted() && $.cookie('blacklisted-client-override') !== 'true') {
+        location.href = '/unsupported-browser.html';
+        return;
+    }
+
+    // init i can haz templating system
+    ich.grabTemplates();
+
+    // fire it up!!
+    wayin.identity.fetchMe().onresolve(function(breakage, result) {
+        wayin.app = new wayin.gp.routers.Main();
+        Backbone.history.start();
+        wayin.app.go('#!/login');
+    });
+
+    //gapi.hangout.layout.setChatPaneVisible(true);
+});

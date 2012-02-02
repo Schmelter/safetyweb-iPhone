@@ -1,0 +1,160 @@
+/*******************************************************************************
+ * @copyright (c) WayIn, LLC. All Rights Reserved.
+ ******************************************************************************/
+package com.wayin.om.business;
+
+import java.util.Date;
+import java.util.UUID;
+
+import org.codehaus.jackson.annotate.JsonAnySetter;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+
+import com.wayin.om.business.impl.BlockImpl;
+import com.wayin.om.business.interfaces.Blockable;
+
+/**
+ * Represents a "block" placed on an entity that a user believes is in some way
+ * objectionable, e.g. terms of service violation, hate speech, etc.
+ * 
+ */
+@JsonDeserialize(as = BlockImpl.class)
+@JsonPropertyOrder({"block_id", "creation_time", "modification_time", "start_time", "end_time", "creator", "blocked_user", "target", "scope"})
+public interface Block extends PrimaryEntity {
+
+	@JsonAnySetter
+	public void setProperty(String key, Object value);
+
+	/**
+	 * Returns the user who created the block.
+	 */
+	public User getCreator();
+	
+	/**
+	 * Returns the key of the user who created the block.
+	 */
+	public UUID getCreatorId();
+
+	/**
+	 * Returns the blocked User
+	 */
+	public User getBlockedUser();
+
+	/**
+	 * Returns the key of the blocked User
+	 */
+	public UUID getBlockedUserId();
+	
+	/**
+	 * Returns target context (e.g. event) to which the block was attached.
+	 */
+	public Blockable getTarget();
+	
+	/**
+	 * Returns the key of the target context (e.g. event) to which the block was attached.
+	 */
+	public Key getTargetKey();
+	
+	/**
+	 * Returns the start time of the block 
+	 */
+	public Date getStartTime();
+	
+	/**
+	 * Returns the end time of the block
+	 */
+	public Date getEndTime();
+	
+	/**
+	 * Sets endTime for block
+	 * @param endTime
+	 */
+	public void setEndTime(Date endTime);
+	/**
+	 * Returns the scope of the block
+	 */
+	public Scope getScope();
+	
+	/**
+	 * Is block active
+	 */
+	public Boolean isActive(Date currentTime);
+	
+	/**
+	 * This results in all internal properties being serialized.
+	 */
+	public interface MainView extends Block {
+
+		@Override
+		@JsonProperty("block_id")
+		public UUID getId();
+
+		@Override
+		@JsonProperty("creator")
+		public User getCreator();
+
+		@Override
+		@JsonProperty("blocked_user")
+		public User getBlockedUser();
+		
+		@Override
+		@JsonProperty("start_time")
+		public Date getStartTime();
+		
+		@Override
+		@JsonProperty("end_time")
+		public Date getEndTime();
+		
+		@Override
+		@JsonProperty("target")
+		public Blockable getTarget();
+		
+		@Override
+		@JsonProperty("scope")
+		public Blockable getScope();
+	}
+	
+	/**
+	 * This results in all internal properties being serialized.
+	 */
+	public interface BriefView extends Block {
+
+		@Override
+		@JsonProperty("block_id")
+		public UUID getId();
+
+		@Override
+		@JsonProperty("creator_id")
+		public UUID getCreatorId();
+
+		@Override
+		@JsonProperty("blocked_user_id")
+		public UUID getBlockedUserId();
+		
+		@Override
+		@JsonProperty("start_time")
+		public Date getStartTime();
+		
+		@Override
+		@JsonProperty("end_time")
+		public Date getEndTime();
+		
+		@Override
+		@JsonProperty("target_key")
+		public Key getTargetKey();
+
+	}
+	
+	public enum Scope {
+		/**
+		 * Block is used for user blocking
+		 */
+		USER,
+		/**
+		 * Block is for everyone
+		 */
+		GLOBAL;
+	}
+
+}

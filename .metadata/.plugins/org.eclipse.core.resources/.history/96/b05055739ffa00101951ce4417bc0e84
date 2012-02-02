@@ -1,0 +1,49 @@
+(function() {
+
+    wayin.gp.views = $.extend(wayin.gp.views, {
+        GameCarousel:wayin.views.GameCarousel.extend({
+        	render:function() {
+        		alert(wayin.gp.views.GameCarousel.__super__.toSource());
+        		wayin.gp.views.GameCarousel.__super__.render.call(this);
+        		
+        	},
+            goNext:function() {
+                var games = this.collection;
+                var widget = this;
+                var el = $(this.el);
+                if (games.get(games.selectedGameId).nextGame) {
+                    games.selectedGameId = games.get(games.selectedGameId).nextGame.id;
+                    widget.establish();
+                }
+                if (!games.get(games.selectedGameId).nextGame) {
+                    $(document.body).addClass('loading');
+                    games.fillNext()
+                        .onresolve(function() {
+                            $(document.body).removeClass('loading');
+                        })
+                        .onkeep(function(got) {
+                            got.newGames.each(function(game) {
+                                widget.addGame(game);
+                            });
+                            widget.establish();
+                        })
+                        .onbreak(function(r, d) {
+                            wayin.dialog.error("Couldn't fetch next set of games. " + r, d);
+                        });
+                }
+                this.collection.trigger('carouselNext', games.selectedGameId);
+                return false;
+            },
+            goPrevious:function() {
+                var games = this.collection;
+                var widget = this;
+                if (games.get(games.selectedGameId).previousGame) {
+                    games.selectedGameId = games.get(games.selectedGameId).previousGame.id;
+                    widget.establish();
+                }
+                this.collection.trigger('carouselPrevious', games.selectedGameId);
+                return false;
+            }
+        })
+    })
+})();

@@ -1,0 +1,273 @@
+(function() {
+    wayin.gp.routers = {
+
+        Main:Backbone.Router.extend({
+            routes:{
+                '!/login':'attemptLogin',
+                '!/browseEvents':'browseEvents',
+                '!/playEvent/:eventId':'showEvent',
+                '!/login-failed':'loginError',
+                '!/forgot':'forgot',
+                '!/home':'attemptLogin',
+                '!/browse-events':'browseEvents',
+                '!/browse-events/:terms':'browseEvents',
+                '!/events/:id':'showEvent',
+                '!/event-wait':'eventWait'
+            },
+            go:function(hashUrl) {
+                //alert('HashUrl: '+PAGE+hashUrl+' wayin.gp.frame.src: '+wayin.gp.frame.location);
+                wayin.gp.frame.location = PAGE + hashUrl;
+            },
+            /**
+             * Attempt to log the user in if they happen to be an anonymous user,
+             * or if they're not logged in
+             */
+            attemptLogin:function() {
+                this.everyPageStart();
+                if (wayin.identity.getMe().attributes.type === 'anon') {
+                    window.scrollTo(0, 0);
+                    var loginForm = new wayin.gp.views.LoginForm();
+                    loginForm.render();
+                    $('#content').html('').append(loginForm.el);
+                    $('#content').show();
+                } else {
+                    // TODO Determine if this is the host and flag it so. or do it on entry to the hangout?
+                    //wayin.gp.isHost = false;
+                    wayin.gp.isHost = true;
+                    // TODO If this is the host then allow  them to browse to create or enter and event.
+                    // TODO If this is not the host just take that user into the current event if there is one or a waiting page
+                    // TODO and register a state change callback.
+                    //wayin.gp.eventId = '5a6e8b61-b6b7-4650-bf5d-8627c4fb0ab2';
+                    if (wayin.gp.isHost) {
+                        this.go('#!/browseEvents');
+                    }
+                    else {
+                        if (wayin.gp.eventId) {
+                            this.go('#!/events/' + wayin.gp.eventId);
+                        }
+                        else {
+                            // Waiting on event selection
+                            this.go("#!/event-wait");
+                        }
+                    }
+                }
+                this.everyPageDone();
+            },
+            /**
+             * This will allow the user to be placed into a wait state waiting on the host to select an event
+             * @param terms
+             */
+            eventWait:function() {
+                if (!wayin.identity.amLoggedIn()) {
+                    wayin.app.go('#!/login');
+                    return;
+                }
+                var ctrlr = this;
+                ctrlr.everyPageStart();
+                var waitPage = new wayin.gp.views.EventWaitPage();
+                waitPage.render();
+                $('#content').html(waitPage.el);
+                $('#content').show();
+                ctrlr.everyPageDone();
+            },
+            /**
+             * Let the first user here choose the event to be run
+             */
+            browseEvents:function(terms) {
+                if (!wayin.identity.amLoggedIn()) {
+                    wayin.app.go('#!/login');
+                    return;
+                }
+                if (terms) {
+                    terms = wayin.misc.unescape(terms);
+                }
+                var scoreboard = wayin.gp.models.getScoreboardInstance();
+                scoreboard.addUser(wayin.identity.getMe());
+                
+                var ctrlr = this;
+                ctrlr.everyPageStart();
+
+                var prom = new wayin.async.Promise({events:null}, wayin.async.standardTimeout)
+                    .onbreak(ctrlr.errorPageDone)
+                    .onkeep(function(got) {
+                        var eventList = new wayin.gp.views.EventListPage({
+                            collection:got.events,
+                            terms:terms
+                        });
+                        eventList.render();
+                        $('#content').html(eventList.el);
+                        $('#content').show();
+                        ctrlr.everyPageDone();
+                    });
+
+                new wayin.collections.Events(null, {
+                    limit:4,
+                    q:terms,
+                    // TODO Add this back in before go live status:'LIVE',
+                    sort:'last_action_time',
+                    order:'desc'
+                }).fetch({
+                    success:function(events) {
+                        prom.dokeep('events', events);
+                    },
+                    error:function(grps, xhr) {
+                        prom.dobreak(
+                            "Couldn't fetch event list. " + wayin.async.getXhrReason(xhr),
+                            wayin.async.getXhrError(xhr)
+                        );
+                    }
+                });
+            },
+            showEvent:function(id) {
+                // TODO Make sure this is the host?
+                // TODO Store the current event so we can funnel other users to that event on entry
+                if (wayin.gp.eventId) {
+                    // Do we change at this point and move everyone to this event.
+                    wayin.gp.eventId = id;
+                }
+                else {
+                    wayin.gp.eventId = id;
+                }
+                var ctrlr = this;
+                ctrlr.everyPageStart();
+
+                var eProm = getEventPromise(id, {
+                    eventGames:null
+                })
+                    .onbreak(ctrlr.errorPageDone)
+                    .onkeep(function(got) {
+                        var page = new wayin.gp.views.EventPage({
+                            model:got.event,
+                            eventGames:got.eventGames
+                        });
+                        page.render();
+                        var scoreboard = new wayin.gp.views.Scoreboard({model:got.event, eventGames:got.eventGames});
+                        wayin.gp.models.getScoreboardInstance().bind("change", function() {
+                        	alert('Cleared');
+                        	page.html('');
+                        	//scoreboard.render();
+                        });
+                        $('#content').html(page.el);
+                        scoreboard.render();
+                        $('#content').append(scoreboard.el);
+                        $('#content').show();
+                        var isEventCreator = (got.event.get('creator').user_id === wayin.identity.getMe().id);
+                        if (isEventCreator) {
+                            var response = new wayin.gp.views.EventResponsePage({model:got.eventGames, selectedGameId:null});
+                            response.render();
+                            $('#response-detail').append(response.el);
+                        }
+                        $("#accordion").accordion({
+                            collapsible:true
+                        });
+                        ctrlr.everyPageDone();
+                    });
+            },
+            /**
+             * Called on every page (start).  Loads either the
+             * anonymous header or regular header based on
+             * user login
+             */
+            everyPageStart:function() {
+                $(document.body).addClass('loading');
+                if (wayin.identity.amLoggedIn()) {
+                    var pageProm = new wayin.async.Promise({me:null})
+                        .onresolve(function(errs, got) {
+                        var header = new wayin.gp.views['RegularHeader']({
+                            model:got.me || me
+                        });
+                        header.render();
+                        $('header').html(header.el);
+                    });
+                    // Try to satisfy the promise
+                    var me = wayin.identity.getMe();
+                    wayin.identity.fetchMe({timeout:2000}).onresolve(function(errs, got) {
+                        pageProm.dokeep('me', got.me || me);
+                    });
+                }
+                else {
+                    var header = new wayin.gp.views['AnonHeader']({
+                    });
+                    header.render();
+                    $('header').html(header.el);
+                }
+                $('#content').html('');
+                $('#content').hide();
+                $('#fullframe').html('');
+                $('#fullframe').hide();
+            },
+            /**
+             * Called on every page (end).  Constructs an error view
+             * if the user is either not logged in or not of the
+             * correct admin type
+             */
+            everyPageDone:function(args) {
+                if (args && args.id) {
+                    var id = args.id;
+                    $(document.body).attr({id:args.id});
+                } else {
+                    $(document.body).attr({id:''});
+                }
+                $(document.body).removeClass('loading');
+                window.scrollTo(0, 0);
+            },
+            /**
+             * Renders the login failed page
+             */
+            loginError:function() {
+                $(document.body).removeClass('loading');
+                window.scrollTo(0, 0);
+                var loginForm = new wayin.gp.views.LoginForm();
+                loginForm.render();
+                $('#content').html('');
+                $('#content').html(ich['login-failed-tpl']());
+                $('#login-failed-notice').append(loginForm.el);
+                $('#content').show();
+            },
+            forgot:function() {
+                if (wayin.identity.amLoggedIn()) {
+                    location = '#!/home';
+                    return;
+                }
+                var ctrlr = this;
+                ctrlr.everyPageStart();
+                var forgotForm = new wayin.views.ForgotForm();
+                forgotForm.render();
+                $('#content').html(forgotForm.el);
+                $('#content').show();
+                ctrlr.everyPageDone();
+            }
+        })
+    };
+    // helper functions
+
+    function getEventPromise(id, other) {
+        other = other || {};
+        var eProm = new wayin.async.Promise($.extend(other, {
+            event:null,
+            eventGames:null
+        }));
+        new wayin.models.Event({event_id:id}).fetch({
+            success:function(evt) {
+                eProm.dokeep('event', evt);
+            },
+            error:function(evt, xhr) {
+                eProm.dobreak("Couldn't fetch event. " + wayin.async.getXhrReason(xhr), wayin.async.getXhrError(xhr));
+            }
+        });
+        new wayin.collections.Games(null, {
+            event_id:id,
+            limit:16
+        }).fetch({
+            success:function(games) {
+                eProm.dokeep('eventGames', games);
+            },
+            error:function(game, xhr) {
+                eProm.dobreak("Couldn't fetch games for event. "
+                    + wayin.async.getXhrReason(xhr), wayin.async.getXhrError(xhr));
+            }
+        });
+        return eProm;
+    }
+
+})();

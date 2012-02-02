@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	style="@style/ChildRow">
+	<ImageView
+		android:id="@+id/imgProfilePic"
+		android:src="@drawable/default_profile"
+		style="@style/ChildRowImage" />
+	<LinearLayout
+		android:orientation="vertical"
+		style="@style/ChildRowRight" >
+		<TextView
+			android:id="@+id/txtRealName"
+			style="@style/ChildRowText.Name" />
+		<LinearLayout
+			android:orientation="horizontal"
+			style="@style/ChildRowInfoContainer" >
+			<LinearLayout
+				android:orientation="vertical"
+				style="@style/ChildRowInfo" >
+				<LinearLayout
+					android:orientation="horizontal"
+					style="@style/Notification" >
+					<ImageView
+						android:id="@+id/imgPositive"
+						android:src="@drawable/positive"
+						style="@style/WrapContent" />
+					<FrameLayout
+						style="@style/ChildRowTextNumbersContainer" >
+						<TextView
+							android:id="@+id/txtPositive"
+							style="@style/ChildRowText.Small.Numbers" />
+					</FrameLayout>
+					<TextView
+						android:id="@+id/lblPositive"
+						android:text="@string/positives"
+						style="@style/ChildRowText.Small" />
+				</LinearLayout>
+				<LinearLayout
+					android:orientation="horizontal"
+					style="@style/Notification" >
+					<ImageView
+						android:id="@+id/imgWarning"
+						android:src="@drawable/warning"
+						style="@style/WrapContent" />
+					<FrameLayout
+						style="@style/ChildRowTextNumbersContainer" >
+						<TextView
+							android:id="@+id/txtWarning"
+							style="@style/ChildRowText.Small.Numbers" />
+					</FrameLayout>
+					<TextView
+						android:id="@+id/lblPositive"
+						android:text="@string/warnings"
+						style="@style/ChildRowText.Small" />
+				</LinearLayout>
+				<LinearLayout
+					android:orientation="horizontal"
+					style="@style/Notification" >
+					<ImageView
+						android:id="@+id/imgRedflag"
+						android:src="@drawable/redflag"
+						style="@style/WrapContent" />
+					<FrameLayout
+						style="@style/ChildRowTextNumbersContainer" >
+						<TextView
+							android:id="@+id/txtRedflag"
+							style="@style/ChildRowText.Small.Numbers" />
+					</FrameLayout>
+					<TextView
+						android:id="@+id/lblRedflag"
+						android:text="@string/redflags"
+						style="@style/ChildRowText.Small" />
+				</LinearLayout>
+			</LinearLayout>
+			<LinearLayout
+				android:orientation="horizontal"
+				style="@style/ChildRowTextMoreContainer" >
+				<TextView
+					android:id="@+id/txtMore"
+					style="@style/ChildRowText.More"
+					android:text="@string/more" />
+				<ImageView
+						android:src="@drawable/greenarrow"
+						style="@style/ChildRowTextMoreArrow" />
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

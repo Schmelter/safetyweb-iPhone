@@ -1,0 +1,1583 @@
+(function(){
+
+	var M = wayin.models,
+		C = wayin.collections,
+		A = wayin.async,
+		I = wayin.identity,
+		P = wayin.pagers,
+		V = wayin.views,
+		D = wayin.dialog;
+
+	V = $.extend(V,{
+		GameCreator: Backbone.View.extend({
+			id:'gcreate',
+			initialize:function(){
+				var widget = this;
+				var game = this.model;
+				var S = this.state = SmallFSM('start');
+				var media = new M.Media();
+				var steps = ['New Photo'];
+				var eventId = this.options.event_id;
+
+				S.onTransit('start =>                gettingMedia',         null, 'init showMediaGetter');
+				S.onTransit('error =>                asking',               null, 'showAskScreen');
+				S.onTransit('gettingMedia =>         asking',               null, 'setMedia showAskScreen');
+				S.onTransit('asking =>               buildingThumbsUpDown', null, 'buildThumbsUpDown');
+				S.onTransit('asking =>               buildingWouldYa',      null, 'buildWouldYa');
+				S.onTransit('asking =>               gettingText',          null, 'showTextForm');
+				S.onTransit('gettingText =>          saving',               null, 'startThinking setText doSave');
+				S.onTransit('buildingThumbsUpDown => saving',               null, 'startThinking doSave');
+				S.onTransit('buildingWouldYa =>      saving',               null, 'startThinking doSave');
+				S.onTransit('saving =>               done',                 null, 'stopThinking showDoneScreen');
+				S.onTransit('saving =>               error',                null, 'stopThinking showErrorScreen');
+
+				function validateAndSetTime(){
+					// If the current user is a superuser then set the start time of
+					// the game they just created.
+					if (I.amSuper() && 'checked' !== $('[name=start_now]').attr('checked'))
+					{
+						var start_date = $('[name=start_date]').val(),
+						is_afternoon   = $('[name=is_afternoon]').val() == 'pm',
+						start_time     = $('[name=start_time]').val().split(':'),
+						hours          = is_afternoon ? parseInt(start_time.shift(), 10) + 12 : start_time.shift(),
+						minutes        = start_time.pop(),
+						time_to_start  = Date.parse(start_date).addHours(hours).addMinutes(minutes);
+					
+						// Make sure the admin isn't trying to start an event in the past
+						if (time_to_start.compareTo(new Date()) < 0)
+						{
+							wayin.dialog.error("Please pick a time in the future");
+							return false;
+						}
+						game.set({start_time: time_to_start.toISOString()});
+					}
+					return true;
+				}
+
+				S.on('showMediaGetter', function(){
+					steps.push('Upload');
+					var mediaWidget = new V.ConstrainedMediaWidget({
+						model:media,
+						aspectRatio:320/320
+					});
+					mediaWidget.render();
+					$(widget.el).html(ich['game-create-get-media-tpl']({steps: steps}));
+					$(widget.el).find('.gcreate-upload').append(mediaWidget.el);
+					mediaWidget.bind('use',function(){
+						S.transit('asking');
+					});
+				});
+				S.on('setMedia', function(){
+					game.set({
+						media_id:media.id,
+						featured_media:media.toJSON()
+					});
+				});
+				S.on('showAskScreen', function(){
+					steps.push('Choose Photo Type');
+					var el = $(widget.el);
+					
+					var hours = [],
+					dates     = [],
+					month     = parseInt(new Date().getMonth(), 10) + 1,
+					day       = parseInt(new Date().getDate(), 10);
+
+					// Build a list of days from today until a week from today
+					_.each(_.range(0, 8), function (x) {
+						// TODO - Need to account for the end of the month.
+						//        Currently this will produce days greater 
+						//        than the 31st of the month.
+						dates.push({date: month + '/' + (day+x)});
+					});
+
+					// Build the list of hours and minutes to be used on the dropdowns.
+					var selected = null;
+
+					_.each(_.range(0, 12), function (hour) {
+
+						hour = hour < 10 ? '0' + hour : hour;
+						
+						_.each(_.range(0, 60, 5), function (minute) {
+							minute = minute < 10 ? '0' + minute : minute;
+
+							hours.push({'hour':hour + ':' + minute, 'selected':selected});
+						});
+					});
+
+					el.html(ich['game-create-ask-tpl']({
+						media:     media.toJSON(),
+						steps:     steps,
+						can_admin: wayin.identity.amSuper(),
+						hours:     hours,
+						dates:     dates
+					}));
+					
+					el.find('.dothumbs').click(function() {
+						if (!validateAndSetTime()) { return false; }
+						S.transit('buildingThumbsUpDown');
+						return false;
+					});
+					el.find('.dowouldya').click(function(){
+						if (!validateAndSetTime()) { return false; }
+						S.transit('buildingWouldYa');
+						return false;
+					});
+					el.find('.docustom').click(function() {
+						S.transit('gettingText');
+						return false;
+					});
+				});
+				S.on('buildThumbsUpDown', function(){
+					game.set({
+						text:'',
+						options:[{text:'Thumbs Up'},{text:'Thumbs Down'}]
+					});
+					
+					S.transit('saving');
+				});
+				S.on('buildWouldYa', function(){
+					game.set({
+						text:'Would ya?',
+						options:[{text:'Yes'},{text:'No'}]
+					});
+					S.transit('saving');
+				});
+				S.on('showTextForm', function(){
+					steps.push('Custom Photo');
+					var el = $(widget.el);
+					var vobj = game.toJSON();
+					
+					var hours = [],
+					dates     = [],
+					month     = parseInt(new Date().getMonth(), 10) + 1,
+					day       = parseInt(new Date().getDate(), 10);
+
+					// Build a list of days from today until a week from today
+					_.each(_.range(0, 8), function (x) {
+						// TODO - Need to account for the end of the month.
+						//        Currently this will produce days greater 
+						//        than the 31st of the month.
+						dates.push({date: month + '/' + (day+x)});
+					});
+
+					// Build the list of hours and minutes to be used on the dropdowns.
+					_.each(_.range(0, 12), function (hour) {
+						hour = hour < 10 ? '0' + hour : hour;
+
+						_.each(_.range(0, 60, 5), function (minute) {
+							minute = minute < 10 ? '0' + minute : minute;
+
+							hours.push({'hour':hour + ':' + minute});
+						});
+					});
+					
+					el.html(ich['game-create-text-tpl']({
+						media: media.toJSON(),
+						steps: steps,
+						hours:     hours,
+						dates:     dates,
+						can_admin: wayin.identity.amSuper()
+					}));
+					el.find('form').submit(function(){
+						if (!validateAndSetTime()) { return false; }
+						var text = $(this).find('[name=text]').val();
+						if (/^\s*$/.test(text)){
+							D.error("Oops. Question text can't be empty.");
+							return false;
+						}
+						var options = [];
+						var errs = $(this).find('[name=option]').each(function(){
+							if (!/^\s*$/.test(this.value)) {
+								options.push(this.value);
+							}
+						});
+						if (options.length < 2){
+							D.error("Can't create game. There need to be at least two options.");
+							return false;
+						}
+						S.transit('saving');
+						return false;
+					});
+				});
+				S.on('setText', function(){
+					var form = $(widget.el).find('form');
+					var text = form.find('[name=text]').val();
+					var options = [];
+					form.find('[name=option]').each(function(){
+						if (!/^\s*$/.test(this.value)) { options.push({text:this.value}); }
+					});
+					game.set({ text:text, options:options });
+				});
+				S.on('doSave', function(){
+					game.save(null,{
+						success:function(){
+							if (eventId && false){
+								game.publishToEvent(eventId)
+								.onbreak(function(reas, deb){
+									S.transit('error',{reason:"Saved photo, but couldn't publish to event. "+reas,debug:deb});
+								})
+								.onkeep(function(){
+									S.transit('done',{message:'Photo created and published to event.'});
+								});
+							}else{
+								S.transit('done',{message:'Photo has been created.'});
+							}
+						},
+						error:function(g,x){
+							S.transit('error',{reason:"Couldn't save photo. "+A.getXhrReason(x),debug:A.getXhrError(x)});
+							setTimeout(function(){ S.transit('asking'); }, 2000);
+						}
+					});
+				});
+				S.on('startThinking', function(){
+					$(widget.el).addClass('thinking');
+				});
+				S.on('stopThinking', function(){
+					$(widget.el).removeClass('thinking');
+				});
+				S.on('showDoneScreen', function(args){
+					args = args || {};
+					var message = args.message || '';
+					widget.trigger('done');
+				});
+				S.on('showErrorScreen', function(mess){
+					var message = mess.reason;
+					if (wayin.settings.showDebug) { message += mess.debug; }
+					steps.push('Error');
+					var el = $(widget.el);
+					el.html(ich['game-create-error-tpl']({steps:steps,message:message}));
+				});
+			},
+			render:function(){
+				this.state.transit('gettingMedia');
+			}
+		})
+		,
+		GameDetail: Backbone.View.extend({
+			tagName: 'div',
+			id: 'game-detail',
+			initialize:function(){
+				var game = this.options.game,
+					render = _.bind(this.render,this),
+					comments = this.options.comments,
+					responses = this.options.responses,
+					widget = this;
+				game.bind('change',function(){
+					render();
+					responses && responses.fetch();
+					animateBars(widget);
+				});
+			},
+			render:function(){
+				var el = $(this.el);
+				var game = this.options.game;
+				var comments = this.options.comments;
+				var otherGamesPager = this.options.otherGamesPager;
+				var otherGames = otherGamesPager.getCollection();
+				var meFollowingThem = this.options.meFollowingThem;
+				var responses = this.options.responses;
+				var user = new M.User(game.get('user'));
+				var sharer = this.options.sharer;
+
+				var gameTile = new V.GameDetailTile({
+					model:game,
+					meFollowingThem:meFollowingThem,
+					responses:responses
+				});
+				var otherGamesList = new V.MiniGameStream({
+					collection:otherGamesPager.getCollection(),
+					pager:otherGamesPager
+				});
+				var tabContent = responses?
+					new V.ResponseList({collection:responses}):
+					new V.CommentList({collection:comments});
+
+				gameTile.render();
+				otherGamesList.render();
+				tabContent.render();
+				
+				var vobj = {
+					game_id: game.id,
+					user: game.get('user'),
+					has_other_games: otherGames.length,
+					text:game.get('text'),
+					anon: !I.amLoggedIn(),
+					gender_male: user.get('gender')==='male',
+					gender_female: user.get('gender')==='female',
+					gender_none: !user.get('gender'),
+					display_name: user.displayName(),
+					show_iphone_app_promo: !I.amLoggedIn() && wayin.misc.clientIsIos(),
+					show_generic_app_promo: !I.amLoggedIn() && !wayin.misc.clientIsIos(),
+					is_responses_tab: !!responses
+				};
+				if (sharer){
+					vobj.sharer_display_name = sharer.displayName();
+					vobj.sharer_gender_male = sharer.get('gender')==='male';
+					vobj.sharer_gender_female = sharer.get('gender')==='female';
+					vobj.sharer_gender_none = !sharer.get('gender');
+				}
+				if(/^\s+$/.test(vobj.text)){vobj.text='';}
+				var html = ich['game-detail-tpl'](vobj,true);
+				el.html(html);
+				el.find('.game-w').append(gameTile.el);
+				el.find('.other-w').append(otherGamesList.el);
+				el.find('.gd-tab-content').append(tabContent.el);
+			}
+		})
+		,
+		GameDetailTile: Backbone.View.extend({
+			events:{
+				'click a[href].flagGame':'flagGame',
+				'click a[href].deleteGame':'deleteGame',
+				'click a[href].gradeGame':'gradeGame',
+				'click a[href].closeGame':'closeGame',
+				'click a[href].shareTwitter':'shareTwitter',
+				'click a[href].shareFacebook':'shareFacebook',
+				'click a[href].shareEmail':'shareEmail',
+				'click a[href].shareWayin':'shareWayin',
+				'click a[href].shareAll':'shareAll'
+			},
+			deleteGame:function(){
+				var game = this.model;
+				D.warning({
+					html:'Are you sure you want to delete this photo?',
+					confirm:true,
+					confirmText:'Delete Photo',
+					onUserConfirm:function(){
+						$(document.body).addClass('loading');
+						game.destroy({
+							error:function(xhr){
+								D.error("Couldn't delete. "
+									+A.getXhrReason(xhr),A.getXhrError(xhr));
+								$(document.body).removeClass('loading');
+							},
+							success:function(){
+								D.success('Deleted.');
+								$(document.body).removeClass('loading');
+								wayin.app.go('#!/suggested/popular');
+							}
+						});
+					}
+				});
+				return false;
+			},
+			flagGame:function(ev){
+				var game = this.model;
+				D.warning({
+					html:'Are you sure you want to flag this photo?',
+					confirm:true,
+					confirmText:'Flag Photo',
+					onUserConfirm:function(){
+						$(document.body).addClass('loading');
+						game.flag().onresolve(function(){
+							$(document.body).removeClass('loading');
+						}).onkeep(function(){
+							D.success('Photo has been flagged. Thanks for your input.');
+						}).onbreak(function(r,d){
+							D.error("Couldn't flag photo. "+r,d);
+						});
+					}
+				});
+				return false;
+			},
+			gradeGame:function(ev){
+				var widget = this;
+				var gradeOptionWidget = new V.GameOptionsGrading({model:this.model});
+				gradeOptionWidget.render();
+				var optionWidget = $(this.el).find('.options');
+				optionWidget.before(gradeOptionWidget.el);
+				optionWidget.remove();
+				gradeOptionWidget.bind('gradeStart',function(){
+					$(widget.el).find('.game').addClass('grading');
+				});
+				gradeOptionWidget.bind('gradeEnd',function(){
+					$(widget.el).find('.game').removeClass('grading');
+				});
+				return false;
+			},
+			closeGame:function(ev){
+				var widget = this;
+				D.warning({
+					html:'Are you sure you want to close this game?',
+					confirm:true,
+					confirmText:'Close game',
+					onUserConfirm:function(){
+						widget.model.close()
+						.onbreak(D.error)
+						.onkeep(function(){
+							D.success({
+								html:"Game is now closed for play."
+							});
+						});
+					}
+				});
+				return false;
+			},
+			shareFacebook:function(){
+				wayin.misc.shareFacebook(this.model.id)
+				.onbreak(D.error)
+				.onkeep(function(){
+					D.success('Photo has been shared.');
+				});
+				return false;
+			},
+			shareTwitter:function(){
+				$(document.body).addClass('loading');
+				wayin.misc.shareTwitter(this.model, location.pathname + location.hash)
+				.onbreak(D.error)
+				.onkeep(function(){
+					D.success('Sent!');
+				})
+				.onresolve(function(){
+					$(document.body).removeClass('loading');
+				});
+				return false;
+			},
+			shareEmail:function(){
+				var sharer = new V.GameEmailSharer({model:this.model});
+				sharer.render();
+				var modal = wayin.modal({
+					title:'Share with my friends',
+					html:sharer.el
+				});
+				sharer.bind('success',function(){
+					setTimeout(modal.close,1500);
+				});
+				return false;
+			},
+			shareWayin:function(){
+				var game = this;
+				function share(){
+					$(document.body).addClass('loading');
+					function success(){
+						$(document.body).removeClass('loading');
+						D.success('Game has been shared.');
+					}
+					$.ajax({
+						type:'POST',
+						url:'/1.1/invitations',
+						contentType:'application/vnd.wayin-invitationList-v1+json',
+						dataType:'json',
+						data:JSON.stringify([
+							{ method:'WAYIN_REPUBLISH',target_key:'Game/'+game.model.id }
+						]),
+						success:success,
+						error:function(x){
+							$(document.body).removeClass('loading');
+							if(x.status>399 && x.status<500){
+								success();
+							}else{
+								D.error("Couldn't share game. "+A.getXhrReason(x),A.getXhrError(x));
+							}
+						}
+					});
+					I.storage.setItem('has_flipped',true);
+				}
+				if (!I.storage.getItem('has_flipped')){
+					D.info({
+						confirm:true,
+						html:'Imitation is the sincerest form of flattery. '
+							+'Show this picture off to your followers by '
+							+'copying it into your Photos.',
+						onUserConfirm:share,
+						confirmText:'Share it!'
+					});
+				}else{
+					share();
+				}
+				return false;
+			},
+			shareAll:function(){
+				var sharer = new V.GameSharer2({model:this.model});
+				sharer.render();
+				var modal = wayin.modal({
+					html:sharer.el
+				});
+				function closeIt(){
+					setTimeout(function(){
+						modal.close();
+					},1000);
+				}
+				sharer.bind('shareComplete',closeIt);
+				sharer.bind('shareFail',closeIt);
+				return false;
+			},
+			render: function(){
+
+				var game = this.model,
+					el = $(this.el),
+					vobj = game.toJSON(),
+					options = new V.GameOptionsTile({ model: game, showFlag: true }),
+					user = new M.User(game.get('user')),
+					userTile = new V.UserProfileTile({
+						model: user,
+						meFollowingThem:this.options.meFollowingThem
+					});
+
+				vobj.is_closed = game.isClosed();
+				vobj.am_owner = (user.id === I.getMe().id);
+				vobj.can_admin = (vobj.am_owner || (I.getMe().get('type') === 'super'));
+				vobj.logged_in = I.amLoggedIn();
+				vobj.is_mine = user.id === I.getMe().id;
+				var html = ich['game-detail-tile-tpl'](vobj);
+				el.html(html);
+
+				options.render();
+				userTile.render();
+				el.find('.game-tile-w').prepend(options.el);
+				el.find('.uprofile-w').append(userTile.el);
+				options.bind('playEnd',function(){
+					if (
+						!I.amLoggedIn()
+						&& !I.storage.getItem('hide_anon_vote_notice')
+					){
+						D.info({
+							html:ich['anon-vote-notice-tpl'](),
+							onUserDismiss:function(){
+								I.storage.setItem('hide_anon_vote_notice',true);
+							}
+						});
+					}
+				});
+			}
+		})
+		,
+		GameEmailSharer: Backbone.View.extend({
+			className:'gshare',
+			initialize:function(){
+				var widget = this;
+				var game = this.model;
+				var S = this.state = SmallFSM('start');
+				var send;
+				
+				S.onTransit('start => askingEmail', null, 'showAskEmail');
+				S.onTransit('askingEmail => processingEmailShare', null, 'startThinking doEmail');
+				S.onTransit('processingEmailShare => askingEmail', null, 'stopThinking showAskEmail error');
+				S.onTransit('processingEmailShare => done', null, 'stopThinking showShareComplete success');
+
+				function doSend(){
+					new M.Invitation(send).save(null, {
+						success:function(){ S.transit('done'); },
+						error:function(i,xhr){ S.transit('askingEmail',{reason:"Couldn't share game. "+A.getXhrReason(xhr),debug:A.getXhrError(xhr)}); }
+					});
+				}
+				
+				S.on('showAskEmail', function(){
+					$(widget.el).html(ich['game-share-email-tpl']());
+					$(widget.el).find('.gshare-another').click(function(){
+						var field = $(this).closest('p');
+						var newField = field.clone(true);
+						field.find('.gshare-another').remove();
+						field.parent().append(newField);
+						newField.find('input').val('').focus();
+						return false;
+					});
+					$(widget.el).find('form').submit(function(){
+						var emails = [];
+						$(this).find('[name=email]').each(function(){
+							var val = $(this).val();
+							if (val) { emails.push(val); }
+						});
+						if (!emails.length) { return false; }
+						var errs = _(_(emails).select(function(email){
+							if (!/@/.test(email)) { return true; }
+						})).map(function(email){
+							return email+' is invalid.';
+						});
+						if (errs.length) {
+							D.error({
+								html:'Woops, invalid email address:\n'+errs.join('\n')
+							});
+							return false;
+						}
+						S.transit('processingEmailShare', emails);
+						return false;
+					});
+				});
+				S.on('showShareComplete', function(){
+					$(widget.el).html(ich['game-share-complete-tpl']());
+				});
+				S.on('startThinking', function(){
+					$(document.body).addClass('loading');
+				});
+				S.on('stopThinking', function(){
+					$(document.body).removeClass('loading');
+				});
+				S.on('doEmail', function(emails){
+					send = _(emails).map(function(email){
+						return {method:'EMAIL',game_id:game.id,email:email};
+					});
+					doSend();
+				});
+				S.on('success',function(){
+					widget.trigger('success');
+				});
+			},
+			render:function(){ this.state.transit('askingEmail'); }
+		})
+		,
+		GameMiniTile: Backbone.View.extend({
+			className: 'mgame',
+			initialize:function(){
+				this.model.bind('change',_.bind(this.render,this));
+			},
+			render: function(){
+				var photo = new V.GamePhoto({model:this.model});
+				photo.render();
+				$(this.el).html(photo.el);
+			}
+		})
+		,
+		GameOptions: Backbone.View.extend({
+			tagName: 'div',
+			className: 'unplayed options',
+			events: {
+				'click a[href].opt-choice': 'chooseOption'
+			},
+			render: function() {
+				var game = this.model;
+				var vobj = game.toJSON();
+
+				// try to determine from the game info if i've already played it
+				var played = vobj['my_answer_option_id'];
+				
+				// duck type for thumbs and would ya games
+				//vobj.thumbs_type = (/^\s*thumbs\s+up,\s+thumbs\s+down\s*$/i).test(serializeGame(game));
+				//vobj.wouldya_type = (/^\s*would\s+ya?:\s+yes,\s+no\s*$/i).test(serializeGame(game));
+				//vobj.normal_type = !(vobj.thumbs_type || vobj.wouldya_type);
+				vobj.normal_type = true;
+				var canPlay = vobj.can_play = !played && !game.isClosed();
+				if (vobj.thumbs_type){
+					_(vobj.options).each(function(option,i){
+						if (i===0) { vobj.up_option = option; }
+						if (i===1) { vobj.down_option = option; }
+					});
+				}
+
+				if (!canPlay) {
+					// add some rendering info for the template to use
+					if (played) {
+						$(this.el).removeClass('unplayed');
+						$(this.el).addClass('played');
+					}
+					var sum=0, max=0;
+					_(vobj.options).each(function(option){
+						sum += option.answered_count;
+						max = Math.max(max, option.answered_count);
+						var ha = option.highlighted_answerers;
+						while (ha && ha.length > 2) { ha.shift(); } // only show last 2
+					});
+					_(vobj.options).each(function(option,i){
+
+						var rightAnswer = vobj.correct_game_option_id;
+						var thisIsRightAnswer = rightAnswer && rightAnswer === option.option_id;
+						var myAnswer = vobj.my_answer_option_id;
+						var thisIsMyAnswer = myAnswer && myAnswer === option.option_id;
+						var thisAnswerIsRight = rightAnswer && rightAnswer === option.option_id;
+						if (rightAnswer){
+							option.my_answer_and_correct       =  thisIsMyAnswer &&  thisAnswerIsRight;
+							option.my_answer_and_incorrect     =  thisIsMyAnswer && !thisAnswerIsRight;
+							option.not_my_answer_and_correct   = !thisIsMyAnswer &&  thisAnswerIsRight;
+							option.not_my_answer_and_incorrect = !thisIsMyAnswer && !thisAnswerIsRight;
+						} else {
+							if (thisIsMyAnswer){
+								option.my_answer = true;
+							} else {
+								option.an_answer = true;
+							}
+						}
+
+						if(sum>0){
+							var percent = option.answered_count / sum;
+							percent = Math.round(percent * 100);
+							option.answered_percentage = percent;
+
+							// if want to fudge bar visual sizes, change this
+							var displayPercent = option.answered_count / sum;
+							displayPercent *= 100;
+							displayPercent = Math.round(displayPercent);
+							option.display_percentage = displayPercent;
+						}else{
+							option.answered_percentage = 0;
+							option.display_percentage = 0;
+						}
+					});
+					vobj.total_answers = sum;
+				}
+				var h = ich['game-options-tpl'](vobj);
+				$(this.el).html(h);
+				//$(this.el).find('.bar').each(function(){
+				//	this.animateTo = this.style.width;
+				//	this.style.width = '0%';
+				//	try{ $(this).animate({width:this.animateTo}); }
+				//	catch(e) { this.style.width = this.animateTo; }
+				//});
+			},
+			chooseOption: function(event){
+				var game = this.model;
+				
+				if (game.isClosed()) {
+					D.warning('Cannot vote. This game is closed for play.');
+					return;
+				}
+				
+				var el = $(this.el);
+				var li = $(event.target).closest('li');
+				var widget = this;
+				li.addClass('mychoice');
+				var id = li.attr('id');
+				id = id.replace(/^option_/,'');
+				widget.trigger('playStart');
+				game.play(id)
+				.onbreak(function(r,d){
+					widget.trigger('playFail');
+					D.error(r,d);
+				})
+				.onkeep(function(){
+					widget.trigger('playSucceed');
+				})
+				.onresolve(function(){
+					widget.trigger('playEnd');
+				});
+				return false;
+			}
+		})
+		,
+		GameOptionsGrading: Backbone.View.extend({
+			tagName: 'div',
+			className: 'unplayed options gradeOptions',
+			events: {
+				'click a[href].opt-choice': 'gradeOption'
+			},
+			render: function() {
+				var game = this.model;
+				var vobj = game.toJSON();
+				var h = ich['game-options-grading-tpl'](vobj);
+				$(this.el).html(h);
+			},
+			gradeOption: function(event){
+				var widget = this;
+				var game = this.model;
+				var el = $(this.el);
+				var li = $(event.target).closest('li');
+				var ul = $(event.target).closest('ul');
+				ul.find('li').addClass('wrongAnswer');
+				li.removeClass('wrongAnswer').addClass('rightAnswer');
+				var id = li.attr('id');
+				id = id.replace(/^option_/,'');
+				el.addClass('grading');
+				widget.trigger('gradeStart');
+				setTimeout(function(){
+					game.grade(id)
+					.onbreak(function(r,d){
+						widget.trigger('gradeFail');
+						D.error(r,d);
+					})
+					.onkeep(function(){
+						widget.trigger('gradeSucceed');
+						D.success({
+							html:'Correct answer has been set.',
+							timeout:5000
+						});
+					})
+					.onresolve(function(){
+						widget.trigger('gradeEnd');
+					});
+				},1000);
+				return false;
+			}
+		})
+		,
+		GamePhoto: Backbone.View.extend({
+			className: 'gphoto',
+			render: function(){
+				var game = this.model;
+				var el = $(this.el);
+				var vobj = game.toJSON();
+				vobj.large = this.options.size === 'large';
+				vobj.num_responses = _(vobj.options).reduce(function(n,opt){return n+opt.answered_count;},0);
+				vobj.display_num_responses = vobj.num_responses > 99 ? '...' : vobj.num_responses;
+				vobj.display_num_comments = vobj.num_comments > 99 ? '...' : vobj.num_comments;
+				vobj['game_status_'+vobj.game_status] = true;
+
+				try{
+					vobj.src = this.options.size === 'large'
+						? vobj.featured_media.sizes.suggested_large
+						: vobj.featured_media.sizes.suggested_small;
+					if (!vobj.src) {
+						vobj.src = this.options.size === 'large'
+							? vobj.featured_media.sizes.medium
+							: vobj.featured_media.sizes.small;
+					}
+				}catch(ex){}
+				if (!vobj.src) {
+					vobj.src = this.options.size === 'large'
+						? '/img/wayin-default-medium.jpg'
+						: '/img/wayin-default-small.jpg';
+				}
+
+				var html = ich['game-photo-tpl'](vobj);
+				el.html(html);
+			},
+			notice:function(args){
+				var noticeFrame = ich['notice-tpl']();
+				noticeFrame.find('.notice-body').append(args.html);
+				noticeFrame.find('.notice-close').click(function(){
+					rem();
+					if (args.onUserDismiss) { args.onUserDismiss(); }
+					return false;
+				});
+				setTimeout(rem,15000)
+				function rem(){
+					noticeFrame.fadeOut(300,function(){
+						noticeFrame.remove();
+					});
+					return false;
+				}
+				$(this.el).append(noticeFrame);
+			}
+		})
+		,
+		GameSharer: Backbone.View.extend({
+			tagName:'div',
+			className:'gshare',
+			initialize:function(){
+				var widget = this;
+				var game = this.model;
+				var S = this.state = SmallFSM('start');
+				var send;
+				
+				S.onTransit('start => askingWhich', null, 'init showAskWhich');
+				S.onTransit('processingFacebookShare => askingWhich', null, 'stopThinking error showAskWhich');
+				S.onTransit('processingEmailShare => askingWhich', null, 'stopThinking error showAskWhich');
+				S.onTransit('processingTwitterShare => askingWhich', null, 'stopThinking error showAskWhich');
+				S.onTransit('askingWhich => askingEmail', null, 'showAskEmail');
+				S.onTransit('askingEmail => processingEmailShare', null, 'startThinking doEmail');
+				S.onTransit('askingWhich => processingTwitterShare', null, 'startThinking doTwitter');
+				S.onTransit('askingWhich => processingFacebookShare', null, 'startThinking doFacebook');
+				S.onTransit('processingFacebookShare => done', null, 'stopThinking success showShareComplete');
+				S.onTransit('processingEmailShare => done', null, 'stopThinking success showShareComplete');
+				S.onTransit('processingTwitterShare => done', null, 'stopThinking success showShareComplete');
+
+				function doSend(){
+					new M.Invitation(send).save({
+						success:function(){ S.transit('done'); },
+						error:function(i,xhr){ S.transit('askingWhich',{reason:"Couldn't share game. "+A.getXhrReason(xhr),debug:A.getXhrError(xhr)}); }
+					});
+					//$.ajax({
+					//	url:'/1.1/game_invitations',
+					//	type:'POST',
+					//	contentType:'application/vnd.wayin-invitationList-v1+json',
+					//	dataType:'json',
+					//	data:JSON.stringify(send),
+					//	success:function(){ S.transit('done'); },
+					//	error:function(xhr){ S.transit('askingWhich',{reason:"Couldn't share game. "+A.getXhrReason(xhr),debug:A.getXhrError(xhr)}); }
+					//});
+				}
+				
+				S.on('showAskWhich', function(err){
+					var el = $(widget.el);
+					if(err && err.reason){D.error(err.reason, err.debug);}
+					var vobj = {
+						facebook_linked: I.canShareFacebook(),
+						twitter_linked: I.canShareTwitter(),
+						game:game.toJSON(),
+						game_title:game.title()
+					};
+					el.html(ich['game-share-which-tpl'](vobj));
+					el.find('.shareEmail').click(function(){ S.transit('askingEmail'); });
+					el.find('.shareFacebook').click(function(){ S.transit('processingFacebookShare'); });
+					el.find('.shareTwitter').click(function(){ S.transit('processingTwitterShare'); });
+					el.find('.shareCancel').click(function(){ location.href='#!/games/'+game.id; });
+				});
+				S.on('showAskEmail', function(){
+					$(widget.el).html(ich['game-share-email-tpl']());
+					$(widget.el).find('.gshare-another').click(function(){
+						var field = $(this).closest('p');
+						var newField = field.clone(true);
+						field.find('.gshare-another').remove();
+						field.parent().append(newField);
+						newField.find('input').val('').focus();
+						return false;
+					});
+					$(widget.el).find('form').submit(function(){
+						var emails = [];
+						$(this).find('[name=email]').each(function(){
+							var val = $(this).val();
+							if (val) { emails.push(val); }
+						});
+						if (!emails.length) { return false; }
+						var errs = _(_(emails).select(function(email){
+							if (!/@/.test(email)) { return true; }
+						})).map(function(email){
+							return email+' is invalid.';
+						});
+						if (errs.length) {
+							D.error('Woops, invalid email address:\n'+errs.join('\n'));
+							return false;
+						}
+						S.transit('processingEmailShare', emails);
+						return false;
+					});
+				});
+				S.on('showShareComplete', function(){
+					$(widget.el).html(ich['game-share-complete-tpl']());
+				});
+				S.on('startThinking', function(){
+					$(document.body).addClass('loading');
+				});
+				S.on('stopThinking', function(){
+					$(document.body).removeClass('loading');
+				});
+				S.on('doEmail', function(emails){
+					send = _(emails).map(function(email){
+						return {method:'EMAIL',game_id:game.id,email:email};
+					});
+					doSend();
+				});
+				S.on('doTwitter', function(){
+					send = [{method:'TWITTER',game_id:game.id}];
+					doSend();
+				});
+				S.on('doFacebook', function(){
+					if (I.canShareFacebook()){
+						send = [{method:'FACEBOOK',game_id:game.id}];
+						doSend();
+					} else {
+						wayin.misc.facebookLogin().onkeep(function(){
+							send = [{method:'FACEBOOK',game_id:game.id}];
+							doSend();
+						}).onbreak(function(r,d){
+							S.transit('askingWhich',{reason:"Couldn't share game. "+r,debug:d});
+						});
+					}
+				});
+				S.on('success',function(){
+					setTimeout(function(){
+						wayin.app.go('#!/games/'+game.id);
+					},1000)
+					widget.trigger('success');
+				});
+			},
+			render:function(){ this.state.transit('askingWhich'); }
+		})
+		,
+		FriendPicker: Backbone.View.extend({
+			className:'gshare',
+			events:{
+				'click .fpicker-select-all':'selectAll',
+				'click .fpicker-deselect-all':'deselectAll'
+			},
+			selectAll:function(){
+				var checkboxes = $(this.el).find('.sh-userlist input[type=checkbox]');
+				checkboxes.attr({checked:true});
+				return false;
+			},
+			deselectAll:function(){
+				var checkboxes = $(this.el).find('.sh-userlist input[type=checkbox]');
+				checkboxes.attr({checked:false});
+				return false;
+			},
+			render:function(){
+				var widget = this,
+					game = this.model,
+					el = $(this.el),
+					users = new C.Users();
+				el.html(ich['friend-picker-tpl']());
+				
+				var followers = new C.Followers(null,{
+					follower_user_id:I.getMe().id,
+					limit:200
+				}).pfetch()
+				.onresolve(function(errs,got){
+					users = got.collection.getFolloweeUsers();
+					el.find('.sh-userlist').html(ich['userlist-tpl']({
+						users:users.toJSON()
+					}));
+				});
+				
+				el.find('.gshare-another').click(function(){
+					var field = $(this).closest('p');
+					var newField = field.clone(true);
+					field.find('.gshare-another').remove();
+					field.parent().append(newField);
+					newField.find('input').val('').focus();
+					return false;
+				});
+				el.find('form').submit(function(){
+					var emails = [];
+					$(this).find('[name=email]').each(function(){
+						var val = $(this).val();
+						if (val) { emails.push(val); }
+					});
+					
+					//############################
+					
+					var sharingRecipients = [];
+					$(this).find('[name=user_id]').each(function(){
+						var val = $(this).val();
+						if (this.checked) {
+							sharingRecipients.push(users.get(val));
+						}
+					});
+					
+					//############################
+					
+					var errs = [];
+					errs = _(_(emails).select(function(email){
+						return !/@/.test(email);
+					})).map(function(email){
+						return email+' is invalid.';
+					});
+					if (errs.length) {
+						D.error({
+							html:'Woops, invalid email address:\n'+errs.join('\n')
+						});
+						return false;
+					}
+					widget.trigger('pick',{
+						emails:emails,
+						users:new C.Users(sharingRecipients)
+					});
+					return false;
+				});
+			}
+		})
+		,
+		GameSharer2: Backbone.View.extend({
+			events:{
+				'click .sh-friends':'pickFriends'
+			},
+			pickFriends:function(){
+				var widget = this;
+				var picker = new V.FriendPicker({model:this.model});
+				picker.render();
+				var modal = wayin.modal({
+					html:picker.el
+				});
+				picker.bind('pick',function(args){
+					modal.close();
+					widget.emailRecipients = args.emails;
+					widget.wayinRecipients = args.users;
+					$(widget.el).find('.sh-recipients-w').html(ich['game-sharer-recipients-tpl']({
+						email_recipients:args.emails,
+						wayin_recipients:args.users.toJSON() // a Users collection
+					}));
+				});
+				return false;
+			},
+			render:function(){
+				
+				var el = $(this.el),
+				 	widget = this,
+					game = this.model;
+				var vobj = {
+					src: (function(){
+						var result = false, err;
+						try{ result = game.get('featured_media').sizes.suggested_small; }
+						catch(e){ err = e; }
+
+						if (!result || err) {
+							try{ result = game.get('featured_media').sizes.small;}
+							catch(e){ err = e; }
+						}
+
+						if (!result || err) { result = '/img/wayin-default-small.jpg'; }
+						return result;
+					})()
+				};
+				el.html(ich['game-sharer-tpl'](vobj));
+				var defaultMessage = el.find('textarea').val();
+				
+				el.find('input[name=twitter]').click(function(){
+					var input = this;
+					if (!I.canShareTwitter()){
+						D.info({
+							html:"You haven't linked Wayin to your Twitter account yet. Do you want to do that now?",
+							confirm:true,
+							onUserConfirm:function(){
+								$.ajax({
+									url:'/1.1/users/profiles/preauth',
+									data: {
+										type: 'GET',
+										external_url: 'http://www.twitter.com',
+										callback: 'true',
+										callback_url: location.href
+									},
+									dataType: 'json',
+									success:function(data){
+										location.href = data.url;
+									},
+									error:function(xhr){
+										D.error(wayin.async.getXhrReason(xhr),
+											wayin.async.getXhrError(xhr));
+									}
+								});
+							},
+							onUserCancel:function(){
+								input.checked = false;
+							},
+							confirmText:'Link account to Twitter now'
+						});
+					}
+				});
+				el.find('input[name=facebook]').click(function(){
+					var input = this;
+					if (!I.canShareFacebook()){
+						D.info({
+							html:"You haven't linked Wayin to your Facebook account yet. Do you want to do that now?",
+							confirm:true,
+							onUserConfirm:function(){
+								wayin.misc.facebookLogin().onkeep(function(){
+									D.success("Your account is now linked to Facebook.");
+								}).onbreak(function(r,d){
+									input.checked = false;
+								});
+							},
+							onUserCancel:function(){
+								input.checked = false;
+							},
+							confirmText:'Link account to Facebook now'
+						});
+					}
+				});
+				
+				function send(){
+					
+					var targetKey = 'Game/'+game.id;
+					
+					var shareFacebook = !!$('[name=facebook]').attr('checked');
+					var shareTwitter = !!$('[name=twitter]').attr('checked');
+					var shareWayin = !!$('[name=wayin]').attr('checked');
+					
+					var iList = [];
+					if (shareFacebook) { iList.push({method:'FACEBOOK',target_key:targetKey}); }
+					if (shareTwitter) { iList.push({method:'TWITTER',target_key:targetKey}); }
+					if (shareWayin) { iList.push({method:'WAYIN_REPUBLISH',target_key:targetKey}); }
+					if (widget.emailRecipients) {
+						_(widget.emailRecipients).each(function(email){
+							iList.push({method:'EMAIL',target_key:targetKey,email:email});
+						});
+					}
+					if (widget.wayinRecipients) {
+						widget.wayinRecipients.each(function(user){
+							iList.push({method:'WAYIN',target_key:targetKey,invitee_user_id:user.id});
+						});
+					}
+					
+					var message = el.find('textarea').val();
+					if (message && message !== defaultMessage){
+						_(iList).each(function(invite){
+							invite.message = message;
+						});
+					}
+					
+					$(document.body).addClass('loading');
+					$.ajax({
+						url:'/1.1/invitations',
+						type:'POST',
+						dataType:'json',
+						contentType:'application/vnd.wayin-invitationList-v1+json',
+						data:JSON.stringify(iList),
+						success:function(){
+							$(document.body).removeClass('loading');
+							D.success({html:'Shared!',timeout:3000});
+							widget.trigger('shareComplete');
+						},
+						error:function(x){
+							$(document.body).removeClass('loading');
+							D.error("Couldn't share photo. "+A.getXhrReason(x),A.getXhrError(x));
+							widget.trigger('shareFail');
+						}
+					});
+				}
+				
+				el.find('form').submit(function(){
+					// First, disable the submit button so the user can't accidentally
+					// send invites more than once.
+					$(this).find('[type="submit"]').attr('disabled',true);
+					
+					// Send the invites
+					send();
+					
+					return false;
+				});
+			}
+		})
+		,
+		SuggestedPage: Backbone.View.extend({
+			render: function(){
+				var vobj = { logged_in:I.amLoggedIn() };
+				vobj['is_' + this.options.tab] = true;
+				var h = ich['suggested-page-tpl'](vobj,true);
+				$(this.el).html(h);
+				var contentWidget = new V.GameStream({collection:this.collection});
+				contentWidget.render();
+				$(this.el).find('.tab-content-area').html(contentWidget.el);
+			}
+		})
+		,
+		GameStream: Backbone.View.extend({
+			tagName: 'section',
+			className: 'game-stream',
+			events: {
+				'click a[href].refresh': 'refresh',
+				'click a[href].prev': 'pagePrev',
+				'click a[href].next': 'pageNext'
+			},
+			pagePrev:function(){
+				$(document.body).addClass('loading');
+				this.pager.refreshPrevious()
+				.onresolve(function(){
+					$(document.body).removeClass('loading');
+				});
+				return false;
+			},
+			pageNext:function(){
+				$(document.body).addClass('loading');
+				this.pager.refreshNext()
+				.onresolve(function(){
+					$(document.body).removeClass('loading');
+				});
+				return false;
+			},
+			refresh: function(){
+				$(document.body).addClass('loading');
+				this.collection.fetch({
+					success: function(){$(document.body).removeClass('loading');},
+					error: function(){$(document.body).removeClass('loading');}
+				});
+				return false;
+			},
+			initialize: function(){
+				//this.collection.bind('remove', _.bind(this.render, this));
+				//this.collection.bind('add', _.bind(this.render, this));
+				//this.collection.bind('reset', _.bind(this.render, this));
+				this.pager = new P.Pager(this.collection);
+				this.pager.bind('page', _.bind(this.render, this));
+			},
+			render: function(){
+				var coll = this.collection;
+				var el = $(this.el);
+				var streamWidget = this;
+				var vobj = {
+					has_next: this.pager.hasNext(),
+					has_prev: this.pager.hasPrevious()
+				};
+				var h = ich['game-stream-tpl'](vobj);
+				el.html(h);
+				if (coll.length){
+					var gameContainer = el.find('.game-stream-games');
+					gameContainer.html('');
+					coll.each(function(game, index){
+						var gameTile = new V.GameStreamTile({ model: game });
+						gameTile.render();
+						gameContainer.append(gameTile.el);
+					});
+				}
+			}
+		})
+		,
+		GameSearchPage: Backbone.View.extend({
+			render: function(){
+				var coll = this.collection;
+				var query = coll.query || {};
+				var vobj = { search_terms: query.q };
+				var h = ich['game-search-page-tpl'](vobj,true);
+				$(this.el).html(h);
+				var stream = new V.GameStream({collection:coll});
+				stream.render();
+				$(this.el).find('.content-body').html(stream.el);
+			}
+		})
+		,
+		AnonHomeGames: Backbone.View.extend({
+			render: function(){
+				var coll = this.collection;
+				var query = coll.query || {};
+				var vobj = { search_terms: query.q };
+				var h = ich['anon-home-games-tpl'](vobj,true);
+				$(this.el).html(h);
+				var stream = new V.GameStream({collection:coll});
+				stream.render();
+				$(this.el).find('.content-body').html(stream.el);
+			}
+		})
+		,
+		GameOptionsTile: Backbone.View.extend({
+			className:'game-options-tile',
+			events:{
+				'click a[href].flagGame':'flagGame'
+			},
+			flagGame:function(ev){
+				var game = this.model;
+				D.warning({
+					html:'Are you sure you want to flag this photo?',
+					confirm:true,
+					confirmText:'Flag Photo',
+					onUserConfirm:function(){
+						$(document.body).addClass('loading');
+						game.flag().onresolve(function(){
+							$(document.body).removeClass('loading');
+						}).onkeep(function(){
+							D.success('Photo has been flagged. Thanks for your input.');
+						}).onbreak(function(r,d){
+							D.error("Couldn't flag photo. "+r,d);
+						});
+					}
+				});
+				return false;
+			},
+			render: function(){
+				this.renders++;
+				var widget = this,
+					game = this.model,
+					el = $(this.el),
+					vobj = game.toJSON(),
+					isPlayed = !!vobj['my_answer_option_id'],
+					isClosed = game.isClosed(),
+					options = new V.GameOptions({model: game}),
+					photo = new V.GamePhoto({ model: game, size: 'large' });
+
+				// add stuff to vobj
+				vobj.is_played = isPlayed;
+				vobj.is_closed = isClosed;
+				vobj.logged_in = I.amLoggedIn();
+				vobj.show_flag = this.options.showFlag;
+				vobj['game_status_'+vobj.game_status] = true;
+				if(/^\s+$/.test(vobj.text)){vobj.text='';}//this is probably obsolete, but leaving it in for legacy reasons
+
+				// populate this widget's dom
+				var html = ich['game-options-tile-tpl'](vobj);
+				el.html(html);
+				options.render();
+				photo.render();
+				el.find('.gphoto-w').append(photo.el).append(options.el);
+
+				// pass through events
+				options.bind('playStart',function(){
+					el.find('.game').addClass('playing');
+					widget.trigger('playStart');
+				});
+				options.bind('playEnd',function(){
+					el.find('.game').removeClass('playing');
+					widget.trigger('playEnd');
+				});
+				options.bind('playFail',function(){ widget.trigger('playFail'); });
+				options.bind('playSucceed',function(){ widget.trigger('playSucceed'); });
+			}
+		})
+		,
+		GameStreamTile: Backbone.View.extend({
+			initialize:function(){
+				var render = _.bind(this.render,this);
+				var widget = this;
+				this.model.bind('change',function(){
+					render();
+					animateBars(widget);
+				});
+			},
+			render: function(){
+
+				var game = this.model,
+					el = $(this.el),
+					options = new V.GameOptionsTile({ model: game });
+
+				options.render();
+				el.html(options.el);
+
+				options.bind('playEnd',function(){
+
+					// display notice about registration
+					if (
+						!I.amLoggedIn()
+						&& !I.storage.getItem('hide_anon_vote_notice')
+					){
+						D.info({
+							html:ich['anon-vote-notice-tpl'](),
+							onUserDismiss:function(){
+								I.storage.setItem('hide_anon_vote_notice',true);
+							}
+						});
+					}
+					if (
+						I.amLoggedIn()
+						&& !I.storage.getItem('hide_reg_vote_notice')
+					){
+						D.info({
+							html:ich['regular-vote-notice-tpl'](),
+							onUserDismiss:function(){
+								I.storage.setItem('hide_reg_vote_notice',true);
+							}
+						});
+					}
+				});
+			}
+		})
+		,
+		MiniGameStream: Backbone.View.extend({
+			tagName: 'div',
+			className: 'mgame-stream',
+			initialize: function(){
+				this.pager = this.options.pager || new P.Pager(this.collection);
+				this.pager.bind('page', _.bind(this.render, this));
+			},
+			render: function(){
+				var widget = this;
+				var coll = this.collection;
+				var el = $(this.el);
+				var vobj = {
+					has_next:widget.pager.hasNext(),
+					has_prev:widget.pager.hasPrevious(),
+					is_empty:!coll.length
+				}
+				el.html(ich['mini-game-stream-tpl'](vobj));
+				var holder = el.find('.mgame-stream-games');
+				coll.each(function(game, index){
+					var miniGameTile = new V.GameMiniTile({
+						model: game,
+						small:true
+					});
+					miniGameTile.render();
+					holder.append(miniGameTile.el);
+				});
+				el.find('.mgame-stream-paging a[href].prev').click(function(){
+					$(document.body).addClass('loading');
+					widget.pager.refreshPrevious()
+					.onresolve(function(){
+						$(document.body).removeClass('loading');
+					});
+					return false;
+				});
+				el.find('.mgame-stream-paging a[href].next').click(function(){
+					$(document.body).addClass('loading');
+					widget.pager.refreshNext()
+					.onresolve(function(){
+						$(document.body).removeClass('loading');
+					});
+					return false;
+				});
+			}
+		})
+		,
+		GameCarousel: Backbone.View.extend({
+			className:'gc-widget',
+			initialize:function(){
+				_.bindAll(this);
+				var widget = this;
+				this.collection.bind('gamePlayed',function(){
+					setTimeout(widget.goNext,500);
+				});
+			},
+			events:{
+				'click .gc-next':'goNext',
+				'click .gc-prev':'goPrevious'
+			},
+			establish:function(){
+				var widget = this;
+				var games = this.collection;
+				var el = $(this.el);
+				
+				var innerEl = el.find('.gc-w');
+				var previousGame,
+					scrollIdx;
+				games.each(function(game, idx){
+					if (!games.selectedGameId && !game.get('my_answer_option_id')){
+						games.selectedGameId = game.id;
+					}
+					if (games.selectedGameId === game.id){
+						scrollIdx = idx;
+					}
+					if (previousGame){
+						previousGame.nextGame = game;
+						game.previousGame = previousGame;
+					}
+					previousGame = game;
+				});
+				if (!games.selectedGameId || !games.get(games.selectedGameId)){
+					games.selectedGameId = games.at(0).id;
+				}
+				games.get(games.selectedGameId).trigger('selected');
+				innerEl.css({left:'-'+(scrollIdx*330)+'px'});
+
+				el.find('.gc-next')[games.get(games.selectedGameId).nextGame ? 'show' : 'hide']();
+				el.find('.gc-prev')[games.get(games.selectedGameId).previousGame ? 'show' : 'hide']();
+			},
+			goNext:function(){
+				var games = this.collection;
+				var widget = this;
+				var el = $(this.el);
+				if(games.get(games.selectedGameId).nextGame){
+					games.selectedGameId = games.get(games.selectedGameId).nextGame.id;
+					widget.establish();
+				}
+				if(!games.get(games.selectedGameId).nextGame){
+					$(document.body).addClass('loading');
+					games.fillNext()
+					.onresolve(function(){
+						$(document.body).removeClass('loading');
+					})
+					.onkeep(function(got){
+						got.newGames.each(function(game){
+							widget.addGame(game);
+						});
+						widget.establish();
+					})
+					.onbreak(function(r,d){
+						D.error("Couldn't fetch next set of games. "+r,d);
+					});
+				}
+				return false;
+			},
+			goPrevious:function(){
+				var games = this.collection;
+				var widget = this;
+				if(games.get(games.selectedGameId).previousGame){
+					games.selectedGameId = games.get(games.selectedGameId).previousGame.id;
+					widget.establish();
+				}
+				return false;
+			},
+			addGame:function(game){
+				var widget = this;
+				var innerEl = $(widget.el).find('.gc-w');
+				var gtile = new V.GameStreamTile({model:game});
+				gtile.render();
+				var wrapper = $('<div class="gc-game"/>');
+				wrapper.append(gtile.el);
+				innerEl.append(wrapper);
+				game.bind('selected',function(){
+					innerEl.find('.gc-current').removeClass('gc-current');
+					wrapper.addClass('gc-current');
+				});
+			},
+			render: function(){
+				var widget = this;
+				var games = this.collection;
+				var el = $(this.el);
+
+				var html = ich['game-carousel-tpl']({
+					has_games: games.length
+				});
+				el.html(html);
+				
+				if(games.length){
+					el.hide();
+					games.each(widget.addGame);
+					widget.establish();
+					el.show();
+				}
+			}
+		})
+	});
+
+	function animateBars(widget){
+		$(widget.el).find('.bar').each(function(){
+			this.animateTo = this.style.width;
+			this.style.width = '0%';
+			try{ $(this).animate({width:this.animateTo}); }
+			catch(e) { this.style.width = this.animateTo; }
+		});
+	}
+
+})();

@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+
+	<!-- start css bundle - stolen from index.html -->
+	<link rel="stylesheet" type="text/css" href="/css/wayin.css">
+	<link rel="stylesheet" type="text/css" href="/css/anon-home.css">
+	<link rel="stylesheet" type="text/css" href="widgets/css/syndication.css">
+	<!--<link rel="stylesheet" type="text/css" href="/css/game-tiles.css">
+	<link rel="stylesheet" type="text/css" href="/css/anon-home.css">
+	<link rel="stylesheet" type="text/css" href="/css/jquery.Jcrop.css">
+	<link rel="stylesheet" type="text/css" href="/css/dialogs.css">
+	<link rel="stylesheet" type="text/css" href="/css/events.css">-->
+	<!-- end css bundle -->
+
+	<!--templates-->
+	<!--logged-in users can share photo-->
+
+	<script id="shareSuccess" type="text/html">
+		<!--subtemplate to replace col2 in #entry-->
+		<span>geah</span>
+	</script>
+
+	<script id="entry" type="text/html">
+		<div class="vwEntry">
+			<h1>Share on Wayin</h1>
+			<div>
+				<div class="col1">
+					<img width="290" height="290" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D" alt="transparent"  style="background:url({{imgUrl}}) no-repeat">
+				</div>
+
+				<div class="col2">
+					<h2>Question:</h2>
+					<!--<textarea name="" id="" cols="30" rows="10">{{hlnTxt}}</textarea>-->
+
+					<p id="bubble" class="bubble"></p>
+
+					<p><span>Wayin turns photos into discussions. Want to know what your friend thinks about this story?</span> Share it now and watch the opinions, comments and followers roll in! The more you share, the more you'll know!</p>
+					<button id="btnShare" class="btnInline">Share</button>
+					<button id="btnSignUp" class="btnPositioned">Sign Up</button>
+					<button id="btnLogIn" class="btnPositioned">Log In</button>
+				</div>
+			</div>
+		</div>
+	</script>
+	
+	<script id="authFailed" type="text/html">
+		<div class="vwAuthFailed">
+			<h1>Authorization Failed</h1>
+			<div>
+				<div class="col2">
+					<h2>Authentication Failed</h2>
+
+					<p><span>Authentication Failed for the website: {{website}}  This is most likely because the Authentication Key is invalid.  Please contact the site's Administrator, so that he can get a new key from <a href="http:{{wayinsite}}</p>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<!--anonymous users need create an account or login-->
+	<script id="logIn" type="text/html">
+		<div class="vwLogInSignUp">
+			<h1>Log In or Get Started</h1>
+			<div class="col1">
+				<h2>Log In</h2>
+				<form class="ahr" action="{{action}}" method="POST">
+					<button type="submit">Log In</button>
+					<input type="hidden" name="on_success" value="{{successPath}}">
+					<input type="hidden" name="on_fail" value="{{failPath}}">
+
+					<p class="labeled-input">
+						<label>
+							<span class="label">User Name</span>
+							<span class="input"><input type="text" name="username" value=""></span>
+						</label>
+					</p>
+					<p class="labeled-input">
+						<label>
+							<span class="label">Password</span>
+							<span class="input"><input type="text" name="password" value=""></span>
+						</label>
+					</p>
+					<p>
+					Forgot <a href="#">username</a> or <a href="#">password</a>
+					</p>
+				</form>
+			</div>
+			<div class="col2">
+				<!--catches signUp view below from controller-->
+			</div>
+		</div>
+	</script>
+
+	<script id="signUp" type="text/html">
+		{{#info_mode}}
+		<div class="register-info">
+			<h2>Get Started</h2>
+			<form class="ahr" action="{{action}}" method="POST">
+				<button type="submit">Next</button>
+				<!--<p class="ahr-share">share photos, Get opinions.</p>-->
+				{{#highlighted_error}}
+					<p class="form-error"><strong>Oops.</strong><br>{{highlighted_error}}</p>
+				{{/highlighted_error}}
+				<p class="labeled-input">
+					<label>
+						<span class="label">User Name</span>
+						<span class="input"><input type="text" name="username" value="{{username}}"></span>
+					</label>
+				</p>
+				<p class="labeled-input">
+					<label>
+						<span class="label">Email</span>
+						<span class="input"><input type="text" name="email" value="{{email}}"></span>
+					</label>
+				</p>
+				<p class="labeled-input">
+					<label>
+						<span class="label">Password</span>
+						<span class="input"><input type="password" name="password" value="{{password}}"></span>
+					</label>
+				</p>
+			</form>
+		</div>
+	{{/info_mode}}
+	{{#captcha_mode}}
+		<div class="register-captcha">
+			<form class="ahr">
+				<h2>Human?</h2>
+				<div id="captcha-container"></div>
+				<p class="submit">
+					<button type="submit">Register</button>
+				</p>
+			</form>
+		</div>
+	{{/captcha_mode}}
+	<form id="hiddenRegistrationForm" action="{{action}}" 
+		  method="POST" class="ahr" style="display:none">
+		<input type="hidden" name="username" value="{{username}}">
+		<input type="hidden" name="password" value="{{password}}">
+		<input type="hidden" name="email" value="{{email}}">
+		<input type="hidden" name="on_success" value="{{on_success}}">
+		<input type="hidden" name="on_fail" value="{{on_fail}}">
+		<input type="hidden" name="recaptcha_challenge_field">
+		<input type="hidden" name="recaptcha_response_field">
+	</form>
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+	<!--template catcher-->
+	<div id="content"></div>
+
+	<div class="footer">
+		wayin.com
+	</div>
+
+	<!-- start js bundle -->
+	<script src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+	<script src="/scripts/json2.js"></script>
+	<script src="/scripts/jquery.js"></script>
+	<script src="/scripts/jquery-plugins/jquery.timeago.js"></script>
+	<script src="/scripts/ICanHaz.js"></script>
+	<script src="/scripts/underscore.js"></script>
+	<script src="/scripts/backbone.js"></script>
+	<script src="/scripts/wayin-helpers.js"></script>
+	<script src="/widgets/scripts/widget-helpers.js"></script>
+	<script src="/scripts/wayin-model.js"></script>
+	<script src="/scripts/wayin-identity.js"></script>
+	<script src="/widgets/scripts/views.js"></script>
+	<script src="/widgets/scripts/controllers.js"></script>
+	<script src="/widgets/scripts/setup.js"></script>
+	<!-- end js bundle -->
+</body>
+</html>

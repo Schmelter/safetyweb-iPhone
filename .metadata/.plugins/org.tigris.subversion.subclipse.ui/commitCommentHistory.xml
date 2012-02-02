@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommitComments>	<CommitComment>Scoreboard and Event management panel</CommitComment>
+	<CommitComment>Working Google Plus from the demo</CommitComment>
+	<CommitComment>Only add the AND if the user_id_played is appended</CommitComment>
+	<CommitComment>First game from event being displayed</CommitComment>
+	<CommitComment>Work started on the scoreboard, a view js for the game.</CommitComment>
+	<CommitComment>Working Authentication for syndicates</CommitComment>
+	<CommitComment>Sign up with captcha is done</CommitComment>
+	<CommitComment>Temporarily turn on scrolling until we have the css worked out properly</CommitComment>
+	<CommitComment>Split out the login and sign up templates.</CommitComment>
+	<CommitComment>Login working.  Most of the GooglePlus framework hammered out.</CommitComment>
+</CommitComments>

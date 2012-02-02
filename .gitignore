@@ -1,0 +1,11 @@
+
+# Ignore anything for SVN
+.svn
+
+# Ignore any compiled source
+*.class
+*.com
+*.dll
+*.exe
+*.o
+*.so

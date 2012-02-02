@@ -1,0 +1,87 @@
+(function() {
+
+    wayin.gp.views = $.extend(wayin.gp.views, {
+        Scoreboard:Backbone.View.extend({
+            scoreboardEntries:[],
+            highlightedEntry:null,
+            events:{
+                'click #create-photo':'showGameCreateDialog',
+                'click #exit-event':'exitEvent',
+                'click #show-settings':'showSettings'
+            },
+            exitEvent:function() {
+                wayin.app.go('#!/browse-events');
+            },
+            showSettings:function() {
+                // TODO How to pass in the current game
+                var settings = new wayin.gp.views.EventSettingsPage({model:this.model});
+                settings.render();
+                $('#content').append(settings.el);
+            },
+            showGameCreateDialog:function() {
+                var event = this.model;
+                var eventId = event.id;
+                var game = new wayin.models.Game({
+                    game_type:'poll',
+                    channel_id:wayin.identity.getMe().get('personal_channel_id'),
+                    start_time:'now',
+                    event_id:eventId
+                });
+                var createWidget = new wayin.views.GameCreator({model:game, event_id:eventId});
+                createWidget.render();
+                var modal = wayin.modal({
+                    html:createWidget.el
+                });
+                createWidget.bind('done', function() {
+                    modal.close();
+                    wayin.app.go('#!/events/' + eventId);
+                });
+                return false;
+            },
+            render:function() {
+                var event = this.model;
+                var isEventCreatorAndLive = (event.get('status') === 'LIVE' && event.get('creator').user_id === wayin.identity.getMe().id);
+                var isEventCreator = (event.get('creator').user_id === wayin.identity.getMe().id);
+                var html = ich['scoreboard-tpl']({
+                    can_add_games:isEventCreatorAndLive,
+                    event_creator:isEventCreator
+                });
+                $(this.el).html(html);
+               
+                sortedScoreList = wayin.gp.models.getScoreboardInstance().getSortedScoreList();
+                for (index in sortedScoreList) {
+                    var scoreboardEntry = new wayin.gp.views.ScoreboardEntry({
+                        parent:this,
+                        score:sortedScoreList[index],
+                        model:sortedScoreList[index]
+                    });
+                    scoreboardEntry.render();
+                    this.scoreboardEntries.push(scoreboardEntry);
+                    $('#scorelist', this.el).append(scoreboardEntry.el);
+                }
+            },
+            setHighlighted:function(scoreboardEntry) {
+                this.highlightedEntry = scoreboardEntry;
+                for (scoreboardEntry in this.scoreboardEntries) {
+                    if (scoreboardEntry == this.highlightedEntry) continue;
+                    $(scoreboardEntry.el).find('.scoreentry').removeClass('highlight');
+                }
+            }
+        }),
+        ScoreboardEntry:Backbone.View.extend({
+            events:{
+                'click .scoreentry':'scoreClicked'
+            },
+            scoreClicked:function() {
+                this.parent.setHighlighted(this);
+                $(this.el).html.find('scoreentry').addClass('highlight');
+            },
+            render:function() {
+                this.el = ich['scoreboard-entry-tpl']({
+                    displayName:this.model.get("displayName"),
+                    score:this.model.get("score")
+                });
+            }
+        })
+    })
+})();

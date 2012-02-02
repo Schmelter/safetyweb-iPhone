@@ -1,0 +1,8 @@
+// Namespace for wayin GooglePlus globally-available stuff.
+wayin.gp = {};
+wayin.gp.models = {};
+
+wayin.gp.frame = parent.frames[0]; //$('#googleplus_target').get();
+
+var PAGE = '//your.staging.wayin.com:8080/googleplus.html';
+var HOST = '//your.staging.wayin.com:8080/';

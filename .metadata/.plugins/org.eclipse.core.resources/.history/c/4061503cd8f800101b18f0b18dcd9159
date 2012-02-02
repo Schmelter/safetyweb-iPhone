@@ -1,0 +1,70 @@
+(function() {
+	
+	wayin.gp.views = $.extend(wayin.gp.views,{
+		Scoreboard: Backbone.View.extend({
+			scoreboardEntries:[],
+			highlightedEntry:null,
+			events:{
+				'click #createPhoto':'createPhoto',
+				'click #endEvent':'endEvent'
+			},
+			createPhoto:function() {
+				alert('Create Photo!');
+			},
+			endEvent:function() {
+				alert('End Event!');
+			},
+			render:function() {
+				var scoreboard = this;
+				
+				var html = ich['scoreboard-tpl']({
+					
+				});
+				
+				$(this.el).html(html);
+				
+				
+				this.el.find('#createPhoto').click(function() {
+					scoreboard.createPhoto();
+				});
+				this.el.find('#endEvent').click(function() {
+					scoreboard.endEvent();
+				});
+				
+				sortedScoreList = wayin.gp.scoreboard.getSortedScoreList();
+				for (index in sortedScoreList) {
+					var scoreboardEntry = new wayin.gp.views.ScoreboardEntry({
+						parent:this,
+						score:sortedScoreList[index]
+					});
+					scoreboardEntry.render();
+					this.scoreboardEntries.push(scoreboardEntry);
+					$('#scoresection', this.el).append(scoreboardEntry.el);
+				}
+				
+			},
+			setHighlighted:function(scoreboardEntry) {
+				this.highlightedEntry = scoreboardEntry;
+				for (scoreboardEntry in this.scoreboardEntries) {
+					if (scoreboardEntry == this.highlightedEntry) continue;
+					$(scoreboardEntry.el).find('.scoreentry').removeClass('highlight');
+				}
+			}
+		}),
+		ScoreboardEntry: Backbone.View.extend({
+			events:{
+				'click .scoreentry':'scoreClicked'
+			},
+			scoreClicked:function() {
+				this.parent.setHighlighted(this);
+				$(this.el).html.find('scoreentry').addClass('highlight');
+			},
+			render:function() {
+				this.el = ich['scoreboard-entry-tpl']({
+					displayName:this.options.score.displayName,
+					score:this.options.score.score
+				});
+			}
+		})
+	})
+})();

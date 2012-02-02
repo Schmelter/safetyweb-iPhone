@@ -1,0 +1,156 @@
+#-------------------------------------------------------------------------------
+# @copyright (c) WayIn, LLC. All Rights Reserved.
+#-------------------------------------------------------------------------------
+
+# we run on 8080 and 8043 in production, use ELB to forward from 80 and 443
+wayin.http.port=8080
+wayin.https.port=8043
+
+wayin.welcome_page=/index.html
+
+wayin.super.users=super
+wayin.cookie.scope=wayin.com
+wayin.cookie.name=wayin_auth
+wayin.cookie.path=/
+wayin.cookie.timeout=7776000
+
+
+#-------------------------------------------------------------------------------
+# Persistence and indexing 
+#-------------------------------------------------------------------------------
+
+wayin.persistence.default.handlers=\
+com.wayin.persistence.EhcachePersistenceHandler,\
+com.wayin.persistence.SolrPersistenceHandler,\
+com.wayin.persistence.MongoPersistenceHandler
+
+wayin.persistence.low_level.handlers=\
+com.wayin.persistence.MongoPersistenceHandler
+
+wayin.mongodb.servers=127.0.0.1/wayin
+wayin.mongodb.use_queries=true
+
+filesystemdb.data.dir=target/filesystemdb
+
+# Embedded Solr data directory
+solr.data.dir=target/solr-data
+
+# External Solr Server URL, leave blank to use embedded Solr 
+solr.server.url=
+
+wayin.memcached.servers=127.0.0.1:11211
+wayin.memcached.expiration.seconds=3600
+
+wayin.counter.implementation=com.wayin.counters.MemcachedCounter
+
+amazon.s3.bucket.media=wayin-media02
+amazon.s3.accesskey=AKIAIWMS4UR6APVUCZZA
+amazon.s3.secretkey=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
+amazon.s3.bucket.persistence=wayin-persistence
+
+# Temporarily force repersisting of all games to generate publication records
+wayin.repersist.classes=com.wayin.om.business.Game,com.wayin.om.business.User
+
+
+#-------------------------------------------------------------------------------
+# Features and misc. config 
+#-------------------------------------------------------------------------------
+
+#configure mail delivery
+wayin.mail.delivery=com.wayin.util.email.AmazonSimpleEmailDelivery
+
+# Number of highlighted answerers that the system will attempt to find for 
+# each game response option
+wayin.highlighted.answerers=0
+
+# If true, anonymous votes are accepted but not tallied or shown to other users; 
+# otherwise, they're treated normally
+suppress.anonymous.votes=true
+
+# Spreadsheet files that are embedded into our WAR and define reserved usernames
+reserved.username.spreadsheets=\
+/euroteamreserved.xls,/WayinReservedPlain.xlsx
+
+wayin.image.helper=com.wayin.util.image.ImageIOImageHelper
+
+wayin.endpoints.10.enabled=false
+
+wayin.endpoints.captcha.enabled=true
+
+wayin.invitations.shorten.facebook.links=false
+wayin.invitations.shorten.twitter.links=true
+wayin.invitations.shorten.email.links=false
+
+
+#-------------------------------------------------------------------------------
+# Recommendation engine 
+#-------------------------------------------------------------------------------
+
+# Seconds between recommendation engine refreshes; set to zero to disable engine
+recommendation.refresh.period=0
+
+# Number of seconds that the system will wait before attempt its first recommendation refresh
+recommendation.refresh.delay=0
+
+# The approximate portion of "randomized_recommendation" games that will come 
+# from our item-based recommendation algorithm
+recommendation.item_based.weighting=0.5
+
+# Minimum number of item-based recommender items that will be considered for 
+# each "randomized_recommendation" request
+recommendation.item_based.pool=100
+
+# Minimum number of followee-based items that will be considered for each 
+# "randomized_recommendation" request
+recommendation.followee_based.pool=100
+
+# The maximum newness-based boost multiplier; boost decays linearly up to
+# the end of the "recommendation.bonus.hours" time period
+recommendation.bonus.multiplier=2.0
+
+# The age (in hours) at which a game will cease to receive any newness boost 
+# for recommendation; boost decays linearly up to this point
+recommendation.bonus.hours=24
+
+# For these purposes, a game's popularity is log10(response_count); we'll 
+# apply that value times this setting to get overall boost
+#recommendation.popularity.multiplier=0.2
+
+# Ratio of flag:response counts for a game at which it'll cease being 
+# recommended to non-followers
+#recommendation.max.flag.ratio=0.5
+
+# The size of each user neighborhood.
+recommendation.user_neighborhood.size=20
+
+# Set to true to skip rescoring of recommendation item candidates.
+recommendation.skip.rescoring=false
+
+# Whether or not we include anonymous users' data.
+recommendation.include.anonymous=false
+
+# Whether or not each user's demographics should be recommendation factors
+recommendation.include.demographics=true
+
+# Whether or not the people someone follows should be a recommendation factor
+recommendation.include.follows=false
+
+# Whether or not one's specific game responses (answers) should be recommendation factors
+recommendation.include.responses=false
+
+# E-mail verification threshold
+wayin.email_verification.threshold=72
+
+# Disabling email verification reminders for now (as they seem to be firing too often)
+wayin.email_verification.disable_reminders=true
+
+
+#-------------------------------------------------------------------------------
+# Test Properties
+#-------------------------------------------------------------------------------
+
+wayin.excluded.test.groups=legacy-browser,mobile,mls,slow
+
+wayin.realdata.test.percent_regular_users=30
+wayin.realdata.test.percent_anon_users=10
+

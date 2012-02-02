@@ -1,0 +1,367 @@
+/*******************************************************************************
+ * @copyright (c) WayIn, LLC. All Rights Reserved.
+ ******************************************************************************/
+package com.wayin.om.business.impl;
+
+import java.util.Date;
+import java.util.UUID;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.solr.client.solrj.beans.Field;
+import org.codehaus.jackson.annotate.JsonAnySetter;
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.wayin.managers.UserManager;
+import com.wayin.om.business.Block;
+import com.wayin.om.business.Key;
+import com.wayin.om.business.User;
+import com.wayin.om.business.interfaces.Blockable;
+import com.wayin.util.DateUtils;
+import com.wayin.util.EntityUtils;
+
+public class BlockImpl extends AbstractPrimaryEntityImpl implements Block {
+
+    private static final Logger log = LoggerFactory.getLogger(BlockImpl.class);
+
+    /**
+     * ID of the user who made the Block.
+     */
+    @Field("creator_id")
+    private UUID creatorId;
+
+    /**
+     * We store a key for the target (instead of just an ID), since we expect to
+     * support multiple target types in the future (e.g. games, channels, and
+     * possibly even users).
+     */
+    @Field("target_key")
+    private Key targetKey;
+
+    /**
+     * For now we are adding scope to allow searching for blocks that are
+     * restricted to a given scope.
+     */
+    @Field("scope")
+    private Block.Scope scope;
+
+    /**
+     * We want to be able to search for blocks that start at a specific time
+     */
+    @Field("start_time")
+    private Date startTime;
+
+    /**
+     * We want to be able to search for blocks that end at a specific time
+     */
+    @Field("end_time")
+    private Date endTime;
+
+    /**
+     * We may want to search solr for blocks with specific blockee_id
+     */
+    @Field("blocked_user_id")
+    private UUID blockedUserId;
+
+    /**
+     * Constructor.
+     * 
+     * @param creator
+     *            the user that is making the block
+     * @param blockedUser
+     *            the user being blocked
+     * @param target
+     *            the entity to which the block will be attached.
+     * @param scope
+     *            user scope versus global scope
+     * @param startTime
+     *            the start time of the block
+     * @param endTime
+     *            the end time of the block
+     */
+    public BlockImpl(User creator, User blockedUser, Blockable target, Block.Scope scope,
+            Date startTime, Date endTime) {
+        this(EntityUtils.getId(creator), EntityUtils.getId(blockedUser),
+                EntityUtils.getKey(target), scope, startTime, endTime);
+    }
+
+    /**
+     * Private Constructor (used by the serialization system).
+     */
+    private BlockImpl(UUID creatorId, UUID blockedUserId, Key targetKey, Block.Scope scope,
+            Date startTime, Date endTime) {
+        super(Block.class);
+        setId(UUID.randomUUID());
+
+        this.creatorId = creatorId;
+        this.blockedUserId = blockedUserId;
+        this.targetKey = targetKey;
+        this.scope = scope;
+
+        // global blocks must have a start time
+        if (startTime == null && scope == Block.Scope.GLOBAL) {
+            startTime = DateUtils.getNow();
+        }
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    /**
+     * This factory method should ONLY called by the serialization framework.
+     * Its unusual signature is tailored to serve the differing needs of our
+     * externally-facing web service serialization (where we expect full object
+     * references) and internally-facing persistence serialization (where we
+     * expect raw IDs).
+     * 
+     * Note that one and only one of the <code>creator</code> and
+     * <code>creatorId</code> parameters should be non-null, and only one of the
+     * <code>target</code> and <code>targetKey</code> should be non-null (i.e.
+     * they're each mutually-exlusive parameter pairs). The <code>scope</code>
+     * and <code>startTime</code> parameters must be non null.
+     * 
+     * @param creator
+     *            the user that is making the flag
+     * @param creatorId
+     *            the ID of the user that is making the flag
+     * @param target
+     *            the entity to which the flag will be attached
+     * @param targetKey
+     *            the key of the entity to which the flag will be attached
+     * @param scope
+     *            - user versus global scope
+     * @param startTime
+     *            - the start time the block object will be active
+     * @param endTime
+     *            - the end time the block will be active, null value indicates
+     *            no end time.
+     * @return - The new block object
+     */
+    @JsonCreator
+    protected static BlockImpl createBlockImpl(@JsonProperty("creator") User creator,
+            @JsonProperty("creatorId") UUID creatorId,
+            @JsonProperty("blockedUserId") UUID blockedUserId,
+            @JsonProperty("target") Blockable target, @JsonProperty("targetKey") Key targetKey,
+            @JsonProperty("scope") Block.Scope scope, @JsonProperty("startTime") Date startTime,
+            @JsonProperty("endTime") Date endTime) {
+
+        if ((creator != null) && (creatorId != null)) {
+            throw new IllegalArgumentException(
+                    "The \"creator\" and \"creatorId\" parameters are mutually exclusive");
+        }
+        
+        if ((target != null) && (targetKey != null)) {
+            throw new IllegalArgumentException(
+                    "The \"target\" and \"targetKey\" parameters are mutually exclusive");
+        }
+
+        if (creatorId == null) {
+            creatorId = EntityUtils.getId(creator);
+        }
+
+        if (targetKey == null) {
+            targetKey = EntityUtils.getKey(target);
+        }
+
+        if (scope == null) {
+            throw new IllegalArgumentException("The \"scope\" parameter must be set");
+        }
+
+        if (startTime == null && scope == Scope.GLOBAL) {
+            throw new IllegalArgumentException("The \"startTime\" parameter must be set");
+        }
+
+        return new BlockImpl(creatorId, blockedUserId, targetKey, scope, startTime, endTime);
+
+    }
+
+    @Override
+    @JsonAnySetter
+    public void setProperty(String key, Object value) {
+        try {
+            log.trace("setProperty({}, {})", key, value);
+            if (key.equals("creation_time") || key.equals("creationTime")) {
+                this.creationTime = DateUtils.toDate(value);
+            } else if (key.equals("modification_time") || key.equals("modificationTime")) {
+                this.modificationTime = DateUtils.toDate(value);
+            } else if (key.equals("scope")) {
+                this.scope = Enum.valueOf(Block.Scope.class, (String) value);
+            } else if (key.equals("startTime") || key.equals("start_time")) {
+                this.startTime = DateUtils.toDate(value);
+            } else if (key.equals("endTime") || key.equals("end_time")) {
+                this.endTime = DateUtils.toDate(value);
+            } else if (key.equals("blocked_user_id") || key.equals("blockedUserId")) {
+                this.blockedUserId = UUID.fromString((String) value);
+            } else if (key.equals("creator_id") || key.equals("creatorId")) {
+                this.creatorId = UUID.fromString((String) value);
+            } else if (key.equals("target_key") || key.equals("targetKey")) {
+                this.targetKey = Key.fromString((String) value);
+            } else {
+                log.warn("Unexpected key: {} (value: {})", key, value);
+            }
+        } catch (Exception e) {
+            log.warn("Exception", e);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public User getCreator() {
+        return UserManager.get(creatorId);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public UUID getCreatorId() {
+        return getCreator().getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Blockable getTarget() {
+        return getBlockable(targetKey);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Key getTargetKey() {
+        return getTarget().getKey();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Block.Scope getScope() {
+        return this.scope;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Date getStartTime() {
+        return this.startTime;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Date getEndTime() {
+        return this.endTime;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Boolean isActive(Date currentTime) {
+        // current time will be null for permanent blocks
+        if (currentTime == null) {
+            return true;
+        }
+        if (startTime == null) {
+            return true;
+        }
+        if (currentTime.before(startTime)) {
+            return false;
+        }
+        return endTime == null || !currentTime.after(endTime);
+    }
+
+    /**
+     * This method will validate the entity's state prior to persistence.
+     */
+    @Override
+    public void prePersist() {
+        // TODO: Block pre-persist validation needed
+    }
+
+    /**
+     * TODO: We need to decide how deep into entity objects' contents we want
+     * "equals" to peer.
+     */
+    @Override
+    public boolean equals(Object other) {
+        boolean result = false;
+        if (!(other instanceof Block)) {
+            result = false;
+        } else if (this == other) {
+            result = true;
+        } else {
+            Block otherBlock = (Block) other;
+            EqualsBuilder eb = new EqualsBuilder();
+            eb.append(this.getId(), otherBlock.getId());
+            eb.append(this.getStartTime(), otherBlock.getStartTime());
+            eb.append(this.getEndTime(), otherBlock.getEndTime());
+            eb.append(this.getTarget().getId(), otherBlock.getTarget().getId());
+            eb.append(this.getScope(), otherBlock.getScope());
+            eb.append(this.getBlockedUser(), otherBlock.getBlockedUser());
+            eb.append(this.getCreator().getId(), otherBlock.getCreator().getId());
+            result = eb.isEquals();
+        }
+        log.debug("{}.equals({}): {}", new Object[] { this, other, result });
+        return result;
+    }
+
+    /**
+     * Note: select unique values from
+     * http://primes.utm.edu/lists/small/1000.txt for hcb.
+     */
+    @Override
+    public int hashCode() {
+        HashCodeBuilder hcb = new HashCodeBuilder(229, 349);
+        hcb.append(getId());
+        return hcb.toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Block[id=%s]", getId());
+    }
+
+    /**
+     * Internal helper method that will retrieve a {@link Blockable} given a key
+     * that references it.
+     * 
+     * @param key
+     *            a Key that references the desired Blockable.
+     */
+    private static Blockable getBlockable(Key key) {
+        return (Blockable) EntityUtils.getEntity(key);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public User getBlockedUser() {
+        return UserManager.get(this.blockedUserId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public UUID getBlockedUserId() {
+        return getBlockedUser().getId();
+    }
+}

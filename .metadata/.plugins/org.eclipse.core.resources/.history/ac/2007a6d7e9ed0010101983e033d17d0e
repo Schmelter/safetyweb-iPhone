@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class=""> <!--<![endif]-->
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>WayIn Hangout</title> 
+<!-- start css bundle -->
+<link rel="stylesheet" type="text/css" href="css/wayin.css">
+<link rel="stylesheet" type="text/css" href="admin/css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/game-tiles.css">
+<link rel="stylesheet" type="text/css" href="css/anon-home.css">
+<link rel="stylesheet" type="text/css" href="/css/dialogs.css">
+<link rel="stylesheet" type="text/css" href="/googleplus/googleplus.css">
+<link rel="stylesheet" type="text/css" href="/css/events.css">
+<!-- end css bundle -->
+<meta name="fragment" content="!">
+<meta name="viewport" content="width=600, initial-scale=0.5"> 
+<!--[if lt IE 9]><script src="backbone/lib/html5.js"></script><![endif]-->
+</head>
+
+<body class="loading" onload="setIframeHeight();">
+<div id="lightbox-overlay"></div>
+<div id="w1">
+<div id="w2">
+    <header></header>
+    <section id="content">
+    </section>
+    <footer>
+        <ul>
+            <li><a href="http://wayin.com/posting.html">Posting guidelines</a></li>
+            <li><a href="http://wayin.com/policy.html">Privacy policy</a></li>
+            <li><a href="http://wayin.com/tou.html">Terms of use</a></li>
+        </ul>
+    </footer>
+</div>
+</div>
+
+<!-- Begin Login Template -->
+<script id="login-tpl" type="text/html">
+	<form action="{{action}}" method="POST" class="ahl">
+		<input type="hidden" name="on_success" value="{{on_success}}">
+		<input type="hidden" name="on_fail" value="{{on_fail}}">
+		<h2>Login</h2>
+		<p class="ahl-username labeled-input">
+			<label>
+				<span class="label">Username</span>
+				<span class="input"><input type="text" name="username"></span>
+			</label>
+		</p>
+		<p class="ahl-password labeled-input">
+			<label>
+				<span class="label">Password</span>
+				<span class="input"><input type="password" name="password"></span>
+			</label>
+		</p>
+		<p class="ahl-submit submit">
+			<button type="submit">Login</button>
+		</p>
+		<p class="forgot">
+			<a href="#!/forgot" class="link">Forgot password?</a>
+		</p>
+	</form>
+</script>
+<!-- End Login Template -->
+
+<!--  Begin Login Failed Template -->
+<script id="login-failed-tpl" type="text/html">
+    <div id="login-failed-notice">
+        <h2>Valid admin login required!</h2>
+        <h3>Please login with a valid admin user to use this site.</h3>
+    </div>
+</script>
+<!--  End Login Failed Template -->
+
+<!-- start js bundle -->
+<script src="/scripts/json2.js"></script>
+<script src="/scripts/jquery.js"></script>
+<script src="/scripts/smallfsm.js"></script>
+<script src="/scripts/jquery-plugins/jquery.Jcrop.js"></script>
+<script src="/scripts/jquery-plugins/jquery.cookie.js"></script>
+<script src="/scripts/jquery-plugins/jquery.timeago.js"></script>
+<script src="/scripts/ICanHaz.js"></script>
+<script src="/scripts/underscore.js"></script>
+<script src="/scripts/backbone.js"></script>
+<script src="/scripts/date.js"></script>
+<script src="/scripts/wayin-helpers.js"></script>
+<script src="/scripts/wayin-model.js"></script>
+<script src="/scripts/wayin-identity.js"></script>
+<script src="/scripts/wayin-dialogs.js"></script>
+<script src="/googleplus/gp-helpers.js"></script>
+<script src="/googleplus/gp-view.js"></script>
+<script src="/googleplus/gp-settings.js"></script>
+<script src="/googleplus/gp-router.js"></script>
+<script src="/googleplus/gp-setup.js"></script>
+<!-- end js bundle -->
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+/*******************************************************************************
+ * @copyright (c) WayIn, LLC. All Rights Reserved.
+ ******************************************************************************/
+package com.wayin.util;
+
+import java.util.UUID;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.wayin.om.business.Key;
+import com.wayin.om.business.Entity;
+import com.wayin.persistence.PersistenceService;
+
+public class EntityUtils {
+
+	private static final Logger log = LoggerFactory.getLogger(EntityUtils.class);
+
+	/**
+	 * Disallow instantiation.
+	 */
+	private EntityUtils() {
+	}
+
+	/**
+	 * Returns the specified entity's ID (or null, if the specified entity is null).
+	 *
+	 * @return the specified entity's ID (or null, if the specified entity is null).
+	 */
+	public static UUID getId(Entity entity) {
+		UUID result = ((entity != null) ? entity.getId() : null);
+		return result;
+	}
+
+	/**
+	 * Returns the specified entity's Key (or null, if the specified entity is null).
+	 *
+	 * @return the specified entity's Key (or null, if the specified entity is null).
+	 */
+	public static Key getKey(Entity entity) {
+		Key result = ((entity != null) ? entity.getKey() : null);
+		return result;
+	}
+
+	/**
+	 * Returns the entity addressed by the specified key (or null, if no such entity exists).
+	 *
+	 * @param key the key key whose associated entity is to be returned. 
+	 */
+	public static Entity getEntity(Key key) {
+		try {
+			PersistenceService<UUID, ?> persistence = PersistenceService.getInstance(getEntityClass(key));
+			return (Entity) persistence.get(key.getEntityId());
+		} catch (Exception e) {
+			log.warn("Exception", e);
+			return null;
+		}
+	}
+
+	private static Class getEntityClass(Key key) throws ClassNotFoundException {
+		String packageName = Key.class.getPackage().getName();
+		return Class.forName(packageName + "." + key.getEntityType());
+	}
+
+}

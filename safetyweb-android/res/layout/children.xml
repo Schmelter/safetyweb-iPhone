@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/FillParent"
+	android:orientation="vertical">
+	<FrameLayout
+		style="@style/Header">
+		<ImageView
+		    style="@style/HeaderLogo"
+		    android:src="@drawable/logo" />
+	</FrameLayout>
+	<ListView
+		android:id="@+id/android:list"
+		style="@style/FillParent" />
+</LinearLayout>

@@ -1,0 +1,118 @@
+(function(){
+	wayin.gp.routers = {
+			
+			Main:Backbone.Router.extend({
+				routes: {
+					'!/login': 'attemptLogin',
+					'!/browseEvents': 'browseEvents',
+					'!/playEvent': 'playEvent',
+					'!/login-failed': 'loginError',
+					'!/home': 'attemptLogin'
+				},
+				go: function(hashUrl){
+					//alert('HashUrl: '+PAGE+hashUrl+' wayin.gp.frame.src: '+wayin.gp.frame.location);
+					wayin.gp.frame.location = PAGE+hashUrl;
+				},
+				/**
+				 * Attempt to log the user in if they happen to be an anonymous user,
+				 * or if they're not logged in
+				 */
+				attemptLogin: function(){
+					this.everyPageStart();
+					if (wayin.identity.getMe().attributes.type === 'anon') {
+						window.scrollTo(0,0);
+						var loginForm = new wayin.gp.views.LoginForm();
+						loginForm.render();
+						$('#content').html('').append(loginForm.el);
+					} else {
+						this.go('#!/browseEvents');
+					}
+					this.everyPageDone();
+				},
+				/**
+				 * Let the first user here choose the event to be run
+				 */
+				browseEvents: function() {
+					if (!wayin.identity.amLoggedIn()) {
+						wayin.app.go('#!/login');
+						return;
+					}
+					var ctrlr = this;
+					ctrlr.everyPageStart();
+					
+					var ctrlr = this;
+					var prom = new wayin.async.Promise({events:null},wayin.async.standardTimeout)
+					.onbreak(ctrlr.errorPageDone)
+					.onkeep(function(got){
+						var eventList = new wayin.gp.views.EventListPage({
+							collection:got.events,
+							terms:null
+						});
+						alert('Event List Page Object');
+						eventList.render();
+						$('#content').html(eventList.el);
+						ctrlr.everyPageDone();
+					});
+					
+					new wayin.collections.Events(null, {
+						limit:12,
+						q:null,
+						sort:'last_action_time',
+						order:'desc'
+					}).fetch({
+						success:function(events) {
+							prom.dokeep('events',events);
+						},
+						error:function(grps, xhr){
+							alert('Events Failure');
+							prom.dobreak(
+									"Couldn't fetch event list. "+wayin.async.getXhrReason(xhr),
+									wayin.async.getXhrError(xhr)
+							);
+						}
+					});
+				},
+				/**
+				 * Play the currently chosen event
+				 */
+				playEvent: function() {
+					
+				},
+				/**
+				 * Called on every page (start).  Loads either the 
+				 * anonymous header or regular header based on 
+				 * user login
+				 */
+				everyPageStart: function(){
+					$(document.body).addClass('loading');
+				},
+				/**
+				 * Called on every page (end).  Constructs an error view
+				 * if the user is either not logged in or not of the 
+				 * correct admin type
+				 */
+				everyPageDone: function(args){
+					if (args && args.id) {
+						var id = args.id;
+						$(document.body).attr({id:args.id});
+					} else { 
+						$(document.body).attr({id:''});
+					}
+					$(document.body).removeClass('loading');
+					window.scrollTo(0,0);
+				},
+				 /**
+	             * Renders the login failed page
+	             */
+				loginError: function(){
+					$(document.body).removeClass('loading');
+					window.scrollTo(0,0);
+					var loginForm = new wayin.gp.views.LoginForm();
+					loginForm.render();
+					$('#content').html('');
+					$('#content').html(ich['login-failed-tpl']());
+					$('#login-failed-notice').append(loginForm.el);
+				}
+			})
+	};
+})();

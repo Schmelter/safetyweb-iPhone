@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+		style="@style/ChildDetailRow"
+		android:id="@+id/llytChildDetailRow">
+		<FrameLayout
+			android:id="@+id/flytActivityLevel"
+			style="@style/ChildDetailRowActivity">
+			<ImageView
+				android:id="@+id/imgActivityLevel"
+				android:src="@drawable/transparent"
+				style="@style/ChildDetailRowActivityImage" />
+		</FrameLayout>
+		<LinearLayout
+			android:orientation="vertical"
+			style="@style/ChildDetailRow">
+			<TextView
+				android:id="@+id/txtDescription"
+				style="@style/WrapContent" />
+			<LinearLayout
+				android:id="@+id/llytImageList"
+				android:orientation="horizontal"
+				style="@style/WrapContent">
+				<ImageView
+					android:id="@+id/imgOne"
+					android:src="@drawable/transparent"
+					style="@style/WrapContent" />
+				<ImageView
+					android:id="@+id/imgTwo"
+					android:src="@drawable/transparent"
+					style="@style/WrapContent" />
+				<ImageView
+					android:id="@+id/imgThree"
+					android:src="@drawable/transparent"
+					style="@style/WrapContent" />
+			</LinearLayout>
+			<LinearLayout
+				android:orientation="horizontal"
+				style="@style/WrapContent">
+				<ImageView
+					android:id="@+id/imgServiceIcon"
+					android:src="@drawable/transparent"
+					style="@style/ChildDetailRowServiceImage" />
+				<TextView
+					android:id="@+id/txtDate"
+					style="@style/ChildRowText" />
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/llytLoading"
+		style="@style/ChildDetailRowLoading">
+		<ProgressBar
+			style="@style/ChildDetailRowLoadingProgress"
+			android:indeterminate="true"
+			android:indeterminateOnly="true" />
+		<TextView
+			style="@style/ChildDetailRowLoadingMessage"
+			android:text="@string/loading" />
+	</LinearLayout>
+</FrameLayout>
