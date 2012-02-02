@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "UserManager.h"
+#import "SWViewController.h"
+#import "RootViewController.h"
 
-@interface LoginViewController : UIViewController {
+@interface LoginViewController : SWViewController {
 @private
     UITextField *username;
     UITextField *password;

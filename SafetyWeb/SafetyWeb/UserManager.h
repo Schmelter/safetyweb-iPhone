@@ -13,11 +13,28 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserManager : NSObject {
-@private
-
+@interface UserCredentials : NSObject {
+    @private
+    NSString *username;
+    NSString *password;
 }
 
-+ (UserManager*)getInstance;
+@property (retain, nonatomic) NSString *username;
+@property (retain, nonatomic) NSString *password;
+
+- (UserCredentials*)initWithUserName:(NSString*)username AndPassword:(NSString*)password;
+
+@end
+
+
+
+
+@interface UserManager : NSObject {
+}
+
+// May return nil if there were no last used credentials.  No guarantee that the credentials will work.
++ (UserCredentials*)getLastUsedCredentials;
+
++ (void)attemptLogin:(UserCredentials*)credentials;
 
 @end

@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
 
 @interface RootViewController : UIViewController {
-    
+    @private
+    ViewController *currentViewController;
 }
 
 - (void)displayLoginViewController;
+- (void)displayRequestChildActivityViewController;
+- (void)displayAccountSetupViewController;
+- (void)displaySettingsViewController;
+- (void)displayMobileAlertSignupViewController;
+- (void)displayResetPasswordViewController;
 
 @end

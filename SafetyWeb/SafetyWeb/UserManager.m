@@ -8,24 +8,52 @@
 
 #import "UserManager.h"
 
-static UserManager* instance;
+@implementation UserCredentials
+
+@synthesize username;
+@synthesize password;
+
+- (UserCredentials*)initWithUserName:(NSString*)aUsername AndPassword:(NSString*)aPassword {
+    if (self != nil) {
+        [super init];
+        username = aUsername;
+        [username retain];
+        password = aPassword;
+        [password retain];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [username release];
+    [password release];
+    
+    [super dealloc];
+}
+
+@end
+
+
+static UserCredentials* credentials;
 
 @implementation UserManager
 
 - (UserManager*)init {
-    @synchronized([UserManager class]) {
-        if (instance == nil) {
-            instance = self;
-        } else {
-            [self release];
-        }
-    }
-    return instance;
+    // This is a purely static class
+    [self release];
+    return nil;
 }
 
-+ (UserManager*)getInstance {
-    if (instance == nil) instance = [[UserManager alloc] init];
-    return instance;
++ (UserCredentials*)getLastUsedCredentials {
+    // TODO: Implement getting these out of the 
+    return credentials;
+}
+
++ (void)attemptLogin:(UserCredentials *)aCredentials {
+    [aCredentials retain];
+    [credentials release];
+    credentials = aCredentials;
+    // TODO: Login the user here
 }
 
 - (void)dealloc {

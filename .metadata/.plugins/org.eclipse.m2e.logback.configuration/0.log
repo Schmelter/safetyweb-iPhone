@@ -56,3 +56,7 @@ java.util.ConcurrentModificationException: null
 2012-02-01 15:32:45,424 [Worker-14] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 9605 ms
 2012-02-02 09:30:30,696 [Worker-5] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
 2012-02-02 09:30:49,638 [Worker-5] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 18967 ms
+2012-02-02 13:13:59,810 [Worker-18] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2012-02-02 13:14:05,138 [Worker-18] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 5346 ms
+2012-02-02 15:29:38,834 [Worker-0] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2012-02-02 15:29:57,389 [Worker-0] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 18621 ms

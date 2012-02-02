@@ -16,13 +16,11 @@
 - (void)viewDidLoad {
     // Get the current username/password from the last login, or the last time they used this
     // interface
-    
-    
-    BlueViewController *blueController = [[BlueViewController alloc]
-										  initWithNibName:@"BlueView" bundle:nil];
-    self.blueViewController = blueController;
-    [self.view insertSubview:blueController.view atIndex:0];
-    [blueController release];
+    UserCredentials *credentials = [UserManager getLastUsedCredentials];
+    if (credentials != nil) {
+        [username setText:credentials.username];
+        [password setText:credentials.password];
+    }
     [super viewDidLoad];
 }
 
@@ -36,6 +34,22 @@
     self.password = nil;
     
     [super viewDidUnload];
+}
+
+- (IBAction)forgotPassword:(id)sender {
+    
+}
+
+- (IBAction)getAnAccount:(id)sender {
+    
+}
+
+- (IBAction)seeMyChildsActivity:(id)sender {
+    
+}
+
+- (IBAction)loginButtonPressed:(id)sender {
+    
 }
 
 - (void)dealloc {
