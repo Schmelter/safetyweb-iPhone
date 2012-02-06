@@ -27,7 +27,7 @@
 }
 
 - (void)displayLoginViewController {
-    LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
     [loginViewController setRootViewController:self];
     [self setCurrentViewController:loginViewController];
     [self.view insertSubview:loginViewController.view atIndex:0];

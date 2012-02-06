@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
-@interface SWAppDelegate : UIResponder <UIApplicationDelegate>
+@interface SWAppDelegate : UIResponder <UIApplicationDelegate> {
+    UIWindow *window;
+    RootViewController *viewController;
+}
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet RootViewController *viewController;
 
 @end

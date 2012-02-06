@@ -22,6 +22,8 @@
 		897E984514DB12AE007595A7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984414DB12AE007595A7 /* LoginViewController.m */; };
 		897E984814DB1478007595A7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984714DB1478007595A7 /* UserManager.m */; };
 		898651F514DB435C008F353B /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898651F414DB435C008F353B /* SWViewController.m */; };
+		898651FB14DB5A1E008F353B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FA14DB5A1E008F353B /* MainWindow.xib */; };
+		898651FD14DB5CB7008F353B /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FC14DB5CB7008F353B /* LoginView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		897E984714DB1478007595A7 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		898651F314DB435C008F353B /* SWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		898651F414DB435C008F353B /* SWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
+		898651FA14DB5A1E008F353B /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		898651FC14DB5CB7008F353B /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				897E984714DB1478007595A7 /* UserManager.m */,
 				898651F314DB435C008F353B /* SWViewController.h */,
 				898651F414DB435C008F353B /* SWViewController.m */,
+				898651FA14DB5A1E008F353B /* MainWindow.xib */,
+				898651FC14DB5CB7008F353B /* LoginView.xib */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -234,6 +240,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				897E981414DB02C3007595A7 /* InfoPlist.strings in Resources */,
+				898651FB14DB5A1E008F353B /* MainWindow.xib in Resources */,
+				898651FD14DB5CB7008F353B /* LoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

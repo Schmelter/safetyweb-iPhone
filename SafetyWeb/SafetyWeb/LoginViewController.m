@@ -48,8 +48,23 @@
     
 }
 
-- (IBAction)loginButtonPressed:(id)sender {
+- (IBAction)backgroundTap:(id)sender {
+    [username resignFirstResponder];
+    [password resignFirstResponder];
+}
+
+- (IBAction)textFieldDoneEditing:(id)sender {
+    // Check if they have both a username and password, if so, try to log in
+    NSString *usernameStr = [username text];
+    NSString *passwordStr = [password text];
     
+    if (usernameStr == nil || [usernameStr length] == 0 || passwordStr == nil || [passwordStr length] == 0) {
+        return;
+    }
+    
+    UserCredentials *userCredentials = [[UserCredentials alloc] initWithUserName:usernameStr AndPassword:passwordStr];
+    [UserManager attemptLogin:userCredentials];
+    [userCredentials release];
 }
 
 - (void)dealloc {

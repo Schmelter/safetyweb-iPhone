@@ -10,11 +10,12 @@
 
 @implementation SWAppDelegate
 
-@synthesize window = _window;
+@synthesize window;
+@synthesize viewController;
 
 - (void)dealloc
 {
-    [_window release];
+    [window release];
     [super dealloc];
 }
 

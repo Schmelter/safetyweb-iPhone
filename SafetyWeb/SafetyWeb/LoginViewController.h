@@ -24,6 +24,7 @@
 - (IBAction)forgotPassword:(id)sender;
 - (IBAction)getAnAccount:(id)sender;
 - (IBAction)seeMyChildsActivity:(id)sender;
-- (IBAction)loginButtonPressed:(id)sender;
+- (IBAction)backgroundTap:(id)sender;
+- (IBAction)textFieldDoneEditing:(id)sender;
 
 @end

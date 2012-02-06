@@ -12,7 +12,7 @@
 
 @interface RootViewController : UIViewController {
     @private
-    ViewController *currentViewController;
+    UIViewController *currentViewController;
 }
 
 - (void)displayLoginViewController;
