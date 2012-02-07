@@ -90,11 +90,11 @@
 }
 
 - (IBAction)getAnAccount:(id)sender {
-    
+    [rootViewController displayAccountSetupViewController];
 }
 
 - (IBAction)seeMyChildsActivity:(id)sender {
-    
+    [rootViewController displayRequestChildActivityViewController];
 }
 
 - (IBAction)backgroundTap:(id)sender {
@@ -134,11 +134,8 @@
         
         [cell addSubview:password];
         [password setClearButtonMode:UITextFieldViewModeWhileEditing];
-        [password addTarget:self action:@selector(passwordDoneEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     }
-    
-    //[tableView addSubview:username];
-    //[tableView addSubview:password];
+
     
     return cell;
 }

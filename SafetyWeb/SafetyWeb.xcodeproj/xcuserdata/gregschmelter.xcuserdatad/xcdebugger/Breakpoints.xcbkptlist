@@ -9,12 +9,40 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SafetyWeb/RootViewController.m"
-         timestampString = "350339034.103936"
+         timestampString = "350349456.463506"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
          landmarkName = "-dealloc"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SafetyWeb/ChildsActivityViewController.m"
+         timestampString = "350351022.233664"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
+         landmarkName = "-childsEmailGoPressed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SafetyWeb/ChildsActivityViewController.m"
+         timestampString = "350351022.233664"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
+         landmarkName = "-yourEmailNextPressed:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -24,6 +24,8 @@
 		8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */; };
 		8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675114E1AB3100B997D5 /* ResetPasswordView.xib */; };
 		8984675514E1ADEB00B997D5 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984675414E1ADEB00B997D5 /* Utilities.m */; };
+		8984675914E1CA1900B997D5 /* ChildsActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984675714E1CA1900B997D5 /* ChildsActivityViewController.m */; };
+		8984675C14E1CA5900B997D5 /* ChildsActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */; };
 		898651F514DB435C008F353B /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898651F414DB435C008F353B /* SWViewController.m */; };
 		898651FB14DB5A1E008F353B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FA14DB5A1E008F353B /* MainWindow.xib */; };
 		898651FD14DB5CB7008F353B /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FC14DB5CB7008F353B /* LoginView.xib */; };
@@ -67,6 +69,9 @@
 		8984675114E1AB3100B997D5 /* ResetPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordView.xib; sourceTree = "<group>"; };
 		8984675314E1ADEB00B997D5 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		8984675414E1ADEB00B997D5 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		8984675614E1CA1900B997D5 /* ChildsActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildsActivityViewController.h; sourceTree = "<group>"; };
+		8984675714E1CA1900B997D5 /* ChildsActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildsActivityViewController.m; sourceTree = "<group>"; };
+		8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildsActivityView.xib; sourceTree = "<group>"; };
 		898651F314DB435C008F353B /* SWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		898651F414DB435C008F353B /* SWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
 		898651FA14DB5A1E008F353B /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -148,6 +153,9 @@
 				8984675114E1AB3100B997D5 /* ResetPasswordView.xib */,
 				8984675314E1ADEB00B997D5 /* Utilities.h */,
 				8984675414E1ADEB00B997D5 /* Utilities.m */,
+				8984675614E1CA1900B997D5 /* ChildsActivityViewController.h */,
+				8984675714E1CA1900B997D5 /* ChildsActivityViewController.m */,
+				8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 				898651FB14DB5A1E008F353B /* MainWindow.xib in Resources */,
 				898651FD14DB5CB7008F353B /* LoginView.xib in Resources */,
 				8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */,
+				8984675C14E1CA5900B997D5 /* ChildsActivityView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +307,7 @@
 				898651F514DB435C008F353B /* SWViewController.m in Sources */,
 				8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */,
 				8984675514E1ADEB00B997D5 /* Utilities.m in Sources */,
+				8984675914E1CA1900B997D5 /* ChildsActivityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "LoginViewController.h"
 #import "ResetPasswordViewController.h"
+#import "ChildsActivityViewController.h"
 
 @implementation RootViewController
 
@@ -38,7 +39,12 @@
 }
 
 - (void)displayRequestChildActivityViewController {
-    
+    ChildsActivityViewController *childsActivityViewController = [[ChildsActivityViewController alloc] initWithNibName:@"ChildsActivityView" bundle:nil];
+    [childsActivityViewController setRootViewController:self];
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:childsActivityViewController];
+    [self.view addSubview:currentViewController.view];
+    [childsActivityViewController release];
 }
 
 - (void)displayAccountSetupViewController {
