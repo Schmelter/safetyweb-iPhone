@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
 @interface SWViewController : UIViewController {
     @protected
-    UIViewController *rootViewController;
+    RootViewController *rootViewController;
 }
 
--(void)setRootViewController:(UIViewController*)rootViewController;
+-(void)setRootViewController:(RootViewController*)rootViewController;
 
 @end

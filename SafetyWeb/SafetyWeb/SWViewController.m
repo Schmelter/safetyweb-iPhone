@@ -10,13 +10,13 @@
 
 @implementation SWViewController
 
--(void)setRootViewController:(UIViewController*)aRootViewController {
+-(void)setRootViewController:(RootViewController*)aRootViewController {
     // Do not retain, this is our parent
     rootViewController = aRootViewController;
 }
 
 -(void)dealloc {
-    [rootViewController release];
+    // DO NOT release the rootViewController, it's our parent, and we never retained it
     
     [super dealloc];
 }

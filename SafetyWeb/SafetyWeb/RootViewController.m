@@ -7,6 +7,8 @@
 //
 
 #import "RootViewController.h"
+#import "LoginViewController.h"
+#import "ResetPasswordViewController.h"
 
 @implementation RootViewController
 
@@ -29,16 +31,36 @@
 - (void)displayLoginViewController {
     LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
     [loginViewController setRootViewController:self];
+    [currentViewController.view removeFromSuperview];
     [self setCurrentViewController:loginViewController];
-    [self.view insertSubview:loginViewController.view atIndex:0];
+    [self.view addSubview:currentViewController.view];
     [loginViewController release];
 }
 
-//- (void)displayRequestChildActivityViewController;
-//- (void)displayAccountSetupViewController;
-//- (void)displaySettingsViewController;
-//- (void)displayMobileAlertSignupViewController;
-//- (void)displayResetPasswordViewController;
+- (void)displayRequestChildActivityViewController {
+    
+}
+
+- (void)displayAccountSetupViewController {
+    
+}
+
+- (void)displaySettingsViewController {
+    
+}
+
+- (void)displayMobileAlertSignupViewController {
+    
+}
+
+- (void)displayResetPasswordViewController {
+    ResetPasswordViewController *resetPassViewController = [[ResetPasswordViewController alloc] initWithNibName:@"ResetPasswordView" bundle:nil];
+    [resetPassViewController setRootViewController:self];
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:resetPassViewController];
+    [self.view addSubview:currentViewController.view];
+    [resetPassViewController release];
+}
 
 - (void)dealloc {
     [currentViewController release];

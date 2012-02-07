@@ -124,3 +124,19 @@ java.specification.version,sysinfo,,,"1.6",1328547338091
 java.vendor,sysinfo,,,"Apple Inc.",1328547338091
 java.version,sysinfo,,,"1.6.0_29",1328547338091
 java.vm.info,sysinfo,,,"mixed mode",1328547338091
+java.vm.name,sysinfo,,,"Java HotSpot(TM) 64-Bit Server VM",1328547338091
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1328547338091
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1328547338091
+java.vm.specification.version,sysinfo,,,"1.0",1328547338091
+java.vm.vendor,sysinfo,,,"Apple Inc.",1328547338091
+java.vm.version,sysinfo,,,"20.4-b02-402",1328547338091
+started,bundle,org.eclipse.m2e.usagedata,1.0.100.20110804-1717,"org.eclipse.m2e.usagedata",1328547338161
+started,bundle,org.eclipse.ltk.core.refactoring,3.5.201.r371_v20110824-0800,"org.eclipse.ltk.core.refactoring",1328547338355
+started,bundle,org.eclipse.ltk.ui.refactoring,3.6.0.v20110505-0800,"org.eclipse.ltk.ui.refactoring",1328547338376
+started,bundle,org.eclipse.epp.usagedata.ui,1.3.1.R201106061540,"org.eclipse.epp.usagedata.ui",1328547339223
+started,bundle,org.eclipse.wb.discovery.ui,1.1.0.r37x201109091028,"org.eclipse.wb.discovery.ui",1328547339382
+started,bundle,com.android.ide.eclipse.traceview,16.0.1.v201112150204-238534,"com.android.ide.eclipse.traceview",1328547340647
+started,bundle,org.eclipse.jdt.apt.core,3.3.500.v20110420-1015,"org.eclipse.jdt.apt.core",1328547344216
+started,bundle,org.eclipse.jdt.apt.pluggable.core,1.0.400.v20110305-1450,"org.eclipse.jdt.apt.pluggable.core",1328547344233
+started,bundle,org.eclipse.wb.core.lib,1.1.0.r37x201109091012,"org.eclipse.wb.core.lib",1328547345048
+started,bundle,org.eclipse.wb.core,1.1.0.r37x201109091012,"org.eclipse.wb.core",1328547345154

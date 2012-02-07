@@ -21,6 +21,9 @@
 		897E984214DB1255007595A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984114DB1255007595A7 /* RootViewController.m */; };
 		897E984514DB12AE007595A7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984414DB12AE007595A7 /* LoginViewController.m */; };
 		897E984814DB1478007595A7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984714DB1478007595A7 /* UserManager.m */; };
+		8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */; };
+		8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675114E1AB3100B997D5 /* ResetPasswordView.xib */; };
+		8984675514E1ADEB00B997D5 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984675414E1ADEB00B997D5 /* Utilities.m */; };
 		898651F514DB435C008F353B /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898651F414DB435C008F353B /* SWViewController.m */; };
 		898651FB14DB5A1E008F353B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FA14DB5A1E008F353B /* MainWindow.xib */; };
 		898651FD14DB5CB7008F353B /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FC14DB5CB7008F353B /* LoginView.xib */; };
@@ -59,6 +62,11 @@
 		897E984414DB12AE007595A7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		897E984614DB1478007595A7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		897E984714DB1478007595A7 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
+		8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
+		8984675114E1AB3100B997D5 /* ResetPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordView.xib; sourceTree = "<group>"; };
+		8984675314E1ADEB00B997D5 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		8984675414E1ADEB00B997D5 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		898651F314DB435C008F353B /* SWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		898651F414DB435C008F353B /* SWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
 		898651FA14DB5A1E008F353B /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -135,6 +143,11 @@
 				898651F414DB435C008F353B /* SWViewController.m */,
 				898651FA14DB5A1E008F353B /* MainWindow.xib */,
 				898651FC14DB5CB7008F353B /* LoginView.xib */,
+				8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */,
+				8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */,
+				8984675114E1AB3100B997D5 /* ResetPasswordView.xib */,
+				8984675314E1ADEB00B997D5 /* Utilities.h */,
+				8984675414E1ADEB00B997D5 /* Utilities.m */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -242,6 +255,7 @@
 				897E981414DB02C3007595A7 /* InfoPlist.strings in Resources */,
 				898651FB14DB5A1E008F353B /* MainWindow.xib in Resources */,
 				898651FD14DB5CB7008F353B /* LoginView.xib in Resources */,
+				8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +296,8 @@
 				897E984514DB12AE007595A7 /* LoginViewController.m in Sources */,
 				897E984814DB1478007595A7 /* UserManager.m in Sources */,
 				898651F514DB435C008F353B /* SWViewController.m in Sources */,
+				8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */,
+				8984675514E1ADEB00B997D5 /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,11 +12,36 @@
 
 @synthesize username;
 @synthesize password;
+@synthesize forgotPassword;
+
+
+#pragma mark -
+#pragma mark View Life Cycle
 
 - (void)viewDidLoad {
     // Get the current username/password from the last login, or the last time they used this
     // interface
     UserCredentials *credentials = [UserManager getLastUsedCredentials];
+    self.username = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 30)];
+    self.password = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 30)];
+    password.secureTextEntry = YES;
+    
+    username.placeholder = @"Username";
+    username.autocorrectionType = UITextAutocorrectionTypeNo;
+    username.returnKeyType = UIReturnKeyNext;
+    username.clearsOnBeginEditing = NO;
+    username.textAlignment = UITextAlignmentLeft;
+    username.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [username addTarget:self action:@selector(usernameNextButton:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    password.placeholder = @"Password";
+    password.autocorrectionType = UITextAutocorrectionTypeNo;
+    password.returnKeyType = UIReturnKeyDone;
+    password.clearsOnBeginEditing = NO;
+    password.textAlignment = UITextAlignmentLeft;
+    password.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [password addTarget:self action:@selector(passwordDoneEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    
     if (credentials != nil) {
         [username setText:credentials.username];
         [password setText:credentials.password];
@@ -36,8 +61,32 @@
     [super viewDidUnload];
 }
 
-- (IBAction)forgotPassword:(id)sender {
+#pragma mark -
+#pragma mark UITextField methods
+- (IBAction)usernameNextButton:(id)sender {
+    [sender resignFirstResponder];
+    [password becomeFirstResponder];
+}
+
+- (IBAction)passwordDoneEditing:(id)sender {
+    [sender resignFirstResponder];
+    // Check if they have both a username and password, if so, try to log in
+    NSString *usernameStr = [username text];
+    NSString *passwordStr = [password text];
     
+    if (usernameStr == nil || [usernameStr length] == 0 || passwordStr == nil || [passwordStr length] == 0) {
+        return;
+    }
+        
+    UserCredentials *userCredentials = [[UserCredentials alloc] initWithUserName:usernameStr AndPassword:passwordStr];
+    [UserManager attemptLogin:userCredentials];
+    [userCredentials release];
+}
+
+#pragma mark -
+#pragma mark UIButton actions
+- (IBAction)forgotPassword:(id)sender {
+    [rootViewController displayResetPasswordViewController];
 }
 
 - (IBAction)getAnAccount:(id)sender {
@@ -53,18 +102,53 @@
     [password resignFirstResponder];
 }
 
-- (IBAction)textFieldDoneEditing:(id)sender {
-    // Check if they have both a username and password, if so, try to log in
-    NSString *usernameStr = [username text];
-    NSString *passwordStr = [password text];
+#pragma mark -
+#pragma mark UITableViewDelegate and UITableViewDataSource methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString* CellIdentifier = @"Cell";
     
-    if (usernameStr == nil || [usernameStr length] == 0 || passwordStr == nil || [passwordStr length] == 0) {
-        return;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    UserCredentials *userCredentials = [[UserCredentials alloc] initWithUserName:usernameStr AndPassword:passwordStr];
-    [UserManager attemptLogin:userCredentials];
-    [userCredentials release];
+    if (indexPath.row == kUsernameRow) {
+        // The username UITextField
+        cell.textLabel.text = @"Username:";
+        
+        [cell addSubview:username];
+        [username setClearButtonMode:UITextFieldViewModeWhileEditing];
+    } else if (indexPath.row == kPasswordRow) {
+        // The password UITextField
+        cell.textLabel.text = @"Password:";
+        
+        [cell addSubview:password];
+        [password setClearButtonMode:UITextFieldViewModeWhileEditing];
+        [password addTarget:self action:@selector(passwordDoneEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    }
+    
+    //[tableView addSubview:username];
+    //[tableView addSubview:password];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == kUsernameRow) {
+        [username becomeFirstResponder];
+    } else if (indexPath.row == kPasswordRow) {
+        [password becomeFirstResponder];
+    }
 }
 
 - (void)dealloc {

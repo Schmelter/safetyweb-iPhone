@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "LoginViewController.h"
+
+@class LoginViewController;
+@class ResetPasswordViewController;
 
 @interface RootViewController : UIViewController {
     @private
