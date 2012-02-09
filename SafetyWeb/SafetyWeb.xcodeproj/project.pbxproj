@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		893F9D4114E1F58D0074C5EC /* AccountSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */; };
+		893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */; };
+		893F9D4714E1F5CD0074C5EC /* AccountSetup1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */; };
+		893F9D4A14E1F5DE0074C5EC /* AccountSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */; };
 		897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
 		897E980E14DB02C3007595A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980D14DB02C3007595A7 /* CoreGraphics.framework */; };
@@ -21,6 +25,7 @@
 		897E984214DB1255007595A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984114DB1255007595A7 /* RootViewController.m */; };
 		897E984514DB12AE007595A7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984414DB12AE007595A7 /* LoginViewController.m */; };
 		897E984814DB1478007595A7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984714DB1478007595A7 /* UserManager.m */; };
+		89838DB214E30F8C00CDCDBC /* AccountSetupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */; };
 		8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */; };
 		8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675114E1AB3100B997D5 /* ResetPasswordView.xib */; };
 		8984675514E1ADEB00B997D5 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984675414E1ADEB00B997D5 /* Utilities.m */; };
@@ -42,6 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSetup1View.xib; sourceTree = "<group>"; };
+		893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSetup2View.xib; sourceTree = "<group>"; };
+		893F9D4514E1F5CD0074C5EC /* AccountSetup1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetup1ViewController.h; sourceTree = "<group>"; };
+		893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetup1ViewController.m; sourceTree = "<group>"; };
+		893F9D4814E1F5DE0074C5EC /* AccountSetup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetup2ViewController.h; sourceTree = "<group>"; };
+		893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetup2ViewController.m; sourceTree = "<group>"; };
 		897E980514DB02C3007595A7 /* SafetyWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		897E980914DB02C3007595A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		897E980B14DB02C3007595A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,6 +75,8 @@
 		897E984414DB12AE007595A7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		897E984614DB1478007595A7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		897E984714DB1478007595A7 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		89838DB014E30F8B00CDCDBC /* AccountSetupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetupModel.h; sourceTree = "<group>"; };
+		89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetupModel.m; sourceTree = "<group>"; };
 		8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		8984675114E1AB3100B997D5 /* ResetPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordView.xib; sourceTree = "<group>"; };
@@ -156,6 +169,14 @@
 				8984675614E1CA1900B997D5 /* ChildsActivityViewController.h */,
 				8984675714E1CA1900B997D5 /* ChildsActivityViewController.m */,
 				8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */,
+				893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */,
+				893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */,
+				893F9D4514E1F5CD0074C5EC /* AccountSetup1ViewController.h */,
+				893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */,
+				893F9D4814E1F5DE0074C5EC /* AccountSetup2ViewController.h */,
+				893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */,
+				89838DB014E30F8B00CDCDBC /* AccountSetupModel.h */,
+				89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -265,6 +286,8 @@
 				898651FD14DB5CB7008F353B /* LoginView.xib in Resources */,
 				8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */,
 				8984675C14E1CA5900B997D5 /* ChildsActivityView.xib in Resources */,
+				893F9D4114E1F58D0074C5EC /* AccountSetup1View.xib in Resources */,
+				893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +331,9 @@
 				8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */,
 				8984675514E1ADEB00B997D5 /* Utilities.m in Sources */,
 				8984675914E1CA1900B997D5 /* ChildsActivityViewController.m in Sources */,
+				893F9D4714E1F5CD0074C5EC /* AccountSetup1ViewController.m in Sources */,
+				893F9D4A14E1F5DE0074C5EC /* AccountSetup2ViewController.m in Sources */,
+				89838DB214E30F8C00CDCDBC /* AccountSetupModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

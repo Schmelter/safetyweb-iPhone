@@ -10,6 +10,8 @@
 #import "LoginViewController.h"
 #import "ResetPasswordViewController.h"
 #import "ChildsActivityViewController.h"
+#import "AccountSetup1ViewController.h"
+#import "AccountSetup2ViewController.h"
 
 @implementation RootViewController
 
@@ -47,8 +49,30 @@
     [childsActivityViewController release];
 }
 
-- (void)displayAccountSetupViewController {
-    
+- (void)displayAccountSetup1ViewController:(AccountSetupModel*)accSetupModel {
+    AccountSetup1ViewController *accSetup1ViewController = [[AccountSetup1ViewController alloc] initWithNibName:@"AccountSetup1View" bundle:nil];
+    [accSetup1ViewController setRootViewController:self];
+    if (accSetupModel == nil) {
+        accSetupModel = [[AccountSetupModel alloc] init];
+        accSetup1ViewController.setupModel = accSetupModel;
+        [accSetupModel release];
+    } else {
+        accSetup1ViewController.setupModel = accSetupModel;
+    }
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:accSetup1ViewController];
+    [self.view addSubview:currentViewController.view];
+    [accSetup1ViewController release];
+}
+
+- (void)displayAccountSetup2ViewController:(AccountSetupModel*)accSetupModel {
+    AccountSetup2ViewController *accSetup2ViewController = [[AccountSetup2ViewController alloc] initWithNibName:@"AccountSetup2View" bundle:nil];
+    [accSetup2ViewController setRootViewController:self];
+    accSetup2ViewController.setupModel = accSetupModel;
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:accSetup2ViewController];
+    [self.view addSubview:currentViewController.view];
+    [accSetup2ViewController release];
 }
 
 - (void)displaySettingsViewController {

@@ -24,6 +24,9 @@
     UserCredentials *credentials = [UserManager getLastUsedCredentials];
     self.username = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 30)];
     self.password = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 30)];
+    [username release];
+    [password release];
+    
     password.secureTextEntry = YES;
     
     username.placeholder = @"Username";
@@ -90,7 +93,7 @@
 }
 
 - (IBAction)getAnAccount:(id)sender {
-    [rootViewController displayAccountSetupViewController];
+    [rootViewController displayAccountSetup1ViewController:nil];
 }
 
 - (IBAction)seeMyChildsActivity:(id)sender {

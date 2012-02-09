@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SafetyWeb/RootViewController.m"
-         timestampString = "350349456.463506"
+         timestampString = "350513712.542711"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "72"
-         endingLineNumber = "72"
+         startingLineNumber = "96"
+         endingLineNumber = "96"
          landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
@@ -43,6 +43,20 @@
          startingLineNumber = "100"
          endingLineNumber = "100"
          landmarkName = "-yourEmailNextPressed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SafetyWeb/AccountSetup2ViewController.m"
+         timestampString = "350513712.542711"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "132"
+         endingLineNumber = "132"
+         landmarkName = "-continueButton:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

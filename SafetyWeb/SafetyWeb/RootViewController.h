@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "AccountSetupModel.h"
 
 @interface RootViewController : UIViewController {
     @private
@@ -16,7 +17,8 @@
 
 - (void)displayLoginViewController;
 - (void)displayRequestChildActivityViewController;
-- (void)displayAccountSetupViewController;
+- (void)displayAccountSetup1ViewController:(AccountSetupModel*)accSetupModel;
+- (void)displayAccountSetup2ViewController:(AccountSetupModel*)accSetupModel;
 - (void)displaySettingsViewController;
 - (void)displayMobileAlertSignupViewController;
 - (void)displayResetPasswordViewController;
