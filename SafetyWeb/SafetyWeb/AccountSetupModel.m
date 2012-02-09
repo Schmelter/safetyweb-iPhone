@@ -18,6 +18,7 @@
 @synthesize childLastName;
 @synthesize childEmailAddress;
 @synthesize childBirthday;
+@synthesize mobileAlerts;
 
 -(void)dealloc {
     [firstName release];

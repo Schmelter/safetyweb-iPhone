@@ -95,6 +95,7 @@
     
     datePicker.maximumDate = [NSDate date];
     datePicker.hidden = YES;
+    if (accountSetupViewController.setupModel.childBirthday != nil) datePicker.date = accountSetupViewController.setupModel.childBirthday;
     
     [super viewDidLoad];
 }
@@ -172,7 +173,8 @@
     accountSetupViewController.setupModel.childLastName = childsLastName.text;
     accountSetupViewController.setupModel.childEmailAddress = childsEmailAddr.text;
     accountSetupViewController.setupModel.childBirthday = datePicker.date;
-    // TODO: Ask about Mobile Alerts
+    
+    [accountSetupViewController displayMobileAlertOptInViewController];
 }
 
 -(IBAction)datePicked:(id)sender {

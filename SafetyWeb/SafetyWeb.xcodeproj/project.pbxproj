@@ -27,6 +27,8 @@
 		897E984814DB1478007595A7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984714DB1478007595A7 /* UserManager.m */; };
 		89838DB214E30F8C00CDCDBC /* AccountSetupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */; };
 		898441D014E474540047CDFE /* AccountSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441CF14E474540047CDFE /* AccountSetupViewController.m */; };
+		898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441D214E483E80047CDFE /* MobileOptInViewController.m */; };
+		898441D514E485010047CDFE /* MobileOptInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898441D414E485010047CDFE /* MobileOptInView.xib */; };
 		8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */; };
 		8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675114E1AB3100B997D5 /* ResetPasswordView.xib */; };
 		8984675514E1ADEB00B997D5 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984675414E1ADEB00B997D5 /* Utilities.m */; };
@@ -79,6 +81,9 @@
 		89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetupModel.m; sourceTree = "<group>"; };
 		898441CE14E474530047CDFE /* AccountSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetupViewController.h; sourceTree = "<group>"; };
 		898441CF14E474540047CDFE /* AccountSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetupViewController.m; sourceTree = "<group>"; };
+		898441D114E483E80047CDFE /* MobileOptInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileOptInViewController.h; sourceTree = "<group>"; };
+		898441D214E483E80047CDFE /* MobileOptInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileOptInViewController.m; sourceTree = "<group>"; };
+		898441D414E485010047CDFE /* MobileOptInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileOptInView.xib; sourceTree = "<group>"; };
 		8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		8984675114E1AB3100B997D5 /* ResetPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordView.xib; sourceTree = "<group>"; };
@@ -177,6 +182,9 @@
 				89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */,
 				898441CE14E474530047CDFE /* AccountSetupViewController.h */,
 				898441CF14E474540047CDFE /* AccountSetupViewController.m */,
+				898441D114E483E80047CDFE /* MobileOptInViewController.h */,
+				898441D214E483E80047CDFE /* MobileOptInViewController.m */,
+				898441D414E485010047CDFE /* MobileOptInView.xib */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -288,6 +296,7 @@
 				8984675C14E1CA5900B997D5 /* ChildsActivityView.xib in Resources */,
 				893F9D4114E1F58D0074C5EC /* AccountSetup1View.xib in Resources */,
 				893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */,
+				898441D514E485010047CDFE /* MobileOptInView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +343,7 @@
 				893F9D4A14E1F5DE0074C5EC /* AccountSetup2ViewController.m in Sources */,
 				89838DB214E30F8C00CDCDBC /* AccountSetupModel.m in Sources */,
 				898441D014E474540047CDFE /* AccountSetupViewController.m in Sources */,
+				898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

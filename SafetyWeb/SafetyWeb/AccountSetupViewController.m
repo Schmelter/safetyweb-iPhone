@@ -9,6 +9,7 @@
 #import "AccountSetupViewController.h"
 #import "AccountSetup1ViewController.h"
 #import "AccountSetup2ViewController.h"
+#import "MobileOptInViewController.h"
 
 @implementation AccountSetupViewController
 
@@ -80,7 +81,12 @@
 }
 
 - (void)displayMobileAlertOptInViewController {
-    
+    MobileOptInViewController *mobileOptInViewController = [[MobileOptInViewController alloc] initWithNibName:@"MobileOptInView" bundle:nil];
+    [mobileOptInViewController setAccountSetupViewController:self];
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:mobileOptInViewController];
+    [self.view addSubview:mobileOptInViewController.view];
+    [mobileOptInViewController release];
 }
 
 - (void)displayMobileAlertSetup1ViewController {

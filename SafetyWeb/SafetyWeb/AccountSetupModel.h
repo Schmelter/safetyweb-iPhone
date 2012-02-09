@@ -16,6 +16,7 @@
 @private
     NSString *firstName, *lastName, *emailAddress, *password, *childFirstName, *childLastName, *childEmailAddress;
     NSDate *childBirthday;
+    BOOL mobileAlerts;
 }
 
 @property (retain, nonatomic) NSString *firstName;
@@ -26,5 +27,6 @@
 @property (retain, nonatomic) NSString *childLastName;
 @property (retain, nonatomic) NSString *childEmailAddress;
 @property (retain, nonatomic) NSDate *childBirthday;
+@property (nonatomic) BOOL mobileAlerts;
 
 @end
