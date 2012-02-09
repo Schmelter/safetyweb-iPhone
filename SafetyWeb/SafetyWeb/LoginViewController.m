@@ -93,7 +93,7 @@
 }
 
 - (IBAction)getAnAccount:(id)sender {
-    [rootViewController displayAccountSetup1ViewController:nil];
+    [rootViewController displayAccountSetupViewController];
 }
 
 - (IBAction)seeMyChildsActivity:(id)sender {

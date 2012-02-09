@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWViewController.h"
+#import "RootViewController.h"
 #import "Utilities.h"
 
 #define kYourEmailRow   0
 #define kChildsEmailRow 1
 
-@interface ChildsActivityViewController : SWViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ChildsActivityViewController : SubRootViewController <UITableViewDelegate, UITableViewDataSource> {
     @private
     UITextField *yourEmailAddress;
     UITextField *childsEmailAddress;
@@ -24,5 +24,6 @@
 
 -(IBAction)seeChildsActivity:(id)sender;
 -(IBAction)backgroundTap:(id)sender;
+-(IBAction)backButton:(id)sender;
 
 @end

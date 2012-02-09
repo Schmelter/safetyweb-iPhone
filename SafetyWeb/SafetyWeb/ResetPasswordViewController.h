@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "SWViewController.h"
+#import "RootViewController.h"
 #import "Utilities.h"
 
-@interface ResetPasswordViewController : SWViewController {
+@interface ResetPasswordViewController : SubRootViewController {
     @private
     UITextField *emailAddress;
 }

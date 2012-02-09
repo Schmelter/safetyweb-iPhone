@@ -15,7 +15,6 @@
 @synthesize childsLastName;
 @synthesize childsEmailAddr;
 @synthesize childsBirthday;
-@synthesize setupModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,7 +57,7 @@
     childsFirstName.keyboardType = UIKeyboardTypeDefault;
     [childsFirstName addTarget:self action:@selector(childsFirstNameNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     childsFirstName.clearButtonMode = UITextFieldViewModeWhileEditing;
-    childsFirstName.text = setupModel.childFirstName;
+    childsFirstName.text = accountSetupViewController.setupModel.childFirstName;
     
     childsLastName.placeholder = @"Your Child's Last Name";
     childsLastName.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -69,7 +68,7 @@
     childsLastName.keyboardType = UIKeyboardTypeDefault;
     [childsLastName addTarget:self action:@selector(childsLastNameNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     childsLastName.clearButtonMode = UITextFieldViewModeWhileEditing;
-    childsLastName.text = setupModel.childLastName;
+    childsLastName.text = accountSetupViewController.setupModel.childLastName;
     
     childsEmailAddr.placeholder = @"Your Child's Email Address";
     childsEmailAddr.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -80,7 +79,7 @@
     childsEmailAddr.keyboardType = UIKeyboardTypeDefault;
     [childsEmailAddr addTarget:self action:@selector(childsEmailAddrNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     childsEmailAddr.clearButtonMode = UITextFieldViewModeWhileEditing;
-    childsEmailAddr.text = setupModel.childEmailAddress;
+    childsEmailAddr.text = accountSetupViewController.setupModel.childEmailAddress;
     
     childsBirthday.placeholder = @"Your Child's Date of Birth";
     childsBirthday.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -92,7 +91,7 @@
     [childsBirthday addTarget:self action:@selector(childsBirthdayPressed:) forControlEvents:UIControlEventTouchUpInside];
     childsBirthday.clearButtonMode = UITextFieldViewModeWhileEditing;
     childsBirthday.enabled = NO;
-    childsBirthday.text = [NSDateFormatter localizedStringFromDate:setupModel.childBirthday dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle];
+    childsBirthday.text = [NSDateFormatter localizedStringFromDate:accountSetupViewController.setupModel.childBirthday dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle];
     
     datePicker.maximumDate = [NSDate date];
     datePicker.hidden = YES;
@@ -109,12 +108,6 @@
     self.datePicker = nil;
     
     [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark -
@@ -175,10 +168,10 @@
         return;
     }
     
-    setupModel.childFirstName = childsFirstName.text;
-    setupModel.childLastName = childsLastName.text;
-    setupModel.childEmailAddress = childsEmailAddr.text;
-    setupModel.childBirthday = datePicker.date;
+    accountSetupViewController.setupModel.childFirstName = childsFirstName.text;
+    accountSetupViewController.setupModel.childLastName = childsLastName.text;
+    accountSetupViewController.setupModel.childEmailAddress = childsEmailAddr.text;
+    accountSetupViewController.setupModel.childBirthday = datePicker.date;
     // TODO: Ask about Mobile Alerts
 }
 
@@ -188,7 +181,7 @@
 }
 
 -(IBAction)backButton:(id)sender {
-    [rootViewController displayAccountSetup1ViewController:setupModel];
+    [accountSetupViewController displayAccountSetup1ViewController];
 }
 
 #pragma mark -
@@ -272,7 +265,6 @@
     [childsLastName release];
     [childsEmailAddr release];
     [childsBirthday release];
-    [setupModel release];
     
     [super dealloc];
 }

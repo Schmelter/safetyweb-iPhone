@@ -10,12 +10,11 @@
 #import <UIKit/UIKit.h>
 #import "UserManager.h"
 #import "RootViewController.h"
-#import "SWViewController.h"
 
 #define kUsernameRow    0
 #define kPasswordRow    1
 
-@interface LoginViewController : SWViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface LoginViewController : SubRootViewController <UITableViewDelegate, UITableViewDataSource> {
 @private
     UITextField *username;
     UITextField *password;

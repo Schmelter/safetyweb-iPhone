@@ -145,6 +145,10 @@
     }
 }
 
+-(IBAction)backButton:(id)sender {
+    [rootViewController displayLoginViewController];
+}
+
 #pragma mark -
 #pragma mark UITableViewDelegate and UITableViewDataSource methods
 

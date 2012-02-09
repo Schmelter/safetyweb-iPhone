@@ -15,7 +15,6 @@
 @synthesize emailAddress;
 @synthesize createPass;
 @synthesize confirmPass;
-@synthesize setupModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,7 +58,7 @@
     firstName.keyboardType = UIKeyboardTypeDefault;
     [firstName addTarget:self action:@selector(firstNameNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     firstName.clearButtonMode = UITextFieldViewModeWhileEditing;
-    firstName.text = setupModel.firstName;
+    firstName.text = accountSetupViewController.setupModel.firstName;
     
     lastName.placeholder = @"Your Last Name";
     lastName.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -70,7 +69,7 @@
     lastName.keyboardType = UIKeyboardTypeDefault;
     [lastName addTarget:self action:@selector(lastNameNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     lastName.clearButtonMode = UITextFieldViewModeWhileEditing;
-    lastName.text = setupModel.lastName;
+    lastName.text = accountSetupViewController.setupModel.lastName;
     
     emailAddress.placeholder = @"Your Email Address";
     emailAddress.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -81,7 +80,7 @@
     emailAddress.keyboardType = UIKeyboardTypeEmailAddress;
     [emailAddress addTarget:self action:@selector(emailAddressNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     emailAddress.clearButtonMode = UITextFieldViewModeWhileEditing;
-    emailAddress.text = setupModel.emailAddress;
+    emailAddress.text = accountSetupViewController.setupModel.emailAddress;
     
     createPass.placeholder = @"Create Password";
     createPass.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -93,7 +92,7 @@
     [createPass addTarget:self action:@selector(createPassNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     createPass.clearButtonMode = UITextFieldViewModeWhileEditing;
     createPass.secureTextEntry = YES;
-    createPass.text = setupModel.password;
+    createPass.text = accountSetupViewController.setupModel.password;
     
     confirmPass.placeholder = @"Confirm Password";
     confirmPass.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -105,7 +104,7 @@
     [confirmPass addTarget:self action:@selector(confirmPassGoPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     confirmPass.clearButtonMode = UITextFieldViewModeWhileEditing;
     confirmPass.secureTextEntry = YES;
-    confirmPass.text = setupModel.password;
+    confirmPass.text = accountSetupViewController.setupModel.password;
     
     [super viewDidLoad];
 }
@@ -192,15 +191,15 @@
         return;
     }
     
-    setupModel.firstName = firstName.text;
-    setupModel.lastName = lastName.text;
-    setupModel.emailAddress = emailAddress.text;
-    setupModel.password = createPass.text;
-    [rootViewController displayAccountSetup2ViewController:setupModel];
+    accountSetupViewController.setupModel.firstName = firstName.text;
+    accountSetupViewController.setupModel.lastName = lastName.text;
+    accountSetupViewController.setupModel.emailAddress = emailAddress.text;
+    accountSetupViewController.setupModel.password = createPass.text;
+    [accountSetupViewController displayAccountSetup2ViewController];
 }
 
 -(IBAction)backButton:(id)sender {
-    [rootViewController displayLoginViewController];
+    [accountSetupViewController closeAccountSetup];
 }
 
 #pragma mark -
@@ -294,7 +293,6 @@
     [emailAddress release];
     [createPass release];
     [confirmPass release];
-    [setupModel release];
     
     [super dealloc];
 }

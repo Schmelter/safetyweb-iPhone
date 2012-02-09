@@ -17,10 +17,16 @@
 
 - (void)displayLoginViewController;
 - (void)displayRequestChildActivityViewController;
-- (void)displayAccountSetup1ViewController:(AccountSetupModel*)accSetupModel;
-- (void)displayAccountSetup2ViewController:(AccountSetupModel*)accSetupModel;
-- (void)displaySettingsViewController;
-- (void)displayMobileAlertSignupViewController;
+- (void)displayAccountSetupViewController;
 - (void)displayResetPasswordViewController;
+
+@end
+
+@interface SubRootViewController : UIViewController {
+@protected
+    RootViewController *rootViewController;
+}
+
+-(void)setRootViewController:(RootViewController*)rootViewController;
 
 @end
