@@ -36,5 +36,6 @@
 -(IBAction)backgroundTap:(id)sender;
 -(IBAction)continueButton:(id)sender;
 -(IBAction)datePicked:(id)sender;
+-(IBAction)backButton:(id)sender;
 
 @end

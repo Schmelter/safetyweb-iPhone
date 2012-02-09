@@ -35,5 +35,6 @@
 
 -(IBAction)backgroundTap:(id)sender;
 -(IBAction)continueButton:(id)sender;
+-(IBAction)backButton:(id)sender;
 
 @end

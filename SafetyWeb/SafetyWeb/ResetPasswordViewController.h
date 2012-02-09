@@ -20,5 +20,6 @@
 
 -(IBAction)backgroundTap:(id)sender;
 -(IBAction)emailGoButton:(id)sender;
+-(IBAction)backButton:(id)sender;
 
 @end

@@ -187,6 +187,10 @@
     datePicker.hidden = YES;
 }
 
+-(IBAction)backButton:(id)sender {
+    [rootViewController displayAccountSetup1ViewController:setupModel];
+}
+
 #pragma mark -
 #pragma mark UITableViewDelegate and UITableViewDataSource Methods
 

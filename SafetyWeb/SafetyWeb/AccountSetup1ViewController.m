@@ -199,6 +199,10 @@
     [rootViewController displayAccountSetup2ViewController:setupModel];
 }
 
+-(IBAction)backButton:(id)sender {
+    [rootViewController displayLoginViewController];
+}
+
 #pragma mark -
 #pragma mark UITableViewDelegate and UITableViewDataSource methods
 

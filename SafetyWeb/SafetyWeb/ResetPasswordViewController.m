@@ -54,6 +54,10 @@
     [rootViewController displayLoginViewController];
 }
 
+-(IBAction)backButton:(id)sender {
+    [rootViewController displayLoginViewController];
+}
+
 -(void)dealloc {
     [emailAddress release];
     
