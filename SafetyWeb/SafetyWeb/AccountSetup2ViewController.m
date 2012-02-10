@@ -15,12 +15,13 @@
 @synthesize childsLastName;
 @synthesize childsEmailAddr;
 @synthesize childsBirthday;
+@synthesize childInfoTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -38,10 +39,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    self.childsFirstName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
-    self.childsLastName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
-    self.childsEmailAddr = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
-    self.childsBirthday = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
+    self.childsFirstName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
+    self.childsLastName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
+    self.childsEmailAddr = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
+    self.childsBirthday = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
     
     [childsFirstName release];
     [childsLastName release];
@@ -58,6 +59,7 @@
     [childsFirstName addTarget:self action:@selector(childsFirstNameNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     childsFirstName.clearButtonMode = UITextFieldViewModeWhileEditing;
     childsFirstName.text = accountSetupViewController.setupModel.childFirstName;
+    childsFirstName.delegate = self;
     
     childsLastName.placeholder = @"Your Child's Last Name";
     childsLastName.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -69,6 +71,7 @@
     [childsLastName addTarget:self action:@selector(childsLastNameNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     childsLastName.clearButtonMode = UITextFieldViewModeWhileEditing;
     childsLastName.text = accountSetupViewController.setupModel.childLastName;
+    childsLastName.delegate = self;
     
     childsEmailAddr.placeholder = @"Your Child's Email Address";
     childsEmailAddr.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -80,6 +83,7 @@
     [childsEmailAddr addTarget:self action:@selector(childsEmailAddrNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     childsEmailAddr.clearButtonMode = UITextFieldViewModeWhileEditing;
     childsEmailAddr.text = accountSetupViewController.setupModel.childEmailAddress;
+    childsEmailAddr.delegate = self;
     
     childsBirthday.placeholder = @"Your Child's Date of Birth";
     childsBirthday.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -92,10 +96,14 @@
     childsBirthday.clearButtonMode = UITextFieldViewModeWhileEditing;
     childsBirthday.enabled = NO;
     childsBirthday.text = [NSDateFormatter localizedStringFromDate:accountSetupViewController.setupModel.childBirthday dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle];
+    childsBirthday.delegate = self;
     
     datePicker.maximumDate = [NSDate date];
     datePicker.hidden = YES;
     if (accountSetupViewController.setupModel.childBirthday != nil) datePicker.date = accountSetupViewController.setupModel.childBirthday;
+    
+    childInfoTable.layer.cornerRadius = 10;
+    childInfoTable.scrollEnabled = NO;
     
     [super viewDidLoad];
 }
@@ -107,6 +115,7 @@
     self.childsEmailAddr = nil;
     self.childsBirthday = nil;
     self.datePicker = nil;
+    self.childInfoTable = nil;
     
     [super viewDidUnload];
 }
@@ -119,6 +128,7 @@
     [childsLastName resignFirstResponder];
     [childsEmailAddr resignFirstResponder];
     [childsBirthday resignFirstResponder];
+    datePicker.hidden = YES;
 }
 
 -(IBAction)continueButton:(id)sender {
@@ -166,6 +176,9 @@
         [badEmailAlert show];
         [badEmailAlert release];
         datePicker.hidden = NO;
+        [childsFirstName resignFirstResponder];
+        [childsLastName resignFirstResponder];
+        [childsEmailAddr resignFirstResponder];
         return;
     }
     
@@ -228,15 +241,21 @@
     switch (indexPath.row) {
         case kChildsFirstNameRow:
             [childsFirstName becomeFirstResponder];
+            datePicker.hidden = YES;
             break;
         case kChildsLastNameRow:
             [childsLastName becomeFirstResponder];
+            datePicker.hidden = YES;
             break;
         case kChildsEmailAddrRow:
             [childsEmailAddr becomeFirstResponder];
+            datePicker.hidden = YES;
             break;
         case kChildsBirthdayRow:
             datePicker.hidden = NO;
+            [childsFirstName resignFirstResponder];
+            [childsLastName resignFirstResponder];
+            [childsEmailAddr resignFirstResponder];
             break;
     }
 }
@@ -258,8 +277,43 @@
 }
 
 -(IBAction)childsBirthdayPressed:(id)sender {
+    [childsFirstName resignFirstResponder];
+    [childsLastName resignFirstResponder];
+    [childsEmailAddr resignFirstResponder];
     datePicker.hidden = NO;
 }
+
+#pragma mark -
+#pragma mark UITextFieldDelegate methods
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    datePicker.hidden = YES;
+    // Slide up the view if the keyboard will cover one of the inputs
+    CGRect rect = self.view.frame;
+    if ((textField == childsEmailAddr) && rect.origin.y != kChildsEmailOffset) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.5];
+        
+        rect.origin.y = kChildsEmailOffset;
+        
+        self.view.frame = rect;
+        [UIView commitAnimations];
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    // Slide down the view if the view is slid up
+    CGRect rect = self.view.frame;
+    if ((textField == childsEmailAddr) && rect.origin.y != 0) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.5];
+        
+        rect.origin.y = 0;
+        
+        self.view.frame = rect;
+        [UIView commitAnimations];
+    }
+}
+
 
 -(void)dealloc {
     [datePicker release];
@@ -267,6 +321,7 @@
     [childsLastName release];
     [childsEmailAddr release];
     [childsBirthday release];
+    [childInfoTable release];
     
     [super dealloc];
 }

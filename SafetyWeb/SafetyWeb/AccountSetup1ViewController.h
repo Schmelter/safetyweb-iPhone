@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "AccountSetupViewController.h"
 #import "Utilities.h"
 #import "AccountSetupModel.h"
@@ -16,13 +18,17 @@
 #define kCreatePassRow      3
 #define kConfirmPassRow     4
 
-@interface AccountSetup1ViewController : SubAccountSetupViewController <UITableViewDelegate, UITableViewDataSource> {
+#define kCreatePassOffset   -70
+#define kConfirmPassOffset  -120
+
+@interface AccountSetup1ViewController : SubAccountSetupViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
     @private
     UITextField *firstName;
     UITextField *lastName;
     UITextField *emailAddress;
     UITextField *createPass;
     UITextField *confirmPass;
+    UITableView *infoTable;
 }
 
 @property (retain, nonatomic) IBOutlet UITextField *firstName;
@@ -30,6 +36,7 @@
 @property (retain, nonatomic) IBOutlet UITextField *emailAddress;
 @property (retain, nonatomic) IBOutlet UITextField *createPass;
 @property (retain, nonatomic) IBOutlet UITextField *confirmPass;
+@property (retain, nonatomic) IBOutlet UITableView *infoTable;
 
 -(IBAction)backgroundTap:(id)sender;
 -(IBAction)continueButton:(id)sender;

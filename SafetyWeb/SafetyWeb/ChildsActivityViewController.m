@@ -12,6 +12,7 @@
 
 @synthesize yourEmailAddress;
 @synthesize childsEmailAddress;
+@synthesize childInfoTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,8 +32,8 @@
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
-    self.yourEmailAddress = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
-    self.childsEmailAddress = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
+    self.yourEmailAddress = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
+    self.childsEmailAddress = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
     
     yourEmailAddress.placeholder = @"Your Email Address";
     yourEmailAddress.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -52,12 +53,16 @@
     childsEmailAddress.keyboardType = UIKeyboardTypeEmailAddress;
     [childsEmailAddress addTarget:self action:@selector(childsEmailGoPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
+    childInfoTable.layer.cornerRadius = 10;
+    childInfoTable.scrollEnabled = NO;
+    
     [super viewDidLoad];
 }
 
 - (void)viewDidUnload {
     self.yourEmailAddress = nil;
     self.childsEmailAddress = nil;
+    self.childInfoTable = nil;
     
     [super viewDidUnload];
 }
@@ -191,6 +196,7 @@
 -(void)dealloc {
     [yourEmailAddress release];
     [childsEmailAddress release];
+    [childInfoTable release];
     
     [super dealloc];
 }

@@ -15,6 +15,7 @@
 @synthesize emailAddress;
 @synthesize createPass;
 @synthesize confirmPass;
+@synthesize infoTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,11 +38,11 @@
 
 - (void)viewDidLoad
 {
-    self.firstName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
-    self.lastName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
-    self.emailAddress = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
-    self.createPass = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
-    self.confirmPass = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 30)];
+    self.firstName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
+    self.lastName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
+    self.emailAddress = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
+    self.createPass = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
+    self.confirmPass = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 48)];
     
     [firstName release];
     [lastName release];
@@ -59,6 +60,7 @@
     [firstName addTarget:self action:@selector(firstNameNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     firstName.clearButtonMode = UITextFieldViewModeWhileEditing;
     firstName.text = accountSetupViewController.setupModel.firstName;
+    firstName.delegate = self;
     
     lastName.placeholder = @"Your Last Name";
     lastName.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -70,6 +72,7 @@
     [lastName addTarget:self action:@selector(lastNameNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     lastName.clearButtonMode = UITextFieldViewModeWhileEditing;
     lastName.text = accountSetupViewController.setupModel.lastName;
+    lastName.delegate = self;
     
     emailAddress.placeholder = @"Your Email Address";
     emailAddress.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -81,6 +84,7 @@
     [emailAddress addTarget:self action:@selector(emailAddressNextPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
     emailAddress.clearButtonMode = UITextFieldViewModeWhileEditing;
     emailAddress.text = accountSetupViewController.setupModel.emailAddress;
+    emailAddress.delegate = self;
     
     createPass.placeholder = @"Create Password";
     createPass.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -93,6 +97,7 @@
     createPass.clearButtonMode = UITextFieldViewModeWhileEditing;
     createPass.secureTextEntry = YES;
     createPass.text = accountSetupViewController.setupModel.password;
+    createPass.delegate = self;
     
     confirmPass.placeholder = @"Confirm Password";
     confirmPass.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -105,6 +110,10 @@
     confirmPass.clearButtonMode = UITextFieldViewModeWhileEditing;
     confirmPass.secureTextEntry = YES;
     confirmPass.text = accountSetupViewController.setupModel.password;
+    confirmPass.delegate = self;
+    
+    infoTable.layer.cornerRadius = 10;
+    infoTable.scrollEnabled = NO;
     
     [super viewDidLoad];
 }
@@ -116,6 +125,7 @@
     self.emailAddress = nil;
     self.createPass = nil;
     self.confirmPass = nil;
+    self.infoTable = nil;
     
     [super viewDidUnload];
 }
@@ -287,12 +297,52 @@
     [self continueButton:sender];
 }
 
+#pragma mark -
+#pragma mark UITextFieldDelegate Methods
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    // Slide up the view if the keyboard will cover one of the inputs
+    CGRect rect = self.view.frame;
+    if (textField == createPass && rect.origin.y != kCreatePassOffset) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.5];
+        
+        rect.origin.y = kCreatePassOffset;
+        
+        self.view.frame = rect;
+        [UIView commitAnimations];
+    } else if (textField == confirmPass && rect.origin.y != kConfirmPassOffset) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.5];
+        
+        rect.origin.y = kConfirmPassOffset;
+        
+        self.view.frame = rect;
+        [UIView commitAnimations];
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    // Slide down the view if the view is slid up
+    CGRect rect = self.view.frame;
+    if ((textField == createPass || textField == confirmPass) && rect.origin.y != 0 && ![createPass isFirstResponder] && ![confirmPass isFirstResponder]) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.5];
+        
+        rect.origin.y = 0;
+        
+        self.view.frame = rect;
+        [UIView commitAnimations];
+    }
+}
+
 -(void)dealloc {
     [firstName release];
     [lastName release];
     [emailAddress release];
     [createPass release];
     [confirmPass release];
+    [infoTable release];
     
     [super dealloc];
 }

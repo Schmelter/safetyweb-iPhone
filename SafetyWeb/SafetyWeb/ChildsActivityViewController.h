@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "RootViewController.h"
 #import "Utilities.h"
 
@@ -17,10 +18,12 @@
     @private
     UITextField *yourEmailAddress;
     UITextField *childsEmailAddress;
+    UITableView *childInfoTable;
 }
 
 @property (retain, nonatomic) IBOutlet UITextField *yourEmailAddress;
 @property (retain, nonatomic) IBOutlet UITextField *childsEmailAddress;
+@property (retain, nonatomic) IBOutlet UITableView *childInfoTable;
 
 -(IBAction)seeChildsActivity:(id)sender;
 -(IBAction)backgroundTap:(id)sender;
