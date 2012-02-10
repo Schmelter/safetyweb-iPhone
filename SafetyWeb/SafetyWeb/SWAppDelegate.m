@@ -27,6 +27,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     return YES;
 }
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "UserManager.h"
 #import "RootViewController.h"
 
@@ -19,11 +20,13 @@
     UITextField *username;
     UITextField *password;
     UIButton *forgotPassword;
+    UITableView *userPassTable;
 }
 
 @property (retain, nonatomic) IBOutlet UITextField *username;
 @property (retain, nonatomic) IBOutlet UITextField *password;
 @property (retain, nonatomic) IBOutlet UIButton *forgotPassword;
+@property (retain, nonatomic) IBOutlet UITableView *userPassTable;
 
 - (IBAction)forgotPassword:(id)sender;
 - (IBAction)getAnAccount:(id)sender;

@@ -13,6 +13,7 @@
 @synthesize username;
 @synthesize password;
 @synthesize forgotPassword;
+@synthesize userPassTable;
 
 
 #pragma mark -
@@ -22,8 +23,8 @@
     // Get the current username/password from the last login, or the last time they used this
     // interface
     UserCredentials *credentials = [UserManager getLastUsedCredentials];
-    self.username = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 30)];
-    self.password = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 30)];
+    self.username = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 48)];
+    self.password = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 48)];
     [username release];
     [password release];
     
@@ -49,6 +50,10 @@
         [username setText:credentials.username];
         [password setText:credentials.password];
     }
+    
+    userPassTable.layer.cornerRadius = 10;
+    userPassTable.scrollEnabled = NO;
+    
     [super viewDidLoad];
 }
 
@@ -60,6 +65,7 @@
 - (void)viewDidUnload {
     self.username = nil;
     self.password = nil;
+    self.userPassTable = nil;
     
     [super viewDidUnload];
 }
@@ -154,6 +160,7 @@
 - (void)dealloc {
     [username release];
     [password release];
+    [userPassTable release];
     
     [super dealloc];
 }

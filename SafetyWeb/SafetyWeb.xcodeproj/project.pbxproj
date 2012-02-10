@@ -29,6 +29,11 @@
 		898441D014E474540047CDFE /* AccountSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441CF14E474540047CDFE /* AccountSetupViewController.m */; };
 		898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441D214E483E80047CDFE /* MobileOptInViewController.m */; };
 		898441D514E485010047CDFE /* MobileOptInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898441D414E485010047CDFE /* MobileOptInView.xib */; };
+		898441DC14E48A240047CDFE /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441D714E48A240047CDFE /* Back@2x.png */; };
+		898441DD14E48A240047CDFE /* Background_SignIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441D814E48A240047CDFE /* Background_SignIn@2x.png */; };
+		898441DE14E48A240047CDFE /* Button_Blue_LG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441D914E48A240047CDFE /* Button_Blue_LG@2x.png */; };
+		898441E014E48A240047CDFE /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441DB14E48A240047CDFE /* LaunchScreen@2x.png */; };
+		898441E214E48AC90047CDFE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441E114E48AC90047CDFE /* Default.png */; };
 		8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */; };
 		8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675114E1AB3100B997D5 /* ResetPasswordView.xib */; };
 		8984675514E1ADEB00B997D5 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984675414E1ADEB00B997D5 /* Utilities.m */; };
@@ -36,6 +41,7 @@
 		8984675C14E1CA5900B997D5 /* ChildsActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */; };
 		898651FB14DB5A1E008F353B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FA14DB5A1E008F353B /* MainWindow.xib */; };
 		898651FD14DB5CB7008F353B /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FC14DB5CB7008F353B /* LoginView.xib */; };
+		8987E03C14E5C09000D679F3 /* StandardBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +90,11 @@
 		898441D114E483E80047CDFE /* MobileOptInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileOptInViewController.h; sourceTree = "<group>"; };
 		898441D214E483E80047CDFE /* MobileOptInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileOptInViewController.m; sourceTree = "<group>"; };
 		898441D414E485010047CDFE /* MobileOptInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileOptInView.xib; sourceTree = "<group>"; };
+		898441D714E48A240047CDFE /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
+		898441D814E48A240047CDFE /* Background_SignIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background_SignIn@2x.png"; sourceTree = "<group>"; };
+		898441D914E48A240047CDFE /* Button_Blue_LG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Blue_LG@2x.png"; sourceTree = "<group>"; };
+		898441DB14E48A240047CDFE /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
+		898441E114E48AC90047CDFE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		8984675114E1AB3100B997D5 /* ResetPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordView.xib; sourceTree = "<group>"; };
@@ -94,6 +105,7 @@
 		8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildsActivityView.xib; sourceTree = "<group>"; };
 		898651FA14DB5A1E008F353B /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		898651FC14DB5CB7008F353B /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +135,7 @@
 		897E97FA14DB02C3007595A7 = {
 			isa = PBXGroup;
 			children = (
+				898441D614E48A240047CDFE /* images */,
 				897E980F14DB02C3007595A7 /* SafetyWeb */,
 				897E982714DB02C3007595A7 /* SafetyWebTests */,
 				897E980814DB02C3007595A7 /* Frameworks */,
@@ -219,6 +232,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		898441D614E48A240047CDFE /* images */ = {
+			isa = PBXGroup;
+			children = (
+				898441E114E48AC90047CDFE /* Default.png */,
+				898441D714E48A240047CDFE /* Back@2x.png */,
+				898441D814E48A240047CDFE /* Background_SignIn@2x.png */,
+				898441D914E48A240047CDFE /* Button_Blue_LG@2x.png */,
+				898441DB14E48A240047CDFE /* LaunchScreen@2x.png */,
+				8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -297,6 +323,12 @@
 				893F9D4114E1F58D0074C5EC /* AccountSetup1View.xib in Resources */,
 				893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */,
 				898441D514E485010047CDFE /* MobileOptInView.xib in Resources */,
+				898441DC14E48A240047CDFE /* Back@2x.png in Resources */,
+				898441DD14E48A240047CDFE /* Background_SignIn@2x.png in Resources */,
+				898441DE14E48A240047CDFE /* Button_Blue_LG@2x.png in Resources */,
+				898441E014E48A240047CDFE /* LaunchScreen@2x.png in Resources */,
+				898441E214E48AC90047CDFE /* Default.png in Resources */,
+				8987E03C14E5C09000D679F3 /* StandardBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
