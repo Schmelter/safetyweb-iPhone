@@ -46,6 +46,9 @@
 		89867F2414E99FD500B054B2 /* MobileAlertSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */; };
 		89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */; };
 		8987E03C14E5C09000D679F3 /* StandardBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */; };
+		899C095014EAD9A000DDC780 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C094F14EAD9A000DDC780 /* LoadView.m */; };
+		899C095414EAE43900DDC780 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C095314EAE43900DDC780 /* LoadViewController.m */; };
+		899C095614EAE57000DDC780 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 899C095514EAE57000DDC780 /* LoadView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +119,11 @@
 		89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileAlertSetup2ViewController.m; sourceTree = "<group>"; };
 		89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileAlertSetup2View.xib; sourceTree = "<group>"; };
 		8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground@2x.png"; sourceTree = "<group>"; };
+		899C094E14EAD9A000DDC780 /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadView.h; sourceTree = "<group>"; };
+		899C094F14EAD9A000DDC780 /* LoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadView.m; sourceTree = "<group>"; };
+		899C095214EAE43900DDC780 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
+		899C095314EAE43900DDC780 /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
+		899C095514EAE57000DDC780 /* LoadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +222,11 @@
 				89867F2214E99FD500B054B2 /* MobileAlertSetup2ViewController.h */,
 				89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */,
 				89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */,
+				899C094E14EAD9A000DDC780 /* LoadView.h */,
+				899C094F14EAD9A000DDC780 /* LoadView.m */,
+				899C095214EAE43900DDC780 /* LoadViewController.h */,
+				899C095314EAE43900DDC780 /* LoadViewController.m */,
+				899C095514EAE57000DDC780 /* LoadView.xib */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -347,6 +360,7 @@
 				8987E03C14E5C09000D679F3 /* StandardBackground@2x.png in Resources */,
 				89867F2114E9928600B054B2 /* MobileAlertSetup1View.xib in Resources */,
 				89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */,
+				899C095614EAE57000DDC780 /* LoadView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +410,8 @@
 				898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */,
 				89867F1E14E9870100B054B2 /* MobileAlertSetup1ViewController.m in Sources */,
 				89867F2414E99FD500B054B2 /* MobileAlertSetup2ViewController.m in Sources */,
+				899C095014EAD9A000DDC780 /* LoadView.m in Sources */,
+				899C095414EAE43900DDC780 /* LoadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

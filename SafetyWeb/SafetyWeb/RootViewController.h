@@ -19,6 +19,8 @@
 - (void)displayRequestChildActivityViewController;
 - (void)displayAccountSetupViewController;
 - (void)displayResetPasswordViewController;
+// TODO: Refactor the LoadViewController to take a LoadProgressObject
+- (void)displayLoadViewController;
 
 @end
 

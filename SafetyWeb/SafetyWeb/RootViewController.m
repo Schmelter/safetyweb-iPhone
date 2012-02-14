@@ -11,6 +11,7 @@
 #import "ResetPasswordViewController.h"
 #import "ChildsActivityViewController.h"
 #import "AccountSetupViewController.h"
+#import "LoadViewController.h"
 
 @implementation RootViewController
 
@@ -64,6 +65,16 @@
     [self setCurrentViewController:resetPassViewController];
     [self.view addSubview:currentViewController.view];
     [resetPassViewController release];
+}
+
+- (void)displayLoadViewController {
+    LoadViewController *loadViewController = [[LoadViewController alloc] initWithNibName:@"LoadView" bundle:nil];
+    [loadViewController setRootViewController:self];
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:loadViewController];
+    [self.view addSubview:currentViewController.view];
+    NSLog(@"View: %@", currentViewController.view);
+    [loadViewController release];
 }
 
 - (void)dealloc {

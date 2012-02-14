@@ -51,7 +51,9 @@
         return;
     }
     // TODO: Ask the UserManager or some other Manager to request an email with their username
-    [rootViewController displayLoginViewController];
+    [rootViewController displayLoadViewController];
+    
+    //[rootViewController displayLoginViewController];
 }
 
 -(IBAction)backButton:(id)sender {
