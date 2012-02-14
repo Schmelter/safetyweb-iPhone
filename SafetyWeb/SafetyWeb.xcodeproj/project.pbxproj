@@ -41,6 +41,10 @@
 		8984675C14E1CA5900B997D5 /* ChildsActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */; };
 		898651FB14DB5A1E008F353B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FA14DB5A1E008F353B /* MainWindow.xib */; };
 		898651FD14DB5CB7008F353B /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898651FC14DB5CB7008F353B /* LoginView.xib */; };
+		89867F1E14E9870100B054B2 /* MobileAlertSetup1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89867F1D14E9870100B054B2 /* MobileAlertSetup1ViewController.m */; };
+		89867F2114E9928600B054B2 /* MobileAlertSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2014E9928500B054B2 /* MobileAlertSetup1View.xib */; };
+		89867F2414E99FD500B054B2 /* MobileAlertSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */; };
+		89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */; };
 		8987E03C14E5C09000D679F3 /* StandardBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +109,12 @@
 		8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildsActivityView.xib; sourceTree = "<group>"; };
 		898651FA14DB5A1E008F353B /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		898651FC14DB5CB7008F353B /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		89867F1C14E9870100B054B2 /* MobileAlertSetup1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileAlertSetup1ViewController.h; sourceTree = "<group>"; };
+		89867F1D14E9870100B054B2 /* MobileAlertSetup1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileAlertSetup1ViewController.m; sourceTree = "<group>"; };
+		89867F2014E9928500B054B2 /* MobileAlertSetup1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileAlertSetup1View.xib; sourceTree = "<group>"; };
+		89867F2214E99FD500B054B2 /* MobileAlertSetup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileAlertSetup2ViewController.h; sourceTree = "<group>"; };
+		89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileAlertSetup2ViewController.m; sourceTree = "<group>"; };
+		89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileAlertSetup2View.xib; sourceTree = "<group>"; };
 		8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +208,12 @@
 				898441D114E483E80047CDFE /* MobileOptInViewController.h */,
 				898441D214E483E80047CDFE /* MobileOptInViewController.m */,
 				898441D414E485010047CDFE /* MobileOptInView.xib */,
+				89867F1C14E9870100B054B2 /* MobileAlertSetup1ViewController.h */,
+				89867F1D14E9870100B054B2 /* MobileAlertSetup1ViewController.m */,
+				89867F2014E9928500B054B2 /* MobileAlertSetup1View.xib */,
+				89867F2214E99FD500B054B2 /* MobileAlertSetup2ViewController.h */,
+				89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */,
+				89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -329,6 +345,8 @@
 				898441E014E48A240047CDFE /* LaunchScreen@2x.png in Resources */,
 				898441E214E48AC90047CDFE /* Default.png in Resources */,
 				8987E03C14E5C09000D679F3 /* StandardBackground@2x.png in Resources */,
+				89867F2114E9928600B054B2 /* MobileAlertSetup1View.xib in Resources */,
+				89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +394,8 @@
 				89838DB214E30F8C00CDCDBC /* AccountSetupModel.m in Sources */,
 				898441D014E474540047CDFE /* AccountSetupViewController.m in Sources */,
 				898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */,
+				89867F1E14E9870100B054B2 /* MobileAlertSetup1ViewController.m in Sources */,
+				89867F2414E99FD500B054B2 /* MobileAlertSetup2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

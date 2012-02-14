@@ -305,6 +305,7 @@
     CGRect rect = self.view.frame;
     if (textField == createPass && rect.origin.y != kCreatePassOffset) {
         [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationDuration:0.5];
         
         rect.origin.y = kCreatePassOffset;
@@ -313,6 +314,7 @@
         [UIView commitAnimations];
     } else if (textField == confirmPass && rect.origin.y != kConfirmPassOffset) {
         [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationDuration:0.5];
         
         rect.origin.y = kConfirmPassOffset;
@@ -327,6 +329,7 @@
     CGRect rect = self.view.frame;
     if ((textField == createPass || textField == confirmPass) && rect.origin.y != 0 && ![createPass isFirstResponder] && ![confirmPass isFirstResponder]) {
         [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationDuration:0.5];
         
         rect.origin.y = 0;

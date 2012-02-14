@@ -291,6 +291,7 @@
     CGRect rect = self.view.frame;
     if ((textField == childsEmailAddr) && rect.origin.y != kChildsEmailOffset) {
         [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationDuration:0.5];
         
         rect.origin.y = kChildsEmailOffset;
@@ -305,6 +306,7 @@
     CGRect rect = self.view.frame;
     if ((textField == childsEmailAddr) && rect.origin.y != 0) {
         [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationDuration:0.5];
         
         rect.origin.y = 0;

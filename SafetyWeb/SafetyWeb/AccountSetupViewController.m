@@ -10,6 +10,8 @@
 #import "AccountSetup1ViewController.h"
 #import "AccountSetup2ViewController.h"
 #import "MobileOptInViewController.h"
+#import "MobileAlertSetup1ViewController.h"
+#import "MobileAlertSetup2ViewController.h"
 
 @implementation AccountSetupViewController
 
@@ -47,6 +49,7 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self displayAccountSetup1ViewController];
 }
 
@@ -90,11 +93,21 @@
 }
 
 - (void)displayMobileAlertSetup1ViewController {
-    
+    MobileAlertSetup1ViewController *mobileAlert1 = [[MobileAlertSetup1ViewController alloc] initWithNibName:@"MobileAlertSetup1View" bundle:nil];
+    [mobileAlert1 setAccountSetupViewController:self];
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:mobileAlert1];
+    [self.view addSubview:mobileAlert1.view];
+    [mobileAlert1 release];
 }
 
 - (void)displayMobileAlertSetup2ViewController {
-    
+    MobileAlertSetup2ViewController *mobileAlert2 = [[MobileAlertSetup2ViewController alloc] initWithNibName:@"MobileAlertSetup2View" bundle:nil];
+    [mobileAlert2 setAccountSetupViewController:self];
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:mobileAlert2];
+    [self.view addSubview:mobileAlert2.view];
+    [mobileAlert2 release];
 }
 
 -(void)dealloc {

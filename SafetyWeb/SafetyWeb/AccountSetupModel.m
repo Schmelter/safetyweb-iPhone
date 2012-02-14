@@ -19,6 +19,10 @@
 @synthesize childEmailAddress;
 @synthesize childBirthday;
 @synthesize mobileAlerts;
+@synthesize mobileServiceProvider;
+@synthesize childsMobileNumber;
+@synthesize mobileUserId;
+@synthesize mobilePassword;
 
 -(void)dealloc {
     [firstName release];
@@ -29,6 +33,9 @@
     [childLastName release];
     [childEmailAddress release];
     [childBirthday release];
+    [childsMobileNumber release];
+    [mobileUserId release];
+    [mobilePassword release];
     
     [super dealloc];
 }
