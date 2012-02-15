@@ -36,25 +36,27 @@
 #pragma mark - View lifecycle
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
-{
-    // TODO: Look at the provider, and put that image in the mobile service provider image
-    
+{   
     switch (accountSetupViewController.setupModel.mobileServiceProvider) {
         case kAttMobileServiceProvider:
             userIDLabel.text = @"Your User ID for Your AT&T Wireless Account:";
             passwordLabel.text = @"Your Password for Your AT&T Wireless Account:";
+            providerImage.image = [UIImage imageNamed:@"ServiceProviderATT.png"];
             break;
         case kVerizonMobileServiceProvider:
             userIDLabel.text = @"Your User ID for Your Verizon Wireless Account:";
             passwordLabel.text = @"Your Password for Your Verizon Wireless Account:";
+            providerImage.image = [UIImage imageNamed:@"ServiceProviderVerizon.png"];
             break;
         case kSprintMobileServiceProvider:
             userIDLabel.text = @"Your User ID for Your Sprint Wireless Account:";
             passwordLabel.text = @"Your Password for Your Sprint Wireless Account:";
+            providerImage.image = [UIImage imageNamed:@"ServiceProviderSprint.png"];
             break;
         case kTMobileMobileServiceProvider:
             userIDLabel.text = @"Your User ID for Your T-Mobile Wireless Account:";
             passwordLabel.text = @"Your Password for Your T-Mobile Wireless Account:";
+            providerImage.image = [UIImage imageNamed:@"ServiceProviderTMobile.png"];
             break;
     }
     

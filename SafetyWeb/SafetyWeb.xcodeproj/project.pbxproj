@@ -11,6 +11,32 @@
 		893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */; };
 		893F9D4714E1F5CD0074C5EC /* AccountSetup1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */; };
 		893F9D4A14E1F5DE0074C5EC /* AccountSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */; };
+		89740A6E14EC56420064E64A /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A6C14EC56420064E64A /* Back.png */; };
+		89740A6F14EC56420064E64A /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A6D14EC56420064E64A /* Back@2x.png */; };
+		89740A7214EC56540064E64A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7014EC56540064E64A /* Default.png */; };
+		89740A7314EC56540064E64A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7114EC56540064E64A /* Default@2x.png */; };
+		89740A7814EC567A0064E64A /* StandardBackground_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7414EC567A0064E64A /* StandardBackground_Logo.png */; };
+		89740A7914EC567A0064E64A /* StandardBackground_Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7514EC567A0064E64A /* StandardBackground_Logo@2x.png */; };
+		89740A7A14EC567A0064E64A /* StandardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7614EC567A0064E64A /* StandardBackground.png */; };
+		89740A7B14EC567A0064E64A /* StandardBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7714EC567A0064E64A /* StandardBackground@2x.png */; };
+		89740A7E14EC573B0064E64A /* MobileOptIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7C14EC573B0064E64A /* MobileOptIn.png */; };
+		89740A7F14EC573B0064E64A /* MobileOptIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7D14EC573B0064E64A /* MobileOptIn@2x.png */; };
+		89740A8214EC57B50064E64A /* Background_SignIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8014EC57B50064E64A /* Background_SignIn.png */; };
+		89740A8314EC57B50064E64A /* Background_SignIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8114EC57B50064E64A /* Background_SignIn@2x.png */; };
+		89740A8614EC58690064E64A /* Button_Blue_LG.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8414EC58690064E64A /* Button_Blue_LG.png */; };
+		89740A8714EC58690064E64A /* Button_Blue_LG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8514EC58690064E64A /* Button_Blue_LG@2x.png */; };
+		89740A8A14EC59320064E64A /* MobileAlertSetup1.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8814EC59320064E64A /* MobileAlertSetup1.png */; };
+		89740A8B14EC59320064E64A /* MobileAlertSetup1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8914EC59320064E64A /* MobileAlertSetup1@2x.png */; };
+		89740A8E14EC599E0064E64A /* MobileAlertSetup2.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8C14EC599E0064E64A /* MobileAlertSetup2.png */; };
+		89740A8F14EC599E0064E64A /* MobileAlertSetup2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8D14EC599E0064E64A /* MobileAlertSetup2@2x.png */; };
+		89740AA814EC5A620064E64A /* ServiceProviderATT.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA014EC5A620064E64A /* ServiceProviderATT.png */; };
+		89740AA914EC5A620064E64A /* ServiceProviderATT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA114EC5A620064E64A /* ServiceProviderATT@2x.png */; };
+		89740AAA14EC5A620064E64A /* ServiceProviderSprint.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA214EC5A620064E64A /* ServiceProviderSprint.png */; };
+		89740AAB14EC5A620064E64A /* ServiceProviderSprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA314EC5A620064E64A /* ServiceProviderSprint@2x.png */; };
+		89740AAC14EC5A620064E64A /* ServiceProviderTMobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA414EC5A620064E64A /* ServiceProviderTMobile.png */; };
+		89740AAD14EC5A620064E64A /* ServiceProviderTMobile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */; };
+		89740AAE14EC5A620064E64A /* ServiceProviderVerizon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */; };
+		89740AAF14EC5A620064E64A /* ServiceProviderVerizon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */; };
 		897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
 		897E980E14DB02C3007595A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980D14DB02C3007595A7 /* CoreGraphics.framework */; };
@@ -29,11 +55,6 @@
 		898441D014E474540047CDFE /* AccountSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441CF14E474540047CDFE /* AccountSetupViewController.m */; };
 		898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441D214E483E80047CDFE /* MobileOptInViewController.m */; };
 		898441D514E485010047CDFE /* MobileOptInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898441D414E485010047CDFE /* MobileOptInView.xib */; };
-		898441DC14E48A240047CDFE /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441D714E48A240047CDFE /* Back@2x.png */; };
-		898441DD14E48A240047CDFE /* Background_SignIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441D814E48A240047CDFE /* Background_SignIn@2x.png */; };
-		898441DE14E48A240047CDFE /* Button_Blue_LG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441D914E48A240047CDFE /* Button_Blue_LG@2x.png */; };
-		898441E014E48A240047CDFE /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441DB14E48A240047CDFE /* LaunchScreen@2x.png */; };
-		898441E214E48AC90047CDFE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 898441E114E48AC90047CDFE /* Default.png */; };
 		8984674F14E1AA2C00B997D5 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */; };
 		8984675214E1AB3100B997D5 /* ResetPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8984675114E1AB3100B997D5 /* ResetPasswordView.xib */; };
 		8984675514E1ADEB00B997D5 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984675414E1ADEB00B997D5 /* Utilities.m */; };
@@ -45,7 +66,6 @@
 		89867F2114E9928600B054B2 /* MobileAlertSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2014E9928500B054B2 /* MobileAlertSetup1View.xib */; };
 		89867F2414E99FD500B054B2 /* MobileAlertSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */; };
 		89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */; };
-		8987E03C14E5C09000D679F3 /* StandardBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */; };
 		899C095014EAD9A000DDC780 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C094F14EAD9A000DDC780 /* LoadView.m */; };
 		899C095414EAE43900DDC780 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C095314EAE43900DDC780 /* LoadViewController.m */; };
 		899C095614EAE57000DDC780 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 899C095514EAE57000DDC780 /* LoadView.xib */; };
@@ -68,6 +88,32 @@
 		893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetup1ViewController.m; sourceTree = "<group>"; };
 		893F9D4814E1F5DE0074C5EC /* AccountSetup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetup2ViewController.h; sourceTree = "<group>"; };
 		893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetup2ViewController.m; sourceTree = "<group>"; };
+		89740A6C14EC56420064E64A /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
+		89740A6D14EC56420064E64A /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
+		89740A7014EC56540064E64A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		89740A7114EC56540064E64A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		89740A7414EC567A0064E64A /* StandardBackground_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StandardBackground_Logo.png; sourceTree = "<group>"; };
+		89740A7514EC567A0064E64A /* StandardBackground_Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground_Logo@2x.png"; sourceTree = "<group>"; };
+		89740A7614EC567A0064E64A /* StandardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StandardBackground.png; sourceTree = "<group>"; };
+		89740A7714EC567A0064E64A /* StandardBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground@2x.png"; sourceTree = "<group>"; };
+		89740A7C14EC573B0064E64A /* MobileOptIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileOptIn.png; sourceTree = "<group>"; };
+		89740A7D14EC573B0064E64A /* MobileOptIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileOptIn@2x.png"; sourceTree = "<group>"; };
+		89740A8014EC57B50064E64A /* Background_SignIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_SignIn.png; sourceTree = "<group>"; };
+		89740A8114EC57B50064E64A /* Background_SignIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background_SignIn@2x.png"; sourceTree = "<group>"; };
+		89740A8414EC58690064E64A /* Button_Blue_LG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Blue_LG.png; sourceTree = "<group>"; };
+		89740A8514EC58690064E64A /* Button_Blue_LG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Blue_LG@2x.png"; sourceTree = "<group>"; };
+		89740A8814EC59320064E64A /* MobileAlertSetup1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileAlertSetup1.png; sourceTree = "<group>"; };
+		89740A8914EC59320064E64A /* MobileAlertSetup1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileAlertSetup1@2x.png"; sourceTree = "<group>"; };
+		89740A8C14EC599E0064E64A /* MobileAlertSetup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileAlertSetup2.png; sourceTree = "<group>"; };
+		89740A8D14EC599E0064E64A /* MobileAlertSetup2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileAlertSetup2@2x.png"; sourceTree = "<group>"; };
+		89740AA014EC5A620064E64A /* ServiceProviderATT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderATT.png; sourceTree = "<group>"; };
+		89740AA114EC5A620064E64A /* ServiceProviderATT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderATT@2x.png"; sourceTree = "<group>"; };
+		89740AA214EC5A620064E64A /* ServiceProviderSprint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderSprint.png; sourceTree = "<group>"; };
+		89740AA314EC5A620064E64A /* ServiceProviderSprint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderSprint@2x.png"; sourceTree = "<group>"; };
+		89740AA414EC5A620064E64A /* ServiceProviderTMobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderTMobile.png; sourceTree = "<group>"; };
+		89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderTMobile@2x.png"; sourceTree = "<group>"; };
+		89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderVerizon.png; sourceTree = "<group>"; };
+		89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderVerizon@2x.png"; sourceTree = "<group>"; };
 		897E980514DB02C3007595A7 /* SafetyWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		897E980914DB02C3007595A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		897E980B14DB02C3007595A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,11 +143,6 @@
 		898441D114E483E80047CDFE /* MobileOptInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileOptInViewController.h; sourceTree = "<group>"; };
 		898441D214E483E80047CDFE /* MobileOptInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileOptInViewController.m; sourceTree = "<group>"; };
 		898441D414E485010047CDFE /* MobileOptInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileOptInView.xib; sourceTree = "<group>"; };
-		898441D714E48A240047CDFE /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
-		898441D814E48A240047CDFE /* Background_SignIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background_SignIn@2x.png"; sourceTree = "<group>"; };
-		898441D914E48A240047CDFE /* Button_Blue_LG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Blue_LG@2x.png"; sourceTree = "<group>"; };
-		898441DB14E48A240047CDFE /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
-		898441E114E48AC90047CDFE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		8984675114E1AB3100B997D5 /* ResetPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordView.xib; sourceTree = "<group>"; };
@@ -118,7 +159,6 @@
 		89867F2214E99FD500B054B2 /* MobileAlertSetup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileAlertSetup2ViewController.h; sourceTree = "<group>"; };
 		89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileAlertSetup2ViewController.m; sourceTree = "<group>"; };
 		89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileAlertSetup2View.xib; sourceTree = "<group>"; };
-		8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground@2x.png"; sourceTree = "<group>"; };
 		899C094E14EAD9A000DDC780 /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadView.h; sourceTree = "<group>"; };
 		899C094F14EAD9A000DDC780 /* LoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadView.m; sourceTree = "<group>"; };
 		899C095214EAE43900DDC780 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
@@ -264,12 +304,32 @@
 		898441D614E48A240047CDFE /* images */ = {
 			isa = PBXGroup;
 			children = (
-				898441E114E48AC90047CDFE /* Default.png */,
-				898441D714E48A240047CDFE /* Back@2x.png */,
-				898441D814E48A240047CDFE /* Background_SignIn@2x.png */,
-				898441D914E48A240047CDFE /* Button_Blue_LG@2x.png */,
-				898441DB14E48A240047CDFE /* LaunchScreen@2x.png */,
-				8987E03B14E5C09000D679F3 /* StandardBackground@2x.png */,
+				89740AA014EC5A620064E64A /* ServiceProviderATT.png */,
+				89740AA114EC5A620064E64A /* ServiceProviderATT@2x.png */,
+				89740AA214EC5A620064E64A /* ServiceProviderSprint.png */,
+				89740AA314EC5A620064E64A /* ServiceProviderSprint@2x.png */,
+				89740AA414EC5A620064E64A /* ServiceProviderTMobile.png */,
+				89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */,
+				89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */,
+				89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */,
+				89740A8C14EC599E0064E64A /* MobileAlertSetup2.png */,
+				89740A8D14EC599E0064E64A /* MobileAlertSetup2@2x.png */,
+				89740A8814EC59320064E64A /* MobileAlertSetup1.png */,
+				89740A8914EC59320064E64A /* MobileAlertSetup1@2x.png */,
+				89740A8414EC58690064E64A /* Button_Blue_LG.png */,
+				89740A8514EC58690064E64A /* Button_Blue_LG@2x.png */,
+				89740A8014EC57B50064E64A /* Background_SignIn.png */,
+				89740A8114EC57B50064E64A /* Background_SignIn@2x.png */,
+				89740A7C14EC573B0064E64A /* MobileOptIn.png */,
+				89740A7D14EC573B0064E64A /* MobileOptIn@2x.png */,
+				89740A7414EC567A0064E64A /* StandardBackground_Logo.png */,
+				89740A7514EC567A0064E64A /* StandardBackground_Logo@2x.png */,
+				89740A7614EC567A0064E64A /* StandardBackground.png */,
+				89740A7714EC567A0064E64A /* StandardBackground@2x.png */,
+				89740A7014EC56540064E64A /* Default.png */,
+				89740A7114EC56540064E64A /* Default@2x.png */,
+				89740A6C14EC56420064E64A /* Back.png */,
+				89740A6D14EC56420064E64A /* Back@2x.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -352,15 +412,35 @@
 				893F9D4114E1F58D0074C5EC /* AccountSetup1View.xib in Resources */,
 				893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */,
 				898441D514E485010047CDFE /* MobileOptInView.xib in Resources */,
-				898441DC14E48A240047CDFE /* Back@2x.png in Resources */,
-				898441DD14E48A240047CDFE /* Background_SignIn@2x.png in Resources */,
-				898441DE14E48A240047CDFE /* Button_Blue_LG@2x.png in Resources */,
-				898441E014E48A240047CDFE /* LaunchScreen@2x.png in Resources */,
-				898441E214E48AC90047CDFE /* Default.png in Resources */,
-				8987E03C14E5C09000D679F3 /* StandardBackground@2x.png in Resources */,
 				89867F2114E9928600B054B2 /* MobileAlertSetup1View.xib in Resources */,
 				89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */,
 				899C095614EAE57000DDC780 /* LoadView.xib in Resources */,
+				89740A6E14EC56420064E64A /* Back.png in Resources */,
+				89740A6F14EC56420064E64A /* Back@2x.png in Resources */,
+				89740A7214EC56540064E64A /* Default.png in Resources */,
+				89740A7314EC56540064E64A /* Default@2x.png in Resources */,
+				89740A7814EC567A0064E64A /* StandardBackground_Logo.png in Resources */,
+				89740A7914EC567A0064E64A /* StandardBackground_Logo@2x.png in Resources */,
+				89740A7A14EC567A0064E64A /* StandardBackground.png in Resources */,
+				89740A7B14EC567A0064E64A /* StandardBackground@2x.png in Resources */,
+				89740A7E14EC573B0064E64A /* MobileOptIn.png in Resources */,
+				89740A7F14EC573B0064E64A /* MobileOptIn@2x.png in Resources */,
+				89740A8214EC57B50064E64A /* Background_SignIn.png in Resources */,
+				89740A8314EC57B50064E64A /* Background_SignIn@2x.png in Resources */,
+				89740A8614EC58690064E64A /* Button_Blue_LG.png in Resources */,
+				89740A8714EC58690064E64A /* Button_Blue_LG@2x.png in Resources */,
+				89740A8A14EC59320064E64A /* MobileAlertSetup1.png in Resources */,
+				89740A8B14EC59320064E64A /* MobileAlertSetup1@2x.png in Resources */,
+				89740A8E14EC599E0064E64A /* MobileAlertSetup2.png in Resources */,
+				89740A8F14EC599E0064E64A /* MobileAlertSetup2@2x.png in Resources */,
+				89740AA814EC5A620064E64A /* ServiceProviderATT.png in Resources */,
+				89740AA914EC5A620064E64A /* ServiceProviderATT@2x.png in Resources */,
+				89740AAA14EC5A620064E64A /* ServiceProviderSprint.png in Resources */,
+				89740AAB14EC5A620064E64A /* ServiceProviderSprint@2x.png in Resources */,
+				89740AAC14EC5A620064E64A /* ServiceProviderTMobile.png in Resources */,
+				89740AAD14EC5A620064E64A /* ServiceProviderTMobile@2x.png in Resources */,
+				89740AAE14EC5A620064E64A /* ServiceProviderVerizon.png in Resources */,
+				89740AAF14EC5A620064E64A /* ServiceProviderVerizon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

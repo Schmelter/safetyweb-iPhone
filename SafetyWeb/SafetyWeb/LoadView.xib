@@ -48,7 +48,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">StandardBackground@2x.png</string>
+							<string key="NSResourceName">StandardBackground.png</string>
 						</object>
 					</object>
 					<object class="IBUIView" id="856710497">
@@ -288,8 +288,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">StandardBackground@2x.png</string>
-			<string key="NS.object.0">{643, 963}</string>
+			<string key="NS.key.0">StandardBackground.png</string>
+			<string key="NS.object.0">{320, 480}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
