@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DefaultURLEncoding</key>
+	<string>UTF-8</string>
+	<key>API_Endpoint</key>
+	<string>sw.dev.safetyweb.com</string>
+	<key>API_Version</key>
+	<integer>1</integer>
+	<key>API_Id</key>
+	<string>59a0466d76db208dd32aa70ed2ee370c</string>
+	<key>API_Key</key>
+	<string>8ec1ec06a517b5ac3b8ff942f859f91957314681</string>
+	<key>Extra_LoginToken</key>
+	<string>com.safetyweb.app.LoginToken</string>
+	<key>Extra_ChildId</key>
+	<string>com.safetyweb.app.ChildId</string>
+	<key>Action_Logout</key>
+	<string>com.safetyweb.app.ACTION_LOGOUT</string>
+	<key>Action_Exit</key>
+	<string>com.safetyweb.app.ACTION_EXIT</string>
+	<key>API_TokenExpire</key>
+	<integer>28800000</integer>
+</dict>
+</plist>

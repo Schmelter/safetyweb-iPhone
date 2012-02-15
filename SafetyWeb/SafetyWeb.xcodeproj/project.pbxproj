@@ -37,6 +37,10 @@
 		89740AAD14EC5A620064E64A /* ServiceProviderTMobile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */; };
 		89740AAE14EC5A620064E64A /* ServiceProviderVerizon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */; };
 		89740AAF14EC5A620064E64A /* ServiceProviderVerizon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */; };
+		89740AB414EC6D4A0064E64A /* AppProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 89740AB314EC6D4A0064E64A /* AppProperties.m */; };
+		89740AB614EC6D8C0064E64A /* AppProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740AB514EC6D8C0064E64A /* AppProperties.plist */; };
+		89740ABD14EC70E40064E64A /* AppProperties.dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABB14EC70E40064E64A /* AppProperties.dev.plist */; };
+		89740ABE14EC70E40064E64A /* AppProperties.prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABC14EC70E40064E64A /* AppProperties.prod.plist */; };
 		897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
 		897E980E14DB02C3007595A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980D14DB02C3007595A7 /* CoreGraphics.framework */; };
@@ -114,6 +118,11 @@
 		89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderTMobile@2x.png"; sourceTree = "<group>"; };
 		89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderVerizon.png; sourceTree = "<group>"; };
 		89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderVerizon@2x.png"; sourceTree = "<group>"; };
+		89740AB214EC6D4A0064E64A /* AppProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppProperties.h; sourceTree = "<group>"; };
+		89740AB314EC6D4A0064E64A /* AppProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppProperties.m; sourceTree = "<group>"; };
+		89740AB514EC6D8C0064E64A /* AppProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppProperties.plist; sourceTree = "<group>"; };
+		89740ABB14EC70E40064E64A /* AppProperties.dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppProperties.dev.plist; sourceTree = "<group>"; };
+		89740ABC14EC70E40064E64A /* AppProperties.prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppProperties.prod.plist; sourceTree = "<group>"; };
 		897E980514DB02C3007595A7 /* SafetyWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		897E980914DB02C3007595A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		897E980B14DB02C3007595A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,6 +199,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89740AB014EC6C5E0064E64A /* WebInterface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = WebInterface;
+			sourceTree = "<group>";
+		};
+		89740AB114EC6D2E0064E64A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8984675314E1ADEB00B997D5 /* Utilities.h */,
+				8984675414E1ADEB00B997D5 /* Utilities.m */,
+				89740AB214EC6D4A0064E64A /* AppProperties.h */,
+				89740AB314EC6D4A0064E64A /* AppProperties.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		897E97FA14DB02C3007595A7 = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +251,8 @@
 		897E980F14DB02C3007595A7 /* SafetyWeb */ = {
 			isa = PBXGroup;
 			children = (
+				89740AB114EC6D2E0064E64A /* Utilities */,
+				89740AB014EC6C5E0064E64A /* WebInterface */,
 				897E981814DB02C3007595A7 /* SWAppDelegate.h */,
 				897E981914DB02C3007595A7 /* SWAppDelegate.m */,
 				897E981014DB02C3007595A7 /* Supporting Files */,
@@ -238,8 +267,6 @@
 				8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */,
 				8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */,
 				8984675114E1AB3100B997D5 /* ResetPasswordView.xib */,
-				8984675314E1ADEB00B997D5 /* Utilities.h */,
-				8984675414E1ADEB00B997D5 /* Utilities.m */,
 				8984675614E1CA1900B997D5 /* ChildsActivityViewController.h */,
 				8984675714E1CA1900B997D5 /* ChildsActivityViewController.m */,
 				8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */,
@@ -278,6 +305,9 @@
 				897E981214DB02C3007595A7 /* InfoPlist.strings */,
 				897E981514DB02C3007595A7 /* main.m */,
 				897E981714DB02C3007595A7 /* SafetyWeb-Prefix.pch */,
+				89740AB514EC6D8C0064E64A /* AppProperties.plist */,
+				89740ABB14EC70E40064E64A /* AppProperties.dev.plist */,
+				89740ABC14EC70E40064E64A /* AppProperties.prod.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -441,6 +471,9 @@
 				89740AAD14EC5A620064E64A /* ServiceProviderTMobile@2x.png in Resources */,
 				89740AAE14EC5A620064E64A /* ServiceProviderVerizon.png in Resources */,
 				89740AAF14EC5A620064E64A /* ServiceProviderVerizon@2x.png in Resources */,
+				89740AB614EC6D8C0064E64A /* AppProperties.plist in Resources */,
+				89740ABD14EC70E40064E64A /* AppProperties.dev.plist in Resources */,
+				89740ABE14EC70E40064E64A /* AppProperties.prod.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +525,7 @@
 				89867F2414E99FD500B054B2 /* MobileAlertSetup2ViewController.m in Sources */,
 				899C095014EAD9A000DDC780 /* LoadView.m in Sources */,
 				899C095414EAE43900DDC780 /* LoadViewController.m in Sources */,
+				89740AB414EC6D4A0064E64A /* AppProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
