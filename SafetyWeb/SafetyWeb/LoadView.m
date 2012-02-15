@@ -11,7 +11,6 @@
 @implementation LoadView
 
 @synthesize borderWidth;
-@synthesize borderColor;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -19,7 +18,8 @@
     if (self) {
         self.borderWidth = 10.0f;
         self.progressCurrent = 0.0f;
-        self.borderColor = [[UIColor whiteColor] CGColor];
+        self.outterBorderColor = [[UIColor blackColor] CGColor];
+        self.innerBorderColor = [[UIColor whiteColor] CGColor];
     }
     return self;
 }
@@ -30,7 +30,8 @@
     if (self) {
         self.borderWidth = 10.0f;
         self.progressCurrent = 0.0f;
-        self.borderColor = [[UIColor whiteColor] CGColor];
+        self.outterBorderColor = [[UIColor blackColor] CGColor];
+        self.innerBorderColor = [[UIColor whiteColor] CGColor];
     }
     return self;
 }
@@ -57,10 +58,21 @@
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
     
     CGContextRetain(contextRef);
-    CGContextSetStrokeColorWithColor(contextRef, borderColor);
+    
+    CGContextSetLineCap(contextRef, kCGLineCapRound);
+    
+    // Draw the outter border
+    CGContextSetStrokeColorWithColor(contextRef, outterBorderColor);
     CGContextSetLineWidth(contextRef, borderWidth);
     CGContextAddArc(contextRef, center.x, center.y, radius, M_PI * 1.5f, radians, 0);
     CGContextStrokePath(contextRef);
+    
+    // Draw the inner border
+    CGContextSetStrokeColorWithColor(contextRef, innerBorderColor);
+    CGContextSetLineWidth(contextRef, borderWidth/2.0f);
+    CGContextAddArc(contextRef, center.x, center.y, radius, M_PI * 1.5f, radians, 0);
+    CGContextStrokePath(contextRef);
+    
     CGContextRelease(contextRef);
 }
 
@@ -73,7 +85,30 @@
     return progressCurrent;
 }
 
+-(void)setOutterBorderColor:(CGColorRef)aOutterBorderColor {
+    CGColorRetain(aOutterBorderColor);
+    CGColorRelease(outterBorderColor);
+    outterBorderColor = aOutterBorderColor;
+}
+
+-(CGColorRef)outterBorderColor {
+    return outterBorderColor;
+}
+
+-(void)setInnerBorderColor:(CGColorRef)aInnerBorderColor {
+    CGColorRetain(aInnerBorderColor);
+    CGColorRelease(innerBorderColor);
+    innerBorderColor = aInnerBorderColor;
+}
+
+-(CGColorRef)innerBorderColor {
+    return innerBorderColor;
+}
+
 -(void)dealloc {
+    CGColorRelease(outterBorderColor);
+    CGColorRelease(innerBorderColor);
+    
     [super dealloc];
 }
 

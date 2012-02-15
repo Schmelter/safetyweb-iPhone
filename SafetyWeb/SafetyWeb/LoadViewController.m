@@ -36,9 +36,15 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    loadProgress.borderWidth = 10.0f;
-    const CGFloat borderColor[] = {0.3125, 0.63671, 0.8125, 1.0};
-    loadProgress.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), borderColor);
+    loadProgress.borderWidth = 12.0f;
+    
+    const CGFloat innerColor[] = {0.45312, 0.71093, 0.8398, 1.0};
+    const CGFloat outterColor[] = {0.3125, 0.63671, 0.8125, 1.0};
+    
+    loadProgress.outterBorderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), outterColor);
+    
+    
+    loadProgress.innerBorderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), innerColor);
     
     [timer fire];
     [super viewDidLoad];

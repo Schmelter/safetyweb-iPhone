@@ -14,12 +14,14 @@
 @interface LoadView : UIView {
     @private
     CGFloat borderWidth;
-    CGColorRef borderColor;
+    CGColorRef outterBorderColor;
+    CGColorRef innerBorderColor;
     CGFloat progressCurrent;
 }
 
 @property (nonatomic) CGFloat borderWidth;
-@property (nonatomic) CGColorRef borderColor;
+@property (nonatomic) CGColorRef outterBorderColor;
+@property (nonatomic) CGColorRef innerBorderColor;
 @property (nonatomic) CGFloat progressCurrent;
 
 @end
