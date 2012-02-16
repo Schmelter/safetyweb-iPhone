@@ -73,6 +73,7 @@
 		899C095014EAD9A000DDC780 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C094F14EAD9A000DDC780 /* LoadView.m */; };
 		899C095414EAE43900DDC780 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C095314EAE43900DDC780 /* LoadViewController.m */; };
 		899C095614EAE57000DDC780 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 899C095514EAE57000DDC780 /* LoadView.xib */; };
+		899F4C7414ED7E9400B8C553 /* SafetyWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +174,8 @@
 		899C095214EAE43900DDC780 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
 		899C095314EAE43900DDC780 /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
 		899C095514EAE57000DDC780 /* LoadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
+		899F4C7214ED7E9400B8C553 /* SafetyWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyWebRequest.h; sourceTree = "<group>"; };
+		899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyWebRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +205,8 @@
 		89740AB014EC6C5E0064E64A /* WebInterface */ = {
 			isa = PBXGroup;
 			children = (
+				899F4C7214ED7E9400B8C553 /* SafetyWebRequest.h */,
+				899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */,
 			);
 			name = WebInterface;
 			sourceTree = "<group>";
@@ -526,6 +531,7 @@
 				899C095014EAD9A000DDC780 /* LoadView.m in Sources */,
 				899C095414EAE43900DDC780 /* LoadViewController.m in Sources */,
 				89740AB414EC6D4A0064E64A /* AppProperties.m in Sources */,
+				899F4C7414ED7E9400B8C553 /* SafetyWebRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

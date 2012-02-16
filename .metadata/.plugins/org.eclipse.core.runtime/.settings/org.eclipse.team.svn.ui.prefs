@@ -1,4 +1,4 @@
-#Tue Feb 14 17:41:50 MST 2012
+#Wed Feb 15 17:27:39 MST 2012
 org.eclipse.team.svn.ui.panel.callback.PromptCredentialsPanel.width=470
 org.eclipse.team.svn.ui.panel.callback.PromptCredentialsPanel.height=221
 history.selectProjectNamePage=aHR0cHM6Ly9zdm4ud2Vic2FmZXR5bGxjLmNvbS9yZXBvcy9zdy9TYWZldHlXZWI\=
@@ -9,5 +9,5 @@ org.eclipse.team.svn.ui.panel.local.CommitPanel.width=600
 eclipse.preferences.version=1
 firstStartup=false
 preference.repository.repositoryBrowser=false
-history.comment=U2hhcmUgcHJvamVjdCAiU2FmZXR5V2ViIiBpbnRvICJodHRwczovL3N2bi53ZWJzYWZldHlsbGMuY29tL3JlcG9zL3N3IiAtIEluaXRpYWwgTG9hZA\=\=
+history.comment=TW9yZSBpbWFnZXMgYWRkZWQuICBJbWFnZXMgaGF2ZSBiZXR0ZXIgbmFtZXMu;U2hhcmUgcHJvamVjdCAiU2FmZXR5V2ViIiBpbnRvICJodHRwczovL3N2bi53ZWJzYWZldHlsbGMuY29tL3JlcG9zL3N3IiAtIEluaXRpYWwgTG9hZA\=\=
 preference.repository.simpleShare=false

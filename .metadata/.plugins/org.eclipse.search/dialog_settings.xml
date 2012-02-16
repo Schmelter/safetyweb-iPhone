@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="">
 		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
+		<item value="TRUE" key="org.eclipse.jdt.search.resultpage.limit_enabled"/>
+		<item value="1000" key="org.eclipse.jdt.search.resultpage.limit"/>
 	</section>
 	<section name="org.eclipse.jdt.ui.JavaSearchResultPage">
 		<item value="TRUE" key="org.eclipse.jdt.search.resultpage.limit_enabled"/>
@@ -13,8 +15,8 @@
 	<section name="DialogBounds_SearchDialog">
 		<item value="590" key="DIALOG_WIDTH"/>
 		<item value="267" key="DIALOG_Y_ORIGIN"/>
-		<item value="665" key="DIALOG_X_ORIGIN"/>
 		<item value="414" key="DIALOG_HEIGHT"/>
+		<item value="665" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="Search">
@@ -45,7 +47,7 @@
 		<item value="12" key="HISTORY_SIZE"/>
 		<section name="HISTORY11">
 			<item value="false" key="isRegExSearch"/>
-			<item value="get(&quot;user" key="textPattern"/>
+			<item value="scoreboard-tpl" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -60,7 +62,7 @@
 		</section>
 		<section name="HISTORY10">
 			<item value="false" key="isRegExSearch"/>
-			<item value="scoreboard-tpl" key="textPattern"/>
+			<item value="q=" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -71,7 +73,7 @@
 		</section>
 		<section name="HISTORY9">
 			<item value="false" key="isRegExSearch"/>
-			<item value="q=" key="textPattern"/>
+			<item value="first_name" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -82,7 +84,7 @@
 		</section>
 		<section name="HISTORY8">
 			<item value="false" key="isRegExSearch"/>
-			<item value="first_name" key="textPattern"/>
+			<item value="firstName" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -93,7 +95,7 @@
 		</section>
 		<section name="HISTORY5">
 			<item value="false" key="isRegExSearch"/>
-			<item value="IPollingService" key="textPattern"/>
+			<item value=".Editor" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -104,7 +106,7 @@
 		</section>
 		<section name="HISTORY4">
 			<item value="false" key="isRegExSearch"/>
-			<item value=".Editor" key="textPattern"/>
+			<item value="59a" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -115,7 +117,7 @@
 		</section>
 		<section name="HISTORY7">
 			<item value="false" key="isRegExSearch"/>
-			<item value="firstName" key="textPattern"/>
+			<item value="StringUtils" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -126,7 +128,7 @@
 		</section>
 		<section name="HISTORY6">
 			<item value="false" key="isRegExSearch"/>
-			<item value="StringUtils" key="textPattern"/>
+			<item value="IPollingService" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -137,7 +139,7 @@
 		</section>
 		<section name="HISTORY2">
 			<item value="false" key="isRegExSearch"/>
-			<item value="webviewactivity" key="textPattern"/>
+			<item value="favicon" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -148,7 +150,7 @@
 		</section>
 		<section name="HISTORY3">
 			<item value="false" key="isRegExSearch"/>
-			<item value="59a" key="textPattern"/>
+			<item value="webviewactivity" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -159,7 +161,7 @@
 		</section>
 		<section name="HISTORY0">
 			<item value="false" key="isRegExSearch"/>
-			<item value="film" key="textPattern"/>
+			<item value="safetyweb.com" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">
@@ -170,7 +172,7 @@
 		</section>
 		<section name="HISTORY1">
 			<item value="false" key="isRegExSearch"/>
-			<item value="favicon" key="textPattern"/>
+			<item value="film" key="textPattern"/>
 			<item value="1" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<list key="fileNamePatterns">

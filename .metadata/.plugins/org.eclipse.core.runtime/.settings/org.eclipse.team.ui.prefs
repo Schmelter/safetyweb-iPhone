@@ -1,6 +1,6 @@
-#Mon Nov 14 18:03:22 MST 2011
-org.eclipse.team.ui.sychronizing_default_participant_sec_id=1321295363958
+#Wed Feb 15 17:27:39 MST 2012
+org.eclipse.team.ui.sychronizing_default_participant_sec_id=1329344064905
 org.eclipse.team.ui.sychronizing_default_perspective_to_show=always
 eclipse.preferences.version=1
 org.eclipse.team.ui.first_time=false
-org.eclipse.team.ui.sychronizing_default_participant=org.tigris.subversion.subclipse.participant
+org.eclipse.team.ui.sychronizing_default_participant=org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant
