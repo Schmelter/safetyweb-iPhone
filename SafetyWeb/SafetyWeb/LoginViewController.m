@@ -88,7 +88,7 @@
     }
         
     UserCredentials *userCredentials = [[UserCredentials alloc] initWithUserName:usernameStr AndPassword:passwordStr];
-    [UserManager attemptLogin:userCredentials];
+    [rootViewController displayLoginLoadViewController:userCredentials];
     [userCredentials release];
 }
 

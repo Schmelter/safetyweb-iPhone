@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "LoginViewController.h"
+#import "LoginLoadViewController.h"
 #import "ResetPasswordViewController.h"
 #import "ChildsActivityViewController.h"
 #import "AccountSetupViewController.h"
@@ -38,6 +39,16 @@
     [self setCurrentViewController:loginViewController];
     [self.view addSubview:currentViewController.view];
     [loginViewController release];
+}
+
+- (void)displayLoginLoadViewController:(UserCredentials*)credentials {
+    LoginLoadViewController *loadLoginVC = [[LoginLoadViewController alloc] initWithNibName:@"LoadView" bundle:nil];
+    [loadLoginVC setRootViewController:self];
+    loadLoginVC.credentials = credentials;
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:loadLoginVC];
+    [self.view addSubview:loadLoginVC.view];
+    [loadLoginVC release];
 }
 
 - (void)displayRequestChildActivityViewController {
@@ -73,7 +84,7 @@
     [currentViewController.view removeFromSuperview];
     [self setCurrentViewController:loadViewController];
     [self.view addSubview:currentViewController.view];
-    NSLog(@"View: %@", currentViewController.view);
+    //NSLog(@"View: %@", currentViewController.view);
     [loadViewController release];
 }
 

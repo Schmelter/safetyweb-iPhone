@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */; };
 		893F9D4114E1F58D0074C5EC /* AccountSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */; };
 		893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */; };
 		893F9D4714E1F5CD0074C5EC /* AccountSetup1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */; };
@@ -70,6 +71,7 @@
 		89867F2114E9928600B054B2 /* MobileAlertSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2014E9928500B054B2 /* MobileAlertSetup1View.xib */; };
 		89867F2414E99FD500B054B2 /* MobileAlertSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */; };
 		89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */; };
+		899754D014EEFCC40046B1DA /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 899754CF14EEFCC40046B1DA /* JSONKit.m */; };
 		899C095014EAD9A000DDC780 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C094F14EAD9A000DDC780 /* LoadView.m */; };
 		899C095414EAE43900DDC780 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C095314EAE43900DDC780 /* LoadViewController.m */; };
 		899C095614EAE57000DDC780 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 899C095514EAE57000DDC780 /* LoadView.xib */; };
@@ -87,6 +89,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLoadViewController.h; sourceTree = "<group>"; };
+		8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginLoadViewController.m; sourceTree = "<group>"; };
 		893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSetup1View.xib; sourceTree = "<group>"; };
 		893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSetup2View.xib; sourceTree = "<group>"; };
 		893F9D4514E1F5CD0074C5EC /* AccountSetup1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetup1ViewController.h; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 		89867F2214E99FD500B054B2 /* MobileAlertSetup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileAlertSetup2ViewController.h; sourceTree = "<group>"; };
 		89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileAlertSetup2ViewController.m; sourceTree = "<group>"; };
 		89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileAlertSetup2View.xib; sourceTree = "<group>"; };
+		899754CE14EEFCC40046B1DA /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		899754CF14EEFCC40046B1DA /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		899C094E14EAD9A000DDC780 /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadView.h; sourceTree = "<group>"; };
 		899C094F14EAD9A000DDC780 /* LoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadView.m; sourceTree = "<group>"; };
 		899C095214EAE43900DDC780 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
@@ -256,6 +262,7 @@
 		897E980F14DB02C3007595A7 /* SafetyWeb */ = {
 			isa = PBXGroup;
 			children = (
+				899754CD14EEFAF50046B1DA /* JSONKit */,
 				89740AB114EC6D2E0064E64A /* Utilities */,
 				89740AB014EC6C5E0064E64A /* WebInterface */,
 				897E981814DB02C3007595A7 /* SWAppDelegate.h */,
@@ -299,6 +306,8 @@
 				899C095214EAE43900DDC780 /* LoadViewController.h */,
 				899C095314EAE43900DDC780 /* LoadViewController.m */,
 				899C095514EAE57000DDC780 /* LoadView.xib */,
+				8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */,
+				8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -367,6 +376,15 @@
 				89740A6D14EC56420064E64A /* Back@2x.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		899754CD14EEFAF50046B1DA /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				899754CE14EEFCC40046B1DA /* JSONKit.h */,
+				899754CF14EEFCC40046B1DA /* JSONKit.m */,
+			);
+			name = JSONKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,6 +550,8 @@
 				899C095414EAE43900DDC780 /* LoadViewController.m in Sources */,
 				89740AB414EC6D4A0064E64A /* AppProperties.m in Sources */,
 				899F4C7414ED7E9400B8C553 /* SafetyWebRequest.m in Sources */,
+				8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */,
+				899754D014EEFCC40046B1DA /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

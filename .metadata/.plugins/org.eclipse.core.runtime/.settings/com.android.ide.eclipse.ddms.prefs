@@ -1,4 +1,4 @@
-#Wed Feb 01 11:26:22 MST 2012
+#Thu Feb 16 18:02:02 MST 2012
 emulatorControl.track.first=128
 emulatorControl.track.count=32
 com.android.ide.eclipse.ddms.explorer.data=73
@@ -16,7 +16,7 @@ com.android.ide.eclipse.ddms.logcat.tag=54
 com.android.ide.eclipse.ddms.explorer.permissions=71
 com.android.ide.eclipse.ddms.explorer.size=46
 emulatorControl.waypoint.desc=98
-logcat.view.colsize.Tag=101
+logcat.view.colsize.Tag=114
 logcat.view.colsize.Time=140
 com.android.ide.eclipse.ddms.logcat.message=231
 logcat.view.colsize.Application=135

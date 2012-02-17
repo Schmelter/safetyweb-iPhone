@@ -12,19 +12,32 @@
 
 #import <Foundation/Foundation.h>
 #import "AppProperties.h"
+#import "JSONKit.h"
+
+/**
+ * Any class that can respond to a SafetyWebRequest must extend this class for
+ * callbacks.
+ */
+
+#import <Foundation/Foundation.h>
+
+@protocol SafetyWebRequestCallback <NSObject>
+
+-(void)gotResponse:(id)aResponse;
+-(void)notGotResponse:(NSError*)aError;
+
+@end
 
 @interface SafetyWebRequest : NSObject <NSURLConnectionDelegate> {
     @private
     NSMutableData *responseData;
-    SEL gotResponse;
-    SEL notGotResponse;
-    id callbackObj;
+    id<SafetyWebRequestCallback> callbackObj;
     NSString *requestMethod;
     NSMutableDictionary *paramDict;
     NSURL *url;
 }
 
-- (void) setCallback:(id)aCallback withGotResponse:(SEL)aGotResponse withNotGotResponse:(SEL)aNotGotResponse;
+- (void) setCallback:(id<SafetyWebRequestCallback>)aCallback;
 - (void)request:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSDictionary *)aParamDict;
 +(NSString *)Base64Encode:(NSData *)data;
 

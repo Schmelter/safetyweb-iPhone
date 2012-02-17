@@ -11,15 +11,13 @@
 @implementation LoadViewController
 
 @synthesize tipLabel;
-@synthesize loadProgress;
+@synthesize progressView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateLoading:) userInfo:nil repeats:YES];
-        [timer retain];
-        progress = 0.0f;
+        
     }
     return self;
 }
@@ -36,24 +34,23 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    loadProgress.borderWidth = 12.0f;
+    progressView.borderWidth = 12.0f;
     
     const CGFloat innerColor[] = {0.45312, 0.71093, 0.8398, 1.0};
     const CGFloat outterColor[] = {0.3125, 0.63671, 0.8125, 1.0};
     
-    loadProgress.outterBorderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), outterColor);
+    progressView.outterBorderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), outterColor);
     
     
-    loadProgress.innerBorderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), innerColor);
+    progressView.innerBorderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), innerColor);
     
-    [timer fire];
     [super viewDidLoad];
 }
 
 - (void)viewDidUnload
 {
     self.tipLabel = nil;
-    self.loadProgress = nil;
+    self.progressView = nil;
     
     [super viewDidUnload];
 }
@@ -64,18 +61,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)updateLoading:(id)sender {
-    progress += 5.0f;
-    if (progress > 100.0f) progress = 100.0f;
-    loadProgress.progressCurrent = progress;
-    if (progress >= 100.0f) [timer invalidate];
-}
-
 -(void)dealloc {
     [tipLabel release];
-    [loadProgress release];
-    [timer invalidate];
-    [timer release];
+    [progressView release];
     
     [super dealloc];
 }

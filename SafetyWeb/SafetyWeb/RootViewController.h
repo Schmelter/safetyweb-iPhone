@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "AccountSetupModel.h"
+#import "UserManager.h"
 
 @interface RootViewController : UIViewController {
     @private
@@ -16,10 +17,10 @@
 }
 
 - (void)displayLoginViewController;
+- (void)displayLoginLoadViewController:(UserCredentials*)credentials;
 - (void)displayRequestChildActivityViewController;
 - (void)displayAccountSetupViewController;
 - (void)displayResetPasswordViewController;
-// TODO: Refactor the LoadViewController to take a LoadProgressObject
 - (void)displayLoadViewController;
 
 @end

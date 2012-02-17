@@ -42,10 +42,8 @@
 }
 
 // The call back should be a method with one parameter, an NSString
-- (void)setCallback:(id)aCallback withGotResponse:(SEL)aGotResponse withNotGotResponse:(SEL)aNotGotResponse {
+- (void)setCallback:(id<SafetyWebRequestCallback>)aCallback {
     callbackObj = aCallback;
-    gotResponse = aGotResponse;
-    notGotResponse = aNotGotResponse;
 }
 
 - (void)request:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSDictionary *)aParamDict {
@@ -251,19 +249,21 @@
 {
     
 	[conn release];
-	NSString* responseStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
-	if (gotResponse && [callbackObj respondsToSelector:gotResponse] ) 
-		[callbackObj performSelector:gotResponse withObject:responseStr];
-	[responseStr release];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+	if (callbackObj) 
+		[callbackObj gotResponse:[responseData objectFromJSONData]];
+    
+    [pool release];
 	[self release]; // Alright, our job is finally done
 }
 
 - (void)didFailWithError:(NSError*)error
 {
     
-	if (notGotResponse && [callbackObj respondsToSelector:notGotResponse] ) 
-		[callbackObj performSelector:notGotResponse withObject:error];
+	if (callbackObj) 
+		[callbackObj notGotResponse:error];
 	[self release]; // Alright, our job is finally done
 }
 
@@ -271,8 +271,8 @@
 {
     
 	[conn release];
-	if (notGotResponse && [callbackObj respondsToSelector:notGotResponse] ) 
-		[callbackObj performSelector:notGotResponse withObject:error];
+	if (callbackObj) 
+		[callbackObj notGotResponse:error];
 	[self release]; // Alright, our job is finally done
 }
 

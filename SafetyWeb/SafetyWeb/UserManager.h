@@ -12,15 +12,19 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "AppProperties.h"
 
 @interface UserCredentials : NSObject {
     @private
     NSString *username;
     NSString *password;
+    NSString *userToken;
+    NSDate *tokenStart;
 }
 
 @property (retain, nonatomic) NSString *username;
 @property (retain, nonatomic) NSString *password;
+@property (retain, nonatomic) NSString *userToken;
 
 - (UserCredentials*)initWithUserName:(NSString*)username AndPassword:(NSString*)password;
 

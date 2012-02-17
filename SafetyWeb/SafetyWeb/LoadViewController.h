@@ -11,14 +11,12 @@
 #import "LoadView.h"
 
 @interface LoadViewController : SubRootViewController {
-    @private
+@protected
     UILabel *tipLabel;
-    LoadView *loadProgress;
-    NSTimer *timer;
-    CGFloat progress;
+    LoadView *progressView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *tipLabel;
-@property (nonatomic, retain) IBOutlet LoadView *loadProgress;
+@property (nonatomic, retain) IBOutlet LoadView *progressView;
 
 @end

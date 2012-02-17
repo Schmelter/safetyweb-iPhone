@@ -27,8 +27,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
-import android.util.Log;
-
 import com.safetyweb.api.Constants;
 import com.safetyweb.api.http.IRequest;
 import com.safetyweb.api.util.HttpUtils;
@@ -146,7 +144,6 @@ public class QueryStringSigner implements ISigner {
 			throw new SignatureException("Invalid Signature Version specified");
 
 		String signatureValue = sign(stringToSign, credentials.getSecretKey(), algorithm);
-		Log.w("<-----To Sign----->", stringToSign);
 		request.addParameter("signature", signatureValue);
 	}
 
