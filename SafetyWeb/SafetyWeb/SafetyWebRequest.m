@@ -251,10 +251,14 @@
 	[conn release];
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSString* metadataStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"Result: %@", metadataStr);
     
 	if (callbackObj) 
 		[callbackObj gotResponse:[responseData objectFromJSONData]];
     
+    [metadataStr release];
     [pool release];
 	[self release]; // Alright, our job is finally done
 }

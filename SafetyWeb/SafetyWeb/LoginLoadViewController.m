@@ -12,6 +12,10 @@
 @property (nonatomic, assign) LoginLoadViewController* callback;
 @end
 
+@interface ChildrenCallback : NSObject <SafetyWebRequestCallback>
+@property (nonatomic, assign) LoginLoadViewController* callback;
+@end;
+
 @implementation LoginLoadViewController
 
 @synthesize credentials;
@@ -35,15 +39,22 @@
     tokenCallback = [[TokenCallback alloc] init];
     tokenCallback.callback = self;
     
-    
     SafetyWebRequest *tokenRequest = [[SafetyWebRequest alloc] init];
     [tokenRequest setCallback:tokenCallback];
     [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/login", [AppProperties getProperty:@"API_Endpoint" withDefault:@"No API Endpoint"]]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.username, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
     [tokenRequest release];
 }
 
--(void)makeUserInfoRequest {
+-(void)makeChildrenRequest {
+    [childrenCallback release];
+    childrenCallback = [[ChildrenCallback alloc] init];
+    childrenCallback.callback = self;
     
+    SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
+    [childrenRequest setCallback:childrenCallback];
+    [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/children", [AppProperties getProperty:@"API_Endpoint" withDefault:@"No API Endpoint"]]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
+    [childrenRequest release];
+    progressView.progressCurrent = 60.0f;
 }
 
 #pragma mark - View lifecycle
@@ -54,7 +65,7 @@
     
     if (credentials.userToken != nil) {
         // The token is valid and has not expired
-        [self makeUserInfoRequest];
+        [self makeChildrenRequest];
         progressView.progressCurrent = 40.0f;
     } else {
         // The token does not exist, or is not valid, get a new one
@@ -68,10 +79,10 @@
 -(void)tokenRequestSuccess:(NSString*)aToken {
     self.credentials.userToken = aToken;
     progressView.progressCurrent = 40.f;
-    [self makeUserInfoRequest];
+    [self makeChildrenRequest];
 }
 
--(void)tokenRequestFailure:(NSError*)aError {
+-(void)requestFailure:(NSError*)aError {
     // If we have an error, then the server was unreachable
     // If there's no error, then the login failed and we need to ask for a new login
     if (aError != nil) {
@@ -125,11 +136,23 @@
     if ([result isEqualToString:@"OK"]) {
         [self.callback tokenRequestSuccess:[response objectForKey:@"token"]];
     } else {
-        [self.callback tokenRequestFailure:nil];
+        [self.callback requestFailure:nil];
     }
 }
 
 -(void)notGotResponse:(NSError *)aError {
-    [self.callback tokenRequestFailure:aError];
+    [self.callback requestFailure:aError];
 }
 @end
+
+@implementation ChildrenCallback
+@synthesize callback;
+-(void)gotResponse:(id)aResponse {
+    NSLog(@"Children: %@", [aResponse description]);
+}
+-(void)notGotResponse:(NSError *)aError {
+    [self.callback requestFailure:aError];
+}
+@end
+
+

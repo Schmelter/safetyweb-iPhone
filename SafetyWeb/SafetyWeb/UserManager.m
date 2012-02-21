@@ -84,15 +84,8 @@ static UserCredentials* credentials;
 }
 
 + (UserCredentials*)getLastUsedCredentials {
-    // TODO: Implement getting these out of the 
+    // TODO: Implement getting these out of the file system of coredata
     return credentials;
-}
-
-+ (void)attemptLogin:(UserCredentials *)aCredentials {
-    [aCredentials retain];
-    [credentials release];
-    credentials = aCredentials;
-    // TODO: Login the user here
 }
 
 - (void)dealloc {

@@ -181,6 +181,7 @@
 						<string key="NSFrame">{{33, 326}, {255, 43}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -248,7 +249,7 @@
 					<object class="IBUIButton" id="740583673">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 101}, {52, 37}}</string>
+						<string key="NSFrame">{{20, 107}, {65, 78}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="102268142"/>
@@ -265,13 +266,17 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="60168814"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">ATT_btn_off.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="66557064"/>
 						<reference key="IBUIFont" ref="247737818"/>
 					</object>
 					<object class="IBUIButton" id="102268142">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{80, 101}, {52, 37}}</string>
+						<string key="NSFrame">{{93, 107}, {65, 78}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="31955018"/>
@@ -288,13 +293,17 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="60168814"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">Verizon_btn_off.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="66557064"/>
 						<reference key="IBUIFont" ref="247737818"/>
 					</object>
 					<object class="IBUIButton" id="31955018">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{176, 101}, {52, 37}}</string>
+						<string key="NSFrame">{{166, 107}, {65, 78}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="386738539"/>
@@ -311,13 +320,17 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="60168814"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">Sprint_btn_off.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="66557064"/>
 						<reference key="IBUIFont" ref="247737818"/>
 					</object>
 					<object class="IBUIButton" id="386738539">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{236, 101}, {52, 37}}</string>
+						<string key="NSFrame">{{239, 107}, {65, 78}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="249296284"/>
@@ -334,6 +347,10 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="60168814"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">TMobile_btn_off.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="66557064"/>
 						<reference key="IBUIFont" ref="247737818"/>
 					</object>
@@ -498,13 +515,13 @@
 							<reference ref="97132756"/>
 							<reference ref="983313509"/>
 							<reference ref="664789329"/>
+							<reference ref="249296284"/>
+							<reference ref="1033070491"/>
+							<reference ref="385685709"/>
 							<reference ref="740583673"/>
 							<reference ref="102268142"/>
 							<reference ref="31955018"/>
 							<reference ref="386738539"/>
-							<reference ref="249296284"/>
-							<reference ref="1033070491"/>
-							<reference ref="385685709"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -679,9 +696,13 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="ATT_btn_off.png">{65, 78}</string>
 			<string key="Back.png">{50, 29}</string>
 			<string key="Button_Blue_LG.png">{250, 43}</string>
 			<string key="MobileAlertSetup1.png">{320, 480}</string>
+			<string key="Sprint_btn_off.png">{65, 78}</string>
+			<string key="TMobile_btn_off.png">{65, 78}</string>
+			<string key="Verizon_btn_off.png">{65, 78}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

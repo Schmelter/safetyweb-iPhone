@@ -39,6 +39,4 @@
 // May return nil if there were no last used credentials.  No guarantee that the credentials will work.
 + (UserCredentials*)getLastUsedCredentials;
 
-+ (void)attemptLogin:(UserCredentials*)credentials;
-
 @end

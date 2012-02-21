@@ -11,7 +11,7 @@
 #import "AccountSetupViewController.h"
 
 #define kMobileUserIdOffset     -60;
-#define kMobilePasswordOffset   -120;
+#define kMobilePasswordOffset   -180;
 
 @interface MobileAlertSetup2ViewController : SubAccountSetupViewController <UITextFieldDelegate> {
     @private

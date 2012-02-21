@@ -36,25 +36,20 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad
 {
-    // TODO: Switch this out with actual images, right now we're just using representative colors
-    
-    [attButton setBackgroundColor:[UIColor redColor]];
-    [verizonButton setBackgroundColor:[UIColor redColor]];
-    [sprintButton setBackgroundColor:[UIColor redColor]];
-    [tmobileButton setBackgroundColor:[UIColor redColor]];
+    mobileServiceProvider = accountSetupViewController.setupModel.mobileServiceProvider;
     
     switch (accountSetupViewController.setupModel.mobileServiceProvider) {
         case kAttMobileServiceProvider:
-            [attButton setBackgroundColor:[UIColor greenColor]];
+            [attButton setImage:[UIImage imageNamed:@"ATT_btn_on.png"] forState:UIControlStateNormal];
             break;
         case kVerizonMobileServiceProvider:
-            [verizonButton setBackgroundColor:[UIColor greenColor]];
+            [verizonButton setImage:[UIImage imageNamed:@"Verizon_btn_on.png"] forState:UIControlStateNormal];
             break;
         case kSprintMobileServiceProvider:
-            [sprintButton setBackgroundColor:[UIColor greenColor]];
+            [sprintButton setImage:[UIImage imageNamed:@"Sprint_btn_on.png"] forState:UIControlStateNormal];
             break;
         case kTMobileMobileServiceProvider:
-            [tmobileButton setBackgroundColor:[UIColor greenColor]];
+            [tmobileButton setImage:[UIImage imageNamed:@"TMobile_btn_on.png"] forState:UIControlStateNormal];
             break;
     }
     
@@ -146,23 +141,23 @@
 -(IBAction)providerButton:(id)sender {
     // TODO: Switch this out with actual images, right now we're just using representative colors
     
-    [attButton setBackgroundColor:[UIColor redColor]];
-    [verizonButton setBackgroundColor:[UIColor redColor]];
-    [sprintButton setBackgroundColor:[UIColor redColor]];
-    [tmobileButton setBackgroundColor:[UIColor redColor]];
+    [attButton setImage:[UIImage imageNamed:@"ATT_btn_off.png"] forState:UIControlStateNormal];
+    [verizonButton setImage:[UIImage imageNamed:@"Verizon_btn_off.png"] forState:UIControlStateNormal];
+    [sprintButton setImage:[UIImage imageNamed:@"Sprint_btn_off.png"] forState:UIControlStateNormal];
+    [tmobileButton setImage:[UIImage imageNamed:@"TMobile_btn_off.png"] forState:UIControlStateNormal];
     
     // They pressed one of the provider buttons, figure out which
     if (sender == attButton) {
-        [attButton setBackgroundColor:[UIColor greenColor]];
+        [attButton setImage:[UIImage imageNamed:@"ATT_btn_on.png"] forState:UIControlStateNormal];
         mobileServiceProvider = kAttMobileServiceProvider;
     } else if (sender == verizonButton) {
-        [verizonButton setBackgroundColor:[UIColor greenColor]];
+        [verizonButton setImage:[UIImage imageNamed:@"Verizon_btn_on.png"] forState:UIControlStateNormal];
         mobileServiceProvider = kVerizonMobileServiceProvider;
     } else if (sender == sprintButton) {
-        [sprintButton setBackgroundColor:[UIColor greenColor]];
+        [sprintButton setImage:[UIImage imageNamed:@"Sprint_btn_on.png"] forState:UIControlStateNormal];
         mobileServiceProvider = kSprintMobileServiceProvider;
     } else if (sender == tmobileButton) {
-        [tmobileButton setBackgroundColor:[UIColor greenColor]];
+        [tmobileButton setImage:[UIImage imageNamed:@"TMobile_btn_on.png"] forState:UIControlStateNormal];
         mobileServiceProvider = kTMobileMobileServiceProvider;
     }
 }
