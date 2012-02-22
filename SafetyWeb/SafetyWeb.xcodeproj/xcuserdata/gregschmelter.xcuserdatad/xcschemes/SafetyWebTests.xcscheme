@@ -27,23 +27,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "89AA20A814F582500082C7B5"
-               BuildableName = "SafetyWebTests.app"
-               BlueprintName = "SafetyWebTests"
-               ReferencedContainer = "container:SafetyWeb.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "897E980414DB02C3007595A7"
-            BuildableName = "SafetyWeb.app"
-            BlueprintName = "SafetyWeb"
+            BlueprintIdentifier = "89AA20A814F582500082C7B5"
+            BuildableName = "SafetyWebTests.app"
+            BlueprintName = "SafetyWebTests"
             ReferencedContainer = "container:SafetyWeb.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -59,9 +49,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "897E980414DB02C3007595A7"
-            BuildableName = "SafetyWeb.app"
-            BlueprintName = "SafetyWeb"
+            BlueprintIdentifier = "89AA20A814F582500082C7B5"
+            BuildableName = "SafetyWebTests.app"
+            BlueprintName = "SafetyWebTests"
             ReferencedContainer = "container:SafetyWeb.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -77,9 +67,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "897E980414DB02C3007595A7"
-            BuildableName = "SafetyWeb.app"
-            BlueprintName = "SafetyWeb"
+            BlueprintIdentifier = "89AA20A814F582500082C7B5"
+            BuildableName = "SafetyWebTests.app"
+            BlueprintName = "SafetyWebTests"
             ReferencedContainer = "container:SafetyWeb.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

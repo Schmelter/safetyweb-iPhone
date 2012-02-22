@@ -66,11 +66,6 @@
 		897E981414DB02C3007595A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 897E981214DB02C3007595A7 /* InfoPlist.strings */; };
 		897E981614DB02C3007595A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E981514DB02C3007595A7 /* main.m */; };
 		897E981A14DB02C3007595A7 /* SWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E981914DB02C3007595A7 /* SWAppDelegate.m */; };
-		897E982214DB02C3007595A7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E982114DB02C3007595A7 /* SenTestingKit.framework */; };
-		897E982314DB02C3007595A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
-		897E982414DB02C3007595A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
-		897E982C14DB02C3007595A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 897E982A14DB02C3007595A7 /* InfoPlist.strings */; };
-		897E982F14DB02C3007595A7 /* SafetyWebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E982E14DB02C3007595A7 /* SafetyWebTests.m */; };
 		897E984214DB1255007595A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984114DB1255007595A7 /* RootViewController.m */; };
 		897E984514DB12AE007595A7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984414DB12AE007595A7 /* LoginViewController.m */; };
 		897E984814DB1478007595A7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984714DB1478007595A7 /* UserManager.m */; };
@@ -95,10 +90,17 @@
 		899C095414EAE43900DDC780 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C095314EAE43900DDC780 /* LoadViewController.m */; };
 		899C095614EAE57000DDC780 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 899C095514EAE57000DDC780 /* LoadView.xib */; };
 		899F4C7414ED7E9400B8C553 /* SafetyWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */; };
+		89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
+		89AA20AC14F582500082C7B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
+		89AA20AD14F582500082C7B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980D14DB02C3007595A7 /* CoreGraphics.framework */; };
+		89AA20B314F582500082C7B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89AA20B114F582500082C7B5 /* InfoPlist.strings */; };
+		89AA20C814F5851E0082C7B5 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20C714F5851E0082C7B5 /* GHUnitIOSTestMain.m */; };
+		89AA20CB14F585A70082C7B5 /* SampleTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20CA14F585A70082C7B5 /* SampleTestCase.m */; };
+		89AA20CD14F5869B0082C7B5 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		897E982514DB02C3007595A7 /* PBXContainerItemProxy */ = {
+		89AA20C314F582590082C7B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 897E97FC14DB02C3007595A7 /* Project object */;
 			proxyType = 1;
@@ -175,12 +177,7 @@
 		897E981714DB02C3007595A7 /* SafetyWeb-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SafetyWeb-Prefix.pch"; sourceTree = "<group>"; };
 		897E981814DB02C3007595A7 /* SWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAppDelegate.h; sourceTree = "<group>"; };
 		897E981914DB02C3007595A7 /* SWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAppDelegate.m; sourceTree = "<group>"; };
-		897E982014DB02C3007595A7 /* SafetyWebTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafetyWebTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		897E982114DB02C3007595A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		897E982914DB02C3007595A7 /* SafetyWebTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SafetyWebTests-Info.plist"; sourceTree = "<group>"; };
-		897E982B14DB02C3007595A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		897E982D14DB02C3007595A7 /* SafetyWebTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafetyWebTests.h; sourceTree = "<group>"; };
-		897E982E14DB02C3007595A7 /* SafetyWebTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafetyWebTests.m; sourceTree = "<group>"; };
 		897E984014DB1255007595A7 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		897E984114DB1255007595A7 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		897E984314DB12AE007595A7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -221,6 +218,13 @@
 		899C095514EAE57000DDC780 /* LoadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
 		899F4C7214ED7E9400B8C553 /* SafetyWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyWebRequest.h; sourceTree = "<group>"; };
 		899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyWebRequest.m; sourceTree = "<group>"; };
+		89AA20A914F582500082C7B5 /* SafetyWebTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWebTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89AA20B014F582500082C7B5 /* SafetyWebTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SafetyWebTests-Info.plist"; sourceTree = "<group>"; };
+		89AA20B214F582500082C7B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89AA20B614F582500082C7B5 /* SafetyWebTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SafetyWebTests-Prefix.pch"; sourceTree = "<group>"; };
+		89AA20C714F5851E0082C7B5 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
+		89AA20CA14F585A70082C7B5 /* SampleTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTestCase.m; sourceTree = "<group>"; };
+		89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = SafetyWebTests/GHUnitIOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,13 +238,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		897E981C14DB02C3007595A7 /* Frameworks */ = {
+		89AA20A614F582500082C7B5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				897E982214DB02C3007595A7 /* SenTestingKit.framework in Frameworks */,
-				897E982314DB02C3007595A7 /* UIKit.framework in Frameworks */,
-				897E982414DB02C3007595A7 /* Foundation.framework in Frameworks */,
+				89AA20CD14F5869B0082C7B5 /* GHUnitIOS.framework in Frameworks */,
+				89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */,
+				89AA20AC14F582500082C7B5 /* Foundation.framework in Frameworks */,
+				89AA20AD14F582500082C7B5 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,9 +275,10 @@
 		897E97FA14DB02C3007595A7 = {
 			isa = PBXGroup;
 			children = (
+				89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */,
 				898441D614E48A240047CDFE /* images */,
 				897E980F14DB02C3007595A7 /* SafetyWeb */,
-				897E982714DB02C3007595A7 /* SafetyWebTests */,
+				89AA20AE14F582500082C7B5 /* SafetyWebTests */,
 				897E980814DB02C3007595A7 /* Frameworks */,
 				897E980614DB02C3007595A7 /* Products */,
 			);
@@ -282,7 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				897E980514DB02C3007595A7 /* SafetyWeb.app */,
-				897E982014DB02C3007595A7 /* SafetyWebTests.octest */,
+				89AA20A914F582500082C7B5 /* SafetyWebTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,25 +370,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		897E982714DB02C3007595A7 /* SafetyWebTests */ = {
-			isa = PBXGroup;
-			children = (
-				897E982D14DB02C3007595A7 /* SafetyWebTests.h */,
-				897E982E14DB02C3007595A7 /* SafetyWebTests.m */,
-				897E982814DB02C3007595A7 /* Supporting Files */,
-			);
-			path = SafetyWebTests;
-			sourceTree = "<group>";
-		};
-		897E982814DB02C3007595A7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				897E982914DB02C3007595A7 /* SafetyWebTests-Info.plist */,
-				897E982A14DB02C3007595A7 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		898441D614E48A240047CDFE /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +441,26 @@
 			name = DataModel;
 			sourceTree = "<group>";
 		};
+		89AA20AE14F582500082C7B5 /* SafetyWebTests */ = {
+			isa = PBXGroup;
+			children = (
+				89AA20C714F5851E0082C7B5 /* GHUnitIOSTestMain.m */,
+				89AA20AF14F582500082C7B5 /* Supporting Files */,
+				89AA20CA14F585A70082C7B5 /* SampleTestCase.m */,
+			);
+			path = SafetyWebTests;
+			sourceTree = "<group>";
+		};
+		89AA20AF14F582500082C7B5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				89AA20B014F582500082C7B5 /* SafetyWebTests-Info.plist */,
+				89AA20B114F582500082C7B5 /* InfoPlist.strings */,
+				89AA20B614F582500082C7B5 /* SafetyWebTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -474,24 +481,23 @@
 			productReference = 897E980514DB02C3007595A7 /* SafetyWeb.app */;
 			productType = "com.apple.product-type.application";
 		};
-		897E981F14DB02C3007595A7 /* SafetyWebTests */ = {
+		89AA20A814F582500082C7B5 /* SafetyWebTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 897E983514DB02C3007595A7 /* Build configuration list for PBXNativeTarget "SafetyWebTests" */;
+			buildConfigurationList = 89AA20C014F582500082C7B5 /* Build configuration list for PBXNativeTarget "SafetyWebTests" */;
 			buildPhases = (
-				897E981B14DB02C3007595A7 /* Sources */,
-				897E981C14DB02C3007595A7 /* Frameworks */,
-				897E981D14DB02C3007595A7 /* Resources */,
-				897E981E14DB02C3007595A7 /* ShellScript */,
+				89AA20A514F582500082C7B5 /* Sources */,
+				89AA20A614F582500082C7B5 /* Frameworks */,
+				89AA20A714F582500082C7B5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				897E982614DB02C3007595A7 /* PBXTargetDependency */,
+				89AA20C414F582590082C7B5 /* PBXTargetDependency */,
 			);
 			name = SafetyWebTests;
 			productName = SafetyWebTests;
-			productReference = 897E982014DB02C3007595A7 /* SafetyWebTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 89AA20A914F582500082C7B5 /* SafetyWebTests.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -514,7 +520,7 @@
 			projectRoot = "";
 			targets = (
 				897E980414DB02C3007595A7 /* SafetyWeb */,
-				897E981F14DB02C3007595A7 /* SafetyWebTests */,
+				89AA20A814F582500082C7B5 /* SafetyWebTests */,
 			);
 		};
 /* End PBXProject section */
@@ -585,31 +591,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		897E981D14DB02C3007595A7 /* Resources */ = {
+		89AA20A714F582500082C7B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				897E982C14DB02C3007595A7 /* InfoPlist.strings in Resources */,
+				89AA20B314F582500082C7B5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		897E981E14DB02C3007595A7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		897E980114DB02C3007595A7 /* Sources */ = {
@@ -641,21 +631,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		897E981B14DB02C3007595A7 /* Sources */ = {
+		89AA20A514F582500082C7B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				897E982F14DB02C3007595A7 /* SafetyWebTests.m in Sources */,
+				89AA20C814F5851E0082C7B5 /* GHUnitIOSTestMain.m in Sources */,
+				89AA20CB14F585A70082C7B5 /* SampleTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		897E982614DB02C3007595A7 /* PBXTargetDependency */ = {
+		89AA20C414F582590082C7B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 897E980414DB02C3007595A7 /* SafetyWeb */;
-			targetProxy = 897E982514DB02C3007595A7 /* PBXContainerItemProxy */;
+			targetProxy = 89AA20C314F582590082C7B5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -668,10 +659,10 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		897E982A14DB02C3007595A7 /* InfoPlist.strings */ = {
+		89AA20B114F582500082C7B5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				897E982B14DB02C3007595A7 /* en */,
+				89AA20B214F582500082C7B5 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -744,37 +735,45 @@
 			};
 			name = Release;
 		};
-		897E983614DB02C3007595A7 /* Debug */ = {
+		89AA20C114F582500082C7B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SafetyWeb.app/SafetyWeb";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
+					"\"$(SRCROOT)/..\"",
+					"\"$(SRCROOT)/SafetyWebTests\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
+				GCC_PREFIX_HEADER = "SafetyWebTests/SafetyWebTests-Prefix.pch";
 				INFOPLIST_FILE = "SafetyWebTests/SafetyWebTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		897E983714DB02C3007595A7 /* Release */ = {
+		89AA20C214F582500082C7B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SafetyWeb.app/SafetyWeb";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
+					"\"$(SRCROOT)/..\"",
+					"\"$(SRCROOT)/SafetyWebTests\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
+				GCC_PREFIX_HEADER = "SafetyWebTests/SafetyWebTests-Prefix.pch";
 				INFOPLIST_FILE = "SafetyWebTests/SafetyWebTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -799,14 +798,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		897E983514DB02C3007595A7 /* Build configuration list for PBXNativeTarget "SafetyWebTests" */ = {
+		89AA20C014F582500082C7B5 /* Build configuration list for PBXNativeTarget "SafetyWebTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				897E983614DB02C3007595A7 /* Debug */,
-				897E983714DB02C3007595A7 /* Release */,
+				89AA20C114F582500082C7B5 /* Debug */,
+				89AA20C214F582500082C7B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

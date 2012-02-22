@@ -2,8 +2,10 @@
 <section name="Workbench">
 	<section name="SynchronizeViewSettings">
 		<item value="false" key="linkWithEditor"/>
-		<item value="1329424755140" key="lastactiveparticipant_sec_id"/>
+		<item value="1329854739070" key="lastactiveparticipant_sec_id"/>
 		<item value="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant" key="lastactiveparticipant_id"/>
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329854618103">
+		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329424755140">
 			<item value="org.eclipse.team.ui.activeModelProvider" key="org.eclipse.team.ui.activeModelProvider"/>
 		</section>
@@ -49,6 +51,9 @@
 		<section name="org.tigris.subversion.subclipse.participant.1317415138069">
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329344064905">
+			<item value="org.eclipse.team.ui.activeModelProvider" key="org.eclipse.team.ui.activeModelProvider"/>
+		</section>
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329854739070">
 			<item value="org.eclipse.team.ui.activeModelProvider" key="org.eclipse.team.ui.activeModelProvider"/>
 		</section>
 		<section name="org.tigris.subversion.subclipse.participant.1317655751273">

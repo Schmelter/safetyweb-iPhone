@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SafetyWebTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,21 @@
 			<true/>
 		</dict>
 		<key>897E981F14DB02C3007595A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89AA207314F582330082C7B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89AA208F14F582330082C7B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89AA20A814F582500082C7B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
