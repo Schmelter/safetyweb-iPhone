@@ -90,6 +90,13 @@
 		899C095414EAE43900DDC780 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C095314EAE43900DDC780 /* LoadViewController.m */; };
 		899C095614EAE57000DDC780 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 899C095514EAE57000DDC780 /* LoadView.xib */; };
 		899F4C7414ED7E9400B8C553 /* SafetyWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */; };
+		89A15E5014F597CA00BF1A18 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 899754CF14EEFCC40046B1DA /* JSONKit.m */; };
+		89A15E5214F597CA00BF1A18 /* SafetyWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */; };
+		89A15E5414F597DF00BF1A18 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984675414E1ADEB00B997D5 /* Utilities.m */; };
+		89A15E5614F597DF00BF1A18 /* AppProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 89740AB314EC6D4A0064E64A /* AppProperties.m */; };
+		89A15E5714F59AE100BF1A18 /* AppProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740AB514EC6D8C0064E64A /* AppProperties.plist */; };
+		89A15E5814F59AE100BF1A18 /* AppProperties.dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABB14EC70E40064E64A /* AppProperties.dev.plist */; };
+		89A15E5914F59AE100BF1A18 /* AppProperties.prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABC14EC70E40064E64A /* AppProperties.prod.plist */; };
 		89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		89AA20AC14F582500082C7B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
 		89AA20AD14F582500082C7B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980D14DB02C3007595A7 /* CoreGraphics.framework */; };
@@ -97,17 +104,8 @@
 		89AA20C814F5851E0082C7B5 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20C714F5851E0082C7B5 /* GHUnitIOSTestMain.m */; };
 		89AA20CB14F585A70082C7B5 /* SampleTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20CA14F585A70082C7B5 /* SampleTestCase.m */; };
 		89AA20CD14F5869B0082C7B5 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */; };
+		89AA20D014F58AC30082C7B5 /* SafetyWebRequestTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20CF14F58AC30082C7B5 /* SafetyWebRequestTestCase.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		89AA20C314F582590082C7B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 897E97FC14DB02C3007595A7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 897E980414DB02C3007595A7;
-			remoteInfo = SafetyWeb;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLoadViewController.h; sourceTree = "<group>"; };
@@ -224,7 +222,8 @@
 		89AA20B614F582500082C7B5 /* SafetyWebTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SafetyWebTests-Prefix.pch"; sourceTree = "<group>"; };
 		89AA20C714F5851E0082C7B5 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 		89AA20CA14F585A70082C7B5 /* SampleTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTestCase.m; sourceTree = "<group>"; };
-		89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = SafetyWebTests/GHUnitIOS.framework; sourceTree = "<group>"; };
+		89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = SafetyWebTests/GHUnitIOS.framework; sourceTree = SOURCE_ROOT; };
+		89AA20CF14F58AC30082C7B5 /* SafetyWebRequestTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyWebRequestTestCase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,7 +274,6 @@
 		897E97FA14DB02C3007595A7 = {
 			isa = PBXGroup;
 			children = (
-				89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */,
 				898441D614E48A240047CDFE /* images */,
 				897E980F14DB02C3007595A7 /* SafetyWeb */,
 				89AA20AE14F582500082C7B5 /* SafetyWebTests */,
@@ -296,6 +294,7 @@
 		897E980814DB02C3007595A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */,
 				897E980914DB02C3007595A7 /* UIKit.framework */,
 				897E980B14DB02C3007595A7 /* Foundation.framework */,
 				897E980D14DB02C3007595A7 /* CoreGraphics.framework */,
@@ -447,6 +446,7 @@
 				89AA20C714F5851E0082C7B5 /* GHUnitIOSTestMain.m */,
 				89AA20AF14F582500082C7B5 /* Supporting Files */,
 				89AA20CA14F585A70082C7B5 /* SampleTestCase.m */,
+				89AA20CF14F58AC30082C7B5 /* SafetyWebRequestTestCase.m */,
 			);
 			path = SafetyWebTests;
 			sourceTree = "<group>";
@@ -492,7 +492,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				89AA20C414F582590082C7B5 /* PBXTargetDependency */,
 			);
 			name = SafetyWebTests;
 			productName = SafetyWebTests;
@@ -595,6 +594,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89A15E5714F59AE100BF1A18 /* AppProperties.plist in Resources */,
+				89A15E5814F59AE100BF1A18 /* AppProperties.dev.plist in Resources */,
+				89A15E5914F59AE100BF1A18 /* AppProperties.prod.plist in Resources */,
 				89AA20B314F582500082C7B5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,20 +637,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89A15E5414F597DF00BF1A18 /* Utilities.m in Sources */,
+				89A15E5614F597DF00BF1A18 /* AppProperties.m in Sources */,
+				89A15E5014F597CA00BF1A18 /* JSONKit.m in Sources */,
+				89A15E5214F597CA00BF1A18 /* SafetyWebRequest.m in Sources */,
 				89AA20C814F5851E0082C7B5 /* GHUnitIOSTestMain.m in Sources */,
 				89AA20CB14F585A70082C7B5 /* SampleTestCase.m in Sources */,
+				89AA20D014F58AC30082C7B5 /* SafetyWebRequestTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		89AA20C414F582590082C7B5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 897E980414DB02C3007595A7 /* SafetyWeb */;
-			targetProxy = 89AA20C314F582590082C7B5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		897E981214DB02C3007595A7 /* InfoPlist.strings */ = {
@@ -718,6 +717,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "SafetyWeb/SafetyWeb-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -729,6 +729,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "SafetyWeb/SafetyWeb-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -738,6 +739,7 @@
 		89AA20C114F582500082C7B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -752,6 +754,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -759,6 +762,7 @@
 		89AA20C214F582500082C7B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -773,6 +777,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -805,6 +810,7 @@
 				89AA20C214F582500082C7B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

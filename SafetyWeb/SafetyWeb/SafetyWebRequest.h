@@ -38,7 +38,8 @@
 }
 
 - (void) setCallback:(id<SafetyWebRequestCallback>)aCallback;
-- (void)request:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSDictionary *)aParamDict;
+- (void)request:(NSString *)requestMethod andURL:(NSURL *)url andParams:(NSDictionary *)aParamDict;
++(NSString *)buildRequestURL:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSMutableDictionary *)aParamDict andDate:(NSString*)aFormattedDate;
 +(NSString *)Base64Encode:(NSData *)data;
 
 #pragma mark -

@@ -11,9 +11,7 @@
 @interface SampleLibTest : GHTestCase { }
 @end
 
-@implementation SampleLibTest {
-    
-}
+@implementation SampleLibTest
 
 -(void)testSimplePass {
     // Another test

@@ -30,14 +30,13 @@
     [super dealloc];
 }
 
-- (NSString*)getFormattedTimestamp {
++ (NSString*)getFormattedTimestamp {
     NSDate *date = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     formatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     NSString* formattedDate = [formatter stringFromDate:date];
     [formatter release];
-    NSLog(@"Formatted Date: %@", formattedDate);
     return formattedDate;
 }
 
@@ -62,11 +61,31 @@
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    [paramDict setObject:[AppProperties getProperty:@"API_Id" withDefault:@"No API Id"] forKey:@"api_id"];
-    [paramDict setObject:[self getFormattedTimestamp] forKey:@"timestamp"];
+    NSString *fullURL = [SafetyWebRequest buildRequestURL:aRequestMethod andURL:aURL andParams:paramDict andDate:[SafetyWebRequest getFormattedTimestamp]];
+    
+    // Now, we have the URL necessary, so let's call the service, and get the data
+	NSURL *requestURL = [NSURL URLWithString:fullURL];
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:requestURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
+    
+	NSURLConnection *connection = [[NSURLConnection alloc]  initWithRequest:request delegate:self ] ;
+    
+	if (connection) {
+        
+        
+        
+	} else {
+		NSLog(@"No connection");
+	}
+    [pool release];
+}
+
++(NSString *)buildRequestURL:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSMutableDictionary *)aParamDict andDate:(NSString*)aFormattedDate {
+    [aParamDict setObject:[AppProperties getProperty:@"API_Id" withDefault:@"No API Id"] forKey:@"api_id"];
+    [aParamDict setObject:aFormattedDate forKey:@"timestamp"];
     
     // Now, sort the parameters, so that we can use them to build a key
-    NSMutableArray *paramKeys = [NSMutableArray arrayWithArray:[paramDict allKeys]];
+    NSMutableArray *paramKeys = [NSMutableArray arrayWithArray:[aParamDict allKeys]];
     
     // Build the parameters into a properly formatted string
 	NSMutableString *paramStr = [[NSMutableString alloc] initWithCapacity:1024];
@@ -81,7 +100,7 @@
 		[paramStr appendString:@"="];
 		NSString * encodedString = (NSString *)CFURLCreateStringByAddingPercentEscapes(
 																					   NULL,
-																					   (CFStringRef)[paramDict objectForKey:paramKey],
+																					   (CFStringRef)[aParamDict objectForKey:paramKey],
 																					   NULL,
 																					   (CFStringRef)@" !*'();:@&=+$,/?%#[]",
 																					   kCFStringEncodingUTF8 );
@@ -94,22 +113,20 @@
     
     // Create the key that we need to sign
 	NSMutableString* toSign = [[NSMutableString alloc] initWithCapacity:1024];
-	[toSign appendString:[requestMethod uppercaseString]];
+	[toSign appendString:[aRequestMethod uppercaseString]];
 	[toSign appendString:@"\n"];
-	[toSign appendString:[url.host lowercaseString]];
-    if (url.port != nil && [url.port intValue] != 0) {
-        if (([url.scheme isEqualToString:@"http"] && [url.port intValue] != 80) || ([url.scheme isEqualToString:@"https"] && [url.port intValue] != 443)) {
-            [toSign appendFormat:@":%i", [url.port intValue]];
+	[toSign appendString:[aURL.host lowercaseString]];
+    if (aURL.port != nil && [aURL.port intValue] != 0) {
+        if (([aURL.scheme isEqualToString:@"http"] && [aURL.port intValue] != 80) || ([aURL.scheme isEqualToString:@"https"] && [aURL.port intValue] != 443)) {
+            [toSign appendFormat:@":%i", [aURL.port intValue]];
         }
     }
 	[toSign appendString:@"\n"];
-    NSString* path = url.path;
+    NSString* path = aURL.path;
     if (path == nil || [path length] == 0) path = @"/";
     [toSign appendString:path];
     [toSign appendString:@"\n"];
 	[toSign appendString:paramStr];
-    
-    NSLog(@"To Sign: %@", toSign);
     
     // Turn it into a classic C String
 	const char *cSecretKey  = [[AppProperties getProperty:@"API_Key" withDefault:@"No Secret Key"] cStringUsingEncoding:NSASCIIStringEncoding];
@@ -142,30 +159,12 @@
 	[paramStr appendString:newSig];
 	[newSig release];
     
-    NSMutableString* fullURL = [[NSMutableString alloc] initWithCapacity:1024];
-	[fullURL appendString:url.absoluteString];
+    NSMutableString* fullURL = [[[NSMutableString alloc] initWithCapacity:1024] autorelease];
+	[fullURL appendString:aURL.absoluteString];
 	[fullURL appendString:@"?"];
 	[fullURL appendString:paramStr];
 	[paramStr release];
-    NSLog(@"Full URL: %@", fullURL);
-    
-    // Now, we have the URL necessary, so let's call the service, and get the data
-	NSURL *requestURL = [NSURL URLWithString:fullURL];
-    
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:requestURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
-    
-	NSURLConnection *connection = [[NSURLConnection alloc]  initWithRequest:request delegate:self ] ;
-    
-	if (connection) {
-        
-        
-        
-	} else {
-		NSLog(@"No connection");
-	}
-    
-	[fullURL release];
-    [pool release];
+    return fullURL;
 }
 
 +(NSString *)Base64Encode:(NSData *)data{
