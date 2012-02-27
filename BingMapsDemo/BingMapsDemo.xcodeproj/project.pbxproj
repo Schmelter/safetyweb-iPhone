@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8986665114F84A11005C34E5 /* ButtonDrivenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8986664F14F84A11005C34E5 /* ButtonDrivenViewController.m */; };
+		8986665214F84A11005C34E5 /* ButtonDrivenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8986665014F84A11005C34E5 /* ButtonDrivenViewController.xib */; };
+		89964B2C14F807B3006A0D7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B2B14F807B3006A0D7D /* UIKit.framework */; };
+		89964B2E14F807B3006A0D7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B2D14F807B3006A0D7D /* Foundation.framework */; };
+		89964B3014F807B3006A0D7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B2F14F807B3006A0D7D /* CoreGraphics.framework */; };
+		89964B3614F807B3006A0D7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89964B3414F807B3006A0D7D /* InfoPlist.strings */; };
+		89964B3814F807B3006A0D7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89964B3714F807B3006A0D7D /* main.m */; };
+		89964B3C14F807B3006A0D7D /* SWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89964B3B14F807B3006A0D7D /* SWAppDelegate.m */; };
+		89964B4114F807B3006A0D7D /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 89964B4014F807B3006A0D7D /* first.png */; };
+		89964B4314F807B3006A0D7D /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89964B4214F807B3006A0D7D /* first@2x.png */; };
+		89964B4814F807B3006A0D7D /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 89964B4714F807B3006A0D7D /* second.png */; };
+		89964B4A14F807B3006A0D7D /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89964B4914F807B3006A0D7D /* second@2x.png */; };
+		89964B6214F811C0006A0D7D /* libBingMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B6114F811BF006A0D7D /* libBingMaps.a */; };
+		89964B6514F811C8006A0D7D /* BingMaps.Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 89964B6414F811C8006A0D7D /* BingMaps.Resources.bundle */; };
+		89964B7214F81381006A0D7D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B7114F81381006A0D7D /* CoreData.framework */; };
+		89964B7414F81387006A0D7D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B7314F81387006A0D7D /* CoreLocation.framework */; };
+		89964B7614F81391006A0D7D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B7514F81391006A0D7D /* OpenGLES.framework */; };
+		89964B7814F8139B006A0D7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B7714F8139B006A0D7D /* QuartzCore.framework */; };
+		89964B7A14F813A4006A0D7D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B7914F813A4006A0D7D /* SystemConfiguration.framework */; };
+		89964B7C14F813B2006A0D7D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B7B14F813B2006A0D7D /* libxml2.dylib */; };
+		89964B7E14F813BD006A0D7D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B7D14F813BD006A0D7D /* libz.dylib */; };
+		89964B8314F81455006A0D7D /* CoordinateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89964B8114F81455006A0D7D /* CoordinateViewController.m */; };
+		89964B8414F81455006A0D7D /* CoordinateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89964B8214F81455006A0D7D /* CoordinateViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8986663F14F81824005C34E5 /* BingMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingMaps.h; sourceTree = "<group>"; };
+		8986664014F81824005C34E5 /* BMEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEntity.h; sourceTree = "<group>"; };
+		8986664114F81824005C34E5 /* BMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMGeometry.h; sourceTree = "<group>"; };
+		8986664214F81824005C34E5 /* BMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMapView.h; sourceTree = "<group>"; };
+		8986664314F81824005C34E5 /* BMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarker.h; sourceTree = "<group>"; };
+		8986664414F81824005C34E5 /* BMMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarkerView.h; sourceTree = "<group>"; };
+		8986664514F81824005C34E5 /* BMPushpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPushpinView.h; sourceTree = "<group>"; };
+		8986664614F81824005C34E5 /* BMReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMReverseGeocoder.h; sourceTree = "<group>"; };
+		8986664714F81824005C34E5 /* BMTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTypes.h; sourceTree = "<group>"; };
+		8986664814F81824005C34E5 /* BMUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMUserLocation.h; sourceTree = "<group>"; };
+		8986664E14F84A11005C34E5 /* ButtonDrivenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonDrivenViewController.h; sourceTree = "<group>"; };
+		8986664F14F84A11005C34E5 /* ButtonDrivenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonDrivenViewController.m; sourceTree = "<group>"; };
+		8986665014F84A11005C34E5 /* ButtonDrivenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonDrivenViewController.xib; sourceTree = "<group>"; };
+		89964B2714F807B3006A0D7D /* BingMapsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BingMapsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89964B2B14F807B3006A0D7D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		89964B2D14F807B3006A0D7D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		89964B2F14F807B3006A0D7D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		89964B3314F807B3006A0D7D /* BingMapsDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BingMapsDemo-Info.plist"; sourceTree = "<group>"; };
+		89964B3514F807B3006A0D7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89964B3714F807B3006A0D7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		89964B3914F807B3006A0D7D /* BingMapsDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BingMapsDemo-Prefix.pch"; sourceTree = "<group>"; };
+		89964B3A14F807B3006A0D7D /* SWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAppDelegate.h; sourceTree = "<group>"; };
+		89964B3B14F807B3006A0D7D /* SWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAppDelegate.m; sourceTree = "<group>"; };
+		89964B4014F807B3006A0D7D /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		89964B4214F807B3006A0D7D /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		89964B4714F807B3006A0D7D /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		89964B4914F807B3006A0D7D /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		89964B6114F811BF006A0D7D /* libBingMaps.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBingMaps.a; sourceTree = "<group>"; };
+		89964B6414F811C8006A0D7D /* BingMaps.Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BingMaps.Resources.bundle; sourceTree = "<group>"; };
+		89964B7114F81381006A0D7D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		89964B7314F81387006A0D7D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		89964B7514F81391006A0D7D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		89964B7714F8139B006A0D7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		89964B7914F813A4006A0D7D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		89964B7B14F813B2006A0D7D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		89964B7D14F813BD006A0D7D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		89964B8014F81455006A0D7D /* CoordinateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateViewController.h; sourceTree = "<group>"; };
+		89964B8114F81455006A0D7D /* CoordinateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateViewController.m; sourceTree = "<group>"; };
+		89964B8214F81455006A0D7D /* CoordinateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoordinateViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89964B2414F807B3006A0D7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89964B7E14F813BD006A0D7D /* libz.dylib in Frameworks */,
+				89964B7C14F813B2006A0D7D /* libxml2.dylib in Frameworks */,
+				89964B7A14F813A4006A0D7D /* SystemConfiguration.framework in Frameworks */,
+				89964B7814F8139B006A0D7D /* QuartzCore.framework in Frameworks */,
+				89964B7614F81391006A0D7D /* OpenGLES.framework in Frameworks */,
+				89964B7414F81387006A0D7D /* CoreLocation.framework in Frameworks */,
+				89964B7214F81381006A0D7D /* CoreData.framework in Frameworks */,
+				89964B2C14F807B3006A0D7D /* UIKit.framework in Frameworks */,
+				89964B2E14F807B3006A0D7D /* Foundation.framework in Frameworks */,
+				89964B3014F807B3006A0D7D /* CoreGraphics.framework in Frameworks */,
+				89964B6214F811C0006A0D7D /* libBingMaps.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8986663E14F81824005C34E5 /* BingMaps */ = {
+			isa = PBXGroup;
+			children = (
+				8986663F14F81824005C34E5 /* BingMaps.h */,
+				8986664014F81824005C34E5 /* BMEntity.h */,
+				8986664114F81824005C34E5 /* BMGeometry.h */,
+				8986664214F81824005C34E5 /* BMMapView.h */,
+				8986664314F81824005C34E5 /* BMMarker.h */,
+				8986664414F81824005C34E5 /* BMMarkerView.h */,
+				8986664514F81824005C34E5 /* BMPushpinView.h */,
+				8986664614F81824005C34E5 /* BMReverseGeocoder.h */,
+				8986664714F81824005C34E5 /* BMTypes.h */,
+				8986664814F81824005C34E5 /* BMUserLocation.h */,
+			);
+			path = BingMaps;
+			sourceTree = SOURCE_ROOT;
+		};
+		89964B1C14F807B3006A0D7D = {
+			isa = PBXGroup;
+			children = (
+				8986663E14F81824005C34E5 /* BingMaps */,
+				89964B3114F807B3006A0D7D /* BingMapsDemo */,
+				89964B2A14F807B3006A0D7D /* Frameworks */,
+				89964B2814F807B3006A0D7D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89964B2814F807B3006A0D7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89964B2714F807B3006A0D7D /* BingMapsDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89964B2A14F807B3006A0D7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89964B7D14F813BD006A0D7D /* libz.dylib */,
+				89964B7B14F813B2006A0D7D /* libxml2.dylib */,
+				89964B7914F813A4006A0D7D /* SystemConfiguration.framework */,
+				89964B7714F8139B006A0D7D /* QuartzCore.framework */,
+				89964B7514F81391006A0D7D /* OpenGLES.framework */,
+				89964B7314F81387006A0D7D /* CoreLocation.framework */,
+				89964B7114F81381006A0D7D /* CoreData.framework */,
+				89964B6114F811BF006A0D7D /* libBingMaps.a */,
+				89964B2B14F807B3006A0D7D /* UIKit.framework */,
+				89964B2D14F807B3006A0D7D /* Foundation.framework */,
+				89964B2F14F807B3006A0D7D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89964B3114F807B3006A0D7D /* BingMapsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				89964B7F14F813FB006A0D7D /* images */,
+				89964B3A14F807B3006A0D7D /* SWAppDelegate.h */,
+				89964B3B14F807B3006A0D7D /* SWAppDelegate.m */,
+				89964B3214F807B3006A0D7D /* Supporting Files */,
+				89964B8014F81455006A0D7D /* CoordinateViewController.h */,
+				89964B8114F81455006A0D7D /* CoordinateViewController.m */,
+				89964B8214F81455006A0D7D /* CoordinateViewController.xib */,
+				8986664E14F84A11005C34E5 /* ButtonDrivenViewController.h */,
+				8986664F14F84A11005C34E5 /* ButtonDrivenViewController.m */,
+				8986665014F84A11005C34E5 /* ButtonDrivenViewController.xib */,
+			);
+			path = BingMapsDemo;
+			sourceTree = "<group>";
+		};
+		89964B3214F807B3006A0D7D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				89964B6414F811C8006A0D7D /* BingMaps.Resources.bundle */,
+				89964B3314F807B3006A0D7D /* BingMapsDemo-Info.plist */,
+				89964B3414F807B3006A0D7D /* InfoPlist.strings */,
+				89964B3714F807B3006A0D7D /* main.m */,
+				89964B3914F807B3006A0D7D /* BingMapsDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89964B7F14F813FB006A0D7D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				89964B4014F807B3006A0D7D /* first.png */,
+				89964B4214F807B3006A0D7D /* first@2x.png */,
+				89964B4714F807B3006A0D7D /* second.png */,
+				89964B4914F807B3006A0D7D /* second@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89964B2614F807B3006A0D7D /* BingMapsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89964B5314F807B3006A0D7D /* Build configuration list for PBXNativeTarget "BingMapsDemo" */;
+			buildPhases = (
+				89964B2314F807B3006A0D7D /* Sources */,
+				89964B2414F807B3006A0D7D /* Frameworks */,
+				89964B2514F807B3006A0D7D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BingMapsDemo;
+			productName = BingMapsDemo;
+			productReference = 89964B2714F807B3006A0D7D /* BingMapsDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89964B1E14F807B3006A0D7D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 89964B2114F807B3006A0D7D /* Build configuration list for PBXProject "BingMapsDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 89964B1C14F807B3006A0D7D;
+			productRefGroup = 89964B2814F807B3006A0D7D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89964B2614F807B3006A0D7D /* BingMapsDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89964B2514F807B3006A0D7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89964B3614F807B3006A0D7D /* InfoPlist.strings in Resources */,
+				89964B4114F807B3006A0D7D /* first.png in Resources */,
+				89964B4314F807B3006A0D7D /* first@2x.png in Resources */,
+				89964B4814F807B3006A0D7D /* second.png in Resources */,
+				89964B4A14F807B3006A0D7D /* second@2x.png in Resources */,
+				89964B6514F811C8006A0D7D /* BingMaps.Resources.bundle in Resources */,
+				89964B8414F81455006A0D7D /* CoordinateViewController.xib in Resources */,
+				8986665214F84A11005C34E5 /* ButtonDrivenViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89964B2314F807B3006A0D7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89964B3814F807B3006A0D7D /* main.m in Sources */,
+				89964B3C14F807B3006A0D7D /* SWAppDelegate.m in Sources */,
+				89964B8314F81455006A0D7D /* CoordinateViewController.m in Sources */,
+				8986665114F84A11005C34E5 /* ButtonDrivenViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		89964B3414F807B3006A0D7D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89964B3514F807B3006A0D7D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89964B5114F807B3006A0D7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		89964B5214F807B3006A0D7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89964B5414F807B3006A0D7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BingMapsDemo/BingMapsDemo-Prefix.pch";
+				INFOPLIST_FILE = "BingMapsDemo/BingMapsDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		89964B5514F807B3006A0D7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BingMapsDemo/BingMapsDemo-Prefix.pch";
+				INFOPLIST_FILE = "BingMapsDemo/BingMapsDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89964B2114F807B3006A0D7D /* Build configuration list for PBXProject "BingMapsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89964B5114F807B3006A0D7D /* Debug */,
+				89964B5214F807B3006A0D7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89964B5314F807B3006A0D7D /* Build configuration list for PBXNativeTarget "BingMapsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89964B5414F807B3006A0D7D /* Debug */,
+				89964B5514F807B3006A0D7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89964B1E14F807B3006A0D7D /* Project object */;
+}

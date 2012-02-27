@@ -84,6 +84,8 @@
 		89867F2114E9928600B054B2 /* MobileAlertSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2014E9928500B054B2 /* MobileAlertSetup1View.xib */; };
 		89867F2414E99FD500B054B2 /* MobileAlertSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */; };
 		89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */; };
+		89964B5F14F80DB6006A0D7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B5E14F80DB6006A0D7D /* QuartzCore.framework */; };
+		89964B6014F80DC0006A0D7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B5E14F80DB6006A0D7D /* QuartzCore.framework */; };
 		899754D014EEFCC40046B1DA /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 899754CF14EEFCC40046B1DA /* JSONKit.m */; };
 		899754D414EF0FB60046B1DA /* ChildManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 899754D314EF0FB60046B1DA /* ChildManager.m */; };
 		899C095014EAD9A000DDC780 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C094F14EAD9A000DDC780 /* LoadView.m */; };
@@ -205,6 +207,7 @@
 		89867F2214E99FD500B054B2 /* MobileAlertSetup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileAlertSetup2ViewController.h; sourceTree = "<group>"; };
 		89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileAlertSetup2ViewController.m; sourceTree = "<group>"; };
 		89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileAlertSetup2View.xib; sourceTree = "<group>"; };
+		89964B5E14F80DB6006A0D7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		899754CE14EEFCC40046B1DA /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		899754CF14EEFCC40046B1DA /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		899754D214EF0FB60046B1DA /* ChildManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildManager.h; sourceTree = "<group>"; };
@@ -231,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89964B5F14F80DB6006A0D7D /* QuartzCore.framework in Frameworks */,
 				897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */,
 				897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */,
 				897E980E14DB02C3007595A7 /* CoreGraphics.framework in Frameworks */,
@@ -241,6 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89964B6014F80DC0006A0D7D /* QuartzCore.framework in Frameworks */,
 				89AA20CD14F5869B0082C7B5 /* GHUnitIOS.framework in Frameworks */,
 				89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */,
 				89AA20AC14F582500082C7B5 /* Foundation.framework in Frameworks */,
@@ -274,6 +279,7 @@
 		897E97FA14DB02C3007595A7 = {
 			isa = PBXGroup;
 			children = (
+				89964B5E14F80DB6006A0D7D /* QuartzCore.framework */,
 				898441D614E48A240047CDFE /* images */,
 				897E980F14DB02C3007595A7 /* SafetyWeb */,
 				89AA20AE14F582500082C7B5 /* SafetyWebTests */,
