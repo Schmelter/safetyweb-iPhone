@@ -30,6 +30,11 @@
 		89964B7E14F813BD006A0D7D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B7D14F813BD006A0D7D /* libz.dylib */; };
 		89964B8314F81455006A0D7D /* CoordinateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89964B8114F81455006A0D7D /* CoordinateViewController.m */; };
 		89964B8414F81455006A0D7D /* CoordinateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89964B8214F81455006A0D7D /* CoordinateViewController.xib */; };
+		89B8A4D814FD6FD5004237FB /* QuartzMapLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8A4D714FD6FD5004237FB /* QuartzMapLine.m */; };
+		89BAE0D114FC39A000F8EB03 /* QuartzMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BAE0D014FC39A000F8EB03 /* QuartzMapView.m */; };
+		89BAE0D514FC39AE00F8EB03 /* QuartzMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BAE0D314FC39AE00F8EB03 /* QuartzMapViewController.m */; };
+		89BAE0D614FC39AE00F8EB03 /* QuartzMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BAE0D414FC39AE00F8EB03 /* QuartzMapViewController.xib */; };
+		89BAE0D814FC3ADB00F8EB03 /* radar.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BAE0D714FC3ADB00F8EB03 /* radar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +77,15 @@
 		89964B8014F81455006A0D7D /* CoordinateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateViewController.h; sourceTree = "<group>"; };
 		89964B8114F81455006A0D7D /* CoordinateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateViewController.m; sourceTree = "<group>"; };
 		89964B8214F81455006A0D7D /* CoordinateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoordinateViewController.xib; sourceTree = "<group>"; };
+		89B8A4D414FD58A9004237FB /* QuartzMapShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzMapShape.h; sourceTree = "<group>"; };
+		89B8A4D614FD6FD5004237FB /* QuartzMapLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzMapLine.h; sourceTree = "<group>"; };
+		89B8A4D714FD6FD5004237FB /* QuartzMapLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzMapLine.m; sourceTree = "<group>"; };
+		89BAE0CF14FC39A000F8EB03 /* QuartzMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzMapView.h; sourceTree = "<group>"; };
+		89BAE0D014FC39A000F8EB03 /* QuartzMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzMapView.m; sourceTree = "<group>"; };
+		89BAE0D214FC39AE00F8EB03 /* QuartzMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzMapViewController.h; sourceTree = "<group>"; };
+		89BAE0D314FC39AE00F8EB03 /* QuartzMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzMapViewController.m; sourceTree = "<group>"; };
+		89BAE0D414FC39AE00F8EB03 /* QuartzMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuartzMapViewController.xib; sourceTree = "<group>"; };
+		89BAE0D714FC3ADB00F8EB03 /* radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +176,14 @@
 				8986664E14F84A11005C34E5 /* ButtonDrivenViewController.h */,
 				8986664F14F84A11005C34E5 /* ButtonDrivenViewController.m */,
 				8986665014F84A11005C34E5 /* ButtonDrivenViewController.xib */,
+				89BAE0CF14FC39A000F8EB03 /* QuartzMapView.h */,
+				89BAE0D014FC39A000F8EB03 /* QuartzMapView.m */,
+				89BAE0D214FC39AE00F8EB03 /* QuartzMapViewController.h */,
+				89BAE0D314FC39AE00F8EB03 /* QuartzMapViewController.m */,
+				89BAE0D414FC39AE00F8EB03 /* QuartzMapViewController.xib */,
+				89B8A4D414FD58A9004237FB /* QuartzMapShape.h */,
+				89B8A4D614FD6FD5004237FB /* QuartzMapLine.h */,
+				89B8A4D714FD6FD5004237FB /* QuartzMapLine.m */,
 			);
 			path = BingMapsDemo;
 			sourceTree = "<group>";
@@ -185,6 +207,7 @@
 				89964B4214F807B3006A0D7D /* first@2x.png */,
 				89964B4714F807B3006A0D7D /* second.png */,
 				89964B4914F807B3006A0D7D /* second@2x.png */,
+				89BAE0D714FC3ADB00F8EB03 /* radar.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -247,6 +270,8 @@
 				89964B6514F811C8006A0D7D /* BingMaps.Resources.bundle in Resources */,
 				89964B8414F81455006A0D7D /* CoordinateViewController.xib in Resources */,
 				8986665214F84A11005C34E5 /* ButtonDrivenViewController.xib in Resources */,
+				89BAE0D614FC39AE00F8EB03 /* QuartzMapViewController.xib in Resources */,
+				89BAE0D814FC3ADB00F8EB03 /* radar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +286,9 @@
 				89964B3C14F807B3006A0D7D /* SWAppDelegate.m in Sources */,
 				89964B8314F81455006A0D7D /* CoordinateViewController.m in Sources */,
 				8986665114F84A11005C34E5 /* ButtonDrivenViewController.m in Sources */,
+				89BAE0D114FC39A000F8EB03 /* QuartzMapView.m in Sources */,
+				89BAE0D514FC39AE00F8EB03 /* QuartzMapViewController.m in Sources */,
+				89B8A4D814FD6FD5004237FB /* QuartzMapLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

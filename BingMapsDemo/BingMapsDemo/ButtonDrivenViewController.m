@@ -138,18 +138,6 @@
 
 #pragma mark -
 #pragma mark BMMapViewDelegate
--(void)mapView:(BMMapView *)aMapView didAddMarkerViews:(NSArray *)aViews {
-    NSLog(@"mapView:didAddMarkerViews");
-}
-
--(void)mapView:(BMMarkerView*)aMapView markerView:(BMMarkerView *)aView calloutAccessoryControlTapped:(UIControl *)aControl {
-    NSLog(@"mapView:makerView:calloutAccessoryControlTapped");
-}
-
--(void)mapView:(BMMapView *)aMapView regionWillChangeAnimated:(BOOL)aAnimated {
-    BMCoordinateRegion region = [mapView region];
-    NSLog( @"did change animated:%d - c %g,%g s %g,%g", aAnimated, region.center.latitude, region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta );
-}
 
 -(BMMarkerView*)mapView:(BMMapView *)aMapView viewForMarker:(id<BMMarker>)aMarker {
     NSLog(@"Marker Class: %@", [aMarker class]);
@@ -179,18 +167,6 @@
         pinView.marker = aMarker;
     }
     return pinView;
-}
-
--(void)mapViewDidFailLoadingMap:(BMMapView *)aMapView withError:(NSError *)aError {
-    NSLog(@"mapViewDidFailLoadingMap:withError");
-}
-
--(void)mapViewDidFinishLoadingMap:(BMMapView *)aMapView {
-    NSLog(@"mapViewDidFinishLoadingMap");
-}
-
--(void)mapViewWillStartLoadingMap:(BMMapView *)aMapView {
-    NSLog(@"mapViewWillStartLoadingMap");
 }
 
 -(void)dealloc {

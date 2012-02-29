@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CoordinateViewController.h"
 #import "ButtonDrivenViewController.h"
+#import "QuartzMapViewController.h"
 
 @interface SWAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 

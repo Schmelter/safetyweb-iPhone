@@ -132,30 +132,6 @@
     [numberFormatter release];
 }
 
-#pragma mark -
-#pragma mark BMMapViewDelegate Methods
-- (void)mapView:(BMMapView *)aMapView regionWillChangeAnimated:(BOOL)animated {
-    BMCoordinateRegion region = [mapView region];
-    NSLog( @"will change animated:%d - c %g,%g s %g,%g", animated, region.center.latitude, region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta );
-}
-
-- (void)mapView:(BMMapView *)aMapView regionDidChangeAnimated:(BOOL)animated {
-    BMCoordinateRegion region = [mapView region];
-    NSLog( @"did change animated:%d - c %g,%g s %g,%g", animated, region.center.latitude, region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta );
-}
-
-- (void)mapViewWillStartLoadingMap:(BMMapView *)aMapView {
-    NSLog( @"will start loading" );
-}
-
-- (void)mapViewDidFinishLoadingMap:(BMMapView *)aMapView {
-    NSLog( @"did finish loading" );
-}
-
-- (void)mapViewDidFailLoadingMap:(BMMapView *)aMapView withError:(NSError *)error {
-    NSLog( @"did fail loading" );
-}
-
 -(IBAction)backgroundTap:(id)sender {
     [latitude resignFirstResponder];
     [longitude resignFirstResponder];
