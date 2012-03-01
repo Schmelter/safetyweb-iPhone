@@ -27,15 +27,17 @@
     UIViewController *coordinateViewController = [[CoordinateViewController alloc] initWithNibName:@"CoordinateViewController" bundle:nil];
     UIViewController *buttonDrivenViewController = [[ButtonDrivenViewController alloc] initWithNibName:@"ButtonDrivenViewController" bundle:nil];
     UIViewController *quartzMapViewController = [[QuartzMapViewController alloc] initWithNibName:@"QuartzMapViewController" bundle:nil];
+    UIViewController *drawViewController = [[DrawViewController alloc] initWithNibName:@"DrawViewController" bundle:nil];
     UITabBarController *aTabBarController = [[UITabBarController alloc] init];
     self.tabBarController = aTabBarController;
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:coordinateViewController, buttonDrivenViewController, quartzMapViewController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:coordinateViewController, buttonDrivenViewController, quartzMapViewController, drawViewController, nil];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     [aTabBarController release];
     [buttonDrivenViewController release];
     [coordinateViewController release];
     [quartzMapViewController release];
+    [drawViewController release];
     return YES;
 }
 

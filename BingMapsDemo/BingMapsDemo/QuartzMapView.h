@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <BingMaps/BingMaps.h>
 #import "QuartzMapShape.h"
+#import "QuartzMapLine.h"
+#import "QuartzMapPolygon.h"
 
 @class _QuartzMapView;
 
@@ -16,15 +18,16 @@
     @private
     BMMapView *mapView;
     _QuartzMapView *overlay;
-    NSMutableArray *shapes;
     id<BMMapViewDelegate> delegate;
 }
 
 -(void)addShape:(id<QuartzMapShape>)shape;
 -(void)removeShape:(id<QuartzMapShape>)shape;
 
+-(void)startDrawing:(UIColor*)lineColor withWidth:(double)lineWidth;
+-(void)stopDrawing:(UIColor*)fillColor;
+
 @property (readonly, nonatomic) BMMapView *mapView;
-@property (readonly, nonatomic) NSArray *shapes;
 @property (assign, nonatomic) id<BMMapViewDelegate> delegate;
 
 @end

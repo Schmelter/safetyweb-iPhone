@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "QuartzMapView.h"
 #import "QuartzMapLine.h"
+#import "QuartzMapCircle.h"
+#import "QuartzMapPolygon.h"
 
 @interface QuartzMapViewController : UIViewController {
     @private

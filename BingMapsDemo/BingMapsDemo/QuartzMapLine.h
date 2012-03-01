@@ -11,7 +11,7 @@
 #import "QuartzMapShape.h"
 
 @interface QuartzMapLine : NSObject <QuartzMapShape> {
-    @private
+@private
     UIColor *lineColor;
     CLLocationCoordinate2D lineStart;
     CLLocationCoordinate2D lineEnd;

@@ -12,16 +12,25 @@
     @private
     QuartzMapView *parent;
     BOOL regionIsChanging;
+    NSMutableArray *drawLines;
+    UIColor *lineColor;
+    double lineWidth;
+    NSMutableArray *shapes;
+    CGPoint lastDrawPoint;
 }
 
 @property (assign, nonatomic) QuartzMapView *parent;
+@property (retain, nonatomic) NSMutableArray *drawLines;
+@property (readonly, nonatomic) NSMutableArray *shapes;
+
+-(void)startDrawing:(UIColor*)aLineColor withWidth:(double)aLineWidth;
+-(void)stopDrawing:(UIColor*)aFillColor;
 
 @end
 
 @implementation QuartzMapView
 
 @synthesize mapView;
-@synthesize shapes;
 @synthesize  delegate;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -37,8 +46,6 @@
         overlay.multipleTouchEnabled = YES;
         overlay.parent = self;
         [self insertSubview:overlay atIndex:2];
-        
-        shapes = [[NSMutableArray alloc] init];
         
         mapView.delegate = overlay;
     }
@@ -59,25 +66,30 @@
         overlay.parent = self;
         [self insertSubview:overlay atIndex:2];
         
-        shapes = [[NSMutableArray alloc] init];
-        
         mapView.delegate = overlay;
     }
     return self;
 }
 
 -(void)addShape:(id<QuartzMapShape>)shape {
-    [shapes addObject:shape];
+    [overlay.shapes addObject:shape];
 }
 
 -(void)removeShape:(id<QuartzMapShape>)shape {
-    [shapes removeObject:shape];
+    [overlay.shapes removeObject:shape];
+}
+
+-(void)startDrawing:(UIColor *)lineColor withWidth:(double)lineWidth {
+    [overlay startDrawing:lineColor withWidth:lineWidth];
+}
+
+-(void)stopDrawing:(UIColor *)fillColor {
+    [overlay stopDrawing:fillColor];
 }
 
 -(void)dealloc {
     [mapView release];
     [overlay release];
-    [shapes release];
     
     [super dealloc];
 }
@@ -88,12 +100,17 @@
 @implementation _QuartzMapView
 
 @synthesize parent;
+@synthesize drawLines;
+@synthesize shapes;
 
 -(_QuartzMapView*)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         regionIsChanging = NO;
+        drawLines = nil;
+        shapes = [[NSMutableArray alloc] initWithCapacity:10];
+        lastDrawPoint = CGPointMake(-9999, -9999);
     }
     return self;
 }
@@ -103,6 +120,9 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         regionIsChanging = NO;
+        drawLines = nil;
+        shapes = [[NSMutableArray alloc] initWithCapacity:10];
+        lastDrawPoint = CGPointMake(-9999, -9999);
     }
     return self;
 }
@@ -114,7 +134,7 @@
     // Draw our shapes on top of the map
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    NSEnumerator *iter = [parent.shapes objectEnumerator];
+    NSEnumerator *iter = [shapes objectEnumerator];
     id<QuartzMapShape> shape = nil;
     while (shape = [iter nextObject]) {
         // Make sure the shape will display within the current mapView region
@@ -122,12 +142,108 @@
         if ((shapeRect.origin.x < rect.origin.x + rect.size.width) && (shapeRect.origin.y < rect.origin.y + rect.size.height)
             && (shapeRect.origin.x + shapeRect.size.width > rect.origin.x) && (shapeRect.origin.y + shapeRect.size.height > rect.origin.y)) {
             // Make sure the shape is big enough to be worth drawing
-            if (shapeRect.size.width > 5 && shapeRect.size.height > 5) {
+            if (shapeRect.size.width > 5 || shapeRect.size.height > 5) {
                 // Draw the shape
                 [shape drawRect:shapeRect withContext:context];
             }
         }
     }
+    
+    // Draw our draw lines on the map
+    iter = [drawLines objectEnumerator];
+    QuartzMapLine *drawLine = nil;
+    while (drawLine = [iter nextObject]) {
+        // Make sure the shape will display within the current mapView region
+        CGRect lineRect = [parent.mapView convertRegion:drawLine.region toRectToView:self];
+        if ((lineRect.origin.x < rect.origin.x + rect.size.width) && (lineRect.origin.y < rect.origin.y + rect.size.height)
+            && (lineRect.origin.x + lineRect.size.width > rect.origin.x) && (lineRect.origin.y + lineRect.size.height > rect.origin.y)) {
+            // Make sure the shape is big enough to be worth drawing
+            if (lineRect.size.width > 5 || lineRect.size.height > 5) {
+                // Draw the shape
+                [drawLine drawRect:lineRect withContext:context];
+            }
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark Draw Functions
+-(void)startDrawing:(UIColor*)aLineColor withWidth:(double)aLineWidth {
+    if (drawLines != nil) {
+        // Clear out the old drawlines
+        NSEnumerator *iter = [drawLines objectEnumerator];
+        QuartzMapLine *line = nil;
+        while (line = [iter nextObject]) {
+            [shapes removeObject:line];
+        }
+    }
+    
+    NSMutableArray *newDrawLines = [[NSMutableArray alloc] initWithCapacity:10];
+    self.drawLines = newDrawLines;
+    [newDrawLines release];
+    
+    [aLineColor retain];
+    [lineColor release];
+    lineColor = aLineColor;
+    
+    lineWidth = aLineWidth;
+    lastDrawPoint = CGPointMake(-9999, -9999);
+    
+    parent.mapView.zoomEnabled = NO;
+    parent.mapView.scrollEnabled = NO;
+}
+
+-(void)stopDrawing:(UIColor*)aFillColor {
+    // Connect the lines to make a polygon, and use the fill color, then add it to shapes
+    if (drawLines == nil) return;
+    if ([drawLines count] <= 1) {
+        self.drawLines = nil;
+        return;
+    }
+    
+    QuartzMapPolygon *polygon = [[QuartzMapPolygon alloc] init];
+    polygon.lineWidth = lineWidth;
+    polygon.lineColor = lineColor;
+    polygon.fillColor = aFillColor;
+    
+    NSEnumerator *iter = [drawLines objectEnumerator];
+    QuartzMapLine *drawLine = nil;
+    QuartzMapLine *lastLine = nil;
+    while (drawLine = [iter nextObject]) {
+        [polygon addPoint:drawLine.lineStart];
+        lastLine = drawLine;
+    }
+    // Need to add the endpoint of the last line
+    [polygon addPoint:lastLine.lineEnd];
+    
+    [shapes addObject:polygon];
+    [polygon release];
+    
+    
+    self.drawLines = nil;
+    parent.mapView.zoomEnabled = YES;
+    parent.mapView.scrollEnabled = YES;
+    [self setNeedsDisplay];
+}
+
+-(void)addDrawPoint:(CGPoint)cgPoint {
+    if (lastDrawPoint.x == -9999 && lastDrawPoint.y == -9999) {
+        lastDrawPoint = cgPoint;
+        return;
+    }
+    
+    // This is not the first point, create a line for the point
+    QuartzMapLine *drawLine = [[QuartzMapLine alloc] init];
+    drawLine.lineWidth = lineWidth;
+    drawLine.lineColor = lineColor;
+    drawLine.lineStart = [parent.mapView convertPoint:lastDrawPoint toCoordinateFromView:self];
+    drawLine.lineEnd = [parent.mapView convertPoint:cgPoint toCoordinateFromView:self];
+    
+    [drawLines addObject:drawLine];
+    [drawLine release];
+    
+    lastDrawPoint = cgPoint;
+    [self setNeedsDisplay];
 }
 
 #pragma mark -
@@ -143,13 +259,10 @@
     [parent.delegate mapView:mapView regionWillChangeAnimated:animated];
 }
 - (void)mapViewWillStartLoadingMap:(BMMapView *)mapView {
-    //[parent.delegate mapViewWillStartLoadingMap:mapView];
-    //regionIsChanging = YES;
+    [parent.delegate mapViewWillStartLoadingMap:mapView];
     [self setNeedsDisplay];
 }
 - (void)mapViewDidFinishLoadingMap:(BMMapView *)mapView {
-    //regionIsChanging = NO;
-    //[self setNeedsDisplay];
     [parent.delegate mapViewDidFinishLoadingMap:mapView];
 }
 - (void)mapViewDidFailLoadingMap:(BMMapView *)mapView withError:(NSError *)error {
@@ -173,16 +286,28 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     [parent.mapView touchesMoved:touches withEvent:event];
-    //[self setNeedsDisplay];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [parent.mapView touchesEnded:touches withEvent:event];
-    //[self setNeedsDisplay];
+    if (drawLines != nil) {
+        // They're done touching, add a point
+        UITouch *end = [[event allTouches] anyObject];
+        CGPoint cgPoint = [end locationInView:self];
+        [self addDrawPoint:cgPoint];
+    }
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     [parent.mapView touchesCancelled:touches withEvent:event];
+}
+
+-(void)dealloc {
+    [lineColor release];
+    [drawLines release];
+    [shapes release];
+    
+    [super dealloc];
 }
 
 @end
