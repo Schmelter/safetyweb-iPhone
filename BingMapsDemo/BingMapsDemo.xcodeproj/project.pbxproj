@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8954BB851501739D00345679 /* QuartzMapShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 8954BB841501739D00345679 /* QuartzMapShape.m */; };
 		8986665114F84A11005C34E5 /* ButtonDrivenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8986664F14F84A11005C34E5 /* ButtonDrivenViewController.m */; };
 		8986665214F84A11005C34E5 /* ButtonDrivenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8986665014F84A11005C34E5 /* ButtonDrivenViewController.xib */; };
 		8986F11014FEF84D0007BC6C /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8986F10E14FEF84D0007BC6C /* DrawViewController.m */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8954BB841501739D00345679 /* QuartzMapShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzMapShape.m; sourceTree = "<group>"; };
 		8986663F14F81824005C34E5 /* BingMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingMaps.h; sourceTree = "<group>"; };
 		8986664014F81824005C34E5 /* BMEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEntity.h; sourceTree = "<group>"; };
 		8986664114F81824005C34E5 /* BMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMGeometry.h; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				8986F10D14FEF84D0007BC6C /* DrawViewController.h */,
 				8986F10E14FEF84D0007BC6C /* DrawViewController.m */,
 				8986F10F14FEF84D0007BC6C /* DrawViewController.xib */,
+				8954BB841501739D00345679 /* QuartzMapShape.m */,
 			);
 			path = BingMapsDemo;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				89B3924414FE9AC10095A51F /* QuartzMapCircle.m in Sources */,
 				89B3924B14FEAC2D0095A51F /* QuartzMapPolygon.m in Sources */,
 				8986F11014FEF84D0007BC6C /* DrawViewController.m in Sources */,
+				8954BB851501739D00345679 /* QuartzMapShape.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

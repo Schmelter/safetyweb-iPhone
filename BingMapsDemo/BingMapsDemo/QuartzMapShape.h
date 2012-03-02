@@ -10,6 +10,23 @@
 #import <BingMaps/BingMaps.h>
 
 /**
+ * _QMPoint is a wrapper for a lat/long combination
+ */
+
+@interface _QMPoint : NSObject {
+@private
+    CLLocationDegrees latitude;
+    CLLocationDegrees longitude;
+}
+
+@property (readwrite, assign, nonatomic) CLLocationDegrees latitude;
+@property (readwrite, assign, nonatomic) CLLocationDegrees longitude;
+
+-(_QMPoint*)initWithLocation:(CLLocationCoordinate2D)location;
+
+@end
+
+/**
  * Represents a shape in the QuartzMapView that can be drawn.
  */
 
