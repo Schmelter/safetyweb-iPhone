@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */; };
+		8936AFE3150FC28B005C8237 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936AFE1150FC28B005C8237 /* MenuViewController.m */; };
+		8936AFE4150FC28B005C8237 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8936AFE2150FC28B005C8237 /* MenuViewController.xib */; };
+		8936AFE8150FC6D2005C8237 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936AFE7150FC6D2005C8237 /* MenuItem.m */; };
 		893F9D4114E1F58D0074C5EC /* AccountSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */; };
 		893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */; };
 		893F9D4714E1F5CD0074C5EC /* AccountSetup1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */; };
@@ -99,6 +102,13 @@
 		89A15E5714F59AE100BF1A18 /* AppProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740AB514EC6D8C0064E64A /* AppProperties.plist */; };
 		89A15E5814F59AE100BF1A18 /* AppProperties.dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABB14EC70E40064E64A /* AppProperties.dev.plist */; };
 		89A15E5914F59AE100BF1A18 /* AppProperties.prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABC14EC70E40064E64A /* AppProperties.prod.plist */; };
+		89A1C508150FFEA90097F2F1 /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A1C506150FFEA80097F2F1 /* AlertsViewController.m */; };
+		89A1C50B150FFF720097F2F1 /* AlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C50A150FFF720097F2F1 /* AlertsViewController.xib */; };
+		89A1C510151000300097F2F1 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C50E151000300097F2F1 /* point.png */; };
+		89A1C512151000530097F2F1 /* eiffel.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C511151000530097F2F1 /* eiffel.png */; };
+		89A1C516151005EC0097F2F1 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A1C514151005EC0097F2F1 /* CheckInViewController.m */; };
+		89A1C517151005EC0097F2F1 /* CheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C515151005EC0097F2F1 /* CheckInViewController.xib */; };
+		89A1C519151006510097F2F1 /* butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C518151006510097F2F1 /* butterfly.png */; };
 		89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		89AA20AC14F582500082C7B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
 		89AA20AD14F582500082C7B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980D14DB02C3007595A7 /* CoreGraphics.framework */; };
@@ -112,6 +122,11 @@
 /* Begin PBXFileReference section */
 		8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLoadViewController.h; sourceTree = "<group>"; };
 		8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginLoadViewController.m; sourceTree = "<group>"; };
+		8936AFE0150FC28B005C8237 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		8936AFE1150FC28B005C8237 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		8936AFE2150FC28B005C8237 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		8936AFE6150FC6D2005C8237 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
+		8936AFE7150FC6D2005C8237 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
 		893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSetup1View.xib; sourceTree = "<group>"; };
 		893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSetup2View.xib; sourceTree = "<group>"; };
 		893F9D4514E1F5CD0074C5EC /* AccountSetup1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetup1ViewController.h; sourceTree = "<group>"; };
@@ -219,6 +234,15 @@
 		899C095514EAE57000DDC780 /* LoadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
 		899F4C7214ED7E9400B8C553 /* SafetyWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyWebRequest.h; sourceTree = "<group>"; };
 		899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyWebRequest.m; sourceTree = "<group>"; };
+		89A1C505150FFEA80097F2F1 /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
+		89A1C506150FFEA80097F2F1 /* AlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsViewController.m; sourceTree = "<group>"; };
+		89A1C50A150FFF720097F2F1 /* AlertsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
+		89A1C50E151000300097F2F1 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = point.png; path = "test images/point.png"; sourceTree = "<group>"; };
+		89A1C511151000530097F2F1 /* eiffel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eiffel.png; path = "test images/eiffel.png"; sourceTree = "<group>"; };
+		89A1C513151005EB0097F2F1 /* CheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInViewController.h; sourceTree = "<group>"; };
+		89A1C514151005EC0097F2F1 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
+		89A1C515151005EC0097F2F1 /* CheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInViewController.xib; sourceTree = "<group>"; };
+		89A1C518151006510097F2F1 /* butterfly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = butterfly.png; path = "test images/butterfly.png"; sourceTree = "<group>"; };
 		89AA20A914F582500082C7B5 /* SafetyWebTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWebTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AA20B014F582500082C7B5 /* SafetyWebTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SafetyWebTests-Info.plist"; sourceTree = "<group>"; };
 		89AA20B214F582500082C7B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -256,6 +280,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8936AFDE150FB415005C8237 /* Login Setup UI */ = {
+			isa = PBXGroup;
+			children = (
+				898651FC14DB5CB7008F353B /* LoginView.xib */,
+				8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */,
+				8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */,
+				8984675114E1AB3100B997D5 /* ResetPasswordView.xib */,
+				8984675614E1CA1900B997D5 /* ChildsActivityViewController.h */,
+				8984675714E1CA1900B997D5 /* ChildsActivityViewController.m */,
+				8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */,
+				893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */,
+				893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */,
+				893F9D4514E1F5CD0074C5EC /* AccountSetup1ViewController.h */,
+				893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */,
+				893F9D4814E1F5DE0074C5EC /* AccountSetup2ViewController.h */,
+				893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */,
+				89838DB014E30F8B00CDCDBC /* AccountSetupModel.h */,
+				89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */,
+				898441CE14E474530047CDFE /* AccountSetupViewController.h */,
+				898441CF14E474540047CDFE /* AccountSetupViewController.m */,
+				898441D114E483E80047CDFE /* MobileOptInViewController.h */,
+				898441D214E483E80047CDFE /* MobileOptInViewController.m */,
+				898441D414E485010047CDFE /* MobileOptInView.xib */,
+				89867F1C14E9870100B054B2 /* MobileAlertSetup1ViewController.h */,
+				89867F1D14E9870100B054B2 /* MobileAlertSetup1ViewController.m */,
+				89867F2014E9928500B054B2 /* MobileAlertSetup1View.xib */,
+				89867F2214E99FD500B054B2 /* MobileAlertSetup2ViewController.h */,
+				89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */,
+				89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */,
+				899C094E14EAD9A000DDC780 /* LoadView.h */,
+				899C094F14EAD9A000DDC780 /* LoadView.m */,
+				899C095214EAE43900DDC780 /* LoadViewController.h */,
+				899C095314EAE43900DDC780 /* LoadViewController.m */,
+				899C095514EAE57000DDC780 /* LoadView.xib */,
+				8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */,
+				8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */,
+				897E984314DB12AE007595A7 /* LoginViewController.h */,
+				897E984414DB12AE007595A7 /* LoginViewController.m */,
+			);
+			name = "Login Setup UI";
+			sourceTree = "<group>";
+		};
+		8936AFE5150FC3B3005C8237 /* Main UI */ = {
+			isa = PBXGroup;
+			children = (
+				8936AFE0150FC28B005C8237 /* MenuViewController.h */,
+				8936AFE1150FC28B005C8237 /* MenuViewController.m */,
+				8936AFE2150FC28B005C8237 /* MenuViewController.xib */,
+				8936AFE6150FC6D2005C8237 /* MenuItem.h */,
+				8936AFE7150FC6D2005C8237 /* MenuItem.m */,
+				89A1C505150FFEA80097F2F1 /* AlertsViewController.h */,
+				89A1C506150FFEA80097F2F1 /* AlertsViewController.m */,
+				89A1C50A150FFF720097F2F1 /* AlertsViewController.xib */,
+				89A1C513151005EB0097F2F1 /* CheckInViewController.h */,
+				89A1C514151005EC0097F2F1 /* CheckInViewController.m */,
+				89A1C515151005EC0097F2F1 /* CheckInViewController.xib */,
+			);
+			name = "Main UI";
+			sourceTree = "<group>";
+		};
 		89740AB014EC6C5E0064E64A /* WebInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +396,8 @@
 		897E980F14DB02C3007595A7 /* SafetyWeb */ = {
 			isa = PBXGroup;
 			children = (
+				8936AFE5150FC3B3005C8237 /* Main UI */,
+				8936AFDE150FB415005C8237 /* Login Setup UI */,
 				899754D114EF0F270046B1DA /* DataModel */,
 				899754CD14EEFAF50046B1DA /* JSONKit */,
 				89740AB114EC6D2E0064E64A /* Utilities */,
@@ -321,42 +407,7 @@
 				897E981014DB02C3007595A7 /* Supporting Files */,
 				897E984014DB1255007595A7 /* RootViewController.h */,
 				897E984114DB1255007595A7 /* RootViewController.m */,
-				897E984314DB12AE007595A7 /* LoginViewController.h */,
-				897E984414DB12AE007595A7 /* LoginViewController.m */,
 				898651FA14DB5A1E008F353B /* MainWindow.xib */,
-				898651FC14DB5CB7008F353B /* LoginView.xib */,
-				8984674D14E1AA2C00B997D5 /* ResetPasswordViewController.h */,
-				8984674E14E1AA2C00B997D5 /* ResetPasswordViewController.m */,
-				8984675114E1AB3100B997D5 /* ResetPasswordView.xib */,
-				8984675614E1CA1900B997D5 /* ChildsActivityViewController.h */,
-				8984675714E1CA1900B997D5 /* ChildsActivityViewController.m */,
-				8984675B14E1CA5900B997D5 /* ChildsActivityView.xib */,
-				893F9D4014E1F58D0074C5EC /* AccountSetup1View.xib */,
-				893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */,
-				893F9D4514E1F5CD0074C5EC /* AccountSetup1ViewController.h */,
-				893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */,
-				893F9D4814E1F5DE0074C5EC /* AccountSetup2ViewController.h */,
-				893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */,
-				89838DB014E30F8B00CDCDBC /* AccountSetupModel.h */,
-				89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */,
-				898441CE14E474530047CDFE /* AccountSetupViewController.h */,
-				898441CF14E474540047CDFE /* AccountSetupViewController.m */,
-				898441D114E483E80047CDFE /* MobileOptInViewController.h */,
-				898441D214E483E80047CDFE /* MobileOptInViewController.m */,
-				898441D414E485010047CDFE /* MobileOptInView.xib */,
-				89867F1C14E9870100B054B2 /* MobileAlertSetup1ViewController.h */,
-				89867F1D14E9870100B054B2 /* MobileAlertSetup1ViewController.m */,
-				89867F2014E9928500B054B2 /* MobileAlertSetup1View.xib */,
-				89867F2214E99FD500B054B2 /* MobileAlertSetup2ViewController.h */,
-				89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */,
-				89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */,
-				899C094E14EAD9A000DDC780 /* LoadView.h */,
-				899C094F14EAD9A000DDC780 /* LoadView.m */,
-				899C095214EAE43900DDC780 /* LoadViewController.h */,
-				899C095314EAE43900DDC780 /* LoadViewController.m */,
-				899C095514EAE57000DDC780 /* LoadView.xib */,
-				8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */,
-				8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */,
 			);
 			path = SafetyWeb;
 			sourceTree = "<group>";
@@ -378,6 +429,7 @@
 		898441D614E48A240047CDFE /* images */ = {
 			isa = PBXGroup;
 			children = (
+				89A1C50C150FFFD30097F2F1 /* test images */,
 				897BBC6E14F41D6800377684 /* ATT_btn_off.png */,
 				897BBC6F14F41D6800377684 /* ATT_btn_off@2X.png */,
 				897BBC7014F41D6800377684 /* ATT_btn_on.png */,
@@ -444,6 +496,16 @@
 				899754D314EF0FB60046B1DA /* ChildManager.m */,
 			);
 			name = DataModel;
+			sourceTree = "<group>";
+		};
+		89A1C50C150FFFD30097F2F1 /* test images */ = {
+			isa = PBXGroup;
+			children = (
+				89A1C518151006510097F2F1 /* butterfly.png */,
+				89A1C511151000530097F2F1 /* eiffel.png */,
+				89A1C50E151000300097F2F1 /* point.png */,
+			);
+			name = "test images";
 			sourceTree = "<group>";
 		};
 		89AA20AE14F582500082C7B5 /* SafetyWebTests */ = {
@@ -593,6 +655,12 @@
 				897BBC8B14F41D6B00377684 /* Verizon_btn_off@2X.png in Resources */,
 				897BBC8C14F41D6B00377684 /* Verizon_btn_on.png in Resources */,
 				897BBC8D14F41D6B00377684 /* Verizon_btn_on@2X.png in Resources */,
+				8936AFE4150FC28B005C8237 /* MenuViewController.xib in Resources */,
+				89A1C50B150FFF720097F2F1 /* AlertsViewController.xib in Resources */,
+				89A1C510151000300097F2F1 /* point.png in Resources */,
+				89A1C512151000530097F2F1 /* eiffel.png in Resources */,
+				89A1C517151005EC0097F2F1 /* CheckInViewController.xib in Resources */,
+				89A1C519151006510097F2F1 /* butterfly.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +704,10 @@
 				8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */,
 				899754D014EEFCC40046B1DA /* JSONKit.m in Sources */,
 				899754D414EF0FB60046B1DA /* ChildManager.m in Sources */,
+				8936AFE3150FC28B005C8237 /* MenuViewController.m in Sources */,
+				8936AFE8150FC6D2005C8237 /* MenuItem.m in Sources */,
+				89A1C508150FFEA90097F2F1 /* AlertsViewController.m in Sources */,
+				89A1C516151005EC0097F2F1 /* CheckInViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
