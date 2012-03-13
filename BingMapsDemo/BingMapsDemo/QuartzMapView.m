@@ -26,6 +26,9 @@
 -(void)startDrawing:(UIColor*)aLineColor withWidth:(double)aLineWidth;
 -(void)stopDrawing:(UIColor*)aFillColor;
 
+-(void)startEditing;
+-(void)stopEditing;
+
 @end
 
 @implementation QuartzMapView
@@ -87,6 +90,14 @@
     [overlay stopDrawing:fillColor];
 }
 
+-(void)startEditing {
+    [overlay startEditing];
+}
+
+-(void)stopEditing {
+    [overlay stopEditing];
+}
+
 -(void)dealloc {
     [mapView release];
     [overlay release];
@@ -131,6 +142,8 @@
     // Don't draw anything if the region is changing
     if (regionIsChanging) return;
     
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
     // Draw our shapes on top of the map
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -147,6 +160,13 @@
                 [shape drawRect:shapeRect withContext:context];
             }
         }
+        
+        CLLocationCoordinate2D *pointArr;
+        int pointCount = [shape qmPoints:&pointArr];
+        for (int i = 0; i < pointCount; i++) {
+            NSLog(@"Shape Lat: %f Long: %f", pointArr[i].latitude, pointArr[i].longitude);
+        }
+        free(pointArr);
     }
     
     // Draw our draw lines on the map
@@ -163,7 +183,16 @@
                 [drawLine drawRect:lineRect withContext:context];
             }
         }
+        
+        CLLocationCoordinate2D *pointArr;
+        int pointCount = [shape qmPoints:&pointArr];
+        for (int i = 0; i < pointCount; i++) {
+            NSLog(@"DrawLine Lat: %f Long: %f", pointArr[i].latitude, pointArr[i].longitude);
+        }
+        free(pointArr);
     }
+    
+    [pool release];
 }
 
 #pragma mark -
@@ -244,6 +273,16 @@
     
     lastDrawPoint = cgPoint;
     [self setNeedsDisplay];
+}
+
+#pragma mark -
+#pragma mark Editing Functions
+-(void)startEditing {
+    
+}
+
+-(void)stopEditing {
+    
 }
 
 #pragma mark -

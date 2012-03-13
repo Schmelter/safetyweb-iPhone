@@ -19,12 +19,14 @@
 }
 
 @property (retain, nonatomic) UIColor *lineColor;
-@property (nonatomic) CLLocationCoordinate2D lineStart;
-@property (nonatomic) CLLocationCoordinate2D lineEnd;
+@property (assign, nonatomic) CLLocationCoordinate2D lineStart;
+@property (assign, nonatomic) CLLocationCoordinate2D lineEnd;
 @property (nonatomic) double lineWidth;
 
 -(BMCoordinateRegion)region;
 
 -(void)drawRect:(CGRect)rect withContext:(CGContextRef)context;
+
+-(int)qmPoints:(CLLocationCoordinate2D**)pointArr;
 
 @end

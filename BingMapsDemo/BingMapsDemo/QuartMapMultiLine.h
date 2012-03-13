@@ -1,8 +1,8 @@
 //
-//  QuartzMapCircle.h
+//  QuartMapMultiLine.h
 //  BingMapsDemo
 //
-//  Created by Gregory Schmelter on 2/29/12.
+//  Created by Gregory Schmelter on 3/2/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,20 +10,18 @@
 #import <BingMaps/BingMaps.h>
 #import "QuartzMapShape.h"
 
-@interface QuartzMapCircle : NSObject <QuartzMapShape> {
-    @private
-    CLLocationCoordinate2D center;
-    NSInteger metersRadius;
+@interface QuartMapMultiLine : NSObject <QuartzMapShape> {
+@private
+    NSMutableArray *points;
     double lineWidth;
     UIColor *lineColor;
-    UIColor *fillColor;
 }
 
-@property (assign, nonatomic) CLLocationCoordinate2D center;
-@property (assign, nonatomic) NSInteger metersRadius;
 @property (assign, nonatomic) double lineWidth;
 @property (retain, nonatomic) UIColor *lineColor;
-@property (retain, nonatomic) UIColor *fillColor;
+
+-(void)addPoint:(CLLocationCoordinate2D)point;
+-(void)removePoint:(CLLocationCoordinate2D)point;
 
 -(BMCoordinateRegion)region;
 

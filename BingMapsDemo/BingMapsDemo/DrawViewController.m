@@ -12,12 +12,14 @@
 
 @synthesize mapView;
 @synthesize drawButton;
+@synthesize editButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         drawing = NO;
+        editing = NO;
         
         UIImage *anImage = [UIImage imageNamed:@"pencil.png"];
         UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Draw" image:anImage tag:0];
@@ -42,6 +44,7 @@
     [super viewDidLoad];
     
     [drawButton setBackgroundColor:[UIColor redColor]];
+    [editButton setBackgroundColor:[UIColor redColor]];
 }
 
 - (void)viewDidUnload
@@ -60,6 +63,7 @@
 #pragma mark -
 #pragma mark IBAction Methods
 -(IBAction)drawPressed:(id)sender {
+    if (editing) [self editPressed:nil];
     drawing = !drawing;
     if (drawing) {
         [drawButton setBackgroundColor:[UIColor greenColor]];
@@ -69,6 +73,18 @@
         UIColor *fillColor = [[UIColor alloc] initWithRed:1.0 green:0 blue:0 alpha:0.25];
         [mapView stopDrawing:fillColor];
         [fillColor release];
+    }
+}
+
+-(IBAction)editPressed:(id)sender {
+    if (drawing) [self drawPressed:nil];
+    editing = !editing;
+    if (editing) {
+        [editButton setBackgroundColor:[UIColor greenColor]];
+        [mapView startEditing];
+    } else {
+        [editButton setBackgroundColor:[UIColor redColor]];
+        [mapView stopEditing];
     }
 }
 

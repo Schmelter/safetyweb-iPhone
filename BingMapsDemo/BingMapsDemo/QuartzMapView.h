@@ -27,6 +27,9 @@
 -(void)startDrawing:(UIColor*)lineColor withWidth:(double)lineWidth;
 -(void)stopDrawing:(UIColor*)fillColor;
 
+-(void)startEditing;
+-(void)stopEditing;
+
 @property (readonly, nonatomic) BMMapView *mapView;
 @property (assign, nonatomic) id<BMMapViewDelegate> delegate;
 

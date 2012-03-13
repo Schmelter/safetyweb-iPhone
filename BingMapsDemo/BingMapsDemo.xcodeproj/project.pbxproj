@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8954BB851501739D00345679 /* QuartzMapShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 8954BB841501739D00345679 /* QuartzMapShape.m */; };
 		8986665114F84A11005C34E5 /* ButtonDrivenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8986664F14F84A11005C34E5 /* ButtonDrivenViewController.m */; };
 		8986665214F84A11005C34E5 /* ButtonDrivenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8986665014F84A11005C34E5 /* ButtonDrivenViewController.xib */; };
 		8986F11014FEF84D0007BC6C /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8986F10E14FEF84D0007BC6C /* DrawViewController.m */; };
 		8986F11114FEF84D0007BC6C /* DrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8986F10F14FEF84D0007BC6C /* DrawViewController.xib */; };
 		8986F11414FEFA370007BC6C /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 8986F11314FEFA370007BC6C /* pencil.png */; };
+		8988D1FA1501747400A2DE0A /* QuartMapMultiLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8988D1F91501747400A2DE0A /* QuartMapMultiLine.m */; };
+		8988D20115017C9F00A2DE0A /* QuartzMapShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 8988D20015017C9F00A2DE0A /* QuartzMapShape.m */; };
 		89964B2C14F807B3006A0D7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B2B14F807B3006A0D7D /* UIKit.framework */; };
 		89964B2E14F807B3006A0D7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B2D14F807B3006A0D7D /* Foundation.framework */; };
 		89964B3014F807B3006A0D7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B2F14F807B3006A0D7D /* CoreGraphics.framework */; };
@@ -45,7 +46,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8954BB841501739D00345679 /* QuartzMapShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzMapShape.m; sourceTree = "<group>"; };
 		8986663F14F81824005C34E5 /* BingMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingMaps.h; sourceTree = "<group>"; };
 		8986664014F81824005C34E5 /* BMEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEntity.h; sourceTree = "<group>"; };
 		8986664114F81824005C34E5 /* BMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMGeometry.h; sourceTree = "<group>"; };
@@ -63,6 +63,9 @@
 		8986F10E14FEF84D0007BC6C /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
 		8986F10F14FEF84D0007BC6C /* DrawViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawViewController.xib; sourceTree = "<group>"; };
 		8986F11314FEFA370007BC6C /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		8988D1F81501747400A2DE0A /* QuartMapMultiLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartMapMultiLine.h; sourceTree = "<group>"; };
+		8988D1F91501747400A2DE0A /* QuartMapMultiLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartMapMultiLine.m; sourceTree = "<group>"; };
+		8988D20015017C9F00A2DE0A /* QuartzMapShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzMapShape.m; sourceTree = "<group>"; };
 		89964B2714F807B3006A0D7D /* BingMapsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BingMapsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89964B2B14F807B3006A0D7D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		89964B2D14F807B3006A0D7D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -208,7 +211,9 @@
 				8986F10D14FEF84D0007BC6C /* DrawViewController.h */,
 				8986F10E14FEF84D0007BC6C /* DrawViewController.m */,
 				8986F10F14FEF84D0007BC6C /* DrawViewController.xib */,
-				8954BB841501739D00345679 /* QuartzMapShape.m */,
+				8988D1F81501747400A2DE0A /* QuartMapMultiLine.h */,
+				8988D1F91501747400A2DE0A /* QuartMapMultiLine.m */,
+				8988D20015017C9F00A2DE0A /* QuartzMapShape.m */,
 			);
 			path = BingMapsDemo;
 			sourceTree = "<group>";
@@ -322,7 +327,8 @@
 				89B3924414FE9AC10095A51F /* QuartzMapCircle.m in Sources */,
 				89B3924B14FEAC2D0095A51F /* QuartzMapPolygon.m in Sources */,
 				8986F11014FEF84D0007BC6C /* DrawViewController.m in Sources */,
-				8954BB851501739D00345679 /* QuartzMapShape.m in Sources */,
+				8988D1FA1501747400A2DE0A /* QuartMapMultiLine.m in Sources */,
+				8988D20115017C9F00A2DE0A /* QuartzMapShape.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

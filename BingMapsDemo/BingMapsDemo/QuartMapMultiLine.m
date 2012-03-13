@@ -1,26 +1,24 @@
 //
-//  QuartzMapPolygon.m
+//  QuartMapMultiLine.m
 //  BingMapsDemo
 //
-//  Created by Gregory Schmelter on 2/29/12.
+//  Created by Gregory Schmelter on 3/2/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "QuartzMapPolygon.h"
+#import "QuartMapMultiLine.h"
 
-@implementation QuartzMapPolygon
+@implementation QuartMapMultiLine
 
 @synthesize lineWidth;
 @synthesize lineColor;
-@synthesize fillColor;
 
--(QuartzMapPolygon*)init {
+-(QuartMapMultiLine*)init {
     self = [super init];
     if (self) {
         points = [[NSMutableArray alloc] initWithCapacity:10];
         lineWidth = 1.0;
         lineColor = [UIColor blackColor];
-        fillColor = [UIColor clearColor];
     }
     return self;
 }
@@ -79,7 +77,8 @@
     double latHeight = highest - lowest;
     double longWidth = rightmost - leftmost;
     
-    CGContextSetFillColorWithColor(context, fillColor.CGColor);
+    CGContextSetLineWidth(context, lineWidth);
+    CGContextSetStrokeColorWithColor(context, lineColor.CGColor);
     
     _QMPoint *firstPoint = [points objectAtIndex:0];
     CGContextMoveToPoint(context, (rect.origin.x + (rect.size.width * ((firstPoint.longitude - leftmost) / longWidth))), (rect.origin.y + (rect.size.height * ((highest - firstPoint.latitude) / latHeight))));
@@ -89,24 +88,6 @@
     while (point = [iter nextObject]) {
         CGContextAddLineToPoint(context, (rect.origin.x + (rect.size.width * ((point.longitude - leftmost) / longWidth))), (rect.origin.y + (rect.size.height * ((highest - point.latitude) / latHeight))));
     }
-    
-    CGContextClosePath(context);
-    
-    CGContextFillPath(context);
-    
-    CGContextSetLineWidth(context, lineWidth);
-    CGContextSetStrokeColorWithColor(context, lineColor.CGColor);
-    
-    firstPoint = [points objectAtIndex:0];
-    CGContextMoveToPoint(context, (rect.origin.x + (rect.size.width * ((firstPoint.longitude - leftmost) / longWidth))), (rect.origin.y + (rect.size.height * ((highest - firstPoint.latitude) / latHeight))));
-    
-    iter = [points objectEnumerator];
-    [iter nextObject]; // We already placed the first point above
-    while (point = [iter nextObject]) {
-        CGContextAddLineToPoint(context, (rect.origin.x + (rect.size.width * ((point.longitude - leftmost) / longWidth))), (rect.origin.y + (rect.size.height * ((highest - point.latitude) / latHeight))));
-    }
-    
-    CGContextClosePath(context);
     
     CGContextStrokePath(context);
 }
@@ -125,9 +106,7 @@
 -(void)dealloc {
     [points release];
     [lineColor release];
-    [fillColor release];
     
     [super dealloc];
 }
-
 @end

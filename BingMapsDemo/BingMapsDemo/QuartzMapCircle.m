@@ -42,6 +42,12 @@
     CGContextFillEllipseInRect(context, rect);
 }
 
+-(int)qmPoints:(CLLocationCoordinate2D**)pointArr {
+    *pointArr = (CLLocationCoordinate2D*) malloc(1 * sizeof(CLLocationCoordinate2D));
+    (*pointArr)[0] = center;
+    return 1;
+}
+
 -(void)dealloc {
     [lineColor release];
     [fillColor release];

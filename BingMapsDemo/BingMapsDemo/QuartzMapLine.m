@@ -70,6 +70,13 @@
     CGContextStrokePath(context);
 }
 
+-(int)qmPoints:(CLLocationCoordinate2D**)pointArr {
+    *pointArr = malloc(2*sizeof(CLLocationCoordinate2D));
+    (*pointArr)[0] = lineStart;
+    (*pointArr)[1] = lineEnd;
+    
+    return 2;
+}
 
 -(void)dealloc {
     [lineColor release];

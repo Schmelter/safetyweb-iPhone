@@ -14,12 +14,16 @@
     @private
     QuartzMapView *mapView;
     UIButton *drawButton;
+    UIButton *editButton;
     BOOL drawing;
+    BOOL editing;
 }
 
 @property (retain, nonatomic) IBOutlet QuartzMapView *mapView;
 @property (retain, nonatomic) IBOutlet UIButton *drawButton;
+@property (retain, nonatomic) IBOutlet UIButton *editButton;
 
 -(IBAction)drawPressed:(id)sender;
+-(IBAction)editPressed:(id)sender;
 
 @end

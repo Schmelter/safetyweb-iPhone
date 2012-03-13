@@ -36,4 +36,9 @@
 
 -(void)drawRect:(CGRect)rect withContext:(CGContextRef)context;
 
+/**
+ *  Make sure to free the pointArr once finished with it
+ */
+-(int)qmPoints:(CLLocationCoordinate2D**)pointArr;
+
 @end

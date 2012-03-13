@@ -29,4 +29,6 @@
 
 -(void)drawRect:(CGRect)rect withContext:(CGContextRef)context;
 
+-(int)qmPoints:(CLLocationCoordinate2D**)pointArr;
+
 @end
