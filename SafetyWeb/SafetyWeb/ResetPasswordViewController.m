@@ -50,10 +50,7 @@
         [badEmailAlert release];
         return;
     }
-    // TODO: Ask the UserManager or some other Manager to request an email with their username
-    [rootViewController displayLoadViewController];
-    
-    //[rootViewController displayLoginViewController];
+    [rootViewController displayResetPasswordLoadViewController:emailAddressStr];
 }
 
 -(IBAction)backButton:(id)sender {

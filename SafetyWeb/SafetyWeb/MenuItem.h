@@ -24,25 +24,24 @@
     UILabel *textLabel;
     UIImageView *leftImageView;
     
+    UIImage *leftImage;
+    
     // Properties for when the menu item is not selected
-    UIImage *leftImageUnselected;
     UIFont *fontUnselected;
     UIColor *textColorUnselected;
     NSString *textUnselected;
     
     // Properties for when the menu item is selected
-    UIImage *leftImageSelected;
     UIFont *fontSelected;
     UIColor *textColorSelected;
     NSString *textSelected;
 }
 
 @property (nonatomic) NSTimeInterval animationDuration;
-@property (nonatomic, retain) UIImage *leftImageUnselected;
+@property (nonatomic, retain) UIImage *leftImage;
 @property (nonatomic, retain) UIFont *fontUnselected;
 @property (nonatomic, retain) UIColor *textColorUnselected;
 @property (nonatomic, retain) NSString *textUnselected;
-@property (nonatomic, retain) UIImage *leftImageSelected;
 @property (nonatomic, retain) UIFont *fontSelected;
 @property (nonatomic, retain) UIColor *textColorSelected;
 @property (nonatomic, retain) NSString *textSelected;

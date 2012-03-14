@@ -15,14 +15,9 @@
 #import "UserManager.h"
 #import "JSONKit.h"
 
-@class TokenCallback;
-@class ChildrenCallback;
-
 @interface LoginLoadViewController : LoadViewController {
     @private
     UserCredentials *credentials;
-    TokenCallback *tokenCallback;
-    ChildrenCallback *childrenCallback;
 }
 
 @property (nonatomic, retain) UserCredentials *credentials;

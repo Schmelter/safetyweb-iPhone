@@ -16,6 +16,10 @@
 @property (nonatomic, assign) LoginLoadViewController* callback;
 @end;
 
+@interface ChildCallback : NSObject <SafetyWebRequestCallback>
+@property (nonatomic, assign) LoginLoadViewController* callback;
+@end
+
 @implementation LoginLoadViewController
 
 @synthesize credentials;
@@ -35,33 +39,39 @@
 }
 
 -(void)makeTokenRequest {
-    [tokenCallback release];
-    tokenCallback = [[TokenCallback alloc] init];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    TokenCallback *tokenCallback = [[TokenCallback alloc] init];
     tokenCallback.callback = self;
     
     SafetyWebRequest *tokenRequest = [[SafetyWebRequest alloc] init];
-    [tokenRequest setCallback:tokenCallback];
-    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/login", [AppProperties getProperty:@"API_Endpoint" withDefault:@"No API Endpoint"]]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.username, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
+    [tokenRequest setCallbackObj:tokenCallback];
+    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.username, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
+    [tokenCallback release];
     [tokenRequest release];
+    
+    [pool release];
 }
 
 -(void)makeChildrenRequest {
-    [childrenCallback release];
-    childrenCallback = [[ChildrenCallback alloc] init];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    ChildrenCallback *childrenCallback = [[ChildrenCallback alloc] init];
     childrenCallback.callback = self;
     
     SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
-    [childrenRequest setCallback:childrenCallback];
-    [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/children", [AppProperties getProperty:@"API_Endpoint" withDefault:@"No API Endpoint"]]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
+    [childrenRequest setCallbackObj:childrenCallback];
+    [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
     [childrenRequest release];
+    [childrenCallback release];
     progressView.progressCurrent = 60.0f;
+    
+    [pool release];
 }
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     if (credentials.userToken != nil) {
         // The token is valid and has not expired
@@ -72,14 +82,52 @@
         [self makeTokenRequest];
         progressView.progressCurrent = 10.0f;
     }
-    
-    [pool release];
 }
 
 -(void)tokenRequestSuccess:(NSString*)aToken {
     self.credentials.userToken = aToken;
     progressView.progressCurrent = 40.f;
     [self makeChildrenRequest];
+}
+
+-(void)childrenRequestSuccess:(NSDictionary*)aChildren {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    // Pull out the children in the array
+    NSObject *childObj = [aChildren objectForKey:@"child"];
+    
+    // It's possible that the childObj is one child alone, or an array of multiple children.
+    if ([childObj isKindOfClass:[NSDictionary class]]) {
+        NSDictionary* child = (NSDictionary*)childObj;
+        ChildCallback *childCallback = [[ChildCallback alloc] init];
+        childCallback.callback = self;
+        
+        SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
+        [childRequest setCallbackObj:childCallback];
+        [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], [child objectForKey:@"child_id"]]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", [child objectForKey:@"child_id"], nil]]];
+        [childRequest release];
+        [childCallback release];
+    } else if ([childObj isKindOfClass:[NSArray class]]) {
+        NSArray *childArr = (NSArray*)childObj;
+        for (NSDictionary *child in childArr) {
+            ChildCallback *childCallback = [[ChildCallback alloc] init];
+            childCallback.callback = self;
+            
+            SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
+            [childRequest setCallbackObj:childCallback];
+            [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], [child objectForKey:@"child_id"]]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", [child objectForKey:@"child_id"], nil]]];
+            [childRequest release];
+            [childCallback release];
+        }
+    }
+    
+    [pool release];
+}
+
+-(void)childRequestSuccess:(NSDictionary*)aChild {
+    @synchronized(self) {
+        
+    }
 }
 
 -(void)requestFailure:(NSError*)aError {
@@ -119,7 +167,6 @@
 
 -(void)dealloc {
     [credentials release];
-    [tokenCallback release];
     
     [super dealloc];
 }
@@ -130,7 +177,7 @@
 @implementation TokenCallback
 @synthesize callback;
 -(void)gotResponse:(id)aResponse {
-    // We should have an NSDictionary here
+    NSLog(@"Token: %@", [aResponse description]);
     NSDictionary *response = (NSDictionary*)aResponse;
     NSString* result = [response objectForKey:@"result"];
     if ([result isEqualToString:@"OK"]) {
@@ -149,6 +196,23 @@
 @synthesize callback;
 -(void)gotResponse:(id)aResponse {
     NSLog(@"Children: %@", [aResponse description]);
+    NSDictionary *response = (NSDictionary*)aResponse;
+    NSString *result = [response objectForKey:@"result"];
+    if ([result isEqualToString:@"OK"]) {
+        [self.callback childrenRequestSuccess:[response objectForKey:@"children"]];
+    } else {
+        [self.callback requestFailure:nil];
+    }
+}
+-(void)notGotResponse:(NSError *)aError {
+    [self.callback requestFailure:aError];
+}
+@end
+
+@implementation ChildCallback
+@synthesize callback;
+-(void)gotResponse:(id)aResponse {
+    NSLog(@"Child: %@", [aResponse description]);
 }
 -(void)notGotResponse:(NSError *)aError {
     [self.callback requestFailure:aError];

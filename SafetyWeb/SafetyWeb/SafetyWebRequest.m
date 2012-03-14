@@ -14,6 +14,7 @@
 #endif
 
 @implementation SafetyWebRequest
+@synthesize callbackObj;
 
 - (SafetyWebRequest*)init {
     self = [super init];
@@ -22,6 +23,7 @@
 }
 
 - (void)dealloc {
+    [callbackObj release];
     [requestMethod release];
     [paramDict release];
     [url release];
@@ -38,11 +40,6 @@
     NSString* formattedDate = [formatter stringFromDate:date];
     [formatter release];
     return formattedDate;
-}
-
-// The call back should be a method with one parameter, an NSString
-- (void)setCallback:(id<SafetyWebRequestCallback>)aCallback {
-    callbackObj = aCallback;
 }
 
 - (void)request:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSDictionary *)aParamDict {
@@ -65,6 +62,7 @@
     
     // Now, we have the URL necessary, so let's call the service, and get the data
 	NSURL *requestURL = [NSURL URLWithString:fullURL];
+    NSLog(@"Full Url: %@", fullURL);
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:requestURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
     

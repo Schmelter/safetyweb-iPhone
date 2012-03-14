@@ -60,51 +60,46 @@
     
     alertsMI.animationDuration = kMenuItemAnim;
     alertsMI.textUnselected = @"Alerts";
-    alertsMI.leftImageUnselected = nil;
+    alertsMI.leftImage = selectedImage;
     alertsMI.fontUnselected = unselectedFont;
     alertsMI.textColorUnselected = [UIColor whiteColor];
     alertsMI.textSelected = @"Alerts";
-    alertsMI.leftImageSelected = selectedImage;
     alertsMI.fontSelected = selectedFont;
     alertsMI.textColorSelected = selectedColor;
     
     checkInMI.animationDuration = kMenuItemAnim;
     checkInMI.textUnselected = @"Check In";
-    checkInMI.leftImageUnselected = nil;
+    checkInMI.leftImage = selectedImage;
     checkInMI.fontUnselected = unselectedFont;
     checkInMI.textColorUnselected = [UIColor whiteColor];
     checkInMI.textSelected = @"Check In";
-    checkInMI.leftImageSelected = selectedImage;
     checkInMI.fontSelected = selectedFont;
     checkInMI.textColorSelected = selectedColor;
     
     myPeopleMI.animationDuration = kMenuItemAnim;
     myPeopleMI.textUnselected = @"My People";
-    myPeopleMI.leftImageUnselected = nil;
+    myPeopleMI.leftImage = selectedImage;
     myPeopleMI.fontUnselected = unselectedFont;
     myPeopleMI.textColorUnselected = [UIColor whiteColor];
     myPeopleMI.textSelected = @"My People";
-    myPeopleMI.leftImageSelected = selectedImage;
     myPeopleMI.fontSelected = selectedFont;
     myPeopleMI.textColorSelected = selectedColor;
     
     myPlacesMI.animationDuration = kMenuItemAnim;
     myPlacesMI.textUnselected = @"My Places";
-    myPlacesMI.leftImageUnselected = nil;
+    myPlacesMI.leftImage = selectedImage;
     myPlacesMI.fontUnselected = unselectedFont;
     myPlacesMI.textColorUnselected = [UIColor whiteColor];
     myPlacesMI.textSelected = @"My Places";
-    myPlacesMI.leftImageSelected = selectedImage;
     myPlacesMI.fontSelected = selectedFont;
     myPlacesMI.textColorSelected = selectedColor;
     
     settingsMI.animationDuration = kMenuItemAnim;
     settingsMI.textUnselected = @"Settings";
-    settingsMI.leftImageUnselected = nil;
+    settingsMI.leftImage = selectedImage;
     settingsMI.fontUnselected = unselectedFont;
     settingsMI.textColorUnselected = [UIColor whiteColor];
     settingsMI.textSelected = @"Settings";
-    settingsMI.leftImageSelected = selectedImage;
     settingsMI.fontSelected = selectedFont;
     settingsMI.textColorSelected = selectedColor;
                              
@@ -167,9 +162,13 @@
 #pragma mark -
 #pragma mark IBAction Methods
 -(IBAction)menuItemPressed:(id)sender {
-    [selectedMI setSelected:NO animated:YES];
-    selectedMI = sender;
-    [selectedMI setSelected:YES animated:YES];
+    NSTimeInterval menuDelay = kMenuItemAnim + 0.5;
+    if (selectedMI != sender) {
+        [selectedMI setSelected:NO animated:YES];
+        selectedMI = sender;
+        [selectedMI setSelected:YES animated:YES];
+        menuDelay = 0.5;
+    }
     
     
     SubMenuViewController *nextViewController = nil;
@@ -183,7 +182,7 @@
     [contentView addSubview:currentViewController.view];
     [nextViewController release];
     
-    [self hideMenu:YES withDelay:kMenuItemAnim];
+    [self hideMenu:YES withDelay:menuDelay];
 }
 
 -(IBAction)menuButtonPressed:(id)sender {

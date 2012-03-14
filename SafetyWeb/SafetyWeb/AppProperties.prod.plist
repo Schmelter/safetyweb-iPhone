@@ -4,10 +4,14 @@
 <dict>
 	<key>DefaultURLEncoding</key>
 	<string>UTF-8</string>
-	<key>API_Endpoint</key>
-	<string>https://www.safetyweb.com/api/v1</string>
-	<key>API_Version</key>
-	<integer>1</integer>
+	<key>Endpoint_Login</key>
+	<string>https://www.safetyweb.com/api/v1/login</string>
+	<key>Endpoint_Children</key>
+	<string>https://www.safetyweb.com/api/v1/children</string>
+	<key>Endpoint_Child</key>
+	<string>https://www.safetyweb.com/api/v1/child/%@</string>
+	<key>Endpoint_ForgotPassword</key>
+	<string>https://www.safetyweb.com/forgotten</string>
 	<key>API_Id</key>
 	<string>59a0466d76db208dd32aa70ed2ee370c</string>
 	<key>API_Key</key>

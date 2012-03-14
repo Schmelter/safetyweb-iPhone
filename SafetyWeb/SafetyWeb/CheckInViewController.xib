@@ -31,15 +31,15 @@
 				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUIView" id="691906539">
+			<object class="IBUIView" id="548882374">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="407694790">
-						<reference key="NSNextResponder" ref="691906539"/>
+					<object class="IBUIImageView" id="74502245">
+						<reference key="NSNextResponder" ref="548882374"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{0, -10}, {320, 416}}</string>
-						<reference key="NSSuperview" ref="691906539"/>
+						<string key="NSFrameSize">{320, 416}</string>
+						<reference key="NSSuperview" ref="548882374"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:567</string>
@@ -54,7 +54,7 @@
 				<string key="NSFrameSize">{320, 416}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="407694790"/>
+				<reference key="NSNextKeyView" ref="74502245"/>
 				<string key="NSReuseIdentifierKey">_NS:196</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -72,7 +72,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">view</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="691906539"/>
+						<reference key="destination" ref="548882374"/>
 					</object>
 					<int key="connectionID">5</int>
 				</object>
@@ -98,16 +98,16 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="691906539"/>
+						<reference key="object" ref="548882374"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="407694790"/>
+							<reference ref="74502245"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
-						<reference key="object" ref="407694790"/>
-						<reference key="parent" ref="691906539"/>
+						<reference key="object" ref="74502245"/>
+						<reference key="parent" ref="548882374"/>
 					</object>
 				</array>
 			</object>

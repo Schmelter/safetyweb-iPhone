@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "LoginLoadViewController.h"
 #import "ResetPasswordViewController.h"
+#import "ResetPasswordLoadViewController.h"
 #import "ChildsActivityViewController.h"
 #import "AccountSetupViewController.h"
 #import "LoadViewController.h"
@@ -71,19 +72,29 @@
 }
 
 - (void)displayResetPasswordViewController {
-    /*ResetPasswordViewController *resetPassViewController = [[ResetPasswordViewController alloc] initWithNibName:@"ResetPasswordView" bundle:nil];
+    ResetPasswordViewController *resetPassViewController = [[ResetPasswordViewController alloc] initWithNibName:@"ResetPasswordView" bundle:nil];
     [resetPassViewController setRootViewController:self];
     [currentViewController.view removeFromSuperview];
     [self setCurrentViewController:resetPassViewController];
     [self.view addSubview:currentViewController.view];
-    [resetPassViewController release];*/
+    [resetPassViewController release];
     
-    MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    /*MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     [menuViewController setRootViewController:self];
     [currentViewController.view removeFromSuperview];
     [self setCurrentViewController:menuViewController];
     [self.view addSubview:currentViewController.view];
-    [menuViewController release];
+    [menuViewController release]; */
+}
+
+- (void)displayResetPasswordLoadViewController:(NSString*)emailAddress {
+    ResetPasswordLoadViewController *loadViewController = [[ResetPasswordLoadViewController alloc] initWithNibName:@"LoadView" bundle:nil];
+    [loadViewController setRootViewController:self];
+    loadViewController.emailAddress = emailAddress;
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:loadViewController];
+    [self.view addSubview:loadViewController.view];
+    [loadViewController release];
 }
 
 - (void)displayLoadViewController {

@@ -21,6 +21,7 @@
 - (void)displayRequestChildActivityViewController;
 - (void)displayAccountSetupViewController;
 - (void)displayResetPasswordViewController;
+- (void)displayResetPasswordLoadViewController:(NSString*)emailAddress;
 - (void)displayLoadViewController;
 
 @end

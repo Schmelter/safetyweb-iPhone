@@ -1548,3 +1548,68 @@ Caused by: org.tmatesoft.svn.core.SVNException: svn: '/Users/gregschmelter/works
 	at org.tmatesoft.svn.core.internal.wc.SVNCommitUtil.harvestCommitables(SVNCommitUtil.java:410)
 	at org.tmatesoft.svn.core.wc.SVNCommitClient.doCollectCommitItems(SVNCommitClient.java:1357)
 	... 19 more
+!SESSION 2012-03-14 09:23:34.902 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_29
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/gregschmelter/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/gregschmelter/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-03-14 09:23:53.725
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.jobs 4 2 2012-03-14 11:28:19.600
+!MESSAGE An internal error occurred during: "Repository registry initialization".
+!STACK 0
+org.eclipse.m2e.core.internal.NoSuchComponentException: org.codehaus.plexus.component.repository.exception.ComponentLookupException: com.google.inject.ProvisionException: Guice provision errors:
+
+1) No implementation for org.apache.maven.index.Scanner was bound.
+  while locating org.apache.maven.index.DefaultNexusIndexer
+  at ClassRealm[plexus.core, parent: null]
+  at ClassRealm[plexus.core, parent: null]
+  while locating org.apache.maven.index.NexusIndexer
+
+1 error
+      role: org.apache.maven.index.NexusIndexer
+  roleHint: 
+	at org.eclipse.m2e.core.internal.MavenPluginActivator.lookup(MavenPluginActivator.java:347)
+	at org.eclipse.m2e.core.internal.MavenPluginActivator.getNexusIndexer(MavenPluginActivator.java:392)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.getIndexer(NexusIndexManager.java:696)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.getIndexingContext(NexusIndexManager.java:690)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.setIndexDetails(NexusIndexManager.java:913)
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.repositoryAdded(NexusIndexManager.java:872)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.addRepository(RepositoryRegistry.java:161)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:235)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:46)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.codehaus.plexus.component.repository.exception.ComponentLookupException: com.google.inject.ProvisionException: Guice provision errors:
+
+1) No implementation for org.apache.maven.index.Scanner was bound.
+  while locating org.apache.maven.index.DefaultNexusIndexer
+  at ClassRealm[plexus.core, parent: null]
+  at ClassRealm[plexus.core, parent: null]
+  while locating org.apache.maven.index.NexusIndexer
+
+1 error
+      role: org.apache.maven.index.NexusIndexer
+  roleHint: 
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:253)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:241)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:235)
+	at org.eclipse.m2e.core.internal.MavenPluginActivator.lookup(MavenPluginActivator.java:345)
+	... 9 more
+Caused by: com.google.inject.ProvisionException: Guice provision errors:
+
+1) No implementation for org.apache.maven.index.Scanner was bound.
+  while locating org.apache.maven.index.DefaultNexusIndexer
+  at ClassRealm[plexus.core, parent: null]
+  at ClassRealm[plexus.core, parent: null]
+  while locating org.apache.maven.index.NexusIndexer
+
+1 error
+	at com.google.inject.internal.InjectorImpl$4.get(InjectorImpl.java:977)
+	at org.sonatype.guice.bean.locators.LazyBeanEntry.getValue(LazyBeanEntry.java:80)
+	at org.sonatype.guice.plexus.locators.LazyPlexusBean.getValue(LazyPlexusBean.java:50)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:249)
+	... 12 more

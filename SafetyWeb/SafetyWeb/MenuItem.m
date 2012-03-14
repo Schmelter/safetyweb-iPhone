@@ -18,15 +18,15 @@
         // Initialization code
         isSelected = NO;
         
-        double imageMinSize = fmin(self.frame.size.width, self.frame.size.height);
-        
-        leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, imageMinSize, imageMinSize)];
+        leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         [self addSubview:leftImageView];
         
         textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         textLabel.textAlignment = UITextAlignmentLeft;
         textLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:textLabel];
+        
+        self.clipsToBounds = YES;  // We need to clip here so that we can setup the sliding in image
     }
     return self;
 }
@@ -37,15 +37,15 @@
         // Initialization code
         isSelected = NO;
         
-        double imageMinSize = fmin(self.frame.size.width, self.frame.size.height);
-        
-        leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, imageMinSize, imageMinSize)];
+        leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         [self addSubview:leftImageView];
         
         textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         textLabel.textAlignment = UITextAlignmentLeft;
         textLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:textLabel];
+        
+        self.clipsToBounds = YES;  // We need to clip here so that we can setup the sliding in image
     }
     return self;
 }
@@ -53,17 +53,23 @@
 #pragma mark -
 #pragma mark Property Getters and Setters
 
--(UIImage*)leftImageUnselected {
-    return leftImageUnselected;
+-(UIImage*)leftImage {
+    return leftImage;
 }
 
--(void)setLeftImageUnselected:(UIImage *)aLeftImageUnselected {
-    [aLeftImageUnselected retain];
-    [leftImageUnselected release];
-    leftImageUnselected = aLeftImageUnselected;
-    if (!isSelected) {
-        leftImageView.image = leftImageUnselected;
+-(void)setLeftImage:(UIImage *)aLeftImage {
+    [aLeftImage retain];
+    [leftImage release];
+    leftImage = aLeftImage;
+    
+    if (isSelected) {
+        leftImageView.frame = CGRectMake(0, (self.frame.size.height/2) - (leftImage.size.height/2), leftImage.size.width, leftImage.size.height);
+        textLabel.frame = CGRectMake(leftImageView.frame.size.width, 0, self.frame.size.width - leftImageView.frame.size.width, self.frame.size.height);
+    } else {
+        leftImageView.frame = CGRectMake(-(leftImage.size.width), (self.frame.size.height/2) - (leftImage.size.height/2), leftImage.size.width, leftImage.size.height);
+        textLabel.frame = CGRectMake(0, 0, self.frame.size.width - leftImageView.frame.size.width, self.frame.size.height);
     }
+    leftImageView.image = leftImage;
 }
 
 -(UIFont*)fontUnselected {
@@ -102,19 +108,6 @@
     textUnselected = aTextUnselected;
     if (!isSelected) {
         textLabel.text = textUnselected;
-    }
-}
-
--(UIImage*)leftImageSelected {
-    return leftImageSelected;
-}
-
--(void)setLeftImageSelected:(UIImage *)aLeftImageSelected {
-    [aLeftImageSelected retain];
-    [leftImageSelected release];
-    leftImageSelected = aLeftImageSelected;
-    if (isSelected) {
-        leftImageView.image = leftImageSelected;
     }
 }
 
@@ -171,28 +164,19 @@
     // Don't forget to check that the phone has the feature to handle it
     
     if (isSelected) {
-        if (leftImageSelected) {
-            // Make room for the image
-            textLabel.frame = CGRectMake(leftImageView.frame.size.width, 0, self.frame.size.width - leftImageView.frame.size.width, self.frame.size.height);
-            leftImageView.image = leftImageSelected;
-        } else {
-            // Don't need to show the image, so use it all for text
-            textLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-            leftImageView.image = nil;
-        }
+        // Size the image and place it flush with the left
+        leftImageView.frame = CGRectMake(0, (self.frame.size.height/2) - (leftImage.size.height/2), leftImage.size.width, leftImage.size.height);
+        leftImageView.image = leftImage;
+        
+        textLabel.frame = CGRectMake(leftImageView.frame.size.width, 0, self.frame.size.width - leftImageView.frame.size.width, self.frame.size.height);
         textLabel.font = fontSelected;
         textLabel.textColor = textColorSelected;
         textLabel.text = textSelected;
     } else {
-        if (leftImageUnselected) {
-            // Make room for the image
-            textLabel.frame = CGRectMake(leftImageView.frame.size.width, 0, self.frame.size.width - leftImageView.frame.size.width, self.frame.size.height);
-            leftImageView.image = leftImageUnselected;
-        } else {
-            // Don't need to show the image, so use it all for text
-            textLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-            leftImageView.image = nil;
-        }
+        // Don't need to show the image, so use it all for text
+        leftImageView.frame = CGRectMake(-(leftImage.size.width), (self.frame.size.height/2) - (leftImage.size.height/2), leftImage.size.width, leftImage.size.height);
+        leftImageView.image = leftImage;
+        textLabel.frame = CGRectMake(0, 0, self.frame.size.width - leftImageView.frame.size.width, self.frame.size.height);
         textLabel.font = fontUnselected;
         textLabel.textColor = textColorUnselected;
         textLabel.text = textUnselected;
@@ -207,10 +191,9 @@
     [textLabel release];
     [leftImageView release];
     
-    [leftImageUnselected release];
+    [leftImage release];
     [fontUnselected release];
     [textColorUnselected release];
-    [leftImageSelected release];
     [fontSelected release];
     [textColorSelected release];
     

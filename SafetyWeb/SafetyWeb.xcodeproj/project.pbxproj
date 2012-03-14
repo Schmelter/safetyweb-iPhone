@@ -63,6 +63,7 @@
 		897BBC8B14F41D6B00377684 /* Verizon_btn_off@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7B14F41D6A00377684 /* Verizon_btn_off@2X.png */; };
 		897BBC8C14F41D6B00377684 /* Verizon_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7C14F41D6A00377684 /* Verizon_btn_on.png */; };
 		897BBC8D14F41D6B00377684 /* Verizon_btn_on@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7D14F41D6B00377684 /* Verizon_btn_on@2X.png */; };
+		897D348715114BFE00967F5D /* ResetPasswordLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D348615114BFD00967F5D /* ResetPasswordLoadViewController.m */; };
 		897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
 		897E980E14DB02C3007595A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980D14DB02C3007595A7 /* CoreGraphics.framework */; };
@@ -182,6 +183,8 @@
 		897BBC7B14F41D6A00377684 /* Verizon_btn_off@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verizon_btn_off@2X.png"; sourceTree = "<group>"; };
 		897BBC7C14F41D6A00377684 /* Verizon_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verizon_btn_on.png; sourceTree = "<group>"; };
 		897BBC7D14F41D6B00377684 /* Verizon_btn_on@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verizon_btn_on@2X.png"; sourceTree = "<group>"; };
+		897D348515114BFD00967F5D /* ResetPasswordLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordLoadViewController.h; sourceTree = "<group>"; };
+		897D348615114BFD00967F5D /* ResetPasswordLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordLoadViewController.m; sourceTree = "<group>"; };
 		897E980514DB02C3007595A7 /* SafetyWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		897E980914DB02C3007595A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		897E980B14DB02C3007595A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -318,6 +321,8 @@
 				8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */,
 				897E984314DB12AE007595A7 /* LoginViewController.h */,
 				897E984414DB12AE007595A7 /* LoginViewController.m */,
+				897D348515114BFD00967F5D /* ResetPasswordLoadViewController.h */,
+				897D348615114BFD00967F5D /* ResetPasswordLoadViewController.m */,
 			);
 			name = "Login Setup UI";
 			sourceTree = "<group>";
@@ -708,6 +713,7 @@
 				8936AFE8150FC6D2005C8237 /* MenuItem.m in Sources */,
 				89A1C508150FFEA90097F2F1 /* AlertsViewController.m in Sources */,
 				89A1C516151005EC0097F2F1 /* CheckInViewController.m in Sources */,
+				897D348715114BFE00967F5D /* ResetPasswordLoadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
