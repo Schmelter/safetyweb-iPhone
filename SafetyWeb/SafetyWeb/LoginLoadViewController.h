@@ -14,10 +14,13 @@
 #import "SafetyWebREquest.h"
 #import "UserManager.h"
 #import "JSONKit.h"
+#import "ChildManager.h"
 
 @interface LoginLoadViewController : LoadViewController {
     @private
     UserCredentials *credentials;
+    double pendingChildRequests;
+    double totalChildRequests;
 }
 
 @property (nonatomic, retain) UserCredentials *credentials;

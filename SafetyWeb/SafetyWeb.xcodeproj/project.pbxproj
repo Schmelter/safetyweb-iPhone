@@ -118,6 +118,13 @@
 		89AA20CB14F585A70082C7B5 /* SampleTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20CA14F585A70082C7B5 /* SampleTestCase.m */; };
 		89AA20CD14F5869B0082C7B5 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */; };
 		89AA20D014F58AC30082C7B5 /* SafetyWebRequestTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20CF14F58AC30082C7B5 /* SafetyWebRequestTestCase.m */; };
+		89B630BA1512628400E25970 /* ImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630B91512628400E25970 /* ImageCacheManager.m */; };
+		89B630BE1512630A00E25970 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630BD1512630A00E25970 /* NSString+MD5.m */; };
+		89B630C215127EE800E25970 /* MyPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630C015127EE700E25970 /* MyPeopleViewController.m */; };
+		89B630C315127EE800E25970 /* MyPeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B630C115127EE700E25970 /* MyPeopleViewController.xib */; };
+		89B630E815129A6A00E25970 /* CheckInCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630E615129A6900E25970 /* CheckInCellController.m */; };
+		89B630E915129A6A00E25970 /* CheckInCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B630E715129A6A00E25970 /* CheckInCellController.xib */; };
+		89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B630EC1512A4E700E25970 /* dark_zebra_BG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -254,6 +261,17 @@
 		89AA20CA14F585A70082C7B5 /* SampleTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTestCase.m; sourceTree = "<group>"; };
 		89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = SafetyWebTests/GHUnitIOS.framework; sourceTree = SOURCE_ROOT; };
 		89AA20CF14F58AC30082C7B5 /* SafetyWebRequestTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyWebRequestTestCase.m; sourceTree = "<group>"; };
+		89B630B81512628400E25970 /* ImageCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCacheManager.h; sourceTree = "<group>"; };
+		89B630B91512628400E25970 /* ImageCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCacheManager.m; sourceTree = "<group>"; };
+		89B630BC1512630A00E25970 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		89B630BD1512630A00E25970 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		89B630BF15127EE700E25970 /* MyPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPeopleViewController.h; sourceTree = "<group>"; };
+		89B630C015127EE700E25970 /* MyPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPeopleViewController.m; sourceTree = "<group>"; };
+		89B630C115127EE700E25970 /* MyPeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPeopleViewController.xib; sourceTree = "<group>"; };
+		89B630E515129A6900E25970 /* CheckInCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInCellController.h; sourceTree = "<group>"; };
+		89B630E615129A6900E25970 /* CheckInCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInCellController.m; sourceTree = "<group>"; };
+		89B630E715129A6A00E25970 /* CheckInCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInCellController.xib; sourceTree = "<group>"; };
+		89B630EC1512A4E700E25970 /* dark_zebra_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dark_zebra_BG.png; path = "test images/dark_zebra_BG.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +359,12 @@
 				89A1C513151005EB0097F2F1 /* CheckInViewController.h */,
 				89A1C514151005EC0097F2F1 /* CheckInViewController.m */,
 				89A1C515151005EC0097F2F1 /* CheckInViewController.xib */,
+				89B630BF15127EE700E25970 /* MyPeopleViewController.h */,
+				89B630C015127EE700E25970 /* MyPeopleViewController.m */,
+				89B630C115127EE700E25970 /* MyPeopleViewController.xib */,
+				89B630E515129A6900E25970 /* CheckInCellController.h */,
+				89B630E615129A6900E25970 /* CheckInCellController.m */,
+				89B630E715129A6A00E25970 /* CheckInCellController.xib */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -357,6 +381,10 @@
 		89740AB114EC6D2E0064E64A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				89B630BC1512630A00E25970 /* NSString+MD5.h */,
+				89B630BD1512630A00E25970 /* NSString+MD5.m */,
+				89B630B81512628400E25970 /* ImageCacheManager.h */,
+				89B630B91512628400E25970 /* ImageCacheManager.m */,
 				8984675314E1ADEB00B997D5 /* Utilities.h */,
 				8984675414E1ADEB00B997D5 /* Utilities.m */,
 				89740AB214EC6D4A0064E64A /* AppProperties.h */,
@@ -402,8 +430,8 @@
 			isa = PBXGroup;
 			children = (
 				8936AFE5150FC3B3005C8237 /* Main UI */,
-				8936AFDE150FB415005C8237 /* Login Setup UI */,
 				899754D114EF0F270046B1DA /* DataModel */,
+				8936AFDE150FB415005C8237 /* Login Setup UI */,
 				899754CD14EEFAF50046B1DA /* JSONKit */,
 				89740AB114EC6D2E0064E64A /* Utilities */,
 				89740AB014EC6C5E0064E64A /* WebInterface */,
@@ -506,6 +534,7 @@
 		89A1C50C150FFFD30097F2F1 /* test images */ = {
 			isa = PBXGroup;
 			children = (
+				89B630EC1512A4E700E25970 /* dark_zebra_BG.png */,
 				89A1C518151006510097F2F1 /* butterfly.png */,
 				89A1C511151000530097F2F1 /* eiffel.png */,
 				89A1C50E151000300097F2F1 /* point.png */,
@@ -666,6 +695,9 @@
 				89A1C512151000530097F2F1 /* eiffel.png in Resources */,
 				89A1C517151005EC0097F2F1 /* CheckInViewController.xib in Resources */,
 				89A1C519151006510097F2F1 /* butterfly.png in Resources */,
+				89B630C315127EE800E25970 /* MyPeopleViewController.xib in Resources */,
+				89B630E915129A6A00E25970 /* CheckInCellController.xib in Resources */,
+				89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +746,10 @@
 				89A1C508150FFEA90097F2F1 /* AlertsViewController.m in Sources */,
 				89A1C516151005EC0097F2F1 /* CheckInViewController.m in Sources */,
 				897D348715114BFE00967F5D /* ResetPasswordLoadViewController.m in Sources */,
+				89B630BA1512628400E25970 /* ImageCacheManager.m in Sources */,
+				89B630BE1512630A00E25970 /* NSString+MD5.m in Sources */,
+				89B630C215127EE800E25970 /* MyPeopleViewController.m in Sources */,
+				89B630E815129A6A00E25970 /* CheckInCellController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

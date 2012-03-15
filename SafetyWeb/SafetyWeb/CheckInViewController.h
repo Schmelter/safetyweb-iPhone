@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MenuViewController.h"
+#import "ChildManager.h"
+#import "CheckInCellController.h"
 
-@interface CheckInViewController : SubMenuViewController {
-    
+@interface CheckInViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource> {
+    @private
+    CheckInCellController** cellControllers;
+    NSInteger cellControllersLen;
 }
 
 @end

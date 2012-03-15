@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "AlertsViewController.h"
 #import "CheckInViewController.h"
+#import "MyPeopleViewController.h"
 
 @implementation MenuViewController
 
@@ -174,6 +175,7 @@
     SubMenuViewController *nextViewController = nil;
     if (selectedMI == alertsMI) nextViewController = [[AlertsViewController alloc] initWithNibName:@"AlertsViewController" bundle:nil];
     else if (selectedMI == checkInMI) nextViewController = [[CheckInViewController alloc] initWithNibName:@"CheckInViewController" bundle:nil];
+    else if (selectedMI == myPeopleMI) nextViewController = [[MyPeopleViewController alloc] initWithNibName:@"MyPeopleViewController" bundle:nil];
     
     
     [nextViewController setMenuViewController:self];

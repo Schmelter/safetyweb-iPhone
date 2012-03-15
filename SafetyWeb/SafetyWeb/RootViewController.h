@@ -18,6 +18,7 @@
 
 - (void)displayLoginViewController;
 - (void)displayLoginLoadViewController:(UserCredentials*)credentials;
+- (void)displayMenuViewController;
 - (void)displayRequestChildActivityViewController;
 - (void)displayAccountSetupViewController;
 - (void)displayResetPasswordViewController;

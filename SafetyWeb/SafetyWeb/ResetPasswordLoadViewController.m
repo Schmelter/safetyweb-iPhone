@@ -62,7 +62,7 @@
 -(void)requestFailure:(NSError*)aError {
     // If we have an error, then the server was unreachable
     // If there's no error, then the request failed, and we need to tell them so
-    if (aError != nil) {
+    if (aError == nil) {
         UIAlertView *loginFailedAlert = [[UIAlertView alloc]
                                          initWithTitle:@"Reset Failed"
                                          message:@"Please check your e-mail address and try again"

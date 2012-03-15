@@ -53,6 +53,15 @@
     [loadLoginVC release];
 }
 
+- (void)displayMenuViewController {
+    MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    [menuViewController setRootViewController:self];
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:menuViewController];
+    [self.view addSubview:currentViewController.view];
+    [menuViewController release];
+}
+
 - (void)displayRequestChildActivityViewController {
     ChildsActivityViewController *childsActivityViewController = [[ChildsActivityViewController alloc] initWithNibName:@"ChildsActivityView" bundle:nil];
     [childsActivityViewController setRootViewController:self];
@@ -78,13 +87,6 @@
     [self setCurrentViewController:resetPassViewController];
     [self.view addSubview:currentViewController.view];
     [resetPassViewController release];
-    
-    /*MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    [menuViewController setRootViewController:self];
-    [currentViewController.view removeFromSuperview];
-    [self setCurrentViewController:menuViewController];
-    [self.view addSubview:currentViewController.view];
-    [menuViewController release]; */
 }
 
 - (void)displayResetPasswordLoadViewController:(NSString*)emailAddress {
