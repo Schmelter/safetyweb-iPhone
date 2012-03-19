@@ -17,4 +17,6 @@
     NSInteger cellControllersLen;
 }
 
+-(IBAction)announcePressed:(id)sender;
+
 @end

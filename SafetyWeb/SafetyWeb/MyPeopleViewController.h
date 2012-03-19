@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MenuViewController.h"
+#import "MyPeopleCellController.h"
 
-@interface MyPeopleViewController : SubMenuViewController {
-    
+@interface MyPeopleViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource> {
+    @private
+    MyPeopleCellController** cellControllers;
+    NSInteger cellControllersLen;   
 }
 
 @end

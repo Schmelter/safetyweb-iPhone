@@ -125,6 +125,8 @@
 		89B630E815129A6A00E25970 /* CheckInCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630E615129A6900E25970 /* CheckInCellController.m */; };
 		89B630E915129A6A00E25970 /* CheckInCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B630E715129A6A00E25970 /* CheckInCellController.xib */; };
 		89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B630EC1512A4E700E25970 /* dark_zebra_BG.png */; };
+		89B977971517905E0046E102 /* MyPeopleCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B977951517905E0046E102 /* MyPeopleCellController.m */; };
+		89B977981517905E0046E102 /* MyPeopleCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B977961517905E0046E102 /* MyPeopleCellController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -272,6 +274,9 @@
 		89B630E615129A6900E25970 /* CheckInCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInCellController.m; sourceTree = "<group>"; };
 		89B630E715129A6A00E25970 /* CheckInCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInCellController.xib; sourceTree = "<group>"; };
 		89B630EC1512A4E700E25970 /* dark_zebra_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dark_zebra_BG.png; path = "test images/dark_zebra_BG.png"; sourceTree = "<group>"; };
+		89B977941517905E0046E102 /* MyPeopleCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPeopleCellController.h; sourceTree = "<group>"; };
+		89B977951517905E0046E102 /* MyPeopleCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPeopleCellController.m; sourceTree = "<group>"; };
+		89B977961517905E0046E102 /* MyPeopleCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPeopleCellController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +370,9 @@
 				89B630E515129A6900E25970 /* CheckInCellController.h */,
 				89B630E615129A6900E25970 /* CheckInCellController.m */,
 				89B630E715129A6A00E25970 /* CheckInCellController.xib */,
+				89B977941517905E0046E102 /* MyPeopleCellController.h */,
+				89B977951517905E0046E102 /* MyPeopleCellController.m */,
+				89B977961517905E0046E102 /* MyPeopleCellController.xib */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -698,6 +706,7 @@
 				89B630C315127EE800E25970 /* MyPeopleViewController.xib in Resources */,
 				89B630E915129A6A00E25970 /* CheckInCellController.xib in Resources */,
 				89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */,
+				89B977981517905E0046E102 /* MyPeopleCellController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +759,7 @@
 				89B630BE1512630A00E25970 /* NSString+MD5.m in Sources */,
 				89B630C215127EE800E25970 /* MyPeopleViewController.m in Sources */,
 				89B630E815129A6A00E25970 /* CheckInCellController.m in Sources */,
+				89B977971517905E0046E102 /* MyPeopleCellController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

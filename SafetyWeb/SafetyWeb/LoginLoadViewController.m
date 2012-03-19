@@ -9,15 +9,15 @@
 #import "LoginLoadViewController.h"
 
 @interface TokenCallback : NSObject <SafetyWebRequestCallback> 
-@property (nonatomic, assign) LoginLoadViewController* callback;
+@property (nonatomic, retain) LoginLoadViewController* callback;
 @end
 
 @interface ChildrenCallback : NSObject <SafetyWebRequestCallback>
-@property (nonatomic, assign) LoginLoadViewController* callback;
+@property (nonatomic, retain) LoginLoadViewController* callback;
 @end;
 
 @interface ChildCallback : NSObject <SafetyWebRequestCallback>
-@property (nonatomic, assign) LoginLoadViewController* callback;
+@property (nonatomic, retain) LoginLoadViewController* callback;
 @end
 
 @implementation LoginLoadViewController
@@ -190,9 +190,13 @@
         [self.callback requestFailure:nil];
     }
 }
-
 -(void)notGotResponse:(NSError *)aError {
     [self.callback requestFailure:aError];
+}
+-(void)dealloc {
+    [callback release];
+    
+    [super dealloc];
 }
 @end
 
@@ -211,6 +215,11 @@
 -(void)notGotResponse:(NSError *)aError {
     [self.callback requestFailure:aError];
 }
+-(void)dealloc {
+    [callback release];
+    
+    [super dealloc];
+}
 @end
 
 @implementation ChildCallback
@@ -227,6 +236,11 @@
 }
 -(void)notGotResponse:(NSError *)aError {
     [self.callback requestFailure:aError];
+}
+-(void)dealloc {
+    [callback release];
+    
+    [super dealloc];
 }
 @end
 

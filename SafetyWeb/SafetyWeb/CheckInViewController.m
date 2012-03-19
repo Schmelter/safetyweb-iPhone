@@ -74,6 +74,23 @@
     return cell;
 }
 
+#pragma mark -
+#pragma mark IBAction Methods
+-(IBAction)announcePressed:(id)sender {
+    // TODO: Actually send a check in request, and watch for failure.  Notifying the user of what happened
+    // For now, just show a nice alert saying everything went well
+    
+    UIAlertView *announceLocAlert = [[UIAlertView alloc] 
+                                     initWithTitle:@"Announce Location"
+                                     message:@"Your Location has been announced"
+                                     delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+    [announceLocAlert show];
+    [announceLocAlert release];
+    return;
+}
+
 -(void)dealloc {
     for (int i = 0; i < cellControllersLen; i++) {
         [cellControllers[i] release];

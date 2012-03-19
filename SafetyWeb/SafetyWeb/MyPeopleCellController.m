@@ -1,14 +1,14 @@
 //
-//  CheckInCellController.m
+//  MyPeopleCellController.m
 //  SafetyWeb
 //
-//  Created by Gregory Schmelter on 3/15/12.
+//  Created by Gregory Schmelter on 3/19/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "CheckInCellController.h"
+#import "MyPeopleCellController.h"
 
-@implementation CheckInCellController
+@implementation MyPeopleCellController
 @synthesize child;
 @synthesize row;
 @synthesize backgroundImage;
@@ -64,6 +64,7 @@
     self.childImage = nil;
     self.firstName = nil;
     self.lastName = nil;
+    
     [super viewDidUnload];
 }
 
@@ -75,21 +76,8 @@
 
 #pragma mark -
 #pragma mark IBAction Methods
--(IBAction)requestCheckInPressed:(id)sender {
-    // TODO: Actually send a check in request, and watch for failure.  Notifying the user of what happened
-    // For now, just show a nice alert saying everything went well
+-(IBAction)viewProfilePressed:(id)sender {
     
-    NSString *alertBody = [[NSString alloc] initWithFormat:@"%@ %@", [child firstName], [child lastName]];
-    UIAlertView *checkInSentAlert = [[UIAlertView alloc] 
-                                  initWithTitle:@"A Check-In Request Has Been Sent to"
-                                  message:alertBody
-                                  delegate:nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-    [checkInSentAlert show];
-    [checkInSentAlert release];
-    [alertBody release];
-    return;
 }
 
 #pragma mark -
@@ -101,6 +89,7 @@
 -(BOOL)expires {
     return YES;
 }
+
 
 -(void)dealloc {
     [child release];
