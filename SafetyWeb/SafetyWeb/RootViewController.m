@@ -15,6 +15,7 @@
 #import "AccountSetupViewController.h"
 #import "LoadViewController.h"
 #import "MenuViewController.h"
+#import "ViewProfileViewController.h"
 
 @implementation RootViewController
 
@@ -107,6 +108,16 @@
     [self.view addSubview:currentViewController.view];
     //NSLog(@"View: %@", currentViewController.view);
     [loadViewController release];
+}
+
+- (void)displayViewProfileViewController:(Child*)child {
+    ViewProfileViewController *viewProfile = [[ViewProfileViewController alloc] initWithNibName:@"ViewProfileViewController" bundle:nil];
+    [viewProfile setRootViewController:self];
+    viewProfile.child = child;
+    [currentViewController.view removeFromSuperview];
+    [self setCurrentViewController:viewProfile];
+    [self.view addSubview:viewProfile.view];
+    [viewProfile release];
 }
 
 - (void)dealloc {

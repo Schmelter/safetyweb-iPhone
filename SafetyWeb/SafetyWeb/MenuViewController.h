@@ -43,10 +43,14 @@
 -(IBAction)menuItemPressed:(id)sender;
 -(IBAction)menuButtonPressed:(id)sender;
 
+-(void)setSelectedMenuItem:(MenuItem*)aSelected animated:(BOOL)animated;
+
+-(RootViewController*)getRootViewController;
+
 @end
 
 @interface SubMenuViewController : UIViewController {
-@private
+@protected
     MenuViewController *menuViewController;
 }
 

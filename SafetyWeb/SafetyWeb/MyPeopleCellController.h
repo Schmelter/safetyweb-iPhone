@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ChildManager.h"
 #import "ImageCacheManager.h"
+#import "MenuViewController.h"
+#import "RootViewController.h"
 
-@interface MyPeopleCellController : UIViewController <CachedImage> {
+@interface MyPeopleCellController : SubMenuViewController <CachedImage> {
 @private
     Child *child;
     NSInteger row;

@@ -103,7 +103,10 @@
     settingsMI.textSelected = @"Settings";
     settingsMI.fontSelected = selectedFont;
     settingsMI.textColorSelected = selectedColor;
-                             
+    
+    if (!selectedMI) selectedMI = alertsMI;
+    [self setSelectedMenuItem:selectedMI animated:NO];
+    
     [pool release];
 }
 
@@ -160,17 +163,14 @@
     isMenuShowing = NO;
 }
 
-#pragma mark -
-#pragma mark IBAction Methods
--(IBAction)menuItemPressed:(id)sender {
+-(void)setSelectedMenuItem:(MenuItem*)aSelected animated:(BOOL)animated {
     NSTimeInterval menuDelay = kMenuItemAnim + 0.5;
-    if (selectedMI != sender) {
-        [selectedMI setSelected:NO animated:YES];
-        selectedMI = sender;
-        [selectedMI setSelected:YES animated:YES];
+    if (selectedMI != aSelected) {
+        [selectedMI setSelected:NO animated:animated];
+        selectedMI = aSelected;
+        [selectedMI setSelected:YES animated:animated];
         menuDelay = 0.5;
     }
-    
     
     SubMenuViewController *nextViewController = nil;
     if (selectedMI == alertsMI) nextViewController = [[AlertsViewController alloc] initWithNibName:@"AlertsViewController" bundle:nil];
@@ -184,7 +184,13 @@
     [contentView addSubview:currentViewController.view];
     [nextViewController release];
     
-    [self hideMenu:YES withDelay:menuDelay];
+    [self hideMenu:animated withDelay:menuDelay];
+}
+
+#pragma mark -
+#pragma mark IBAction Methods
+-(IBAction)menuItemPressed:(id)sender {
+    [self setSelectedMenuItem:sender animated:YES];
 }
 
 -(IBAction)menuButtonPressed:(id)sender {
@@ -211,6 +217,10 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(RootViewController*)getRootViewController {
+    return rootViewController;
 }
 
 -(void)dealloc {

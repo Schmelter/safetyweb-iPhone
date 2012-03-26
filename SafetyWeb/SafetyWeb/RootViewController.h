@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "AccountSetupModel.h"
 #import "UserManager.h"
+#import "ChildManager.h"
 
 @interface RootViewController : UIViewController {
     @private
@@ -24,6 +25,7 @@
 - (void)displayResetPasswordViewController;
 - (void)displayResetPasswordLoadViewController:(NSString*)emailAddress;
 - (void)displayLoadViewController;
+- (void)displayViewProfileViewController:(Child*)child;
 
 @end
 

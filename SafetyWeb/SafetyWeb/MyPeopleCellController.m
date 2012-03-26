@@ -77,7 +77,7 @@
 #pragma mark -
 #pragma mark IBAction Methods
 -(IBAction)viewProfilePressed:(id)sender {
-    
+    [[menuViewController getRootViewController] displayViewProfileViewController:child];
 }
 
 #pragma mark -

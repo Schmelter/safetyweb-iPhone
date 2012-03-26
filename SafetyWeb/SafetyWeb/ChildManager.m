@@ -52,6 +52,12 @@ static NSMutableArray* childArr;
     child.lastName = (NSString*)[jsonChildDict objectForKey:@"last_name"];
     if (![child.lastName isKindOfClass:[NSString class]]) child.lastName = nil;
     
+    // TODO: Parse out the actual address
+    child.address = @"The Child's Address";
+    
+    // TODO: Parse out the actual mobile phone
+    child.mobilePhone = @"720-982-6931";
+    
     NSString *profilePicUrl = [jsonChildDict objectForKey:@"profile_pic"];
     if ([profilePicUrl isKindOfClass:[NSString class]]) child.profilePicUrl = [NSURL URLWithString:profilePicUrl];
     
@@ -123,7 +129,6 @@ static NSMutableArray* childArr;
 }
 
 +(void)parseChildResponse:(NSDictionary *)childJson {
-    NSLog(@"childJSON: %@", [childJson description]);
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     // Go through the childJson, and add it's information to the childDict we already have
@@ -170,6 +175,8 @@ static NSMutableArray* childArr;
 @synthesize firstName;
 @synthesize lastName;
 @synthesize profilePicUrl;
+@synthesize address;
+@synthesize mobilePhone;
 
 -(Child*)init {
     self = [super init];
@@ -210,6 +217,8 @@ static NSMutableArray* childArr;
     [firstName release];
     [lastName release];
     [profilePicUrl release];
+    [address release];
+    [mobilePhone release];
     [accountArr release];
     [accountDict release];
     

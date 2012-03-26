@@ -42,6 +42,8 @@ enum AccountStatus {
     NSString *firstName;
     NSString *lastName;
     NSURL *profilePicUrl;
+    NSString *address;
+    NSString *mobilePhone;
     NSMutableArray *accountArr;
     NSMutableDictionary *accountDict;
 }
@@ -50,6 +52,8 @@ enum AccountStatus {
 @property (nonatomic, retain) NSString *firstName;
 @property (nonatomic, retain) NSString *lastName;
 @property (nonatomic, retain) NSURL *profilePicUrl;
+@property (nonatomic, retain) NSString *address;
+@property (nonatomic, retain) NSString *mobilePhone;
 
 -(void)addAccount:(Account*)account;
 

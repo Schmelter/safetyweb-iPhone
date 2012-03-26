@@ -66,6 +66,7 @@
     
     if (!cellControllers[indexPath.row]) {
         cellControllers[indexPath.row] = [[MyPeopleCellController alloc] initWithNibName:@"MyPeopleCellController" bundle:nil];
+        [cellControllers[indexPath.row] setMenuViewController:menuViewController];
     }
     
     cellControllers[indexPath.row].child = child;

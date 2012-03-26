@@ -73,6 +73,10 @@
 		897E984214DB1255007595A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984114DB1255007595A7 /* RootViewController.m */; };
 		897E984514DB12AE007595A7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984414DB12AE007595A7 /* LoginViewController.m */; };
 		897E984814DB1478007595A7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984714DB1478007595A7 /* UserManager.m */; };
+		897FD2551517E7EB00B7F0D0 /* top_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 897FD2541517E7EB00B7F0D0 /* top_shadow.png */; };
+		897FD2581517E80D00B7F0D0 /* bottom_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 897FD2571517E80D00B7F0D0 /* bottom_shadow.png */; };
+		897FD25C1517E9DF00B7F0D0 /* ViewProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */; };
+		897FD25D1517E9DF00B7F0D0 /* ViewProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */; };
 		89838DB214E30F8C00CDCDBC /* AccountSetupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */; };
 		898441D014E474540047CDFE /* AccountSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441CF14E474540047CDFE /* AccountSetupViewController.m */; };
 		898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441D214E483E80047CDFE /* MobileOptInViewController.m */; };
@@ -211,6 +215,11 @@
 		897E984414DB12AE007595A7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		897E984614DB1478007595A7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		897E984714DB1478007595A7 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		897FD2541517E7EB00B7F0D0 /* top_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_shadow.png; sourceTree = "<group>"; };
+		897FD2571517E80D00B7F0D0 /* bottom_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_shadow.png; sourceTree = "<group>"; };
+		897FD2591517E9DE00B7F0D0 /* ViewProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewProfileViewController.h; sourceTree = "<group>"; };
+		897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewProfileViewController.m; sourceTree = "<group>"; };
+		897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewProfileViewController.xib; sourceTree = "<group>"; };
 		89838DB014E30F8B00CDCDBC /* AccountSetupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetupModel.h; sourceTree = "<group>"; };
 		89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetupModel.m; sourceTree = "<group>"; };
 		898441CE14E474530047CDFE /* AccountSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetupViewController.h; sourceTree = "<group>"; };
@@ -373,6 +382,9 @@
 				89B977941517905E0046E102 /* MyPeopleCellController.h */,
 				89B977951517905E0046E102 /* MyPeopleCellController.m */,
 				89B977961517905E0046E102 /* MyPeopleCellController.xib */,
+				897FD2591517E9DE00B7F0D0 /* ViewProfileViewController.h */,
+				897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */,
+				897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -470,25 +482,27 @@
 		898441D614E48A240047CDFE /* images */ = {
 			isa = PBXGroup;
 			children = (
-				89A1C50C150FFFD30097F2F1 /* test images */,
 				897BBC6E14F41D6800377684 /* ATT_btn_off.png */,
 				897BBC6F14F41D6800377684 /* ATT_btn_off@2X.png */,
 				897BBC7014F41D6800377684 /* ATT_btn_on.png */,
 				897BBC7114F41D6900377684 /* ATT_btn_on@2X.png */,
-				897BBC7214F41D6900377684 /* Sprint_btn_off.png */,
-				897BBC7314F41D6900377684 /* Sprint_btn_off@2X.png */,
-				897BBC7414F41D6900377684 /* Sprint_btn_on.png */,
-				897BBC7514F41D6900377684 /* Sprint_btn_on@2X.png */,
-				897BBC7614F41D6900377684 /* TMobile_btn_off.png */,
-				897BBC7714F41D6A00377684 /* TMobile_btn_off@2X.png */,
-				897BBC7814F41D6A00377684 /* TMobile_btn_on.png */,
-				897BBC7914F41D6A00377684 /* TMobile_btn_on@2X.png */,
-				897BBC7A14F41D6A00377684 /* Verizon_btn_off.png */,
-				897BBC7B14F41D6A00377684 /* Verizon_btn_off@2X.png */,
-				897BBC7C14F41D6A00377684 /* Verizon_btn_on.png */,
-				897BBC7D14F41D6B00377684 /* Verizon_btn_on@2X.png */,
+				89740A6C14EC56420064E64A /* Back.png */,
+				89740A6D14EC56420064E64A /* Back@2x.png */,
+				89740A8014EC57B50064E64A /* Background_SignIn.png */,
+				89740A8114EC57B50064E64A /* Background_SignIn@2x.png */,
+				897FD2571517E80D00B7F0D0 /* bottom_shadow.png */,
+				89740A8414EC58690064E64A /* Button_Blue_LG.png */,
+				89740A8514EC58690064E64A /* Button_Blue_LG@2x.png */,
+				89740A7014EC56540064E64A /* Default.png */,
+				89740A7114EC56540064E64A /* Default@2x.png */,
 				897BBC6914F4171700377684 /* LoadingScreen.png */,
 				897BBC6A14F4171700377684 /* LoadingScreen@2X.png */,
+				89740A8814EC59320064E64A /* MobileAlertSetup1.png */,
+				89740A8914EC59320064E64A /* MobileAlertSetup1@2x.png */,
+				89740A8C14EC599E0064E64A /* MobileAlertSetup2.png */,
+				89740A8D14EC599E0064E64A /* MobileAlertSetup2@2x.png */,
+				89740A7C14EC573B0064E64A /* MobileOptIn.png */,
+				89740A7D14EC573B0064E64A /* MobileOptIn@2x.png */,
 				89740AA014EC5A620064E64A /* ServiceProviderATT.png */,
 				89740AA114EC5A620064E64A /* ServiceProviderATT@2x.png */,
 				89740AA214EC5A620064E64A /* ServiceProviderSprint.png */,
@@ -497,24 +511,24 @@
 				89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */,
 				89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */,
 				89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */,
-				89740A8C14EC599E0064E64A /* MobileAlertSetup2.png */,
-				89740A8D14EC599E0064E64A /* MobileAlertSetup2@2x.png */,
-				89740A8814EC59320064E64A /* MobileAlertSetup1.png */,
-				89740A8914EC59320064E64A /* MobileAlertSetup1@2x.png */,
-				89740A8414EC58690064E64A /* Button_Blue_LG.png */,
-				89740A8514EC58690064E64A /* Button_Blue_LG@2x.png */,
-				89740A8014EC57B50064E64A /* Background_SignIn.png */,
-				89740A8114EC57B50064E64A /* Background_SignIn@2x.png */,
-				89740A7C14EC573B0064E64A /* MobileOptIn.png */,
-				89740A7D14EC573B0064E64A /* MobileOptIn@2x.png */,
-				89740A7414EC567A0064E64A /* StandardBackground_Logo.png */,
-				89740A7514EC567A0064E64A /* StandardBackground_Logo@2x.png */,
+				897BBC7214F41D6900377684 /* Sprint_btn_off.png */,
+				897BBC7314F41D6900377684 /* Sprint_btn_off@2X.png */,
+				897BBC7414F41D6900377684 /* Sprint_btn_on.png */,
+				897BBC7514F41D6900377684 /* Sprint_btn_on@2X.png */,
 				89740A7614EC567A0064E64A /* StandardBackground.png */,
 				89740A7714EC567A0064E64A /* StandardBackground@2x.png */,
-				89740A7014EC56540064E64A /* Default.png */,
-				89740A7114EC56540064E64A /* Default@2x.png */,
-				89740A6C14EC56420064E64A /* Back.png */,
-				89740A6D14EC56420064E64A /* Back@2x.png */,
+				89740A7414EC567A0064E64A /* StandardBackground_Logo.png */,
+				89740A7514EC567A0064E64A /* StandardBackground_Logo@2x.png */,
+				89A1C50C150FFFD30097F2F1 /* test images */,
+				897BBC7614F41D6900377684 /* TMobile_btn_off.png */,
+				897BBC7714F41D6A00377684 /* TMobile_btn_off@2X.png */,
+				897BBC7814F41D6A00377684 /* TMobile_btn_on.png */,
+				897BBC7914F41D6A00377684 /* TMobile_btn_on@2X.png */,
+				897FD2541517E7EB00B7F0D0 /* top_shadow.png */,
+				897BBC7A14F41D6A00377684 /* Verizon_btn_off.png */,
+				897BBC7B14F41D6A00377684 /* Verizon_btn_off@2X.png */,
+				897BBC7C14F41D6A00377684 /* Verizon_btn_on.png */,
+				897BBC7D14F41D6B00377684 /* Verizon_btn_on@2X.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -707,6 +721,9 @@
 				89B630E915129A6A00E25970 /* CheckInCellController.xib in Resources */,
 				89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */,
 				89B977981517905E0046E102 /* MyPeopleCellController.xib in Resources */,
+				897FD2551517E7EB00B7F0D0 /* top_shadow.png in Resources */,
+				897FD2581517E80D00B7F0D0 /* bottom_shadow.png in Resources */,
+				897FD25D1517E9DF00B7F0D0 /* ViewProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +777,7 @@
 				89B630C215127EE800E25970 /* MyPeopleViewController.m in Sources */,
 				89B630E815129A6A00E25970 /* CheckInCellController.m in Sources */,
 				89B977971517905E0046E102 /* MyPeopleCellController.m in Sources */,
+				897FD25C1517E9DF00B7F0D0 /* ViewProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
