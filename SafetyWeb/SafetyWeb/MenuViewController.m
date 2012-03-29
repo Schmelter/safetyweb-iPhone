@@ -7,25 +7,19 @@
 //
 
 #import "MenuViewController.h"
-#import "AlertsViewController.h"
-#import "CheckInViewController.h"
-#import "MyPeopleViewController.h"
 
 @implementation MenuViewController
 
-@synthesize alertsMI;
-@synthesize checkInMI;
-@synthesize myPeopleMI;
-@synthesize myPlacesMI;
-@synthesize settingsMI;
 @synthesize contentView;
 @synthesize menuView;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        nextMenuItemY = 0;
         isMenuShowing = NO;
     }
     return self;
@@ -53,59 +47,12 @@
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    UIImage *selectedImage = [UIImage imageNamed:@"point.png"];
-    UIFont *unselectedFont = [UIFont fontWithName:@"Helvetica" size:21];
-    UIFont *selectedFont = [UIFont fontWithName:@"Helvetica-Bold" size:21];
+    [menuItems release];
+    menuItems = [[NSMutableArray alloc] initWithCapacity:10];
     
-    UIColor *selectedColor = [UIColor colorWithCGColor:CGColorCreate(CGColorSpaceCreateDeviceRGB(), (CGFloat[]){0.3125, 0.63671, 0.8125, 1.0})];
+    menuView.frame = CGRectMake(-[self getMenuWidth], menuView.frame.origin.y, [self getMenuWidth], menuView.frame.size.height);
     
-    alertsMI.animationDuration = kMenuItemAnim;
-    alertsMI.textUnselected = @"Alerts";
-    alertsMI.leftImage = selectedImage;
-    alertsMI.fontUnselected = unselectedFont;
-    alertsMI.textColorUnselected = [UIColor whiteColor];
-    alertsMI.textSelected = @"Alerts";
-    alertsMI.fontSelected = selectedFont;
-    alertsMI.textColorSelected = selectedColor;
-    
-    checkInMI.animationDuration = kMenuItemAnim;
-    checkInMI.textUnselected = @"Check In";
-    checkInMI.leftImage = selectedImage;
-    checkInMI.fontUnselected = unselectedFont;
-    checkInMI.textColorUnselected = [UIColor whiteColor];
-    checkInMI.textSelected = @"Check In";
-    checkInMI.fontSelected = selectedFont;
-    checkInMI.textColorSelected = selectedColor;
-    
-    myPeopleMI.animationDuration = kMenuItemAnim;
-    myPeopleMI.textUnselected = @"My People";
-    myPeopleMI.leftImage = selectedImage;
-    myPeopleMI.fontUnselected = unselectedFont;
-    myPeopleMI.textColorUnselected = [UIColor whiteColor];
-    myPeopleMI.textSelected = @"My People";
-    myPeopleMI.fontSelected = selectedFont;
-    myPeopleMI.textColorSelected = selectedColor;
-    
-    myPlacesMI.animationDuration = kMenuItemAnim;
-    myPlacesMI.textUnselected = @"My Places";
-    myPlacesMI.leftImage = selectedImage;
-    myPlacesMI.fontUnselected = unselectedFont;
-    myPlacesMI.textColorUnselected = [UIColor whiteColor];
-    myPlacesMI.textSelected = @"My Places";
-    myPlacesMI.fontSelected = selectedFont;
-    myPlacesMI.textColorSelected = selectedColor;
-    
-    settingsMI.animationDuration = kMenuItemAnim;
-    settingsMI.textUnselected = @"Settings";
-    settingsMI.leftImage = selectedImage;
-    settingsMI.fontUnselected = unselectedFont;
-    settingsMI.textColorUnselected = [UIColor whiteColor];
-    settingsMI.textSelected = @"Settings";
-    settingsMI.fontSelected = selectedFont;
-    settingsMI.textColorSelected = selectedColor;
-    
-    if (!selectedMI) selectedMI = alertsMI;
-    [self setSelectedMenuItem:selectedMI animated:NO];
+    if (selectedMI) [self setSelectedMenuItem:selectedMI animated:NO];
     
     [pool release];
 }
@@ -126,7 +73,7 @@
         // Slide the menu out
         menuRect.origin.x = 0;
         menuView.frame = menuRect;
-        contentRect.origin.x = kContentEndX;
+        contentRect.origin.x = [self getMenuWidth];
         contentView.frame = contentRect;
         
         if (animated) {
@@ -150,7 +97,7 @@
         }
         
         // Slide the menu in
-        menuRect.origin.x = kMenuStartX;
+        menuRect.origin.x = -[self getMenuWidth];
         menuView.frame = menuRect;
         contentRect.origin.x = 0;
         contentView.frame = contentRect;
@@ -172,11 +119,7 @@
         menuDelay = 0.5;
     }
     
-    SubMenuViewController *nextViewController = nil;
-    if (selectedMI == alertsMI) nextViewController = [[AlertsViewController alloc] initWithNibName:@"AlertsViewController" bundle:nil];
-    else if (selectedMI == checkInMI) nextViewController = [[CheckInViewController alloc] initWithNibName:@"CheckInViewController" bundle:nil];
-    else if (selectedMI == myPeopleMI) nextViewController = [[MyPeopleViewController alloc] initWithNibName:@"MyPeopleViewController" bundle:nil];
-    
+    SubMenuViewController *nextViewController = [delegate initContentViewControllerForMenuItem:selectedMI];
     
     [nextViewController setMenuViewController:self];
     [currentViewController.view removeFromSuperview];
@@ -185,6 +128,20 @@
     [nextViewController release];
     
     [self hideMenu:animated withDelay:menuDelay];
+}
+
+-(void)addMenuItem:(MenuItem*)aMenuItem {
+    [menuItems addObject:aMenuItem];
+    
+    [aMenuItem addTarget:self action:@selector(menuItemPressed:) forControlEvents:UIControlEventTouchDown];
+    aMenuItem.frame = CGRectMake(0, nextMenuItemY, aMenuItem.frame.size.width, aMenuItem.frame.size.height);
+    nextMenuItemY += aMenuItem.frame.size.height;
+    [menuView insertSubview:aMenuItem atIndex:[[menuView subviews] count]];
+}
+
+// Subclasses should override this for variable menu widths
+-(NSInteger)getMenuWidth {
+    return 170;
 }
 
 #pragma mark -
@@ -201,14 +158,12 @@
 
 - (void)viewDidUnload
 {
-    self.alertsMI = nil;
-    self.checkInMI = nil;
-    self.myPeopleMI = nil;
-    self.myPlacesMI = nil;
-    self.settingsMI = nil;
     self.contentView = nil;
     self.menuView = nil;
+    [selectedMI release];
     selectedMI = nil;
+    [menuItems release];
+    menuItems = nil;
     
     [super viewDidUnload];
 }
@@ -224,11 +179,6 @@
 }
 
 -(void)dealloc {
-    [alertsMI release];
-    [checkInMI release];
-    [myPeopleMI release];
-    [myPlacesMI release];
-    [settingsMI release];
     [contentView release];
     [menuView release];
     

@@ -10,40 +10,41 @@
 #import "RootViewController.h"
 #import "MenuItem.h"
 
-#define kMenuStartX -170
-#define kContentEndX 170
 #define kMenuItemAnim 0.5
 
 @class SubMenuViewController;
+
+@protocol MenuViewControllerDelegate <NSObject>
+
+-(SubMenuViewController*)initContentViewControllerForMenuItem:(MenuItem*)aMenuItem;
+
+@end
 
 @interface MenuViewController : SubRootViewController {
     @private
     SubMenuViewController *currentViewController;
     BOOL isMenuShowing;
     
-    MenuItem *alertsMI;
-    MenuItem *checkInMI;
-    MenuItem *myPeopleMI;
-    MenuItem *myPlacesMI;
-    MenuItem *settingsMI;
+    NSMutableArray *menuItems;
+    NSInteger nextMenuItemY;
     MenuItem *selectedMI;
+    
+    id<MenuViewControllerDelegate> delegate;
     
     UIView *contentView;
     UIView *menuView;
 }
 
-@property (nonatomic, retain) IBOutlet MenuItem *alertsMI;
-@property (nonatomic, retain) IBOutlet MenuItem *checkInMI;
-@property (nonatomic, retain) IBOutlet MenuItem *myPeopleMI;
-@property (nonatomic, retain) IBOutlet MenuItem *myPlacesMI;
-@property (nonatomic, retain) IBOutlet MenuItem *settingsMI;
 @property (nonatomic, retain) IBOutlet UIView *contentView;
 @property (nonatomic, retain) IBOutlet UIView *menuView;
+@property (nonatomic, assign) id<MenuViewControllerDelegate> delegate;
 
 -(IBAction)menuItemPressed:(id)sender;
 -(IBAction)menuButtonPressed:(id)sender;
 
 -(void)setSelectedMenuItem:(MenuItem*)aSelected animated:(BOOL)animated;
+-(void)addMenuItem:(MenuItem*)aMenuItem;
+-(NSInteger)getMenuWidth;
 
 -(RootViewController*)getRootViewController;
 

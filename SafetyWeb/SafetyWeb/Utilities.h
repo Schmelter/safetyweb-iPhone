@@ -18,4 +18,6 @@
 
 +(BOOL) NSStringIsValidEmail:(NSString *)checkString;
 
++(NSString*)timeIntervalToHumanString:(NSTimeInterval)timeInterval;
+
 @end

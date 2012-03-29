@@ -42,5 +42,7 @@
 	<string>UIStatusBarStyleBlackOpaque</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>BingMapsKey</key>
+	<string>AlFBvheRr2ImKvNn54OUNq2M-ZoCBDFBOfEQ8gf7XaCwKbCAo0_JUrlWJRzSjjsD</string>
 </dict>
 </plist>

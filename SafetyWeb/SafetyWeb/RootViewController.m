@@ -14,7 +14,7 @@
 #import "ChildsActivityViewController.h"
 #import "AccountSetupViewController.h"
 #import "LoadViewController.h"
-#import "MenuViewController.h"
+#import "SWMenuViewController.h"
 #import "ViewProfileViewController.h"
 
 @implementation RootViewController
@@ -55,7 +55,7 @@
 }
 
 - (void)displayMenuViewController {
-    MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    SWMenuViewController *menuViewController = [[SWMenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     [menuViewController setRootViewController:self];
     [currentViewController.view removeFromSuperview];
     [self setCurrentViewController:menuViewController];

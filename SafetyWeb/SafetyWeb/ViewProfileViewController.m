@@ -162,6 +162,10 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Open the account page for the given row
+}
+
 #pragma mark -
 #pragma mark CachedImage Methods
 -(void)setImage:(UIImage*)imageData {

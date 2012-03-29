@@ -67,6 +67,10 @@
     [super viewDidUnload];
 }
 
+-(UITableViewCell*)tableViewCell {
+    return (UITableViewCell*) self.view;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

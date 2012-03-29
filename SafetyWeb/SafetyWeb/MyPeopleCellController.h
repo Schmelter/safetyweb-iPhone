@@ -31,5 +31,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *lastName;
 
 -(IBAction)viewProfilePressed:(id)sender;
+-(UITableViewCell*)tableViewCell;
 
 @end

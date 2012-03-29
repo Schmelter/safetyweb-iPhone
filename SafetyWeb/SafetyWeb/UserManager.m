@@ -84,8 +84,15 @@ static UserCredentials* credentials;
 }
 
 + (UserCredentials*)getLastUsedCredentials {
-    // TODO: Implement getting these out of the file system of coredata
+    // TODO: Implement getting these out of the file system or coredata
     return credentials;
+}
+
++ (void)setLastUsedCredentials:(UserCredentials*)aCredentials {
+    // TODO: Store these in the file system or coredata
+    [aCredentials retain];
+    [credentials release];
+    credentials = aCredentials;
 }
 
 - (void)dealloc {

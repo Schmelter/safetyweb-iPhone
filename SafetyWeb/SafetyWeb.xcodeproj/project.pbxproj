@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */; };
+		890DC3DE1523D1F100C5458B /* FacebookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 890DC3DD1523D1F100C5458B /* FacebookAlert.m */; };
+		8914514C1522541300800262 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914514A1522541300800262 /* SettingsViewController.m */; };
+		8914514D1522541300800262 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8914514B1522541300800262 /* SettingsViewController.xib */; };
 		8936AFE3150FC28B005C8237 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936AFE1150FC28B005C8237 /* MenuViewController.m */; };
 		8936AFE4150FC28B005C8237 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8936AFE2150FC28B005C8237 /* MenuViewController.xib */; };
 		8936AFE8150FC6D2005C8237 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936AFE7150FC6D2005C8237 /* MenuItem.m */; };
@@ -77,6 +80,11 @@
 		897FD2581517E80D00B7F0D0 /* bottom_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 897FD2571517E80D00B7F0D0 /* bottom_shadow.png */; };
 		897FD25C1517E9DF00B7F0D0 /* ViewProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */; };
 		897FD25D1517E9DF00B7F0D0 /* ViewProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */; };
+		8981393615238A38003B6A0D /* BingMaps.Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8981393515238A38003B6A0D /* BingMaps.Resources.bundle */; };
+		898139481523A04B003B6A0D /* AlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 898139471523A04B003B6A0D /* AlertManager.m */; };
+		8981394E1523BF96003B6A0D /* FacebookAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8981394C1523BF96003B6A0D /* FacebookAlertCellController.m */; };
+		8981394F1523BF96003B6A0D /* FacebookAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8981394D1523BF96003B6A0D /* FacebookAlertCellController.xib */; };
+		898139511523C066003B6A0D /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 898139501523C066003B6A0D /* facebook_icon.png */; };
 		89838DB214E30F8C00CDCDBC /* AccountSetupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */; };
 		898441D014E474540047CDFE /* AccountSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441CF14E474540047CDFE /* AccountSetupViewController.m */; };
 		898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441D214E483E80047CDFE /* MobileOptInViewController.m */; };
@@ -114,6 +122,7 @@
 		89A1C516151005EC0097F2F1 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A1C514151005EC0097F2F1 /* CheckInViewController.m */; };
 		89A1C517151005EC0097F2F1 /* CheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C515151005EC0097F2F1 /* CheckInViewController.xib */; };
 		89A1C519151006510097F2F1 /* butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C518151006510097F2F1 /* butterfly.png */; };
+		89A79015152121CF006BCFDD /* SWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A79014152121CF006BCFDD /* SWMenuViewController.m */; };
 		89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		89AA20AC14F582500082C7B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
 		89AA20AD14F582500082C7B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980D14DB02C3007595A7 /* CoreGraphics.framework */; };
@@ -131,11 +140,25 @@
 		89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B630EC1512A4E700E25970 /* dark_zebra_BG.png */; };
 		89B977971517905E0046E102 /* MyPeopleCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B977951517905E0046E102 /* MyPeopleCellController.m */; };
 		89B977981517905E0046E102 /* MyPeopleCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B977961517905E0046E102 /* MyPeopleCellController.xib */; };
+		89BD10E51524FAA600141BFA /* SMSAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10E31524FAA600141BFA /* SMSAlertCellController.m */; };
+		89BD10E61524FAA600141BFA /* SMSAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */; };
+		89BD10E81524FB7700141BFA /* sms_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10E71524FB7700141BFA /* sms_icon.png */; };
+		89BD10EB1524FDBF00141BFA /* SMSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10EA1524FDBF00141BFA /* SMSAlert.m */; };
+		89BD10EE152509B900141BFA /* CheckInAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10ED152509B900141BFA /* CheckInAlert.m */; };
+		89BD10F215250B2300141BFA /* CheckInAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10F015250B2200141BFA /* CheckInAlertCellController.m */; };
+		89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */; };
+		89BD10F515250BFE00141BFA /* pin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F415250BFE00141BFA /* pin_icon.png */; };
+		89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLoadViewController.h; sourceTree = "<group>"; };
 		8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginLoadViewController.m; sourceTree = "<group>"; };
+		890DC3DC1523D1F100C5458B /* FacebookAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlert.h; sourceTree = "<group>"; };
+		890DC3DD1523D1F100C5458B /* FacebookAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAlert.m; sourceTree = "<group>"; };
+		891451491522541300800262 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		8914514A1522541300800262 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		8914514B1522541300800262 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		8936AFE0150FC28B005C8237 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		8936AFE1150FC28B005C8237 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		8936AFE2150FC28B005C8237 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
@@ -220,6 +243,23 @@
 		897FD2591517E9DE00B7F0D0 /* ViewProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewProfileViewController.h; sourceTree = "<group>"; };
 		897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewProfileViewController.m; sourceTree = "<group>"; };
 		897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewProfileViewController.xib; sourceTree = "<group>"; };
+		8981393515238A38003B6A0D /* BingMaps.Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BingMaps.Resources.bundle; sourceTree = "<group>"; };
+		8981393915238A45003B6A0D /* BingMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingMaps.h; sourceTree = "<group>"; };
+		8981393A15238A45003B6A0D /* BMEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEntity.h; sourceTree = "<group>"; };
+		8981393B15238A45003B6A0D /* BMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMGeometry.h; sourceTree = "<group>"; };
+		8981393C15238A45003B6A0D /* BMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMapView.h; sourceTree = "<group>"; };
+		8981393D15238A45003B6A0D /* BMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarker.h; sourceTree = "<group>"; };
+		8981393E15238A45003B6A0D /* BMMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarkerView.h; sourceTree = "<group>"; };
+		8981393F15238A45003B6A0D /* BMPushpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPushpinView.h; sourceTree = "<group>"; };
+		8981394015238A45003B6A0D /* BMReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMReverseGeocoder.h; sourceTree = "<group>"; };
+		8981394115238A45003B6A0D /* BMTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTypes.h; sourceTree = "<group>"; };
+		8981394215238A45003B6A0D /* BMUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMUserLocation.h; sourceTree = "<group>"; };
+		898139461523A04B003B6A0D /* AlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertManager.h; sourceTree = "<group>"; };
+		898139471523A04B003B6A0D /* AlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertManager.m; sourceTree = "<group>"; };
+		8981394B1523BF95003B6A0D /* FacebookAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlertCellController.h; sourceTree = "<group>"; };
+		8981394C1523BF96003B6A0D /* FacebookAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAlertCellController.m; sourceTree = "<group>"; };
+		8981394D1523BF96003B6A0D /* FacebookAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookAlertCellController.xib; sourceTree = "<group>"; };
+		898139501523C066003B6A0D /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
 		89838DB014E30F8B00CDCDBC /* AccountSetupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetupModel.h; sourceTree = "<group>"; };
 		89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetupModel.m; sourceTree = "<group>"; };
 		898441CE14E474530047CDFE /* AccountSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetupViewController.h; sourceTree = "<group>"; };
@@ -264,6 +304,8 @@
 		89A1C514151005EC0097F2F1 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
 		89A1C515151005EC0097F2F1 /* CheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInViewController.xib; sourceTree = "<group>"; };
 		89A1C518151006510097F2F1 /* butterfly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = butterfly.png; path = "test images/butterfly.png"; sourceTree = "<group>"; };
+		89A79013152121CF006BCFDD /* SWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWMenuViewController.h; sourceTree = "<group>"; };
+		89A79014152121CF006BCFDD /* SWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWMenuViewController.m; sourceTree = "<group>"; };
 		89AA20A914F582500082C7B5 /* SafetyWebTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWebTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AA20B014F582500082C7B5 /* SafetyWebTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SafetyWebTests-Info.plist"; sourceTree = "<group>"; };
 		89AA20B214F582500082C7B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -286,6 +328,19 @@
 		89B977941517905E0046E102 /* MyPeopleCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPeopleCellController.h; sourceTree = "<group>"; };
 		89B977951517905E0046E102 /* MyPeopleCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPeopleCellController.m; sourceTree = "<group>"; };
 		89B977961517905E0046E102 /* MyPeopleCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPeopleCellController.xib; sourceTree = "<group>"; };
+		89BD10E21524FAA600141BFA /* SMSAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSAlertCellController.h; sourceTree = "<group>"; };
+		89BD10E31524FAA600141BFA /* SMSAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSAlertCellController.m; sourceTree = "<group>"; };
+		89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSAlertCellController.xib; sourceTree = "<group>"; };
+		89BD10E71524FB7700141BFA /* sms_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms_icon.png; sourceTree = "<group>"; };
+		89BD10E91524FDBF00141BFA /* SMSAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSAlert.h; sourceTree = "<group>"; };
+		89BD10EA1524FDBF00141BFA /* SMSAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSAlert.m; sourceTree = "<group>"; };
+		89BD10EC152509B900141BFA /* CheckInAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInAlert.h; sourceTree = "<group>"; };
+		89BD10ED152509B900141BFA /* CheckInAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlert.m; sourceTree = "<group>"; };
+		89BD10EF15250B2200141BFA /* CheckInAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInAlertCellController.h; sourceTree = "<group>"; };
+		89BD10F015250B2200141BFA /* CheckInAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlertCellController.m; sourceTree = "<group>"; };
+		89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInAlertCellController.xib; sourceTree = "<group>"; };
+		89BD10F415250BFE00141BFA /* pin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_icon.png; sourceTree = "<group>"; };
+		89BD10F61525195400141BFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +348,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */,
 				89964B5F14F80DB6006A0D7D /* QuartzCore.framework in Frameworks */,
 				897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */,
 				897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */,
@@ -385,6 +441,20 @@
 				897FD2591517E9DE00B7F0D0 /* ViewProfileViewController.h */,
 				897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */,
 				897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */,
+				89A79013152121CF006BCFDD /* SWMenuViewController.h */,
+				89A79014152121CF006BCFDD /* SWMenuViewController.m */,
+				891451491522541300800262 /* SettingsViewController.h */,
+				8914514A1522541300800262 /* SettingsViewController.m */,
+				8914514B1522541300800262 /* SettingsViewController.xib */,
+				8981394B1523BF95003B6A0D /* FacebookAlertCellController.h */,
+				8981394C1523BF96003B6A0D /* FacebookAlertCellController.m */,
+				8981394D1523BF96003B6A0D /* FacebookAlertCellController.xib */,
+				89BD10E21524FAA600141BFA /* SMSAlertCellController.h */,
+				89BD10E31524FAA600141BFA /* SMSAlertCellController.m */,
+				89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */,
+				89BD10EF15250B2200141BFA /* CheckInAlertCellController.h */,
+				89BD10F015250B2200141BFA /* CheckInAlertCellController.m */,
+				89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -416,8 +486,8 @@
 		897E97FA14DB02C3007595A7 = {
 			isa = PBXGroup;
 			children = (
-				89964B5E14F80DB6006A0D7D /* QuartzCore.framework */,
 				898441D614E48A240047CDFE /* images */,
+				8981393815238A45003B6A0D /* BingMaps */,
 				897E980F14DB02C3007595A7 /* SafetyWeb */,
 				89AA20AE14F582500082C7B5 /* SafetyWebTests */,
 				897E980814DB02C3007595A7 /* Frameworks */,
@@ -437,6 +507,8 @@
 		897E980814DB02C3007595A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89BD10F61525195400141BFA /* CoreLocation.framework */,
+				89964B5E14F80DB6006A0D7D /* QuartzCore.framework */,
 				89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */,
 				897E980914DB02C3007595A7 /* UIKit.framework */,
 				897E980B14DB02C3007595A7 /* Foundation.framework */,
@@ -468,6 +540,7 @@
 		897E981014DB02C3007595A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8981393515238A38003B6A0D /* BingMaps.Resources.bundle */,
 				897E981114DB02C3007595A7 /* SafetyWeb-Info.plist */,
 				897E981214DB02C3007595A7 /* InfoPlist.strings */,
 				897E981514DB02C3007595A7 /* main.m */,
@@ -479,9 +552,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8981393815238A45003B6A0D /* BingMaps */ = {
+			isa = PBXGroup;
+			children = (
+				8981393915238A45003B6A0D /* BingMaps.h */,
+				8981393A15238A45003B6A0D /* BMEntity.h */,
+				8981393B15238A45003B6A0D /* BMGeometry.h */,
+				8981393C15238A45003B6A0D /* BMMapView.h */,
+				8981393D15238A45003B6A0D /* BMMarker.h */,
+				8981393E15238A45003B6A0D /* BMMarkerView.h */,
+				8981393F15238A45003B6A0D /* BMPushpinView.h */,
+				8981394015238A45003B6A0D /* BMReverseGeocoder.h */,
+				8981394115238A45003B6A0D /* BMTypes.h */,
+				8981394215238A45003B6A0D /* BMUserLocation.h */,
+			);
+			path = BingMaps;
+			sourceTree = "<group>";
+		};
 		898441D614E48A240047CDFE /* images */ = {
 			isa = PBXGroup;
 			children = (
+				89BD10F415250BFE00141BFA /* pin_icon.png */,
+				89BD10E71524FB7700141BFA /* sms_icon.png */,
+				898139501523C066003B6A0D /* facebook_icon.png */,
 				897BBC6E14F41D6800377684 /* ATT_btn_off.png */,
 				897BBC6F14F41D6800377684 /* ATT_btn_off@2X.png */,
 				897BBC7014F41D6800377684 /* ATT_btn_on.png */,
@@ -549,6 +642,14 @@
 				897E984714DB1478007595A7 /* UserManager.m */,
 				899754D214EF0FB60046B1DA /* ChildManager.h */,
 				899754D314EF0FB60046B1DA /* ChildManager.m */,
+				898139461523A04B003B6A0D /* AlertManager.h */,
+				898139471523A04B003B6A0D /* AlertManager.m */,
+				890DC3DC1523D1F100C5458B /* FacebookAlert.h */,
+				890DC3DD1523D1F100C5458B /* FacebookAlert.m */,
+				89BD10E91524FDBF00141BFA /* SMSAlert.h */,
+				89BD10EA1524FDBF00141BFA /* SMSAlert.m */,
+				89BD10EC152509B900141BFA /* CheckInAlert.h */,
+				89BD10ED152509B900141BFA /* CheckInAlert.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -629,6 +730,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = SafetyWeb;
 			};
 			buildConfigurationList = 897E97FF14DB02C3007595A7 /* Build configuration list for PBXProject "SafetyWeb" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -724,6 +826,14 @@
 				897FD2551517E7EB00B7F0D0 /* top_shadow.png in Resources */,
 				897FD2581517E80D00B7F0D0 /* bottom_shadow.png in Resources */,
 				897FD25D1517E9DF00B7F0D0 /* ViewProfileViewController.xib in Resources */,
+				8914514D1522541300800262 /* SettingsViewController.xib in Resources */,
+				8981393615238A38003B6A0D /* BingMaps.Resources.bundle in Resources */,
+				8981394F1523BF96003B6A0D /* FacebookAlertCellController.xib in Resources */,
+				898139511523C066003B6A0D /* facebook_icon.png in Resources */,
+				89BD10E61524FAA600141BFA /* SMSAlertCellController.xib in Resources */,
+				89BD10E81524FB7700141BFA /* sms_icon.png in Resources */,
+				89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */,
+				89BD10F515250BFE00141BFA /* pin_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +888,15 @@
 				89B630E815129A6A00E25970 /* CheckInCellController.m in Sources */,
 				89B977971517905E0046E102 /* MyPeopleCellController.m in Sources */,
 				897FD25C1517E9DF00B7F0D0 /* ViewProfileViewController.m in Sources */,
+				89A79015152121CF006BCFDD /* SWMenuViewController.m in Sources */,
+				8914514C1522541300800262 /* SettingsViewController.m in Sources */,
+				898139481523A04B003B6A0D /* AlertManager.m in Sources */,
+				8981394E1523BF96003B6A0D /* FacebookAlertCellController.m in Sources */,
+				890DC3DE1523D1F100C5458B /* FacebookAlert.m in Sources */,
+				89BD10E51524FAA600141BFA /* SMSAlertCellController.m in Sources */,
+				89BD10EB1524FDBF00141BFA /* SMSAlert.m in Sources */,
+				89BD10EE152509B900141BFA /* CheckInAlert.m in Sources */,
+				89BD10F215250B2300141BFA /* CheckInAlertCellController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

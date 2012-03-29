@@ -129,6 +129,9 @@
         progressView.progressCurrent = 50.0 + (50.0*((totalChildRequests - pendingChildRequests)/totalChildRequests));
         
         if (pendingChildRequests == 0) {
+            // The login actually worked, and they got in just fine
+            // Store the credentials, and show the main menu
+            [UserManager setLastUsedCredentials:credentials];
             [rootViewController displayMenuViewController];
         }
     }

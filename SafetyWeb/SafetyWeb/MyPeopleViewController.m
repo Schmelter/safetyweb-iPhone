@@ -59,9 +59,6 @@
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     Child *child = [[ChildManager getAllChildren] objectAtIndex:indexPath.row];
     
     if (!cellControllers[indexPath.row]) {
@@ -71,9 +68,8 @@
     
     cellControllers[indexPath.row].child = child;
     cellControllers[indexPath.row].row = indexPath.row;
-    [cell addSubview:cellControllers[indexPath.row].view];
     
-    return cell;
+    return cellControllers[indexPath.row].tableViewCell;
 }
 
 -(void)dealloc {
