@@ -24,6 +24,7 @@
         cellControllersLen = 0;
         cellControllers = nil;
         alertLoadLock = [[NSObject alloc] init];
+        selectedRowSet = [[NSMutableSet alloc] init];
     }
     return self;
 }
@@ -55,20 +56,27 @@
     @synchronized(alertLoadLock) {        
         id<Alert> alert = (id<Alert>)[alerts objectAtIndex:indexPath.row];
         if (!cellControllers[indexPath.row]) {
-            // Need to build the cell controller based on the alert type
-            // We could be doing this with a factory, but we just don't have enough alert types to justify that
-            if ([alert isKindOfClass:[FacebookAlert class]]) {
-                cellControllers[indexPath.row] = [[FacebookAlertCellController alloc] initWithNibName:@"FacebookAlertCellController" bundle:nil];
-            } else if ([alert isKindOfClass:[SMSAlert class]]) {
-                cellControllers[indexPath.row] = [[SMSAlertCellController alloc] initWithNibName:@"SMSAlertCellController" bundle:nil];
-            } else if ([alert isKindOfClass:[CheckInAlert class]]) {
-                cellControllers[indexPath.row] = [[CheckInAlertCellController alloc] initWithNibName:@"CheckInAlertCellController" bundle:nil];
-            }
+            [cellControllers[indexPath.row] release];
+        }
+        
+        // Need to build the cell controller based on the alert type
+        // We could be doing this with a factory, but we just don't have enough alert types to justify that
+        if ([alert isKindOfClass:[FacebookAlert class]]) {
+            cellControllers[indexPath.row] = [[FacebookAlertCellController alloc] initWithNibName:@"FacebookAlertCellController" bundle:nil];
+        } else if ([alert isKindOfClass:[SMSAlert class]]) {
+            cellControllers[indexPath.row] = [[SMSAlertCellController alloc] initWithNibName:@"SMSAlertCellController" bundle:nil];
+        } else if ([alert isKindOfClass:[CheckInAlert class]]) {
+            cellControllers[indexPath.row] = [[CheckInAlertCellController alloc] initWithNibName:@"CheckInAlertCellController" bundle:nil];
         }
         
         cellControllers[indexPath.row].row = indexPath.row;
         cellControllers[indexPath.row].alert = alert;
         cellControllers[indexPath.row].parentController = self;
+        
+        NSNumber *rowNum = [[NSNumber alloc] initWithInt:indexPath.row];
+        if ([selectedRowSet containsObject:rowNum]) [cellControllers[indexPath.row] expand];
+        else [cellControllers[indexPath.row] contract];
+        [rowNum release];
         
         return cellControllers[indexPath.row].tableViewCell;
     }
@@ -82,25 +90,35 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     @synchronized(alertLoadLock) {
+        BOOL selected = NO;
+        NSNumber *rowNum = [[NSNumber alloc] initWithInt:indexPath.row];
+        selected = [selectedRowSet containsObject:rowNum];
+        [rowNum release];
+        
         if (!cellControllers[indexPath.row]) return 70;
-        else return [cellControllers[indexPath.row] heightForRow];
+        else if (selected) return [cellControllers[indexPath.row] expandedHeight];
+        else return 70;
     }
 }
 
 -(NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [cellControllers[indexPath.row] willSelect];
-    return indexPath;
+    if (![cellControllers[indexPath.row] expandable]) return nil;
+    else return indexPath;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //index = indexPath.row;
-    [tableView beginUpdates];
-    [tableView endUpdates];      
-}
-
--(NSIndexPath*)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [cellControllers[indexPath.row] willDeselect];
-    return indexPath;
+    NSNumber *indexPathNum = [[NSNumber alloc] initWithInt:indexPath.row];
+    
+    if ([selectedRowSet containsObject:indexPathNum]) {
+        [selectedRowSet removeObject:indexPathNum];
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [indexPathNum release];
+        return;
+    }
+    
+    [selectedRowSet addObject:indexPathNum];
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [indexPathNum release];
 }
 
 #pragma mark -
@@ -135,6 +153,7 @@
     [alertsTable release];
     [alerts release];
     [alertLoadLock release];
+    [selectedRowSet release];
     
     [super dealloc];
 }
@@ -155,12 +174,16 @@
     return self;
 }
 
--(void)willSelect { }
+-(void)expand { }
 
--(void)willDeselect { }
+-(void)contract { }
 
--(CGFloat)heightForRow {
+-(CGFloat)expandedHeight {
     return 70;
+}
+
+-(BOOL)expandable {
+    return NO;
 }
 
 -(UITableViewCell*)tableViewCell {

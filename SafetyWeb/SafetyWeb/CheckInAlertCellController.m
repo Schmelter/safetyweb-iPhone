@@ -14,19 +14,19 @@
 @synthesize locationApproved;
 @synthesize timeMessage;
 @synthesize backgroundImage;
+@synthesize mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        rowHeight = 70;
     }
     return self;
 }
 
--(CGFloat)heightForRow {
-    return rowHeight;
+-(CGFloat)expandedHeight {
+    return 140;
 }
 
 #pragma mark - View lifecycle
@@ -46,23 +46,45 @@
     if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"dark_zebra_BG.png"];
     else backgroundImage.image = nil;
     
+    [mapView setDelegate:self];
+    mapView.scrollEnabled = NO;
+    mapView.zoomEnabled = NO;
+    [mapView setCenterCoordinate:checkInAlert.location animated:NO];
+    [mapView setRegion:BMCoordinateRegionMake(checkInAlert.location, BMCoordinateSpanMake(.005, .0025)) animated:NO];
+    BMEntity *childEntity = [[BMEntity alloc] initWithCoordinate:checkInAlert.location bingAddressDictionary:nil];
+    [mapView addMarker:childEntity];
+    [childEntity release];
+    
+    // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
+    mapView.userInteractionEnabled = NO;
+    
     [pool release];
 }
 
 - (void)viewDidUnload {
+    self.childName = nil;
+    self.locationStr = nil;
+    self.timeMessage = nil;
+    self.backgroundImage = nil;
+    self.mapView = nil;
+    
     [super viewDidUnload];
 }
 
--(void)willSelect {
-    rowHeight = 140;
-    self.view.frame = CGRectMake(0, 0, 320, 140);
-    backgroundImage.frame = CGRectMake(0, 0, 320, 140);
+-(void)expand {
+    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, 320, 140);
+    backgroundImage.frame = CGRectMake(backgroundImage.frame.origin.x, backgroundImage.frame.origin.y, 320, 140);
+    mapView.hidden = NO;
 }
 
--(void)willDeselect {
-    rowHeight = 70;
-    self.view.frame = CGRectMake(0, 0, 320, 70);
-    backgroundImage.frame = CGRectMake(0, 0, 320, 70);
+-(void)contract {
+    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, 320, 70);
+    backgroundImage.frame = CGRectMake(backgroundImage.frame.origin.x, backgroundImage.frame.origin.y, 320, 70);
+    mapView.hidden = YES;
+}
+
+-(BOOL)expandable {
+    return YES;
 }
 
 -(void)dealloc {
@@ -71,6 +93,7 @@
     [locationApproved release];
     [timeMessage release];
     [backgroundImage release];
+    [mapView release];
     
     [super dealloc];
 }

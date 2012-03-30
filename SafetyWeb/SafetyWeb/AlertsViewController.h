@@ -22,6 +22,8 @@
     
     UITableView *alertsTable;
     NSObject *alertLoadLock;
+    
+    NSMutableSet *selectedRowSet;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *alertsTable;
@@ -40,9 +42,10 @@
 @property (nonatomic, retain) id<Alert> alert;
 @property (nonatomic, assign) AlertsViewController *parentController;
 
--(void)willSelect;
--(void)willDeselect;
--(CGFloat)heightForRow;
+-(void)expand;
+-(void)contract;
+-(CGFloat)expandedHeight;
+-(BOOL)expandable;
 -(UITableViewCell*)tableViewCell;
 
 @end

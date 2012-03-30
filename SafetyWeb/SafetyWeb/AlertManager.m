@@ -59,8 +59,7 @@ static NSMutableArray* alertArr;
         checkInAlert.alertId = [NSNumber numberWithInt:alertId++];
         checkInAlert.childId = child.childId;
         checkInAlert.locationStr = @"Coors Field";
-        checkInAlert.location = CLLocationCoordinate2DMake(0, 0);
-        //checkInAlert.location = CLLocationCoordinate2DMake(39.75529012333774, -104.99408483505249);
+        checkInAlert.location = CLLocationCoordinate2DMake(39.75529012333774, -104.99408483505249);
         checkInAlert.locationApproved = YES;
         checkInAlert.timestamp = 1333061858; // 03/29/2012 4:58 pm
         

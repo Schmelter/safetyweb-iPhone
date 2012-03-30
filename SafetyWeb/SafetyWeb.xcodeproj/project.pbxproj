@@ -149,6 +149,12 @@
 		89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */; };
 		89BD10F515250BFE00141BFA /* pin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F415250BFE00141BFA /* pin_icon.png */; };
 		89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
+		89BDA89A1526323A004FEF30 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8991526323A004FEF30 /* libz.dylib */; };
+		89BDA89D15263246004FEF30 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA89C15263246004FEF30 /* libxml2.dylib */; };
+		89BDA89F15263259004FEF30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA89E15263259004FEF30 /* SystemConfiguration.framework */; };
+		89BDA8A11526326B004FEF30 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A01526326B004FEF30 /* OpenGLES.framework */; };
+		89BDA8A315263277004FEF30 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
+		89BDA8A5152632E9004FEF30 /* libBingMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A4152632E9004FEF30 /* libBingMaps.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -341,6 +347,12 @@
 		89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInAlertCellController.xib; sourceTree = "<group>"; };
 		89BD10F415250BFE00141BFA /* pin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_icon.png; sourceTree = "<group>"; };
 		89BD10F61525195400141BFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		89BDA8991526323A004FEF30 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		89BDA89C15263246004FEF30 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		89BDA89E15263259004FEF30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		89BDA8A01526326B004FEF30 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		89BDA8A215263277004FEF30 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		89BDA8A4152632E9004FEF30 /* libBingMaps.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBingMaps.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,11 +360,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */,
+				89BDA89D15263246004FEF30 /* libxml2.dylib in Frameworks */,
+				89BDA89A1526323A004FEF30 /* libz.dylib in Frameworks */,
+				89BDA89F15263259004FEF30 /* SystemConfiguration.framework in Frameworks */,
 				89964B5F14F80DB6006A0D7D /* QuartzCore.framework in Frameworks */,
+				89BDA8A11526326B004FEF30 /* OpenGLES.framework in Frameworks */,
+				89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */,
+				89BDA8A315263277004FEF30 /* CoreData.framework in Frameworks */,
 				897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */,
 				897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */,
 				897E980E14DB02C3007595A7 /* CoreGraphics.framework in Frameworks */,
+				89BDA8A5152632E9004FEF30 /* libBingMaps.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +525,11 @@
 		897E980814DB02C3007595A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89BDA8A215263277004FEF30 /* CoreData.framework */,
+				89BDA8A01526326B004FEF30 /* OpenGLES.framework */,
+				89BDA89E15263259004FEF30 /* SystemConfiguration.framework */,
+				89BDA89C15263246004FEF30 /* libxml2.dylib */,
+				89BDA8991526323A004FEF30 /* libz.dylib */,
 				89BD10F61525195400141BFA /* CoreLocation.framework */,
 				89964B5E14F80DB6006A0D7D /* QuartzCore.framework */,
 				89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */,
@@ -514,6 +537,7 @@
 				897E980B14DB02C3007595A7 /* Foundation.framework */,
 				897E980D14DB02C3007595A7 /* CoreGraphics.framework */,
 				897E982114DB02C3007595A7 /* SenTestingKit.framework */,
+				89BDA8A4152632E9004FEF30 /* libBingMaps.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -955,7 +979,12 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -972,8 +1001,13 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -986,6 +1020,10 @@
 				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "SafetyWeb/SafetyWeb-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -998,6 +1036,10 @@
 				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "SafetyWeb/SafetyWeb-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
