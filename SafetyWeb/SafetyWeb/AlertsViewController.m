@@ -175,7 +175,7 @@
             }
         }
         
-        [alertsTable reloadData];
+        [alertsTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 }
 

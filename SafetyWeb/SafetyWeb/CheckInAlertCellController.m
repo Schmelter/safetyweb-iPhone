@@ -46,18 +46,6 @@
     if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"dark_zebra_BG.png"];
     else backgroundImage.image = nil;
     
-    [mapView setDelegate:self];
-    mapView.scrollEnabled = NO;
-    mapView.zoomEnabled = NO;
-    [mapView setCenterCoordinate:checkInAlert.location animated:NO];
-    [mapView setRegion:BMCoordinateRegionMake(checkInAlert.location, BMCoordinateSpanMake(.005, .0025)) animated:NO];
-    BMEntity *childEntity = [[BMEntity alloc] initWithCoordinate:checkInAlert.location bingAddressDictionary:nil];
-    [mapView addMarker:childEntity];
-    [childEntity release];
-    
-    // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
-    mapView.userInteractionEnabled = NO;
-    
     [pool release];
 }
 
@@ -74,6 +62,23 @@
 -(void)expand {
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, 320, 140);
     backgroundImage.frame = CGRectMake(backgroundImage.frame.origin.x, backgroundImage.frame.origin.y, 320, 140);
+    
+    CheckInAlert *checkInAlert = (CheckInAlert*)alert;
+    // Add the mapView
+    self.mapView = [[BMMapView alloc] initWithFrame:CGRectMake(10, 75, 300, 60)];
+    [mapView setDelegate:self];
+    mapView.scrollEnabled = NO;
+    mapView.zoomEnabled = NO;
+    [mapView setCenterCoordinate:checkInAlert.location animated:NO];
+    [mapView setRegion:BMCoordinateRegionMake(checkInAlert.location, BMCoordinateSpanMake(.005, .0025)) animated:NO];
+    BMEntity *childEntity = [[BMEntity alloc] initWithCoordinate:checkInAlert.location bingAddressDictionary:nil];
+    [mapView addMarker:childEntity];
+    [childEntity release];
+    
+    // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
+    mapView.userInteractionEnabled = NO;
+    
+    [self.view addSubview:mapView];
     mapView.hidden = NO;
 }
 
@@ -81,6 +86,10 @@
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, 320, 70);
     backgroundImage.frame = CGRectMake(backgroundImage.frame.origin.x, backgroundImage.frame.origin.y, 320, 70);
     mapView.hidden = YES;
+    
+    // Remove the mapView
+    [mapView removeFromSuperview];
+    self.mapView = nil;
 }
 
 -(BOOL)expandable {

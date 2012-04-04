@@ -11,4 +11,16 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <CoreLocation/CoreLocation.h>
 #endif
+
+    // This is to cover the fact that CLLocationCoordinate2DMake doesn't exist in iOS 3.2
+    static inline CLLocationCoordinate2D CLLocationCoordinate2DInlineMake(CLLocationDegrees latitude, CLLocationDegrees longitude)
+    {
+        CLLocationCoordinate2D coord;
+        coord.latitude = latitude;
+        coord.longitude = longitude;
+        return coord;
+    }
+
+    #define CLLocationCoordinate2DMake CLLocationCoordinate2DInlineMake

@@ -30,6 +30,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *locationApproved;
 @property (nonatomic, retain) IBOutlet UILabel *timeMessage;
 @property (nonatomic, retain) IBOutlet UIImageView *backgroundImage;
-@property (nonatomic, retain) IBOutlet BMMapView *mapView;
+@property (nonatomic, retain) BMMapView *mapView;
 
 @end
