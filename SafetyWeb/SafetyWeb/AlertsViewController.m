@@ -175,7 +175,6 @@
             }
         }
         
-        // It's one or the other of the following
         [alertsTable reloadData];
     }
 }
