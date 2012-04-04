@@ -11,6 +11,7 @@
 #import "AlertManager.h"
 
 #define kDefaultAlertsShown 10
+#define kTableHeight 416
 
 @class AlertCellController;
 
@@ -18,12 +19,14 @@
     @private
     NSInteger cellControllersLen;
     AlertCellController** cellControllers;
-    NSArray *alerts;
+    NSMutableArray *alerts;
     
     UITableView *alertsTable;
     NSObject *alertLoadLock;
     
     NSMutableSet *selectedRowSet;
+    NSInteger animatedRow;
+    NSMutableSet *animatedOutSet;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *alertsTable;

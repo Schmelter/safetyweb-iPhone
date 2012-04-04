@@ -25,20 +25,28 @@
         cellControllers = nil;
         alertLoadLock = [[NSObject alloc] init];
         selectedRowSet = [[NSMutableSet alloc] init];
+        alerts = [[NSMutableArray alloc] initWithCapacity:10];
+        animatedRow = -1;
+        animatedOutSet = [[NSMutableSet alloc] init];
     }
     return self;
+}
+
+-(void)requestMoreAlerts {
+    @synchronized(alertLoadLock) {
+        AlertRangeRequest *request = [[AlertRangeRequest alloc] init];
+        request.range = NSMakeRange([alerts count], kDefaultAlertsShown);
+        request.response = self;
+        [AlertManager requestAlertsWithinRange:request];
+        [request release];
+    }
 }
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Show the first 10 results to begin with
-    AlertRangeRequest *request = [[AlertRangeRequest alloc] init];
-    request.range = NSMakeRange(0, kDefaultAlertsShown);
-    request.response = self;
-    [AlertManager requestAlertsWithinRange:request];
-    [request release];
+    [self requestMoreAlerts];
     
     // TODO: Remove this later when we have the properly fitting artwork
     self.view.clipsToBounds = YES;
@@ -53,9 +61,12 @@
 #pragma mark -
 #pragma mark UITableViewDelegate and UITableViewDataSource Methods
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    @synchronized(alertLoadLock) {        
+    @synchronized(alertLoadLock) {
         id<Alert> alert = (id<Alert>)[alerts objectAtIndex:indexPath.row];
-        if (!cellControllers[indexPath.row]) {
+        
+        if (animatedRow != indexPath.row && cellControllers[indexPath.row]) return cellControllers[indexPath.row].tableViewCell;
+        else if (cellControllers[indexPath.row]) {
+            [animatedOutSet addObject:cellControllers[indexPath.row]];
             [cellControllers[indexPath.row] release];
         }
         
@@ -111,14 +122,34 @@
     
     if ([selectedRowSet containsObject:indexPathNum]) {
         [selectedRowSet removeObject:indexPathNum];
+        animatedRow = indexPath.row;
         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        animatedRow = -1;
         [indexPathNum release];
         return;
     }
     
     [selectedRowSet addObject:indexPathNum];
+    animatedRow = indexPath.row;
     [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    animatedRow = -1;
     [indexPathNum release];
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    // Check if we've scrolled down further than our bounds, and ask for more rows
+    if (scrollView.contentSize.height - scrollView.contentOffset.y <= kTableHeight) {
+        [self requestMoreAlerts];
+    }
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // Check if we're at the bottomof our bounds, and ask for more rows
+    if (scrollView.contentSize.height - scrollView.contentOffset.y <= kTableHeight) {
+        [self requestMoreAlerts];
+    }
 }
 
 #pragma mark -
@@ -126,20 +157,26 @@
 -(void)receiveResponse:(NSArray*)aAlerts forRange:(NSRange)range {
     // We just got all new alerts, so add them to our array
     @synchronized(alertLoadLock) {
-        AlertCellController** newCellControllers = calloc(range.length + cellControllersLen, sizeof(AlertCellController*));
+        AlertCellController** newCellControllers = calloc(range.length + range.location, sizeof(AlertCellController*));
         for (int i = 0; i < cellControllersLen; i++) {
             newCellControllers[i] = cellControllers[i];
         }  
         free(cellControllers);
-        cellControllersLen = range.length + cellControllersLen;
+        cellControllersLen = range.length + range.location;
         cellControllers = newCellControllers;
         
-        [aAlerts retain];
-        [alerts release];
-        alerts = aAlerts;
+        for (int i = 0; i < range.length; i++) {
+            if ([alerts count] > range.location + i) {
+                [alerts replaceObjectAtIndex:range.location + i withObject:[aAlerts objectAtIndex:i]];
+            } else if ([alerts count] == range.location + i) {
+                [alerts addObject:[aAlerts objectAtIndex:i]];
+            } else {
+                // Out of bounds!  We're making gaps, so just skip it
+            }
+        }
+        
         // It's one or the other of the following
-//        [alertsTable reloadData];
-        [alertsTable layoutSubviews];
+        [alertsTable reloadData];
     }
 }
 
@@ -154,6 +191,7 @@
     [alerts release];
     [alertLoadLock release];
     [selectedRowSet release];
+    [animatedOutSet release];
     
     [super dealloc];
 }

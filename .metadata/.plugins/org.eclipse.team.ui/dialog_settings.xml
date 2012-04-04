@@ -2,16 +2,16 @@
 <section name="Workbench">
 	<section name="SynchronizeViewSettings">
 		<item value="false" key="linkWithEditor"/>
-		<item value="1331656059159" key="lastactiveparticipant_sec_id"/>
+		<item value="1333383104119" key="lastactiveparticipant_sec_id"/>
 		<item value="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant" key="lastactiveparticipant_id"/>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329854618103">
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329424755140">
 			<item value="org.eclipse.team.ui.activeModelProvider" key="org.eclipse.team.ui.activeModelProvider"/>
 		</section>
-		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655831118">
-		</section>
 		<section name="org.tigris.subversion.subclipse.participant.1319127402538">
+		</section>
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655831118">
 		</section>
 		<section name="org.tigris.subversion.subclipse.participant.1317937947088">
 		</section>
@@ -20,11 +20,11 @@
 			<item value="false" key="org.eclipse.team.ui.P_COMMIT_SET_ENABLED"/>
 			<item value="2" key="org.eclipse.team.ui.P_SYNCVIEWPAGE_MODE"/>
 		</section>
-		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329343870929">
-		</section>
 		<section name="org.tigris.subversion.subclipse.participant.1321295363958">
 			<item value="org.eclipse.team.ui.modelprovider_compressedfolders" key="org.eclipse.team.ui.P_LAST_MODELPROVIDER"/>
 			<item value="false" key="org.eclipse.team.ui.P_COMMIT_SET_ENABLED"/>
+		</section>
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329343870929">
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331654085790">
 		</section>
@@ -58,6 +58,9 @@
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655784191">
 		</section>
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1333383104119">
+			<item value="org.eclipse.team.ui.activeModelProvider" key="org.eclipse.team.ui.activeModelProvider"/>
+		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655695128">
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331654181707">
@@ -78,13 +81,13 @@
 		<section name="org.eclipse.egit.ui.modelCompareParticipant.1319583914235">
 			<item value="4" key="org.eclipse.team.ui.P_SYNCVIEWPAGE_MODE"/>
 		</section>
-		<section name="org.tigris.subversion.subclipse.participant.1318269515891">
-		</section>
 		<section name="org.tigris.subversion.subclipse.participant.1317928328765">
 		</section>
-		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655721776">
+		<section name="org.tigris.subversion.subclipse.participant.1318269515891">
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655328814">
+		</section>
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655721776">
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1329854739070">
 			<item value="org.eclipse.team.ui.activeModelProvider" key="org.eclipse.team.ui.activeModelProvider"/>
@@ -94,16 +97,16 @@
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331654398530">
 		</section>
-		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655611485">
-		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655144255">
 		</section>
-		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331654683521">
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331655611485">
 		</section>
 		<section name="org.tigris.subversion.subclipse.participant.1318973177624">
 			<item value="org.eclipse.team.ui.modelprovider_compressedfolders" key="org.eclipse.team.ui.P_LAST_MODELPROVIDER"/>
 			<item value="false" key="org.eclipse.team.ui.P_COMMIT_SET_ENABLED"/>
 			<item value="1" key="org.eclipse.team.ui.P_SYNCVIEWPAGE_MODE"/>
+		</section>
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1331654683521">
 		</section>
 		<section name="org.tigris.subversion.subclipse.participant.1319058606979">
 			<item value="org.eclipse.team.ui.modelprovider_compressedfolders" key="org.eclipse.team.ui.P_LAST_MODELPROVIDER"/>

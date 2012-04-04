@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
+#import <Block.h>
 
 @interface SWAppDelegate : UIResponder <UIApplicationDelegate> {
     UIWindow *window;

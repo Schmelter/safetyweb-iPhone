@@ -29,6 +29,10 @@ static NSMutableArray* alertArr;
     alertDict = [[NSMutableDictionary alloc] init];
     alertArr = [[NSMutableArray alloc] init];
     
+    @autoreleasepool {
+        
+    }
+    
     // TODO: Take this out later when we're actually hitting the server
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
@@ -71,20 +75,25 @@ static NSMutableArray* alertArr;
     [pool release];
 }
 
-+(NSArray*)getAllAlerts {
-    return alertArr;
++(void)responseAlertsWithinRange:(AlertRangeRequest*)request {
+    NSRange range = request.range;
+    
+    range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
+    range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
+    
+    NSLog(@"Before Sleep");
+    usleep(1000000);  // 1 seconds
+    NSLog(@"After Sleep");
+    
+    [request.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
+    NSLog(@"Thread Over");
 }
 
 +(void)requestAlertsWithinRange:(AlertRangeRequest*)request {
     // TODO: Take this out later when we're actually hitting the server
     // Check that the range is within the size of our array
     // NOTE: Make sure to retain the AlertRangeRequest when the request will be asynchronous
-    NSRange range = request.range;
-    
-    range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
-    range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
-    
-    [request.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
+    [NSThread detachNewThreadSelector:@selector(responseAlertsWithinRange:) toTarget:[self class] withObject:request];
 }
 
 +(void)requestAlertById:(AlertIdRequest*)request {
