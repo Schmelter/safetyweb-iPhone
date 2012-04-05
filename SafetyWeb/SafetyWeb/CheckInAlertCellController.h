@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "SWPointAnnotation.h"
 #import "AlertsViewController.h"
 #import "ChildManager.h"
 #import "Utilities.h"

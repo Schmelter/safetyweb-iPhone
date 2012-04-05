@@ -76,6 +76,8 @@ static NSMutableArray* alertArr;
 }
 
 +(void)responseAlertsWithinRange:(AlertRangeRequest*)request {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
     NSRange range = request.range;
     
     range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
@@ -87,6 +89,8 @@ static NSMutableArray* alertArr;
     
     [request.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
     NSLog(@"Thread Over");
+    
+    [pool release];
 }
 
 +(void)requestAlertsWithinRange:(AlertRangeRequest*)request {

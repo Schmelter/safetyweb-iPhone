@@ -52,7 +52,7 @@
     [mapView setCenterCoordinate:checkInAlert.location animated:NO];
     [mapView setRegion:MKCoordinateRegionMake(checkInAlert.location, MKCoordinateSpanMake(.005, .0025)) animated:NO];
     
-    id<MKAnnotation> annotation = [[MKPointAnnotation alloc] init];
+    id<MKAnnotation> annotation = [[SWPointAnnotation alloc] init];
     annotation.coordinate = checkInAlert.location;
     annotation.title = @"Title";
     annotation.subtitle = @"SubTitle";
