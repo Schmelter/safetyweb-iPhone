@@ -18,7 +18,6 @@
 		893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */; };
 		893F9D4714E1F5CD0074C5EC /* AccountSetup1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */; };
 		893F9D4A14E1F5DE0074C5EC /* AccountSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */; };
-		895B327E152D160D00D8C60B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895B327D152D160D00D8C60B /* MapKit.framework */; };
 		89740A6E14EC56420064E64A /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A6C14EC56420064E64A /* Back.png */; };
 		89740A6F14EC56420064E64A /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A6D14EC56420064E64A /* Back@2x.png */; };
 		89740A7214EC56540064E64A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7014EC56540064E64A /* Default.png */; };
@@ -141,7 +140,6 @@
 		89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B630EC1512A4E700E25970 /* dark_zebra_BG.png */; };
 		89B977971517905E0046E102 /* MyPeopleCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B977951517905E0046E102 /* MyPeopleCellController.m */; };
 		89B977981517905E0046E102 /* MyPeopleCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B977961517905E0046E102 /* MyPeopleCellController.xib */; };
-		89BB2076152D1BCB00861485 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895B327D152D160D00D8C60B /* MapKit.framework */; };
 		89BB2077152D1BD000861485 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8991526323A004FEF30 /* libz.dylib */; };
 		89BD10E51524FAA600141BFA /* SMSAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10E31524FAA600141BFA /* SMSAlertCellController.m */; };
 		89BD10E61524FAA600141BFA /* SMSAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */; };
@@ -155,6 +153,8 @@
 		89BDA89A1526323A004FEF30 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8991526323A004FEF30 /* libz.dylib */; };
 		89BDA89F15263259004FEF30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA89E15263259004FEF30 /* SystemConfiguration.framework */; };
 		89BDA8A315263277004FEF30 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
+		89E61BBF152DF175005FD0B9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895B327D152D160D00D8C60B /* MapKit.framework */; };
+		89E61BC0152DF17D005FD0B9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895B327D152D160D00D8C60B /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -348,7 +348,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				895B327E152D160D00D8C60B /* MapKit.framework in Frameworks */,
+				89E61BBF152DF175005FD0B9 /* MapKit.framework in Frameworks */,
 				89BDA89A1526323A004FEF30 /* libz.dylib in Frameworks */,
 				89BDA89F15263259004FEF30 /* SystemConfiguration.framework in Frameworks */,
 				89964B5F14F80DB6006A0D7D /* QuartzCore.framework in Frameworks */,
@@ -364,8 +364,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89E61BC0152DF17D005FD0B9 /* MapKit.framework in Frameworks */,
 				89BB2077152D1BD000861485 /* libz.dylib in Frameworks */,
-				89BB2076152D1BCB00861485 /* MapKit.framework in Frameworks */,
 				89964B6014F80DC0006A0D7D /* QuartzCore.framework in Frameworks */,
 				89AA20CD14F5869B0082C7B5 /* GHUnitIOS.framework in Frameworks */,
 				89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */,
@@ -932,7 +932,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -961,7 +964,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
