@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BingMaps.h"
+#import <MapKit/MapKit.h>
 #import "AlertsViewController.h"
 #import "ChildManager.h"
 #import "Utilities.h"
 #import "CheckInAlert.h"
 
-@interface CheckInAlertCellController : AlertCellController <BMMapViewDelegate> {
+@interface CheckInAlertCellController : AlertCellController <MKMapViewDelegate> {
     @private
     UILabel *childName;
     UILabel *locationStr;
@@ -22,7 +22,7 @@
     
     UIImageView *backgroundImage;
     
-    BMMapView *mapView;
+    MKMapView *mapView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *childName;
@@ -30,6 +30,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *locationApproved;
 @property (nonatomic, retain) IBOutlet UILabel *timeMessage;
 @property (nonatomic, retain) IBOutlet UIImageView *backgroundImage;
-@property (nonatomic, retain) IBOutlet BMMapView *mapView;
+@property (nonatomic, retain) IBOutlet MKMapView *mapView;
 
 @end

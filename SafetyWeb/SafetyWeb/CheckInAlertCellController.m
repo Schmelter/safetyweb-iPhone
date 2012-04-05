@@ -46,14 +46,19 @@
     if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"dark_zebra_BG.png"];
     else backgroundImage.image = nil;
     
-    [mapView setDelegate:self];
+    mapView.delegate = self;
     mapView.scrollEnabled = NO;
     mapView.zoomEnabled = NO;
     [mapView setCenterCoordinate:checkInAlert.location animated:NO];
-    [mapView setRegion:BMCoordinateRegionMake(checkInAlert.location, BMCoordinateSpanMake(.005, .0025)) animated:NO];
-    BMEntity *childEntity = [[BMEntity alloc] initWithCoordinate:checkInAlert.location bingAddressDictionary:nil];
-    [mapView addMarker:childEntity];
-    [childEntity release];
+    [mapView setRegion:MKCoordinateRegionMake(checkInAlert.location, MKCoordinateSpanMake(.005, .0025)) animated:NO];
+    
+    id<MKAnnotation> annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = checkInAlert.location;
+    annotation.title = @"Title";
+    annotation.subtitle = @"SubTitle";
+    
+    [mapView addAnnotation:annotation];
+    [annotation release];
     
     // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
     mapView.userInteractionEnabled = NO;
