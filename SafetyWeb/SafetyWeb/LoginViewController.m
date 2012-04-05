@@ -32,6 +32,7 @@
     
     username.placeholder = @"Username";
     username.autocorrectionType = UITextAutocorrectionTypeNo;
+    username.autocapitalizationType = UITextAutocapitalizationTypeNone;
     username.returnKeyType = UIReturnKeyNext;
     username.clearsOnBeginEditing = NO;
     username.textAlignment = UITextAlignmentLeft;
@@ -40,6 +41,7 @@
     
     password.placeholder = @"Password";
     password.autocorrectionType = UITextAutocorrectionTypeNo;
+    password.autocapitalizationType = UITextAutocapitalizationTypeNone;
     password.returnKeyType = UIReturnKeyDone;
     password.clearsOnBeginEditing = NO;
     password.textAlignment = UITextAlignmentLeft;
