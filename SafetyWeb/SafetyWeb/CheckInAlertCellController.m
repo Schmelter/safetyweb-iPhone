@@ -7,6 +7,10 @@
 //
 
 #import "CheckInAlertCellController.h"
+#import "RMCloudMadeMapSource.h"
+#import "RMVirtualEarthSource.h"
+#import "RMMarkerManager.h"
+#import "RMMarker.h"
 
 @implementation CheckInAlertCellController
 @synthesize childName;
@@ -47,18 +51,35 @@
     else backgroundImage.image = nil;
     
     mapView.delegate = self;
-    mapView.scrollEnabled = NO;
-    mapView.zoomEnabled = NO;
-    [mapView setCenterCoordinate:checkInAlert.location animated:NO];
-    [mapView setRegion:MKCoordinateRegionMake(checkInAlert.location, MKCoordinateSpanMake(.005, .0025)) animated:NO];
+    //mapContents = [[RMMapContents alloc] initWithView:mapView
+    //                                       tilesource:[[RMCloudMadeMapSource alloc] initWithAccessKey:@"0199bdee456e59ce950b0156029d6934" styleNumber:7]];
     
-    id<MKAnnotation> annotation = [[SWPointAnnotation alloc] init];
+    mapContents = [[RMMapContents alloc] initWithView:mapView
+                             tilesource:[[RMVirtualEarthSource alloc] initWithHybridThemeUsingAccessKey:@"invalidKey"]];
+    
+    [mapView setNeedsLayout];
+    [mapView setNeedsDisplay];
+    
+    mapView.enableDragging = NO;
+    mapView.enableZoom = NO;
+    mapView.enableRotate = NO;
+    [mapView moveToLatLong:checkInAlert.location];
+    [mapView zoomByFactor:1.0 near:CGPointMake(mapView.frame.origin.x + (mapView.frame.size.width / 2), mapView.frame.origin.y + (mapView.frame.size.height / 2)) animated:NO];
+    
+    
+    UIImage *childImage = [UIImage imageNamed:@"point.png"];
+    RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:childImage];
+    [mapView.markerManager addMarker:childMarker AtLatLong:checkInAlert.location];
+    [childMarker release];
+    [childImage release];
+    
+    /*id<MKAnnotation> annotation = [[SWPointAnnotation alloc] init];
     annotation.coordinate = checkInAlert.location;
     annotation.title = @"Title";
     annotation.subtitle = @"SubTitle";
     
     [mapView addAnnotation:annotation];
-    [annotation release];
+    [annotation release];*/
     
     // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
     mapView.userInteractionEnabled = NO;
@@ -72,6 +93,9 @@
     self.timeMessage = nil;
     self.backgroundImage = nil;
     self.mapView = nil;
+
+    [mapContents release];
+    mapContents = nil;
     
     [super viewDidUnload];
 }
@@ -99,6 +123,7 @@
     [timeMessage release];
     [backgroundImage release];
     [mapView release];
+    [mapContents release];
     
     [super dealloc];
 }

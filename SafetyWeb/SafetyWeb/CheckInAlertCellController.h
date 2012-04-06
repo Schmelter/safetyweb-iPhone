@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
-#import "SWPointAnnotation.h"
+#import "RMMapView.h"
 #import "AlertsViewController.h"
 #import "ChildManager.h"
 #import "Utilities.h"
 #import "CheckInAlert.h"
 
-@interface CheckInAlertCellController : AlertCellController <MKMapViewDelegate> {
+@interface CheckInAlertCellController : AlertCellController <RMMapViewDelegate> {
     @private
     UILabel *childName;
     UILabel *locationStr;
@@ -23,7 +22,8 @@
     
     UIImageView *backgroundImage;
     
-    MKMapView *mapView;
+    RMMapView *mapView;
+    RMMapContents *mapContents;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *childName;
@@ -31,6 +31,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *locationApproved;
 @property (nonatomic, retain) IBOutlet UILabel *timeMessage;
 @property (nonatomic, retain) IBOutlet UIImageView *backgroundImage;
-@property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (nonatomic, retain) IBOutlet RMMapView *mapView;
 
 @end

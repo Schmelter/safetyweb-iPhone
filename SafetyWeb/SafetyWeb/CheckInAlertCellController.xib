@@ -456,7 +456,7 @@
 				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="19.CustomClassName">MKMapView</string>
+				<string key="19.CustomClassName">RMMapView</string>
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -489,7 +489,7 @@
 						<string key="childName">UILabel</string>
 						<string key="locationApproved">UILabel</string>
 						<string key="locationStr">UILabel</string>
-						<string key="mapView">MKMapView</string>
+						<string key="mapView">RMMapView</string>
 						<string key="timeMessage">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -511,7 +511,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="mapView">
 							<string key="name">mapView</string>
-							<string key="candidateClassName">MKMapView</string>
+							<string key="candidateClassName">RMMapView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="timeMessage">
 							<string key="name">timeMessage</string>
@@ -521,6 +521,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CheckInAlertCellController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">RMMapView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/RMMapView.h</string>
 					</object>
 				</object>
 			</array>
