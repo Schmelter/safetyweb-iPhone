@@ -54,8 +54,8 @@
     //mapContents = [[RMMapContents alloc] initWithView:mapView
     //                                       tilesource:[[RMCloudMadeMapSource alloc] initWithAccessKey:@"0199bdee456e59ce950b0156029d6934" styleNumber:7]];
     
-    mapContents = [[RMMapContents alloc] initWithView:mapView
-                             tilesource:[[RMVirtualEarthSource alloc] initWithHybridThemeUsingAccessKey:@"invalidKey"]];
+    //mapContents = [[RMMapContents alloc] initWithView:mapView
+    //                         tilesource:[[RMVirtualEarthSource alloc] initWithHybridThemeUsingAccessKey:@"invalidKey"]];
     
     [mapView setNeedsLayout];
     [mapView setNeedsDisplay];
