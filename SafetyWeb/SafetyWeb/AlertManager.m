@@ -17,6 +17,9 @@
 static NSMutableDictionary* alertDict;
 static NSMutableArray* alertArr;
 
+@interface ChildAlertResponse : NSObject <AllChildResponse>
+@end
+
 @implementation AlertManager
 
 -(AlertManager*)init {
@@ -29,15 +32,61 @@ static NSMutableArray* alertArr;
     alertDict = [[NSMutableDictionary alloc] init];
     alertArr = [[NSMutableArray alloc] init];
     
-    @autoreleasepool {
-        
-    }
-    
     // TODO: Take this out later when we're actually hitting the server
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
+    ChildAlertResponse *childResponse = [[ChildAlertResponse alloc] init];
+    AllChildRequest *allChildRequest = [[AllChildRequest alloc] init];
+    allChildRequest.response = childResponse;
+    [ChildManager requestAllChildren:allChildRequest];
+    [allChildRequest release];
+    
+    [pool release];
+}
+
++(void)responseAlertsWithinRange:(AlertRangeRequest*)request {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    NSLog(@"Before Sleep");
+    usleep(1000000);  // 1 seconds
+    NSLog(@"After Sleep");
+    
+    NSRange range = request.range;
+    
+    range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
+    range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
+    
+    [request.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
+    NSLog(@"Thread Over");
+    
+    [pool release];
+}
+
++(void)requestAlertsWithinRange:(AlertRangeRequest*)request {
+    // TODO: Take this out later when we're actually hitting the server
+    // Check that the range is within the size of our array
+    // NOTE: Make sure to retain the AlertRangeRequest when the request will be asynchronous
+    [NSThread detachNewThreadSelector:@selector(responseAlertsWithinRange:) toTarget:[self class] withObject:request];
+}
+
++(void)requestAlertById:(AlertIdRequest*)request {
+    // TODO: Alter this when we're actually hitting the server
+    // NOTE: Make sure to retain the AlertIdRequest when the request will be asynchronous
+    [request.response receiveResponse:[alertDict objectForKey:request.alertId]];
+}
+
+-(void)dealloc {    
+    [super dealloc];
+}
+
+@end
+
+
+@implementation ChildAlertResponse
+-(void)childrenRequestSuccess:(NSArray *)children {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     NSInteger alertId = 1;
-    for (Child* child in [ChildManager getAllChildren]) {
+    for (Child* child in children) {
         FacebookAlert *facebookAlert = [[FacebookAlert alloc] init];
         facebookAlert.alertId = [NSNumber numberWithInt:alertId++];
         facebookAlert.childId = child.childId;
@@ -73,43 +122,13 @@ static NSMutableArray* alertArr;
     }
     
     [pool release];
+    // We're done, so get rid of ourselves
+    [self release];
 }
 
-+(void)responseAlertsWithinRange:(AlertRangeRequest*)request {
-    // This will be run in its own thread, so we need to build an NSAutoReleasePool for that thread
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    NSRange range = request.range;
-    
-    range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
-    range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
-    
-    NSLog(@"Before Sleep");
-    usleep(1000000);  // 1 seconds
-    NSLog(@"After Sleep");
-    
-    [request.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
-    NSLog(@"Thread Over");
-    [pool release];
+-(void)requestFailure:(NSError*)error {
+    [self release];
 }
-
-+(void)requestAlertsWithinRange:(AlertRangeRequest*)request {
-    // TODO: Take this out later when we're actually hitting the server
-    // Check that the range is within the size of our array
-    // NOTE: Make sure to retain the AlertRangeRequest when the request will be asynchronous
-    [NSThread detachNewThreadSelector:@selector(responseAlertsWithinRange:) toTarget:[self class] withObject:request];
-}
-
-+(void)requestAlertById:(AlertIdRequest*)request {
-    // TODO: Alter this when we're actually hitting the server
-    // NOTE: Make sure to retain the AlertIdRequest when the request will be asynchronous
-    [request.response receiveResponse:[alertDict objectForKey:request.alertId]];
-}
-
--(void)dealloc {    
-    [super dealloc];
-}
-
 @end
 
 

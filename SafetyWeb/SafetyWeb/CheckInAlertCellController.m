@@ -37,8 +37,12 @@
     
     CheckInAlert *checkInAlert = (CheckInAlert*)alert;
     
-    Child *child = [ChildManager getChildForId:checkInAlert.childId];
-    childName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
+    ChildIdRequest *childIdRequest = [[ChildIdRequest alloc] init];
+    childIdRequest.childId = checkInAlert.childId;
+    childIdRequest.response = self;
+    [ChildManager requestChildForId:childIdRequest];
+    [childIdRequest release];
+    
     locationStr.text = checkInAlert.locationStr;
     locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";
     timeMessage.text = [Utilities timeIntervalToHumanString:checkInAlert.timestamp];
@@ -94,6 +98,16 @@
 
 -(BOOL)expandable {
     return YES;
+}
+
+#pragma mark -
+#pragma mark ChildResponse Methods
+-(void)childRequestSuccess:(Child*)child {
+    [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName] waitUntilDone:NO];
+}
+
+-(void)requestFailure:(NSError*)error {
+    
 }
 
 -(void)dealloc {
