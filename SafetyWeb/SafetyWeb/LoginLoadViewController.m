@@ -12,11 +12,11 @@
 @property (nonatomic, retain) LoginLoadViewController* callback;
 @end
 
-@interface ChildrenCallback : NSObject <SafetyWebRequestCallback>
+@interface ChildrenCallback : AllChildRequest <AllChildResponse>
 @property (nonatomic, retain) LoginLoadViewController* callback;
 @end;
 
-@interface ChildCallback : NSObject <SafetyWebRequestCallback>
+@interface ChildCallback : ChildAccountRequest <ChildResponse>
 @property (nonatomic, retain) LoginLoadViewController* callback;
 @end
 
@@ -60,12 +60,10 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     ChildrenCallback *childrenCallback = [[ChildrenCallback alloc] init];
+    childrenCallback.response = childrenCallback;
     childrenCallback.callback = self;
     
-    SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
-    [childrenRequest setCallbackObj:childrenCallback];
-    [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
-    [childrenRequest release];
+    [ChildManager requestAllChildren:childrenCallback];
     [childrenCallback release];
     progressView.progressCurrent = 40.0f;
     
@@ -89,41 +87,39 @@
 
 -(void)tokenRequestSuccess:(NSString*)aToken {
     self.credentials.userToken = aToken;
+    // TODO: Is this the proper place to set the credentials?  We haven't fully logged them in, but we have verified their login info...
+    [UserManager setLastUsedCredentials:self.credentials];
     progressView.progressCurrent = 30.f;
     [self makeChildrenRequest];
 }
 
--(void)childrenRequestSuccess:(NSDictionary*)aChildren {
+-(void)childrenRequestSuccess:(NSArray*)children {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    [ChildManager parseChildrenResponse:aChildren];
     
     // For each child, fire off a request to get more information about that child
     // All ChildCallbacks are the same, so we only need one
-    ChildCallback *childCallback = [[ChildCallback alloc] init];
-    childCallback.callback = self;
-    totalChildRequests = [[ChildManager getAllChildren] count];
+    totalChildRequests = [children count];
     totalChildRequests = totalChildRequests == 0 ? 1 : totalChildRequests;  // Just to guarantee we never divide by zero
-    for (Child *child in [ChildManager getAllChildren]) {
+    for (Child *child in children) {
         @synchronized(self) {
             pendingChildRequests++;
         }
         
-        SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
-        [childRequest setCallbackObj:childCallback];
-        [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], child.childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", child.childId, nil]]];
-        [childRequest release];
+        ChildCallback *childCallback = [[ChildCallback alloc] init];
+        childCallback.response = childCallback;
+        childCallback.callback = self;
+        childCallback.childId = child.childId;
+        [ChildManager requestChildAccount:childCallback];
+        [childCallback release];
     }
-    [childCallback release];
     
     [pool release];
     progressView.progressCurrent = 50.0;
 }
 
--(void)childRequestSuccess:(NSDictionary*)aChild {
+-(void)childRequestSuccess:(Child*)aChild {
     // We need to block until all pending requests are fulfilled...
     @synchronized(self) {
-        [ChildManager parseChildResponse:aChild];
         pendingChildRequests--;
         
         progressView.progressCurrent = 50.0 + (50.0*((totalChildRequests - pendingChildRequests)/totalChildRequests));
@@ -205,19 +201,15 @@
 
 @implementation ChildrenCallback
 @synthesize callback;
--(void)gotResponse:(id)aResponse {
-    //NSLog(@"Children: %@", [aResponse description]);
-    NSDictionary *response = (NSDictionary*)aResponse;
-    NSString *result = [response objectForKey:@"result"];
-    if ([result isEqualToString:@"OK"]) {
-        [self.callback childrenRequestSuccess:response];
-    } else {
-        [self.callback requestFailure:nil];
-    }
+
+-(void)childrenRequestSuccess:(NSArray *)children {
+    [self.callback childrenRequestSuccess:children];
 }
--(void)notGotResponse:(NSError *)aError {
-    [self.callback requestFailure:aError];
+
+-(void)requestFailure:(NSError*)error {
+    [self.callback requestFailure:error];
 }
+
 -(void)dealloc {
     [callback release];
     
@@ -227,19 +219,15 @@
 
 @implementation ChildCallback
 @synthesize callback;
--(void)gotResponse:(id)aResponse {
-    //NSLog(@"Child: %@", [aResponse description]);
-    NSDictionary *response = (NSDictionary*)aResponse;
-    NSString *result = [response objectForKey:@"result"];
-    if ([result isEqualToString:@"OK"]) {
-        [self.callback childRequestSuccess:response];
-    } else {
-        [self.callback requestFailure:nil];
-    }
+
+-(void)childRequestSuccess:(Child*)child {
+    [self.callback childRequestSuccess:child];
 }
--(void)notGotResponse:(NSError *)aError {
-    [self.callback requestFailure:aError];
+
+-(void)requestFailure:(NSError*)error {
+    [self.callback requestFailure:error];
 }
+
 -(void)dealloc {
     [callback release];
     

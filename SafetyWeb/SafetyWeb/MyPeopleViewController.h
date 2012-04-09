@@ -10,10 +10,17 @@
 #import "MenuViewController.h"
 #import "MyPeopleCellController.h"
 
-@interface MyPeopleViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface MyPeopleViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource, AllChildResponse> {
     @private
     MyPeopleCellController** cellControllers;
-    NSInteger cellControllersLen;   
+    NSInteger cellControllersLen;
+    
+    NSArray *children;
+    NSObject *cellControllersLock;
+    
+    UITableView *myPeopleTable;
 }
+
+@property (nonatomic, retain) IBOutlet UITableView *myPeopleTable;
 
 @end

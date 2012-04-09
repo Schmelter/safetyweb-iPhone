@@ -35,8 +35,12 @@
     // We know the Alert is actually a FacebookAlert, so let's switch it over
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     FacebookAlert *fbAlert = (FacebookAlert*) alert;
-    Child *child = [ChildManager getChildForId:[fbAlert childId]];
-    childName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
+    
+    ChildIdRequest *childRequest = [[ChildIdRequest alloc] init];
+    childRequest.childId = fbAlert.childId;
+    childRequest.response = self;
+    [ChildManager requestChildForId:childRequest];
+    [childRequest release];
     friendName.text = fbAlert.friendName;
     alertMessage.text = fbAlert.alertText;
     timeMessage.text = [Utilities timeIntervalToHumanString:fbAlert.timestamp];
@@ -60,6 +64,16 @@
 #pragma mark -
 #pragma mark IBAction Methods
 -(IBAction)detailPressed:(id)sender {
+    
+}
+
+#pragma mark -
+#pragma mark ChildResponse Methods
+-(void)childRequestSuccess:(Child *)child {
+    [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName] waitUntilDone:NO];
+}
+
+-(void)requestFailure:(NSError *)error {
     
 }
 

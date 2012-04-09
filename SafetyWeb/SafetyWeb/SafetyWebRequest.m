@@ -69,13 +69,14 @@
 	NSURLConnection *connection = [[NSURLConnection alloc]  initWithRequest:request delegate:self ] ;
     
 	if (connection) {
-        
+        [connection start];
         
         
 	} else {
 		NSLog(@"No connection");
 	}
     [pool release];
+    CFRunLoopRun(); // Keep the thread from exiting before we get a response
 }
 
 +(NSString *)buildRequestURL:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSMutableDictionary *)aParamDict andDate:(NSString*)aFormattedDate {
@@ -258,6 +259,7 @@
     [metadataStr release];
     [pool release];
 	[self release]; // Alright, our job is finally done
+    CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
 - (void)didFailWithError:(NSError*)error
@@ -266,6 +268,7 @@
 	if (callbackObj) 
 		[callbackObj notGotResponse:error];
 	[self release]; // Alright, our job is finally done
+    CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
 - (void)connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
@@ -275,6 +278,7 @@
 	if (callbackObj) 
 		[callbackObj notGotResponse:error];
 	[self release]; // Alright, our job is finally done
+    CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
 @end

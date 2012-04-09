@@ -11,11 +11,18 @@
 #import "ChildManager.h"
 #import "CheckInCellController.h"
 
-@interface CheckInViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface CheckInViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource, AllChildResponse> {
     @private
     CheckInCellController** cellControllers;
     NSInteger cellControllersLen;
+    
+    NSArray *children;
+    NSObject *cellControllersLock;
+    
+    UITableView *checkInTable;
 }
+
+@property (nonatomic, retain) IBOutlet UITableView *checkInTable;
 
 -(IBAction)announcePressed:(id)sender;
 

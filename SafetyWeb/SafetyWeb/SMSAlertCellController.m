@@ -35,8 +35,13 @@
     
     // We know this is actually an SMSAlert, so just convert it over
     SMSAlert *smsAlert = (SMSAlert*)alert;
-    Child *child = [ChildManager getChildForId:smsAlert.childId];
-    childName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
+    
+    ChildIdRequest *childRequest = [[ChildIdRequest alloc] init];
+    childRequest.childId = smsAlert.childId;
+    childRequest.response = self;
+    [ChildManager requestChildForId:childRequest];
+    [childRequest release];
+    
     messagePhoneNumber.text = smsAlert.messagePhoneNumber;
     timeMessage.text = [Utilities timeIntervalToHumanString:smsAlert.timestamp];
     
@@ -53,6 +58,16 @@
     self.backgroundImage = nil;
     
     [super viewDidUnload];
+}
+
+#pragma mark -
+#pragma mark ChildResponse Methods
+-(void)childRequestSuccess:(Child *)child {
+    [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName] waitUntilDone:NO];
+}
+
+-(void)requestFailure:(NSError *)error {
+    
 }
 
 -(void)dealloc {
