@@ -7,6 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SafetyWebRequest.h"
+#import "AppProperties.h"
+#import "UserManager.h"
+
+#define kTwoHourTimeInterval    7200
 
 enum AccountStatus {
     acct_public = 0,
@@ -46,6 +51,8 @@ enum AccountStatus {
     NSString *mobilePhone;
     NSMutableArray *accountArr;
     NSMutableDictionary *accountDict;
+    
+    NSDate *lastQueried;
 }
 
 @property (nonatomic, retain) NSNumber *childId;
@@ -54,6 +61,7 @@ enum AccountStatus {
 @property (nonatomic, retain) NSURL *profilePicUrl;
 @property (nonatomic, retain) NSString *address;
 @property (nonatomic, retain) NSString *mobilePhone;
+@property (nonatomic, retain) NSDate *lastQueried;
 
 -(void)addAccount:(Account*)account;
 
@@ -64,18 +72,53 @@ enum AccountStatus {
 @end
 
 
+@protocol AllChildResponse <NSObject>
+-(void)childrenRequestSuccess:(NSArray*)children;
+-(void)requestFailure:(NSError*)error;
+@end
+
+
+@protocol ChildResponse <NSObject>
+-(void)childRequestSuccess:(Child*)child;
+-(void)requestFailure:(NSError*)error;
+@end
+
+
+@interface AllChildRequest : NSObject <SafetyWebRequestCallback> {
+@private
+    id<AllChildResponse> response;
+}
+@property (nonatomic, assign) id<AllChildResponse> response;
+@end
+
+@interface ChildIdRequest : NSObject <SafetyWebRequestCallback> {
+@private
+    NSNumber *childId;
+    id<ChildResponse> response;
+}
+
+@property (nonatomic, retain) NSNumber *childId;
+@property (nonatomic, assign) id<ChildResponse> response;
+@end
+
+@interface ChildAccountRequest : NSObject <SafetyWebRequestCallback> {
+@private
+    NSNumber *childId;
+    id<ChildResponse> response;
+}
+
+@property (nonatomic, retain) NSNumber *childId;
+@property (nonatomic, assign) id<ChildResponse> response;
+@end
+
 @interface ChildManager : NSObject {
     
 }
 
 +(void)clearAllChildren;
 
-+(Child*)getChildForId:(NSNumber*)childId;
-
-+(NSArray*)getAllChildren;
-
-+(void)parseChildrenResponse:(NSDictionary*)childrenJson;
-
-+(void)parseChildResponse:(NSDictionary*)childJson;
++(void)requestAllChildren:(AllChildRequest*)request;
++(void)requestChildForId:(ChildIdRequest*)request;
++(void)requestChildAccount:(ChildAccountRequest*)request;
 
 @end

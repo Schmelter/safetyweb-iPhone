@@ -9,13 +9,21 @@
 #import "CheckInViewController.h"
 
 @implementation CheckInViewController
+@synthesize checkInTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        cellControllersLen = [[ChildManager getAllChildren] count];
+        children = nil;
+        cellControllersLen = 0;
         cellControllers = calloc(cellControllersLen, sizeof(CheckInCellController*));
+        cellControllersLock = [[NSObject alloc] init];
+        
+        AllChildRequest *allChildRequest = [[AllChildRequest alloc] init];
+        allChildRequest.response = self;
+        [ChildManager requestAllChildren:allChildRequest];
+        [allChildRequest release];
     }
     return self;
 }
@@ -40,6 +48,8 @@
 
 - (void)viewDidUnload
 {
+    self.checkInTable = nil;
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -54,20 +64,24 @@
 #pragma mark -
 #pragma mark UITableViewDelegate and UITableViewDataSource methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[ChildManager getAllChildren] count];
+    @synchronized (cellControllersLock) {
+        return cellControllersLen;
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Child *child = [[ChildManager getAllChildren] objectAtIndex:indexPath.row];
+    @synchronized (cellControllersLock) {
+        Child *child = [children objectAtIndex:indexPath.row];
+        
+        if (!cellControllers[indexPath.row]) {
+            cellControllers[indexPath.row] = [[CheckInCellController alloc] initWithNibName:@"CheckInCellController" bundle:nil];
+        }
     
-    if (!cellControllers[indexPath.row]) {
-        cellControllers[indexPath.row] = [[CheckInCellController alloc] initWithNibName:@"CheckInCellController" bundle:nil];
+        cellControllers[indexPath.row].child = child;
+        cellControllers[indexPath.row].row = indexPath.row;
+    
+        return cellControllers[indexPath.row].tableViewCell;
     }
-    
-    cellControllers[indexPath.row].child = child;
-    cellControllers[indexPath.row].row = indexPath.row;
-    
-    return cellControllers[indexPath.row].tableViewCell;
 }
 
 #pragma mark -
@@ -87,11 +101,38 @@
     return;
 }
 
+#pragma mark -
+#pragma mark AllChildResponse Methods
+-(void)childrenRequestSuccess:(NSArray*)aChildren {
+    @synchronized (cellControllersLock) {
+        [aChildren retain];
+        [children release];
+        children = aChildren;
+        
+        CheckInCellController **newCellControllers = calloc([children count], sizeof(CheckInCellController*));
+        for (int i = 0; i < cellControllersLen; i++) {
+            if ([children count] > i) newCellControllers[i] = cellControllers[i];
+            else [cellControllers[i] release];
+        }
+        free(cellControllers);
+        cellControllersLen = [children count];
+        cellControllers = newCellControllers;
+        
+        [checkInTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    }
+}
+
+-(void)requestFailure:(NSError*)error {
+    
+}
+
 -(void)dealloc {
     for (int i = 0; i < cellControllersLen; i++) {
         [cellControllers[i] release];
     }
     free(cellControllers);
+    [cellControllersLock release];
+    [checkInTable release];
     
     [super dealloc];
 }

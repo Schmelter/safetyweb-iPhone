@@ -14,7 +14,7 @@
 #import "Utilities.h"
 #import "CheckInAlert.h"
 
-@interface CheckInAlertCellController : AlertCellController <MKMapViewDelegate> {
+@interface CheckInAlertCellController : AlertCellController <MKMapViewDelegate, ChildResponse> {
     @private
     UILabel *childName;
     UILabel *locationStr;

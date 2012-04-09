@@ -13,7 +13,7 @@
 #import "ChildManager.h"
 #import "Utilities.h"
 
-@interface SMSAlertCellController : AlertCellController {
+@interface SMSAlertCellController : AlertCellController <ChildResponse> {
     @private
     UILabel *childName;
     UILabel *messagePhoneNumber;

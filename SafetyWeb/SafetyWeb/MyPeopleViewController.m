@@ -9,13 +9,21 @@
 #import "MyPeopleViewController.h"
 
 @implementation MyPeopleViewController
+@synthesize myPeopleTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        cellControllersLen = [[ChildManager getAllChildren] count];
+        children = nil;
+        cellControllersLen = 0;
         cellControllers = calloc(cellControllersLen, sizeof(MyPeopleCellController*));
+        cellControllersLock = [[NSObject alloc] init];
+        
+        AllChildRequest *allChildRequest = [[AllChildRequest alloc] init];
+        allChildRequest.response = self;
+        [ChildManager requestAllChildren:allChildRequest];
+        [allChildRequest release];
     }
     return self;
 }
@@ -41,6 +49,8 @@
 
 - (void)viewDidUnload
 {
+    self.myPeopleTable = nil;
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -55,21 +65,50 @@
 #pragma mark -
 #pragma mark UITableViewDelegate and UITableViewDataSource methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[ChildManager getAllChildren] count];
+    @synchronized (cellControllersLock) {
+        return cellControllersLen;
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Child *child = [[ChildManager getAllChildren] objectAtIndex:indexPath.row];
+    @synchronized (cellControllersLock) {
+        Child *child = [children objectAtIndex:indexPath.row];
     
-    if (!cellControllers[indexPath.row]) {
-        cellControllers[indexPath.row] = [[MyPeopleCellController alloc] initWithNibName:@"MyPeopleCellController" bundle:nil];
-        [cellControllers[indexPath.row] setMenuViewController:menuViewController];
+        if (!cellControllers[indexPath.row]) {
+            cellControllers[indexPath.row] = [[MyPeopleCellController alloc] initWithNibName:@"MyPeopleCellController" bundle:nil];
+            [cellControllers[indexPath.row] setMenuViewController:menuViewController];
+        }
+    
+        cellControllers[indexPath.row].child = child;
+        cellControllers[indexPath.row].row = indexPath.row;
+    
+        return cellControllers[indexPath.row].tableViewCell;
     }
+}
+
+#pragma mark -
+#pragma mark AllChildResponse Methods
+-(void)childrenRequestSuccess:(NSArray*)aChildren {
+    @synchronized (cellControllersLock) {
+        [aChildren retain];
+        [children release];
+        children = aChildren;
+        
+        MyPeopleCellController **newCellControllers = calloc([children count], sizeof(MyPeopleCellController*));
+        for (int i = 0; i < cellControllersLen; i++) {
+            if ([children count] > i) newCellControllers[i] = cellControllers[i];
+            else [cellControllers[i] release];
+        }
+        free(cellControllers);
+        cellControllersLen = [children count];
+        cellControllers = newCellControllers;
+        
+        [myPeopleTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    }
+}
+
+-(void)requestFailure:(NSError*)error {
     
-    cellControllers[indexPath.row].child = child;
-    cellControllers[indexPath.row].row = indexPath.row;
-    
-    return cellControllers[indexPath.row].tableViewCell;
 }
 
 -(void)dealloc {
@@ -77,6 +116,8 @@
         [cellControllers[i] release];
     }
     free(cellControllers);
+    [myPeopleTable release];
+    [cellControllersLock release];
     
     [super dealloc];
 }
