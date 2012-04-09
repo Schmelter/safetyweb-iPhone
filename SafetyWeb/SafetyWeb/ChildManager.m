@@ -28,24 +28,23 @@ static NSDate *childrenLastRequested = nil;
 @synthesize childId;
 
 -(void)performRequest {
-    @synchronized(childDict) {
-        NSLog(@"Time Interval Since Now: %f", [childrenLastRequested timeIntervalSinceNow]);
-        if (childrenLastRequested != nil && [childrenLastRequested timeIntervalSinceNow] > -kTwoHourTimeInterval) {
-            [response childRequestSuccess:[childDict objectForKey:childId]];
-            return;
+    @autoreleasepool {
+        @synchronized(childDict) {
+            NSLog(@"Time Interval Since Now: %f", [childrenLastRequested timeIntervalSinceNow]);
+            if (childrenLastRequested != nil && [childrenLastRequested timeIntervalSinceNow] > -kTwoHourTimeInterval) {
+                [response childRequestSuccess:[childDict objectForKey:childId]];
+                return;
+            }
         }
+    
+        [ChildManager clearAllChildren];
+    
+        SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
+        [childrenRequest setCallbackObj:self];
+        UserCredentials *credentials = [UserManager getLastUsedCredentials];
+        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
+        [childrenRequest release];
     }
-    
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    [ChildManager clearAllChildren];
-    
-    SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
-    [childrenRequest setCallbackObj:self];
-    UserCredentials *credentials = [UserManager getLastUsedCredentials];
-    [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
-    [childrenRequest release];
-    
-    [pool release];
 }
 
 -(void)gotResponse:(id)aResponse {
@@ -81,24 +80,24 @@ static NSDate *childrenLastRequested = nil;
 @synthesize response;
 
 -(void)performRequest {
-    @synchronized(childDict) {
-        NSLog(@"Time Interval Since Now: %f", [childrenLastRequested timeIntervalSinceNow]);
-        if (childrenLastRequested != nil && [childrenLastRequested timeIntervalSinceNow] > -kTwoHourTimeInterval) {
-            [response childrenRequestSuccess:childArr];
-            return;
+    @autoreleasepool {
+        
+        @synchronized(childDict) {
+            NSLog(@"Time Interval Since Now: %f", [childrenLastRequested timeIntervalSinceNow]);
+            if (childrenLastRequested != nil && [childrenLastRequested timeIntervalSinceNow] > -kTwoHourTimeInterval) {
+                [response childrenRequestSuccess:childArr];
+                return;
+            }
         }
+    
+        [ChildManager clearAllChildren];
+    
+        SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
+        [childrenRequest setCallbackObj:self];
+        UserCredentials *credentials = [UserManager getLastUsedCredentials];
+        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
+        [childrenRequest release];
     }
-    
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    [ChildManager clearAllChildren];
-    
-    SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
-    [childrenRequest setCallbackObj:self];
-    UserCredentials *credentials = [UserManager getLastUsedCredentials];
-    [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
-    [childrenRequest release];
-    
-    [pool release];
 }
 
 -(void)gotResponse:(id)aResponse {
@@ -133,23 +132,22 @@ static NSDate *childrenLastRequested = nil;
 @synthesize response;
 
 -(void)performRequest {
-    @synchronized(childDict) {
-        Child *child = [childDict objectForKey:childId];
-        if (child != nil && child.lastQueried != nil && [child.lastQueried timeIntervalSinceNow] > -kTwoHourTimeInterval) {
-            [response childRequestSuccess:child];
-            return;
+    @autoreleasepool {
+        
+        @synchronized(childDict) {
+            Child *child = [childDict objectForKey:childId];
+            if (child != nil && child.lastQueried != nil && [child.lastQueried timeIntervalSinceNow] > -kTwoHourTimeInterval) {
+                [response childRequestSuccess:child];
+                return;
+            }
         }
+    
+        SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
+        [childRequest setCallbackObj:self];
+        UserCredentials *credentials = [UserManager getLastUsedCredentials];
+        [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", childId, nil]]];
+        [childRequest release];
     }
-    
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
-    [childRequest setCallbackObj:self];
-    UserCredentials *credentials = [UserManager getLastUsedCredentials];
-    [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", childId, nil]]];
-    [childRequest release];
-    
-    [pool release];
 }
 
 -(void)gotResponse:(id)aResponse {

@@ -45,21 +45,21 @@ static NSMutableArray* alertArr;
 }
 
 +(void)responseAlertsWithinRange:(AlertRangeRequest*)request {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
+        
     
-    NSLog(@"Before Sleep");
-    usleep(1000000);  // 1 seconds
-    NSLog(@"After Sleep");
+        NSLog(@"Before Sleep");
+        usleep(1000000);  // 1 seconds
+        NSLog(@"After Sleep");
     
-    NSRange range = request.range;
+        NSRange range = request.range;
     
-    range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
-    range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
+        range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
+        range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
     
-    [request.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
-    NSLog(@"Thread Over");
-    
-    [pool release];
+        [request.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
+        NSLog(@"Thread Over");
+    }
 }
 
 +(void)requestAlertsWithinRange:(AlertRangeRequest*)request {
@@ -84,7 +84,8 @@ static NSMutableArray* alertArr;
 
 @implementation ChildAlertResponse
 -(void)childrenRequestSuccess:(NSArray *)children {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
+        
     NSInteger alertId = 1;
     for (Child* child in children) {
         FacebookAlert *facebookAlert = [[FacebookAlert alloc] init];
@@ -121,7 +122,7 @@ static NSMutableArray* alertArr;
         [checkInAlert release];
     }
     
-    [pool release];
+    }
     // We're done, so get rid of ourselves
     [self release];
 }
