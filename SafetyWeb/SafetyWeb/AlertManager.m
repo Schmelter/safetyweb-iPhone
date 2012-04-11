@@ -7,6 +7,7 @@
 //
 
 #import "AlertManager.h"
+#import "SWAppDelegate.h"
 
 // TODO: Take out these imports when we're actually hitting the server
 #import "FacebookAlert.h"
@@ -86,42 +87,60 @@ static NSMutableArray* alertArr;
 -(void)childrenRequestSuccess:(NSArray *)children {
     @autoreleasepool {
         
-    NSInteger alertId = 1;
-    for (Child* child in children) {
-        FacebookAlert *facebookAlert = [[FacebookAlert alloc] init];
-        facebookAlert.alertId = [NSNumber numberWithInt:alertId++];
-        facebookAlert.childId = child.childId;
-        facebookAlert.friendName = @"Johnny Jumper";
-        facebookAlert.alertText = @"Who is 23 years older than her";
-        facebookAlert.timestamp = 1330495200; // 02/29/2012
+        NSInteger alertId = 1;
+        NSDate *facebookTimestamp = [[NSDate alloc] initWithTimeIntervalSince1970:1330495200]; // 02/29/2012
+        NSDate *smsTimestamp = [[NSDate alloc] initWithTimeIntervalSince1970:1332738000]; // 03/26/2012
+        NSDate *checkInTimestamp = [[NSDate alloc] initWithTimeIntervalSince1970:1333061858]; // 03/29/2012 4:58 pm
         
-        [alertArr addObject:facebookAlert];
-        [alertDict setObject:facebookAlert forKey:facebookAlert.alertId];
-        [FacebookAlert release];
+        NSNumber *locationLat = [[NSNumber alloc] initWithDouble:39.75529012333774];
+        NSNumber *locationLong = [[NSNumber alloc] initWithDouble:-104.99408483505249];
+        NSNumber *locationApproved = [[NSNumber alloc] initWithInt:1];
         
-        SMSAlert *smsAlert = [[SMSAlert alloc] init];
-        smsAlert.alertId = [NSNumber numberWithInt:alertId++];
-        smsAlert.childId = child.childId;
-        smsAlert.messagePhoneNumber = @"720.982.6931";
-        smsAlert.timestamp = 1332738000; // 03/26/2012
+        NSManagedObjectContext *context = ((SWAppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
         
-        [alertArr addObject:smsAlert];
-        [alertDict setObject:smsAlert forKey:smsAlert.alertId];
-        [smsAlert release];
+        for (Child* child in children) {
+            FacebookAlert *facebookAlert = [[FacebookAlert alloc] initWithEntity:[NSEntityDescription entityForName:@"FacebookAlert" inManagedObjectContext:context] insertIntoManagedObjectContext:context]; 
+            facebookAlert.alertId = [NSNumber numberWithInt:alertId++];
+            facebookAlert.childId = child.childId;
+            facebookAlert.friendName = @"Johnny Jumper";
+            facebookAlert.alertText = @"Who is 23 years older than her";
+            facebookAlert.timestamp = facebookTimestamp;
+            
+            [alertArr addObject:facebookAlert];
+            [alertDict setObject:facebookAlert forKey:facebookAlert.alertId];
+            [FacebookAlert release];
+            
+            SMSAlert *smsAlert = [[SMSAlert alloc] initWithEntity:[NSEntityDescription entityForName:@"SMSAlert" inManagedObjectContext:context] insertIntoManagedObjectContext:context]; 
+            smsAlert.alertId = [NSNumber numberWithInt:alertId++];
+            smsAlert.childId = child.childId;
+            smsAlert.messagePhoneNumber = @"720.982.6931";
+            smsAlert.timestamp = smsTimestamp;
+            
+            [alertArr addObject:smsAlert];
+            [alertDict setObject:smsAlert forKey:smsAlert.alertId];
+            [smsAlert release];
+            
+            CheckInAlert *checkInAlert = [[CheckInAlert alloc] initWithEntity:[NSEntityDescription entityForName:@"CheckInAlert" inManagedObjectContext:context] insertIntoManagedObjectContext:context]; 
+            checkInAlert.alertId = [NSNumber numberWithInt:alertId++];
+            checkInAlert.childId = child.childId;
+            checkInAlert.locationStr = @"Coors Field";
+            checkInAlert.locationLat = locationLat;
+            checkInAlert.locationLong = locationLong;
+            checkInAlert.locationApproved = locationApproved;
+            checkInAlert.timestamp = checkInTimestamp;
+            
+            [alertArr addObject:checkInAlert];
+            [alertDict setObject:checkInAlert forKey:checkInAlert.alertId];
+            [checkInAlert release];
+        }
+        [facebookTimestamp release];
+        [smsTimestamp release];
+        [checkInTimestamp release];
         
-        CheckInAlert *checkInAlert = [[CheckInAlert alloc] init];
-        checkInAlert.alertId = [NSNumber numberWithInt:alertId++];
-        checkInAlert.childId = child.childId;
-        checkInAlert.locationStr = @"Coors Field";
-        checkInAlert.location = CLLocationCoordinate2DMake(39.75529012333774, -104.99408483505249);
-        checkInAlert.locationApproved = YES;
-        checkInAlert.timestamp = 1333061858; // 03/29/2012 4:58 pm
+        [locationLat release];
+        [locationLong release];
+        [locationApproved release];
         
-        [alertArr addObject:checkInAlert];
-        [alertDict setObject:checkInAlert forKey:checkInAlert.alertId];
-        [checkInAlert release];
-    }
-    
     }
     // We're done, so get rid of ourselves
     [self release];

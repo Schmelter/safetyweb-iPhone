@@ -44,7 +44,7 @@
     [loginViewController release];
 }
 
-- (void)displayLoginLoadViewController:(UserCredentials*)credentials {
+- (void)displayLoginLoadViewController:(User*)credentials {
     LoginLoadViewController *loadLoginVC = [[LoginLoadViewController alloc] initWithNibName:@"LoadView" bundle:nil];
     [loadLoginVC setRootViewController:self];
     loadLoginVC.credentials = credentials;

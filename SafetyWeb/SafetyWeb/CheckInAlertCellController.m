@@ -45,11 +45,49 @@
     
     locationStr.text = checkInAlert.locationStr;
     locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";
-    timeMessage.text = [Utilities timeIntervalToHumanString:checkInAlert.timestamp];
+    timeMessage.text = [Utilities timeIntervalToHumanString:[checkInAlert.timestamp timeIntervalSince1970]];
     
     if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"dark_zebra_BG.png"];
     else backgroundImage.image = nil;
     
+<<<<<<< HEAD
+=======
+    mapView.delegate = self;
+    //mapContents = [[RMMapContents alloc] initWithView:mapView
+    //                                       tilesource:[[RMCloudMadeMapSource alloc] initWithAccessKey:@"0199bdee456e59ce950b0156029d6934" styleNumber:7]];
+    
+    //mapContents = [[RMMapContents alloc] initWithView:mapView
+    //                         tilesource:[[RMVirtualEarthSource alloc] initWithHybridThemeUsingAccessKey:@"invalidKey"]];
+    
+    [mapView setNeedsLayout];
+    [mapView setNeedsDisplay];
+    
+    mapView.enableDragging = NO;
+    mapView.enableZoom = NO;
+    mapView.enableRotate = NO;
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake([checkInAlert.locationLat floatValue], [checkInAlert.locationLong floatValue]);
+    [mapView moveToLatLong:location];
+    [mapView zoomByFactor:1.0 near:CGPointMake(mapView.frame.origin.x + (mapView.frame.size.width / 2), mapView.frame.origin.y + (mapView.frame.size.height / 2)) animated:NO];
+    
+    
+    UIImage *childImage = [UIImage imageNamed:@"point.png"];
+    RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:childImage];
+    [mapView.markerManager addMarker:childMarker AtLatLong:location];
+    [childMarker release];
+    [childImage release];
+    
+    /*id<MKAnnotation> annotation = [[SWPointAnnotation alloc] init];
+    annotation.coordinate = checkInAlert.location;
+    annotation.title = @"Title";
+    annotation.subtitle = @"SubTitle";
+    
+    [mapView addAnnotation:annotation];
+    [annotation release];*/
+    
+    // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
+    mapView.userInteractionEnabled = NO;
+    
+>>>>>>> d6bab80... Half way through moving to CoreData.  All of the basic data Objects are now NSManagedObjects, but nothing is being persisted, and none of the UIs are listening for data changes
     [pool release];
 }
 

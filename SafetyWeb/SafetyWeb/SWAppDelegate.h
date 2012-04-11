@@ -11,11 +11,17 @@
 #import <Block.h>
 
 @interface SWAppDelegate : UIResponder <UIApplicationDelegate> {
+    @private
     UIWindow *window;
     RootViewController *viewController;
+    
+    NSManagedObjectContext *managedObjectContext;
+    NSPersistentStoreCoordinator *persistentStoreCoordinator;
+    NSManagedObjectModel *managedObjectModel;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet RootViewController *viewController;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
 @end

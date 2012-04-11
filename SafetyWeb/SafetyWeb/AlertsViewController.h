@@ -37,12 +37,12 @@
 @interface AlertCellController : UIViewController {
     @protected
     NSInteger row;
-    id<Alert> alert;
+    Alert *alert;
     AlertsViewController *parentController;
 }
 
 @property (nonatomic) NSInteger row;
-@property (nonatomic, retain) id<Alert> alert;
+@property (nonatomic, retain) Alert *alert;
 @property (nonatomic, assign) AlertsViewController *parentController;
 
 -(void)expand;

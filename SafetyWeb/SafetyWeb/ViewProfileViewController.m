@@ -53,9 +53,9 @@
     
     // Stretch out the socialMediaTable based on how many accounts this child has
     CGFloat oldTableHeight = socialMediaTable.frame.size.height;
-    socialMediaTable.frame = CGRectMake(socialMediaTable.frame.origin.x, socialMediaTable.frame.origin.y, socialMediaTable.frame.size.width, (CGFloat)(kTableRowHeight * [[child getAllAccounts] count]));
+    socialMediaTable.frame = CGRectMake(socialMediaTable.frame.origin.x, socialMediaTable.frame.origin.y, socialMediaTable.frame.size.width, (CGFloat)(kTableRowHeight * [[child accounts] count]));
     // Stretch out the scroll view just as much as we stretched out the socialMediaTable
-    contentView.frame = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y, contentView.frame.size.width, contentView.frame.size.height + ((CGFloat)(kTableRowHeight * [[child getAllAccounts] count]) - oldTableHeight));
+    contentView.frame = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y, contentView.frame.size.width, contentView.frame.size.height + ((CGFloat)(kTableRowHeight * [[child accounts] count]) - oldTableHeight));
     scrollView.contentSize = contentView.frame.size;
     
     // Round some corners, and make everything look nice
@@ -143,7 +143,7 @@
 #pragma mark -
 #pragma mark UITableViewDelegate/UITableViewDataSource Methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[child getAllAccounts] count];
+    return [[child accounts] count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,7 +151,7 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    Account *account = [[child getAllAccounts] objectAtIndex:indexPath.row];
+    Account *account = [[child sortedAccounts] objectAtIndex:indexPath.row];
     
     cell.textLabel.text = account.serviceName;
     // TODO: Determine this based on the serviceName

@@ -62,7 +62,7 @@
 #pragma mark UITableViewDelegate and UITableViewDataSource Methods
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     @synchronized(alertLoadLock) {
-        id<Alert> alert = (id<Alert>)[alerts objectAtIndex:indexPath.row];
+        Alert* alert = (Alert*)[alerts objectAtIndex:indexPath.row];
         
         if (animatedRow != indexPath.row && cellControllers[indexPath.row]) return cellControllers[indexPath.row].tableViewCell;
         else if (cellControllers[indexPath.row]) {

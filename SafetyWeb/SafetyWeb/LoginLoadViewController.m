@@ -47,7 +47,7 @@
     
     SafetyWebRequest *tokenRequest = [[SafetyWebRequest alloc] init];
     [tokenRequest setCallbackObj:tokenCallback];
-    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.username, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
+    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.login, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
     [tokenCallback release];
     [tokenRequest release];
     
@@ -74,7 +74,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (credentials.userToken != nil) {
+    if (credentials.token != nil) {
         // The token is valid and has not expired
         [self makeChildrenRequest];
         progressView.progressCurrent = 30.0f;
@@ -86,7 +86,7 @@
 }
 
 -(void)tokenRequestSuccess:(NSString*)aToken {
-    self.credentials.userToken = aToken;
+    self.credentials.token = aToken;
     // TODO: Is this the proper place to set the credentials?  We haven't fully logged them in, but we have verified their login info...
     [UserManager setLastUsedCredentials:self.credentials];
     progressView.progressCurrent = 30.f;
