@@ -10,6 +10,8 @@
 		8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */; };
 		8914514C1522541300800262 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914514A1522541300800262 /* SettingsViewController.m */; };
 		8914514D1522541300800262 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8914514B1522541300800262 /* SettingsViewController.xib */; };
+		8920284C15364BC900A15DED /* SWPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920284B15364BC900A15DED /* SWPointAnnotation.m */; };
+		8920284D15364BC900A15DED /* SWPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920284B15364BC900A15DED /* SWPointAnnotation.m */; };
 		8936AFE3150FC28B005C8237 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936AFE1150FC28B005C8237 /* MenuViewController.m */; };
 		8936AFE4150FC28B005C8237 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8936AFE2150FC28B005C8237 /* MenuViewController.xib */; };
 		8936AFE8150FC6D2005C8237 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936AFE7150FC6D2005C8237 /* MenuItem.m */; };
@@ -106,7 +108,6 @@
 		899C095014EAD9A000DDC780 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C094F14EAD9A000DDC780 /* LoadView.m */; };
 		899C095414EAE43900DDC780 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C095314EAE43900DDC780 /* LoadViewController.m */; };
 		899C095614EAE57000DDC780 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 899C095514EAE57000DDC780 /* LoadView.xib */; };
-		899DC9A7152DFA8200199FDF /* SWPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 899DC9A6152DFA8200199FDF /* SWPointAnnotation.m */; };
 		899F4C7414ED7E9400B8C553 /* SafetyWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */; };
 		89A15E5014F597CA00BF1A18 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 899754CF14EEFCC40046B1DA /* JSONKit.m */; };
 		89A15E5214F597CA00BF1A18 /* SafetyWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */; };
@@ -184,6 +185,8 @@
 		891451491522541300800262 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8914514A1522541300800262 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8914514B1522541300800262 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		8920284A15364BC900A15DED /* SWPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPointAnnotation.h; sourceTree = "<group>"; };
+		8920284B15364BC900A15DED /* SWPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPointAnnotation.m; sourceTree = "<group>"; };
 		8936AFE0150FC28B005C8237 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		8936AFE1150FC28B005C8237 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		8936AFE2150FC28B005C8237 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
@@ -309,8 +312,6 @@
 		899C095214EAE43900DDC780 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
 		899C095314EAE43900DDC780 /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
 		899C095514EAE57000DDC780 /* LoadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
-		899DC9A5152DFA8200199FDF /* SWPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPointAnnotation.h; sourceTree = "<group>"; };
-		899DC9A6152DFA8200199FDF /* SWPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPointAnnotation.m; sourceTree = "<group>"; };
 		899F4C7214ED7E9400B8C553 /* SafetyWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyWebRequest.h; sourceTree = "<group>"; };
 		899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyWebRequest.m; sourceTree = "<group>"; };
 		89A1C505150FFEA80097F2F1 /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
@@ -526,8 +527,8 @@
 				8984675414E1ADEB00B997D5 /* Utilities.m */,
 				89740AB214EC6D4A0064E64A /* AppProperties.h */,
 				89740AB314EC6D4A0064E64A /* AppProperties.m */,
-				899DC9A5152DFA8200199FDF /* SWPointAnnotation.h */,
-				899DC9A6152DFA8200199FDF /* SWPointAnnotation.m */,
+				8920284A15364BC900A15DED /* SWPointAnnotation.h */,
+				8920284B15364BC900A15DED /* SWPointAnnotation.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -948,6 +949,7 @@
 				89A401281534E78B0027FE7D /* FacebookAlert.m in Sources */,
 				89A4012C1534E7B60027FE7D /* SMSAlert.m in Sources */,
 				89A401301534E7B80027FE7D /* CheckInAlert.m in Sources */,
+				8920284C15364BC900A15DED /* SWPointAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -970,6 +972,7 @@
 				89A401291534E78B0027FE7D /* FacebookAlert.m in Sources */,
 				89A4012D1534E7B60027FE7D /* SMSAlert.m in Sources */,
 				89A401311534E7B80027FE7D /* CheckInAlert.m in Sources */,
+				8920284D15364BC900A15DED /* SWPointAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

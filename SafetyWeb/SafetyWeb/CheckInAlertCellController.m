@@ -53,11 +53,12 @@
     mapView.delegate = self;
     mapView.scrollEnabled = NO;
     mapView.zoomEnabled = NO;
-    [mapView setCenterCoordinate:checkInAlert.location animated:NO];
-    [mapView setRegion:MKCoordinateRegionMake(checkInAlert.location, MKCoordinateSpanMake(.005, .0025)) animated:NO];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([checkInAlert.locationLat floatValue], [checkInAlert.locationLong floatValue]);
+    [mapView setCenterCoordinate:coordinate animated:NO];
+    [mapView setRegion:MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(.005, .0025)) animated:NO];
     
     id<MKAnnotation> annotation = [[SWPointAnnotation alloc] init];
-    annotation.coordinate = checkInAlert.location;
+    annotation.coordinate = coordinate;
     annotation.title = @"Title";
     annotation.subtitle = @"SubTitle";
     
