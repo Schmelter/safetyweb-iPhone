@@ -13,15 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
-@protocol Alert <NSObject>
-
--(NSNumber*)alertId;
--(NSNumber*)childId;
--(void)parseJSON:(NSString*)jsonString;
-
-@end
-
+#import "Alert.h"
 
 @protocol AlertRangeResponse <NSObject>
 -(void)receiveResponse:(NSArray*)alerts forRange:(NSRange)range;
@@ -29,7 +21,7 @@
 
 
 @protocol AlertIdResponse <NSObject>
--(void)receiveResponse:(id<Alert>)alert;
+-(void)receiveResponse:(Alert*)alert;
 @end
 
 

@@ -11,6 +11,7 @@
  */
 
 #import "ChildManager.h"
+#import "SWAppDelegate.h"
 
 static NSMutableDictionary* childDict;
 static NSMutableArray* childArr;
@@ -41,8 +42,8 @@ static NSDate *childrenLastRequested = nil;
     
         SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
         [childrenRequest setCallbackObj:self];
-        UserCredentials *credentials = [UserManager getLastUsedCredentials];
-        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
+        User *credentials = [UserManager getLastUsedCredentials];
+        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
         [childrenRequest release];
     }
 }
@@ -94,8 +95,8 @@ static NSDate *childrenLastRequested = nil;
     
         SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
         [childrenRequest setCallbackObj:self];
-        UserCredentials *credentials = [UserManager getLastUsedCredentials];
-        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
+        User *credentials = [UserManager getLastUsedCredentials];
+        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
         [childrenRequest release];
     }
 }
@@ -144,8 +145,8 @@ static NSDate *childrenLastRequested = nil;
     
         SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
         [childRequest setCallbackObj:self];
-        UserCredentials *credentials = [UserManager getLastUsedCredentials];
-        [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.userToken, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", childId, nil]]];
+        User *credentials = [UserManager getLastUsedCredentials];
+        [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", [childId description], nil]]];
         [childRequest release];
     }
 }
@@ -194,9 +195,16 @@ static NSDate *childrenLastRequested = nil;
 #pragma mark -
 #pragma mark Private static functions
 +(Child*)initChildFromJson:(NSDictionary*)jsonChildDict {
-    Child *child = [[Child alloc] init];
+    NSManagedObjectContext *context = ((SWAppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
     
-    child.childId = (NSNumber*)[jsonChildDict objectForKey:@"child_id"];
+    Child *child = [[Child alloc] initWithEntity:[NSEntityDescription entityForName:@"Child" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    
+    // Child Id in the JSON is a String... even though it's always a number.  Fix that here.
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    child.childId = [formatter numberFromString:(NSString*)[jsonChildDict objectForKey:@"child_id"]];
+    [formatter release];
+    
     child.firstName = (NSString*)[jsonChildDict objectForKey:@"first_name"];
     if (![child.firstName isKindOfClass:[NSString class]]) child.firstName = nil;
     child.lastName = (NSString*)[jsonChildDict objectForKey:@"last_name"];
@@ -209,17 +217,19 @@ static NSDate *childrenLastRequested = nil;
     child.mobilePhone = @"720-982-6931";
     
     NSString *profilePicUrl = [jsonChildDict objectForKey:@"profile_pic"];
-    if ([profilePicUrl isKindOfClass:[NSString class]]) child.profilePicUrl = [NSURL URLWithString:profilePicUrl];
+    if ([profilePicUrl isKindOfClass:[NSString class]]) child.profilePicUrl = [[NSURL URLWithString:profilePicUrl] description];
     
     return child;
 }
 
 +(Account*)initAccountFromJson:(NSDictionary*)jsonAccountDict {
-    Account *account = [[Account alloc] init];
+    NSManagedObjectContext *context = ((SWAppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
+    
+    Account *account = [[Account alloc] initWithEntity:[NSEntityDescription entityForName:@"Account" inManagedObjectContext:context] insertIntoManagedObjectContext:context]; 
     
     account.accountId = [jsonAccountDict objectForKey:@"account_id"];
     NSString *profilePicUrl = [jsonAccountDict objectForKey:@"profile_pic"];
-    if ([profilePicUrl isKindOfClass:[NSString class]]) account.profilePicUrl = [NSURL URLWithString:profilePicUrl];
+    if ([profilePicUrl isKindOfClass:[NSString class]]) account.profilePicUrl = [[NSURL URLWithString:profilePicUrl] description];
     account.serviceId = [jsonAccountDict objectForKey:@"service_id"];
     account.serviceName = [jsonAccountDict objectForKey:@"service_name"];
     if (![account.serviceName isKindOfClass:[NSString class]]) account.serviceName = nil;
@@ -228,9 +238,9 @@ static NSDate *childrenLastRequested = nil;
     if ([@"PUBLIC" isEqual:statusStr]) {
         account.status = acct_public;
     } else if ([@"PRIVATE" isEqual:statusStr]) {
-        account.status = acct_private;
+        account.status = [NSNumber numberWithInt:acct_private];
     } else {
-        account.status = acct_other;
+        account.status = [NSNumber numberWithInt:acct_other];
     }
     
     NSString *url = [jsonAccountDict objectForKey:@"url"];
@@ -302,12 +312,12 @@ static NSDate *childrenLastRequested = nil;
         // Multiple accounts
         for (NSDictionary *jsonAccountDict in (NSArray*)accountObj) {
             Account *account = [self initAccountFromJson:jsonAccountDict];
-            [child addAccount:account];
+            [child addAccountsObject:account];
             [account release];
         }
     } else if ([accountObj isKindOfClass:[NSDictionary class]]) {
         Account *account = [self initAccountFromJson:(NSDictionary*)accountObj];
-        [child addAccount:account];
+        [child addAccountsObject:account];
         [account release];
     }
     
@@ -342,103 +352,3 @@ static NSDate *childrenLastRequested = nil;
 
 @end
 
-
-@implementation Child
-@synthesize childId;
-@synthesize firstName;
-@synthesize lastName;
-@synthesize profilePicUrl;
-@synthesize address;
-@synthesize mobilePhone;
-@synthesize lastQueried;
-
--(Child*)init {
-    self = [super init];
-    if (self) {
-        accountArr = [[NSMutableArray alloc] init];
-        accountDict = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
-
--(void)addAccount:(Account*)account {
-    // Check if it already exists
-    if ([accountDict objectForKey:account.accountId]) return;
-    [accountDict setObject:account forKey:account.accountId];
-    [accountArr addObject:account];
-}
-
--(Account*)getAccountForId:(NSNumber*)accountId {
-    return [accountDict objectForKey:accountId];
-}
-
--(NSArray*)getAllAccounts {
-    return accountArr;
-}
-
-#pragma mark -
-#pragma mark IsEqual and Hash functions
--(BOOL)isEqual:(id)object {
-    return self == object || [((Child*)object).childId isEqual:childId];
-}
-
--(NSUInteger)hash {
-    return [childId unsignedIntValue];
-}
-
--(void)dealloc {
-    [childId release];
-    [firstName release];
-    [lastName release];
-    [profilePicUrl release];
-    [address release];
-    [mobilePhone release];
-    [accountArr release];
-    [accountDict release];
-    [lastQueried release];
-    
-    [super dealloc];
-}
-
-@end
-
-
-@implementation Account
-@synthesize accountId;
-@synthesize profilePicUrl;
-@synthesize serviceId;
-@synthesize serviceName;
-@synthesize status;
-@synthesize url;
-@synthesize username;
-
--(Account*)init {
-    self = [super init];
-    if (self) {
-        status = acct_other;
-    }
-    return self;
-}
-
-#pragma mark -
-#pragma mark IsEqual and Hash functions
--(BOOL)isEqual:(id)object {
-    return self == object || [((Account*)object).accountId isEqual:accountId];
-}
-
--(NSUInteger)hash {
-    return [accountId unsignedIntValue];
-}
-
--(void)dealloc {
-    [accountId release];
-    [profilePicUrl release];
-    [serviceId release];
-    [serviceName release];
-    [url release];
-    [username release];
-    
-    [super dealloc];
-}
-
-@end

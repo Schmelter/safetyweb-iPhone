@@ -43,7 +43,7 @@
     [childRequest release];
     friendName.text = fbAlert.friendName;
     alertMessage.text = fbAlert.alertText;
-    timeMessage.text = [Utilities timeIntervalToHumanString:fbAlert.timestamp];
+    timeMessage.text = [Utilities timeIntervalToHumanString:[fbAlert.timestamp timeIntervalSince1970]];
     
     if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"dark_zebra_BG.png"];
     else backgroundImage.image = nil;

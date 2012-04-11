@@ -49,7 +49,7 @@
     
     locationStr.text = checkInAlert.locationStr;
     locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";
-    timeMessage.text = [Utilities timeIntervalToHumanString:checkInAlert.timestamp];
+    timeMessage.text = [Utilities timeIntervalToHumanString:[checkInAlert.timestamp timeIntervalSince1970]];
     
     if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"dark_zebra_BG.png"];
     else backgroundImage.image = nil;
@@ -67,13 +67,14 @@
     mapView.enableDragging = NO;
     mapView.enableZoom = NO;
     mapView.enableRotate = NO;
-    [mapView moveToLatLong:checkInAlert.location];
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake([checkInAlert.locationLat floatValue], [checkInAlert.locationLong floatValue]);
+    [mapView moveToLatLong:location];
     [mapView zoomByFactor:1.0 near:CGPointMake(mapView.frame.origin.x + (mapView.frame.size.width / 2), mapView.frame.origin.y + (mapView.frame.size.height / 2)) animated:NO];
     
     
     UIImage *childImage = [UIImage imageNamed:@"point.png"];
     RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:childImage];
-    [mapView.markerManager addMarker:childMarker AtLatLong:checkInAlert.location];
+    [mapView.markerManager addMarker:childMarker AtLatLong:location];
     [childMarker release];
     [childImage release];
     

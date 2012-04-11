@@ -13,6 +13,8 @@
 #import "CommonHMAC.h"
 #endif
 
+NSInteger stringSort(id string1, id string2, void *context);
+
 @implementation SafetyWebRequest
 @synthesize callbackObj;
 
@@ -79,17 +81,22 @@
     CFRunLoopRun(); // Keep the thread from exiting before we get a response
 }
 
+NSInteger stringSort(id string1, id string2, void *context) {
+    NSLog(@"Comparing: %@ to %@", string1, string2);
+    return [(NSString*)string1 caseInsensitiveCompare:(NSString*)string2];
+}
+
 +(NSString *)buildRequestURL:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSMutableDictionary *)aParamDict andDate:(NSString*)aFormattedDate {
     [aParamDict setObject:[AppProperties getProperty:@"API_Id" withDefault:@"No API Id"] forKey:@"api_id"];
     [aParamDict setObject:aFormattedDate forKey:@"timestamp"];
     
     // Now, sort the parameters, so that we can use them to build a key
-    NSMutableArray *paramKeys = [NSMutableArray arrayWithArray:[aParamDict allKeys]];
     
     // Build the parameters into a properly formatted string
 	NSMutableString *paramStr = [[NSMutableString alloc] initWithCapacity:1024];
 	BOOL isFirst = TRUE;
-	NSEnumerator *paramEnum = [[paramKeys sortedArrayUsingSelector:@selector(compare:)] objectEnumerator];
+    NSEnumerator *paramEnum = [[[aParamDict allKeys] sortedArrayUsingFunction:stringSort context:nil] objectEnumerator];
+    
 	id paramKey = NULL;
 	while (paramKey = [paramEnum nextObject]) {
 		if (!isFirst) {

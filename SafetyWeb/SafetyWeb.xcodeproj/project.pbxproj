@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */; };
-		890DC3DE1523D1F100C5458B /* FacebookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 890DC3DD1523D1F100C5458B /* FacebookAlert.m */; };
 		8914514C1522541300800262 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914514A1522541300800262 /* SettingsViewController.m */; };
 		8914514D1522541300800262 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8914514B1522541300800262 /* SettingsViewController.xib */; };
 		893683BC152F753A008CC00C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 893683BB152F753A008CC00C /* libsqlite3.dylib */; };
@@ -126,6 +125,22 @@
 		89A1C516151005EC0097F2F1 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A1C514151005EC0097F2F1 /* CheckInViewController.m */; };
 		89A1C517151005EC0097F2F1 /* CheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C515151005EC0097F2F1 /* CheckInViewController.xib */; };
 		89A1C519151006510097F2F1 /* butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C518151006510097F2F1 /* butterfly.png */; };
+		89A401141534D7DD0027FE7D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89A401121534D7DD0027FE7D /* DataModel.xcdatamodeld */; };
+		89A401151534D7DD0027FE7D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89A401121534D7DD0027FE7D /* DataModel.xcdatamodeld */; };
+		89A401181534E6CB0027FE7D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A401171534E6CB0027FE7D /* User.m */; };
+		89A401191534E6CB0027FE7D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A401171534E6CB0027FE7D /* User.m */; };
+		89A4011C1534E75A0027FE7D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4011B1534E75A0027FE7D /* Account.m */; };
+		89A4011D1534E75A0027FE7D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4011B1534E75A0027FE7D /* Account.m */; };
+		89A401201534E75C0027FE7D /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4011F1534E75B0027FE7D /* Alert.m */; };
+		89A401211534E75C0027FE7D /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4011F1534E75B0027FE7D /* Alert.m */; };
+		89A401241534E75D0027FE7D /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A401231534E75C0027FE7D /* Child.m */; };
+		89A401251534E75D0027FE7D /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A401231534E75C0027FE7D /* Child.m */; };
+		89A401281534E78B0027FE7D /* FacebookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A401271534E78B0027FE7D /* FacebookAlert.m */; };
+		89A401291534E78B0027FE7D /* FacebookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A401271534E78B0027FE7D /* FacebookAlert.m */; };
+		89A4012C1534E7B60027FE7D /* SMSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4012B1534E7B50027FE7D /* SMSAlert.m */; };
+		89A4012D1534E7B60027FE7D /* SMSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4012B1534E7B50027FE7D /* SMSAlert.m */; };
+		89A401301534E7B80027FE7D /* CheckInAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4012F1534E7B70027FE7D /* CheckInAlert.m */; };
+		89A401311534E7B80027FE7D /* CheckInAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4012F1534E7B70027FE7D /* CheckInAlert.m */; };
 		89A79015152121CF006BCFDD /* SWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A79014152121CF006BCFDD /* SWMenuViewController.m */; };
 		89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		89AA20AC14F582500082C7B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
@@ -147,8 +162,6 @@
 		89BD10E51524FAA600141BFA /* SMSAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10E31524FAA600141BFA /* SMSAlertCellController.m */; };
 		89BD10E61524FAA600141BFA /* SMSAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */; };
 		89BD10E81524FB7700141BFA /* sms_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10E71524FB7700141BFA /* sms_icon.png */; };
-		89BD10EB1524FDBF00141BFA /* SMSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10EA1524FDBF00141BFA /* SMSAlert.m */; };
-		89BD10EE152509B900141BFA /* CheckInAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10ED152509B900141BFA /* CheckInAlert.m */; };
 		89BD10F215250B2300141BFA /* CheckInAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10F015250B2200141BFA /* CheckInAlertCellController.m */; };
 		89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */; };
 		89BD10F515250BFE00141BFA /* pin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F415250BFE00141BFA /* pin_icon.png */; };
@@ -199,8 +212,6 @@
 /* Begin PBXFileReference section */
 		8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLoadViewController.h; sourceTree = "<group>"; };
 		8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginLoadViewController.m; sourceTree = "<group>"; };
-		890DC3DC1523D1F100C5458B /* FacebookAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlert.h; sourceTree = "<group>"; };
-		890DC3DD1523D1F100C5458B /* FacebookAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAlert.m; sourceTree = "<group>"; };
 		891451491522541300800262 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8914514A1522541300800262 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8914514B1522541300800262 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -341,6 +352,21 @@
 		89A1C514151005EC0097F2F1 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
 		89A1C515151005EC0097F2F1 /* CheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInViewController.xib; sourceTree = "<group>"; };
 		89A1C518151006510097F2F1 /* butterfly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = butterfly.png; path = "test images/butterfly.png"; sourceTree = "<group>"; };
+		89A401131534D7DD0027FE7D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		89A401161534E6CA0027FE7D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		89A401171534E6CB0027FE7D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		89A4011A1534E75A0027FE7D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		89A4011B1534E75A0027FE7D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		89A4011E1534E75B0027FE7D /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
+		89A4011F1534E75B0027FE7D /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		89A401221534E75C0027FE7D /* Child.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Child.h; sourceTree = "<group>"; };
+		89A401231534E75C0027FE7D /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
+		89A401261534E78A0027FE7D /* FacebookAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlert.h; sourceTree = "<group>"; };
+		89A401271534E78B0027FE7D /* FacebookAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAlert.m; sourceTree = "<group>"; };
+		89A4012A1534E7B50027FE7D /* SMSAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSAlert.h; sourceTree = "<group>"; };
+		89A4012B1534E7B50027FE7D /* SMSAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSAlert.m; sourceTree = "<group>"; };
+		89A4012E1534E7B70027FE7D /* CheckInAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInAlert.h; sourceTree = "<group>"; };
+		89A4012F1534E7B70027FE7D /* CheckInAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlert.m; sourceTree = "<group>"; };
 		89A79013152121CF006BCFDD /* SWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWMenuViewController.h; sourceTree = "<group>"; };
 		89A79014152121CF006BCFDD /* SWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWMenuViewController.m; sourceTree = "<group>"; };
 		89AA20A914F582500082C7B5 /* SafetyWebTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWebTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,10 +395,6 @@
 		89BD10E31524FAA600141BFA /* SMSAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSAlertCellController.m; sourceTree = "<group>"; };
 		89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSAlertCellController.xib; sourceTree = "<group>"; };
 		89BD10E71524FB7700141BFA /* sms_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms_icon.png; sourceTree = "<group>"; };
-		89BD10E91524FDBF00141BFA /* SMSAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSAlert.h; sourceTree = "<group>"; };
-		89BD10EA1524FDBF00141BFA /* SMSAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSAlert.m; sourceTree = "<group>"; };
-		89BD10EC152509B900141BFA /* CheckInAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInAlert.h; sourceTree = "<group>"; };
-		89BD10ED152509B900141BFA /* CheckInAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlert.m; sourceTree = "<group>"; };
 		89BD10EF15250B2200141BFA /* CheckInAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInAlertCellController.h; sourceTree = "<group>"; };
 		89BD10F015250B2200141BFA /* CheckInAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlertCellController.m; sourceTree = "<group>"; };
 		89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInAlertCellController.xib; sourceTree = "<group>"; };
@@ -686,12 +708,21 @@
 				899754D314EF0FB60046B1DA /* ChildManager.m */,
 				898139461523A04B003B6A0D /* AlertManager.h */,
 				898139471523A04B003B6A0D /* AlertManager.m */,
-				890DC3DC1523D1F100C5458B /* FacebookAlert.h */,
-				890DC3DD1523D1F100C5458B /* FacebookAlert.m */,
-				89BD10E91524FDBF00141BFA /* SMSAlert.h */,
-				89BD10EA1524FDBF00141BFA /* SMSAlert.m */,
-				89BD10EC152509B900141BFA /* CheckInAlert.h */,
-				89BD10ED152509B900141BFA /* CheckInAlert.m */,
+				89A401121534D7DD0027FE7D /* DataModel.xcdatamodeld */,
+				89A401161534E6CA0027FE7D /* User.h */,
+				89A401171534E6CB0027FE7D /* User.m */,
+				89A401221534E75C0027FE7D /* Child.h */,
+				89A401231534E75C0027FE7D /* Child.m */,
+				89A4011E1534E75B0027FE7D /* Alert.h */,
+				89A4011F1534E75B0027FE7D /* Alert.m */,
+				89A4011A1534E75A0027FE7D /* Account.h */,
+				89A4011B1534E75A0027FE7D /* Account.m */,
+				89A401261534E78A0027FE7D /* FacebookAlert.h */,
+				89A401271534E78B0027FE7D /* FacebookAlert.m */,
+				89A4012E1534E7B70027FE7D /* CheckInAlert.h */,
+				89A4012F1534E7B70027FE7D /* CheckInAlert.m */,
+				89A4012A1534E7B50027FE7D /* SMSAlert.h */,
+				89A4012B1534E7B50027FE7D /* SMSAlert.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -966,11 +997,16 @@
 				8914514C1522541300800262 /* SettingsViewController.m in Sources */,
 				898139481523A04B003B6A0D /* AlertManager.m in Sources */,
 				8981394E1523BF96003B6A0D /* FacebookAlertCellController.m in Sources */,
-				890DC3DE1523D1F100C5458B /* FacebookAlert.m in Sources */,
 				89BD10E51524FAA600141BFA /* SMSAlertCellController.m in Sources */,
-				89BD10EB1524FDBF00141BFA /* SMSAlert.m in Sources */,
-				89BD10EE152509B900141BFA /* CheckInAlert.m in Sources */,
 				89BD10F215250B2300141BFA /* CheckInAlertCellController.m in Sources */,
+				89A401141534D7DD0027FE7D /* DataModel.xcdatamodeld in Sources */,
+				89A401181534E6CB0027FE7D /* User.m in Sources */,
+				89A4011C1534E75A0027FE7D /* Account.m in Sources */,
+				89A401201534E75C0027FE7D /* Alert.m in Sources */,
+				89A401241534E75D0027FE7D /* Child.m in Sources */,
+				89A401281534E78B0027FE7D /* FacebookAlert.m in Sources */,
+				89A4012C1534E7B60027FE7D /* SMSAlert.m in Sources */,
+				89A401301534E7B80027FE7D /* CheckInAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +1021,14 @@
 				89AA20C814F5851E0082C7B5 /* GHUnitIOSTestMain.m in Sources */,
 				89AA20CB14F585A70082C7B5 /* SampleTestCase.m in Sources */,
 				89AA20D014F58AC30082C7B5 /* SafetyWebRequestTestCase.m in Sources */,
+				89A401151534D7DD0027FE7D /* DataModel.xcdatamodeld in Sources */,
+				89A401191534E6CB0027FE7D /* User.m in Sources */,
+				89A4011D1534E75A0027FE7D /* Account.m in Sources */,
+				89A401211534E75C0027FE7D /* Alert.m in Sources */,
+				89A401251534E75D0027FE7D /* Child.m in Sources */,
+				89A401291534E78B0027FE7D /* FacebookAlert.m in Sources */,
+				89A4012D1534E7B60027FE7D /* SMSAlert.m in Sources */,
+				89A401311534E7B80027FE7D /* CheckInAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,6 +1241,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		89A401121534D7DD0027FE7D /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				89A401131534D7DD0027FE7D /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 89A401131534D7DD0027FE7D /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 897E97FC14DB02C3007595A7 /* Project object */;
 }

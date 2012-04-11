@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Account" representedClassName="Account" syncable="YES">
+        <attribute name="accountId" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="profilePicUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="serviceName" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+        <attribute name="username" attributeType="String" syncable="YES"/>
+        <relationship name="child" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="accounts" inverseEntity="Child" syncable="YES"/>
+    </entity>
+    <entity name="Alert" representedClassName="Alert" isAbstract="YES" syncable="YES">
+        <attribute name="alertId" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="childId" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="user" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="alerts" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="CheckInAlert" representedClassName="CheckInAlert" parentEntity="Alert" syncable="YES">
+        <attribute name="locationApproved" attributeType="Boolean" syncable="YES"/>
+        <attribute name="locationLat" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locationLong" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locationStr" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="Child" representedClassName="Child" syncable="YES">
+        <attribute name="address" attributeType="String" syncable="YES"/>
+        <attribute name="childId" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="firstName" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" attributeType="String" syncable="YES"/>
+        <attribute name="lastQueried" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="mobilePhone" attributeType="String" syncable="YES"/>
+        <attribute name="profilePicUrl" attributeType="String" syncable="YES"/>
+        <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Account" inverseName="child" inverseEntity="Account" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="children" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="FacebookAlert" representedClassName="FacebookAlert" parentEntity="Alert" syncable="YES">
+        <attribute name="alertText" attributeType="String" syncable="YES"/>
+        <attribute name="friendName" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="SMSAlert" representedClassName="SMSAlert" parentEntity="Alert" syncable="YES">
+        <attribute name="messagePhoneNumber" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="login" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
+        <attribute name="token" attributeType="String" syncable="YES"/>
+        <attribute name="tokenStart" attributeType="Date" syncable="YES"/>
+        <relationship name="alerts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Alert" inverseName="user" inverseEntity="Alert" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Child" inverseName="user" inverseEntity="Child" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Account" positionX="-155" positionY="135" width="128" height="165"/>
+        <element name="Alert" positionX="-119" positionY="225" width="128" height="90"/>
+        <element name="Child" positionX="9" positionY="36" width="128" height="45"/>
+        <element name="User" positionX="97" positionY="237" width="128" height="90"/>
+        <element name="FacebookAlert" positionX="-297" positionY="387" width="128" height="90"/>
+        <element name="SMSAlert" positionX="-128" positionY="375" width="128" height="75"/>
+        <element name="CheckInAlert" positionX="16" positionY="447" width="128" height="120"/>
+    </elements>
+</model>

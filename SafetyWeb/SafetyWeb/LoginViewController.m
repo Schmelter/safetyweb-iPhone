@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "SWAppDelegate.h"
 
 @implementation LoginViewController
 
@@ -22,7 +23,7 @@
 - (void)viewDidLoad {
     // Get the current username/password from the last login, or the last time they used this
     // interface
-    UserCredentials *credentials = [UserManager getLastUsedCredentials];
+    User *credentials = [UserManager getLastUsedCredentials];
     self.username = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 48)];
     self.password = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 48)];
     [username release];
@@ -49,7 +50,7 @@
     [password addTarget:self action:@selector(passwordDoneEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     if (credentials != nil) {
-        [username setText:credentials.username];
+        [username setText:credentials.login];
         [password setText:credentials.password];
     }
     
@@ -88,8 +89,12 @@
     if (usernameStr == nil || [usernameStr length] == 0 || passwordStr == nil || [passwordStr length] == 0) {
         return;
     }
-        
-    UserCredentials *userCredentials = [[UserCredentials alloc] initWithUserName:usernameStr AndPassword:passwordStr];
+    
+    NSManagedObjectContext *context = ((SWAppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
+    
+    User *userCredentials = [[User alloc] initWithEntity:[NSEntityDescription entityForName:@"User" inManagedObjectContext:context] insertIntoManagedObjectContext:context];                                                                                                     
+    userCredentials.login = usernameStr;
+    userCredentials.password = passwordStr;
     [rootViewController displayLoginLoadViewController:userCredentials];
     [userCredentials release];
 }
