@@ -43,8 +43,7 @@
     
     ChildIdRequest *childIdRequest = [[ChildIdRequest alloc] init];
     childIdRequest.childId = checkInAlert.childId;
-    childIdRequest.response = self;
-    [ChildManager requestChildForId:childIdRequest];
+    [ChildManager requestChildForId:childIdRequest withResponse:self];
     [childIdRequest release];
     
     locationStr.text = checkInAlert.locationStr;
