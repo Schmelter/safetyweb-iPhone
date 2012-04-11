@@ -18,11 +18,11 @@
 
 @interface LoginLoadViewController : LoadViewController {
     @private
-    UserCredentials *credentials;
+    User *credentials;
     double pendingChildRequests;
     double totalChildRequests;
 }
 
-@property (nonatomic, retain) UserCredentials *credentials;
+@property (nonatomic, retain) User *credentials;
 
 @end

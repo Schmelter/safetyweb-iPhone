@@ -43,7 +43,7 @@
     [childRequest release];
     
     messagePhoneNumber.text = smsAlert.messagePhoneNumber;
-    timeMessage.text = [Utilities timeIntervalToHumanString:smsAlert.timestamp];
+    timeMessage.text = [Utilities timeIntervalToHumanString:[smsAlert.timestamp timeIntervalSince1970]];
     
     if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"dark_zebra_BG.png"];
     else backgroundImage.image = nil;
