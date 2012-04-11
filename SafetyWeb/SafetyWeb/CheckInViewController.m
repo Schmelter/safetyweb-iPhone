@@ -21,8 +21,7 @@
         cellControllersLock = [[NSObject alloc] init];
         
         AllChildRequest *allChildRequest = [[AllChildRequest alloc] init];
-        allChildRequest.response = self;
-        [ChildManager requestAllChildren:allChildRequest];
+        [ChildManager requestAllChildren:allChildRequest withResponse:self];
         [allChildRequest release];
     }
     return self;

@@ -37,9 +37,7 @@
     NSURL *url;
 }
 
-@property (nonatomic, retain) id<SafetyWebRequestCallback> callbackObj;
-
-- (void)request:(NSString *)requestMethod andURL:(NSURL *)url andParams:(NSDictionary *)aParamDict;
+- (void)request:(NSString *)requestMethod andURL:(NSURL *)url andParams:(NSDictionary *)aParamDict withCallback:(id<SafetyWebRequestCallback>)aCallbackObj;
 +(NSString *)buildRequestURL:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSMutableDictionary *)aParamDict andDate:(NSString*)aFormattedDate;
 +(NSString *)Base64Encode:(NSData *)data;
 

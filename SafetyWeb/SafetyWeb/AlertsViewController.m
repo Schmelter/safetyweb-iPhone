@@ -36,8 +36,7 @@
     @synchronized(alertLoadLock) {
         AlertRangeRequest *request = [[AlertRangeRequest alloc] init];
         request.range = NSMakeRange([alerts count], kDefaultAlertsShown);
-        request.response = self;
-        [AlertManager requestAlertsWithinRange:request];
+        [AlertManager requestAlertsWithinRange:request withResponse:self];
         [request release];
     }
 }

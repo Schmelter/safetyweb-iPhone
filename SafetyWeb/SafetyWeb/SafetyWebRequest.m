@@ -16,7 +16,6 @@
 NSInteger stringSort(id string1, id string2, void *context);
 
 @implementation SafetyWebRequest
-@synthesize callbackObj;
 
 - (SafetyWebRequest*)init {
     self = [super init];
@@ -44,8 +43,12 @@ NSInteger stringSort(id string1, id string2, void *context);
     return formattedDate;
 }
 
-- (void)request:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSDictionary *)aParamDict {
+- (void)request:(NSString *)aRequestMethod andURL:(NSURL *)aURL andParams:(NSDictionary *)aParamDict withCallback:(id<SafetyWebRequestCallback>)aCallbackObj {
     [self retain]; // We need to retain ourselves while we're waiting for the response back from the server
+    
+    [aCallbackObj retain];
+    [callbackObj release];
+    callbackObj = aCallbackObj;
     
     [aRequestMethod retain];
     [requestMethod release];
@@ -82,7 +85,6 @@ NSInteger stringSort(id string1, id string2, void *context);
 }
 
 NSInteger stringSort(id string1, id string2, void *context) {
-    NSLog(@"Comparing: %@ to %@", string1, string2);
     return [(NSString*)string1 caseInsensitiveCompare:(NSString*)string2];
 }
 
@@ -263,6 +265,10 @@ NSInteger stringSort(id string1, id string2, void *context) {
 	if (callbackObj) 
 		[callbackObj gotResponse:[responseData objectFromJSONData]];
     
+    id<SafetyWebRequestCallback> oldCallbackObj = callbackObj;
+    callbackObj = nil;
+    [oldCallbackObj release];
+    
     [metadataStr release];
     [pool release];
 	[self release]; // Alright, our job is finally done
@@ -274,6 +280,10 @@ NSInteger stringSort(id string1, id string2, void *context) {
     
 	if (callbackObj) 
 		[callbackObj notGotResponse:error];
+    id<SafetyWebRequestCallback> oldCallbackObj = callbackObj;
+    callbackObj = nil;
+    [oldCallbackObj release];
+    
 	[self release]; // Alright, our job is finally done
     CFRunLoopStop(CFRunLoopGetCurrent());
 }
@@ -284,6 +294,10 @@ NSInteger stringSort(id string1, id string2, void *context) {
 	[conn release];
 	if (callbackObj) 
 		[callbackObj notGotResponse:error];
+    id<SafetyWebRequestCallback> oldCallbackObj = callbackObj;
+    callbackObj = nil;
+    [oldCallbackObj release];
+    
 	[self release]; // Alright, our job is finally done
     CFRunLoopStop(CFRunLoopGetCurrent());
 }

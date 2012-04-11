@@ -38,8 +38,7 @@
     
     ChildIdRequest *childRequest = [[ChildIdRequest alloc] init];
     childRequest.childId = fbAlert.childId;
-    childRequest.response = self;
-    [ChildManager requestChildForId:childRequest];
+    [ChildManager requestChildForId:childRequest withResponse:self];
     [childRequest release];
     friendName.text = fbAlert.friendName;
     alertMessage.text = fbAlert.alertText;

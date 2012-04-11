@@ -38,8 +38,7 @@
     
     ChildIdRequest *childRequest = [[ChildIdRequest alloc] init];
     childRequest.childId = smsAlert.childId;
-    childRequest.response = self;
-    [ChildManager requestChildForId:childRequest];
+    [ChildManager requestChildForId:childRequest withResponse:self];
     [childRequest release];
     
     messagePhoneNumber.text = smsAlert.messagePhoneNumber;
