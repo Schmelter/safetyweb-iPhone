@@ -14,10 +14,26 @@
 #import <Foundation/Foundation.h>
 #import "AppProperties.h"
 #import "User.h"
+#import "SafetyWebRequest.h"
 
+@interface TokenRequest : NSObject <SafetyWebRequestCallback> {
+@private
+    NSString *login;
+    NSString *password;
+}
+@property (nonatomic, retain) NSString *login;
+@property (nonatomic, retain) NSString *password;
+@end
+
+@protocol TokenResponse <NSObject>
+-(void)tokenRequestSuccess:(NSString*)token;
+-(void)requestFailure:(NSError*)error;
+@end
 
 @interface UserManager : NSObject {
 }
+
++(void)requestToken:(TokenRequest*)request withResponse:(id<TokenResponse>)response;
 
 // May return nil if there were no last used credentials.  No guarantee that the credentials will work.
 + (User*)getLastUsedCredentials;
