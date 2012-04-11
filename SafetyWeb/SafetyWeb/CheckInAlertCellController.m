@@ -75,7 +75,6 @@
     RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:childImage];
     [mapView.markerManager addMarker:childMarker AtLatLong:location];
     [childMarker release];
-    [childImage release];
     
     /*id<MKAnnotation> annotation = [[SWPointAnnotation alloc] init];
     annotation.coordinate = checkInAlert.location;

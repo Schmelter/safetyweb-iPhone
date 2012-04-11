@@ -8,7 +8,7 @@
 
 #import "LoginLoadViewController.h"
 
-@interface TokenCallback : NSObject <SafetyWebRequestCallback> 
+@interface TokenCallback : TokenRequest <TokenResponse> 
 @property (nonatomic, retain) LoginLoadViewController* callback;
 @end
 
@@ -44,11 +44,11 @@
     
     TokenCallback *tokenCallback = [[TokenCallback alloc] init];
     tokenCallback.callback = self;
+    tokenCallback.login = credentials.login;
+    tokenCallback.password = credentials.password;
     
-    SafetyWebRequest *tokenRequest = [[SafetyWebRequest alloc] init];
-    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.login, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]] withCallback:tokenCallback];
+    [UserManager requestToken:tokenCallback withResponse:tokenCallback];
     [tokenCallback release];
-    [tokenRequest release];
     
     [pool release];
 }
@@ -59,14 +59,10 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     ChildrenCallback *childrenCallback = [[ChildrenCallback alloc] init];
-    NSLog(@"Children Callback Retain Count: %i", [childrenCallback retainCount]);
     childrenCallback.callback = self;
-    NSLog(@"Children Callback Retain Count: %i", [childrenCallback retainCount]);
     
     [ChildManager requestAllChildren:childrenCallback withResponse:childrenCallback];
-    NSLog(@"Children Callback Retain Count: %i", [childrenCallback retainCount]);
     [childrenCallback release];
-    NSLog(@"Children Callback Retain Count: %i", [childrenCallback retainCount]);
     progressView.progressCurrent = 40.0f;
     
     [pool release];
@@ -180,19 +176,14 @@
 
 @implementation TokenCallback
 @synthesize callback;
--(void)gotResponse:(id)aResponse {
-    //NSLog(@"Token: %@", [aResponse description]);
-    NSDictionary *response = (NSDictionary*)aResponse;
-    NSString* result = [response objectForKey:@"result"];
-    if ([result isEqualToString:@"OK"]) {
-        [self.callback tokenRequestSuccess:[response objectForKey:@"token"]];
-    } else {
-        [self.callback requestFailure:nil];
-    }
+-(void)tokenRequestSuccess:(NSString*)token {
+    [self.callback tokenRequestSuccess:token];
 }
--(void)notGotResponse:(NSError *)aError {
-    [self.callback requestFailure:aError];
+
+-(void)requestFailure:(NSError *)error {
+    [self.callback requestFailure:error];
 }
+
 -(void)dealloc {
     [callback release];
     
