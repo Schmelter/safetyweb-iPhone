@@ -17,6 +17,24 @@ static NSMutableDictionary* childDict;
 static NSMutableArray* childArr;
 static NSDate *childrenLastRequested = nil;
 
+@interface AllChildRequest () {
+    id<AllChildResponse> response;
+}
+@property (nonatomic, retain) id<AllChildResponse> response;
+@end
+
+@interface ChildIdRequest () {
+    id<ChildResponse> response;
+}
+@property (nonatomic, retain) id<ChildResponse> response;
+@end
+
+@interface ChildAccountRequest () {
+    id<ChildResponse> response;
+}
+@property (nonatomic, retain) id<ChildResponse> response;
+@end
+
 @interface ChildManager (PrivateMethods)
 +(Child*)initChildFromJson:(NSDictionary*)jsonChildDict;
 +(Account*)initAccountFromJson:(NSDictionary*)jsonAccountDict;
@@ -25,8 +43,8 @@ static NSDate *childrenLastRequested = nil;
 @end
 
 @implementation ChildIdRequest
-@synthesize response;
 @synthesize childId;
+@synthesize response;
 
 -(void)performRequest {
     @autoreleasepool {
@@ -37,13 +55,12 @@ static NSDate *childrenLastRequested = nil;
                 return;
             }
         }
-    
+        
         [ChildManager clearAllChildren];
     
         SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
-        [childrenRequest setCallbackObj:self];
         User *credentials = [UserManager getLastUsedCredentials];
-        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
+        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]] withCallback:self];
         [childrenRequest release];
     }
 }
@@ -63,13 +80,16 @@ static NSDate *childrenLastRequested = nil;
     } else {
         [response requestFailure:nil];
     }
+    self.response = nil;
 }
 -(void)notGotResponse:(NSError *)aError {
     [response requestFailure:aError];
+    self.response = nil;
 }
 
 -(void) dealloc {
     [childId release];
+    [response release];
     
     [super dealloc];
 }
@@ -94,9 +114,8 @@ static NSDate *childrenLastRequested = nil;
         [ChildManager clearAllChildren];
     
         SafetyWebRequest *childrenRequest = [[SafetyWebRequest alloc] init];
-        [childrenRequest setCallbackObj:self];
         User *credentials = [UserManager getLastUsedCredentials];
-        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]]];
+        [childrenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]] withCallback:self];
         [childrenRequest release];
     }
 }
@@ -116,12 +135,16 @@ static NSDate *childrenLastRequested = nil;
     } else {
         [response requestFailure:nil];
     }
+    self.response = nil;
 }
 -(void)notGotResponse:(NSError *)aError {
     [response requestFailure:aError];
+    self.response = nil;
 }
 
 -(void)dealloc {
+    [response release];
+    
     [super dealloc];
 }
 
@@ -144,9 +167,8 @@ static NSDate *childrenLastRequested = nil;
         }
     
         SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
-        [childRequest setCallbackObj:self];
         User *credentials = [UserManager getLastUsedCredentials];
-        [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", [childId description], nil]]];
+        [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.token, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", [childId description], nil]] withCallback:self];
         [childRequest release];
     }
 }
@@ -165,9 +187,11 @@ static NSDate *childrenLastRequested = nil;
     } else {
         [response requestFailure:nil];
     }
+    self.response = nil;
 }
 -(void)notGotResponse:(NSError *)aError {
     [response requestFailure:aError];
+    self.response = nil;
 }
 
 -(void)dealloc {
@@ -334,15 +358,18 @@ static NSDate *childrenLastRequested = nil;
     }
 }
 
-+(void)requestAllChildren:(AllChildRequest*)request {
++(void)requestAllChildren:(AllChildRequest*)request withResponse:(id<AllChildResponse>)response {
+    request.response = response;
     [request performSelectorInBackground:@selector(performRequest) withObject:nil];
 }
 
-+(void)requestChildForId:(ChildIdRequest*)request {
++(void)requestChildForId:(ChildIdRequest*)request withResponse:(id<ChildResponse>)response {
+    request.response = response;
     [request performSelectorInBackground:@selector(performRequest) withObject:nil];
 }
 
-+(void)requestChildAccount:(ChildAccountRequest*)request {
++(void)requestChildAccount:(ChildAccountRequest*)request withResponse:(id<ChildResponse>)response {
+    request.response = response;
     [request performSelectorInBackground:@selector(performRequest) withObject:nil];
 }
 

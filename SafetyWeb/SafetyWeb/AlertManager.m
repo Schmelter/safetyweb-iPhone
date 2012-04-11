@@ -18,6 +18,68 @@
 static NSMutableDictionary* alertDict;
 static NSMutableArray* alertArr;
 
+@interface AlertRangeRequest () {
+    @private
+    id<AlertRangeResponse> response;
+}
+@property (nonatomic, retain) id<AlertRangeResponse> response;
+@end
+
+@interface AlertIdRequest () {
+    @private
+    id<AlertIdResponse> response;
+}
+@property (nonatomic, retain) id<AlertIdResponse> response;
+@end
+
+@implementation AlertRangeRequest
+@synthesize range = range_;
+@synthesize response;
+
+-(void)performRequest {
+    @autoreleasepool {
+        
+        usleep(1000000);  // 1 seconds
+        
+        NSRange range = self.range;
+        
+        range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
+        range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
+        
+        [self.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
+    }
+    
+    self.response = nil;
+}
+
+-(void)dealloc {
+    [response release];
+    
+    [super dealloc];
+}
+@end
+
+
+@implementation AlertIdRequest
+@synthesize alertId;
+@synthesize response;
+
+-(void)performRequest {
+    [self.response receiveResponse:[alertDict objectForKey:self.alertId]];
+    
+    self.response = nil;
+}
+
+-(void)dealloc {
+    [alertId release];
+    [response release];
+    
+    [super dealloc];
+}
+
+@end
+
+// TODO: Take this out later when we're actually hitting the server
 @interface ChildAlertResponse : NSObject <AllChildResponse>
 @end
 
@@ -38,8 +100,7 @@ static NSMutableArray* alertArr;
     
     ChildAlertResponse *childResponse = [[ChildAlertResponse alloc] init];
     AllChildRequest *allChildRequest = [[AllChildRequest alloc] init];
-    allChildRequest.response = childResponse;
-    [ChildManager requestAllChildren:allChildRequest];
+    [ChildManager requestAllChildren:allChildRequest withResponse:childResponse];
     [allChildRequest release];
     
     [pool release];
@@ -63,17 +124,19 @@ static NSMutableArray* alertArr;
     }
 }
 
-+(void)requestAlertsWithinRange:(AlertRangeRequest*)request {
++(void)requestAlertsWithinRange:(AlertRangeRequest*)request withResponse:(id<AlertRangeResponse>)response {
     // TODO: Take this out later when we're actually hitting the server
     // Check that the range is within the size of our array
     // NOTE: Make sure to retain the AlertRangeRequest when the request will be asynchronous
-    [NSThread detachNewThreadSelector:@selector(responseAlertsWithinRange:) toTarget:[self class] withObject:request];
+    request.response = response;
+    [request performSelectorInBackground:@selector(performRequest) withObject:nil];
 }
 
-+(void)requestAlertById:(AlertIdRequest*)request {
++(void)requestAlertById:(AlertIdRequest*)request withResponse:(id<AlertIdResponse>)response {
     // TODO: Alter this when we're actually hitting the server
     // NOTE: Make sure to retain the AlertIdRequest when the request will be asynchronous
-    [request.response receiveResponse:[alertDict objectForKey:request.alertId]];
+    request.response = response;
+    [request performSelectorInBackground:@selector(performRequest) withObject:nil];
 }
 
 -(void)dealloc {    
@@ -149,27 +212,4 @@ static NSMutableArray* alertArr;
 -(void)requestFailure:(NSError*)error {
     [self release];
 }
-@end
-
-
-@implementation AlertRangeRequest
-@synthesize range;
-@synthesize response;
-
--(void)dealloc {    
-    [super dealloc];
-}
-@end
-
-
-@implementation AlertIdRequest
-@synthesize alertId;
-@synthesize response;
-
--(void)dealloc {
-    [alertId release];
-    
-    [super dealloc];
-}
-
 @end

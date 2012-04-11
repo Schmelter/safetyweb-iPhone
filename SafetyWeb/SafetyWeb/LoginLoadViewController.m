@@ -46,8 +46,7 @@
     tokenCallback.callback = self;
     
     SafetyWebRequest *tokenRequest = [[SafetyWebRequest alloc] init];
-    [tokenRequest setCallbackObj:tokenCallback];
-    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.login, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
+    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.login, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]] withCallback:tokenCallback];
     [tokenCallback release];
     [tokenRequest release];
     
@@ -60,11 +59,14 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     ChildrenCallback *childrenCallback = [[ChildrenCallback alloc] init];
-    childrenCallback.response = childrenCallback;
+    NSLog(@"Children Callback Retain Count: %i", [childrenCallback retainCount]);
     childrenCallback.callback = self;
+    NSLog(@"Children Callback Retain Count: %i", [childrenCallback retainCount]);
     
-    [ChildManager requestAllChildren:childrenCallback];
+    [ChildManager requestAllChildren:childrenCallback withResponse:childrenCallback];
+    NSLog(@"Children Callback Retain Count: %i", [childrenCallback retainCount]);
     [childrenCallback release];
+    NSLog(@"Children Callback Retain Count: %i", [childrenCallback retainCount]);
     progressView.progressCurrent = 40.0f;
     
     [pool release];
@@ -106,10 +108,9 @@
         }
         
         ChildCallback *childCallback = [[ChildCallback alloc] init];
-        childCallback.response = childCallback;
         childCallback.callback = self;
         childCallback.childId = child.childId;
-        [ChildManager requestChildAccount:childCallback];
+        [ChildManager requestChildAccount:childCallback withResponse:childCallback];
         [childCallback release];
     }
     

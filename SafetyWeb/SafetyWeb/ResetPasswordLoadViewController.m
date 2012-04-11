@@ -50,8 +50,7 @@
     rpCallback.callback = self;
     
     SafetyWebRequest *rpRequest = [[SafetyWebRequest alloc] init];
-    [rpRequest setCallbackObj:rpCallback];
-    [rpRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_ForgotPassword" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:emailAddress, @"json", nil] forKeys:[NSArray arrayWithObjects:@"email", @"type", nil]]];
+    [rpRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_ForgotPassword" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:emailAddress, @"json", nil] forKeys:[NSArray arrayWithObjects:@"email", @"type", nil]] withCallback:rpCallback];
 //    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.username, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
     [rpCallback release];
     [rpRequest release];

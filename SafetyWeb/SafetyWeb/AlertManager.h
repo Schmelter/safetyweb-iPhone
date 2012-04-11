@@ -27,26 +27,22 @@
 
 @interface AlertRangeRequest : NSObject {
 @private
-    NSRange range;
-    id<AlertRangeResponse> response;
+    NSRange range_;
 }
 @property (nonatomic) NSRange range;
-@property (nonatomic, assign) id<AlertRangeResponse> response;
 @end
 
 @interface AlertIdRequest : NSObject {
 @private
     NSNumber *alertId;
-    id<AlertIdResponse> response;
 }
 @property (nonatomic, retain) NSNumber *alertId;
-@property (nonatomic, assign) id<AlertIdResponse> response;
 @end
 
 
 @interface AlertManager : NSObject
 
-+(void)requestAlertsWithinRange:(AlertRangeRequest*)request;
-+(void)requestAlertById:(AlertIdRequest*)request;
++(void)requestAlertsWithinRange:(AlertRangeRequest*)request withResponse:(id<AlertRangeResponse>)response;
++(void)requestAlertById:(AlertIdRequest*)request withResponse:(id<AlertIdResponse>)response;
 
 @end

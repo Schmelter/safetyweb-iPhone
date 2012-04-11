@@ -29,29 +29,23 @@
 
 @interface AllChildRequest : NSObject <SafetyWebRequestCallback> {
 @private
-    id<AllChildResponse> response;
 }
-@property (nonatomic, assign) id<AllChildResponse> response;
 @end
 
 @interface ChildIdRequest : NSObject <SafetyWebRequestCallback> {
 @private
     NSNumber *childId;
-    id<ChildResponse> response;
 }
 
 @property (nonatomic, retain) NSNumber *childId;
-@property (nonatomic, assign) id<ChildResponse> response;
 @end
 
 @interface ChildAccountRequest : NSObject <SafetyWebRequestCallback> {
 @private
     NSNumber *childId;
-    id<ChildResponse> response;
 }
 
 @property (nonatomic, retain) NSNumber *childId;
-@property (nonatomic, assign) id<ChildResponse> response;
 @end
 
 @interface ChildManager : NSObject {
@@ -60,8 +54,8 @@
 
 +(void)clearAllChildren;
 
-+(void)requestAllChildren:(AllChildRequest*)request;
-+(void)requestChildForId:(ChildIdRequest*)request;
-+(void)requestChildAccount:(ChildAccountRequest*)request;
++(void)requestAllChildren:(AllChildRequest*)request withResponse:(id<AllChildResponse>)response;
++(void)requestChildForId:(ChildIdRequest*)request withResponse:(id<ChildResponse>)response;
++(void)requestChildAccount:(ChildAccountRequest*)request withResponse:(id<ChildResponse>)response;
 
 @end
