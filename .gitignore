@@ -9,3 +9,10 @@
 *.exe
 *.o
 *.so
+
+# Ignore the Mac directory structore store file
+.DS_Store
+
+# Ignore the X-Code user data crap
+*xcuserdatad*
+*xcuserstate*
