@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [accountLoginBtn setTitle:[[UserManager getLastUsedCredentials] login] forState:UIControlStateNormal];
+    [accountLoginBtn setTitle:[UserManager getLastUsedLogin] forState:UIControlStateNormal];
     //[accountLoginBtn setTitle:@"Batman" forState:UIControlStateNormal];
     
     // Round some corners

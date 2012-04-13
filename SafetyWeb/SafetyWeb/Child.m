@@ -10,6 +10,7 @@
 #import "Account.h"
 #import "User.h"
 
+NSInteger accountSort(id alert1, id alert2, void *context);
 
 @implementation Child
 
@@ -23,9 +24,13 @@
 @dynamic accounts;
 @dynamic user;
 
+NSInteger accountSort(id account1, id account2, void *context) {
+    return [[(Account*)account1 accountId] compare:[(Account*)account2 accountId]];
+}
+
 -(NSArray*)sortedAccounts {
     NSSet *unsortedAccounts = (NSSet*)[self primitiveValueForKey:@"accounts"];
-    return [[unsortedAccounts allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:@"accountId"]];
+    return [[unsortedAccounts allObjects] sortedArrayUsingFunction:accountSort context:nil];
 }
 
 @end

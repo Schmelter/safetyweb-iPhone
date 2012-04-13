@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserManager.h"
 #import "MenuViewController.h"
 #import "MyPeopleCellController.h"
 
-@interface MyPeopleViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource, AllChildResponse> {
+@interface MyPeopleViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource, UserResponse> {
     @private
     MyPeopleCellController** cellControllers;
     NSInteger cellControllersLen;
     
-    NSArray *children;
+    User *user;
     NSObject *cellControllersLock;
     
     UITableView *myPeopleTable;

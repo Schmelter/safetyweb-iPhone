@@ -11,12 +11,12 @@
 #import "ChildManager.h"
 #import "CheckInCellController.h"
 
-@interface CheckInViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource, AllChildResponse> {
+@interface CheckInViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource, UserResponse> {
     @private
     CheckInCellController** cellControllers;
     NSInteger cellControllersLen;
     
-    NSArray *children;
+    User *user;
     NSObject *cellControllersLock;
     
     UITableView *checkInTable;

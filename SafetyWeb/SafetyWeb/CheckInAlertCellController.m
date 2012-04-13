@@ -41,10 +41,11 @@
     
     CheckInAlert *checkInAlert = (CheckInAlert*)alert;
     
-    ChildIdRequest *childIdRequest = [[ChildIdRequest alloc] init];
-    childIdRequest.childId = checkInAlert.childId;
-    [ChildManager requestChildForId:childIdRequest withResponse:self];
-    [childIdRequest release];
+    ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
+    childRequest.childId = checkInAlert.childId;
+    childRequest.user = [UserManager getCurrentUser];
+    [ChildManager requestChildAccount:childRequest withResponse:self];
+    [childRequest release];
     
     locationStr.text = checkInAlert.locationStr;
     locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";

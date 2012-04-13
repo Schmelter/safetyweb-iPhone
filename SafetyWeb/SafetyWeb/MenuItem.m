@@ -173,7 +173,6 @@
         textLabel.textColor = textColorSelected;
         textLabel.text = textSelected;
     } else {
-        NSLog(@"Left Image Retain Count: %i", [leftImage retainCount]);
         // Don't need to show the image, so use it all for text
         leftImageView.frame = CGRectMake(-(leftImage.size.width), (self.frame.size.height/2) - (leftImage.size.height/2), leftImage.size.width, leftImage.size.height);
         leftImageView.image = leftImage;

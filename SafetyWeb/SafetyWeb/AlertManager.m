@@ -15,9 +15,6 @@
 #import "CheckInAlert.h"
 #import "ChildManager.h"
 
-static NSMutableDictionary* alertDict;
-static NSMutableArray* alertArr;
-
 @interface AlertRangeRequest () {
     @private
     id<AlertRangeResponse> response;
@@ -33,6 +30,7 @@ static NSMutableArray* alertArr;
 @end
 
 @implementation AlertRangeRequest
+@synthesize user;
 @synthesize range = range_;
 @synthesize response;
 
@@ -42,6 +40,8 @@ static NSMutableArray* alertArr;
         usleep(1000000);  // 1 seconds
         
         NSRange range = self.range;
+        
+        NSArray *alertArr = [user sortedAlerts];
         
         range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
         range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
@@ -53,6 +53,7 @@ static NSMutableArray* alertArr;
 }
 
 -(void)dealloc {
+    [user release];
     [response release];
     
     [super dealloc];
@@ -61,16 +62,18 @@ static NSMutableArray* alertArr;
 
 
 @implementation AlertIdRequest
+@synthesize user;
 @synthesize alertId;
 @synthesize response;
 
 -(void)performRequest {
-    [self.response receiveResponse:[alertDict objectForKey:self.alertId]];
+    [self.response receiveResponse:[user getAlertForId:self.alertId]];
     
     self.response = nil;
 }
 
 -(void)dealloc {
+    [user release];
     [alertId release];
     [response release];
     
@@ -80,7 +83,7 @@ static NSMutableArray* alertArr;
 @end
 
 // TODO: Take this out later when we're actually hitting the server
-@interface ChildAlertResponse : NSObject <AllChildResponse>
+@interface UserAlertResponse : NSObject <UserResponse>
 @end
 
 @implementation AlertManager
@@ -92,36 +95,18 @@ static NSMutableArray* alertArr;
 }
 
 +(void)initialize {
-    alertDict = [[NSMutableDictionary alloc] init];
-    alertArr = [[NSMutableArray alloc] init];
-    
     // TODO: Take this out later when we're actually hitting the server
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    ChildAlertResponse *childResponse = [[ChildAlertResponse alloc] init];
-    AllChildRequest *allChildRequest = [[AllChildRequest alloc] init];
-    [ChildManager requestAllChildren:allChildRequest withResponse:childResponse];
-    [allChildRequest release];
+    UserAlertResponse *userResponse = [[UserAlertResponse alloc] init];
+    UserRequest *userRequest = [[UserRequest alloc] init];
+    userRequest.token = [UserManager getLastUsedToken];
+    [UserManager requestUser:userRequest withResponse:userResponse];
+    [userRequest release];
+    [userResponse release];
+    NSLog(@"UserResponse Retain Count: %i", [userResponse retainCount]);
     
     [pool release];
-}
-
-+(void)responseAlertsWithinRange:(AlertRangeRequest*)request {
-    @autoreleasepool {
-        
-    
-        NSLog(@"Before Sleep");
-        usleep(1000000);  // 1 seconds
-        NSLog(@"After Sleep");
-    
-        NSRange range = request.range;
-    
-        range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
-        range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
-    
-        [request.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
-        NSLog(@"Thread Over");
-    }
 }
 
 +(void)requestAlertsWithinRange:(AlertRangeRequest*)request withResponse:(id<AlertRangeResponse>)response {
@@ -146,8 +131,8 @@ static NSMutableArray* alertArr;
 @end
 
 
-@implementation ChildAlertResponse
--(void)childrenRequestSuccess:(NSArray *)children {
+@implementation UserAlertResponse
+-(void)userRequestSuccess:(User *)user {
     @autoreleasepool {
         
         NSInteger alertId = 1;
@@ -161,16 +146,16 @@ static NSMutableArray* alertArr;
         
         NSManagedObjectContext *context = ((SWAppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
         
-        for (Child* child in children) {
+        for (Child* child in user.children) {
             FacebookAlert *facebookAlert = [[FacebookAlert alloc] initWithEntity:[NSEntityDescription entityForName:@"FacebookAlert" inManagedObjectContext:context] insertIntoManagedObjectContext:context]; 
             facebookAlert.alertId = [NSNumber numberWithInt:alertId++];
             facebookAlert.childId = child.childId;
             facebookAlert.friendName = @"Johnny Jumper";
             facebookAlert.alertText = @"Who is 23 years older than her";
             facebookAlert.timestamp = facebookTimestamp;
+            facebookAlert.user = user;
+            [user addAlertsObject:facebookAlert];
             
-            [alertArr addObject:facebookAlert];
-            [alertDict setObject:facebookAlert forKey:facebookAlert.alertId];
             [FacebookAlert release];
             
             SMSAlert *smsAlert = [[SMSAlert alloc] initWithEntity:[NSEntityDescription entityForName:@"SMSAlert" inManagedObjectContext:context] insertIntoManagedObjectContext:context]; 
@@ -178,9 +163,9 @@ static NSMutableArray* alertArr;
             smsAlert.childId = child.childId;
             smsAlert.messagePhoneNumber = @"720.982.6931";
             smsAlert.timestamp = smsTimestamp;
+            smsAlert.user = user;
+            [user addAlertsObject:smsAlert];
             
-            [alertArr addObject:smsAlert];
-            [alertDict setObject:smsAlert forKey:smsAlert.alertId];
             [smsAlert release];
             
             CheckInAlert *checkInAlert = [[CheckInAlert alloc] initWithEntity:[NSEntityDescription entityForName:@"CheckInAlert" inManagedObjectContext:context] insertIntoManagedObjectContext:context]; 
@@ -191,9 +176,9 @@ static NSMutableArray* alertArr;
             checkInAlert.locationLong = locationLong;
             checkInAlert.locationApproved = locationApproved;
             checkInAlert.timestamp = checkInTimestamp;
+            checkInAlert.user = user;
+            [user addAlertsObject:checkInAlert];
             
-            [alertArr addObject:checkInAlert];
-            [alertDict setObject:checkInAlert forKey:checkInAlert.alertId];
             [checkInAlert release];
         }
         [facebookTimestamp release];
@@ -203,13 +188,10 @@ static NSMutableArray* alertArr;
         [locationLat release];
         [locationLong release];
         [locationApproved release];
-        
     }
-    // We're done, so get rid of ourselves
-    [self release];
 }
 
 -(void)requestFailure:(NSError*)error {
-    [self release];
+    
 }
 @end

@@ -15,14 +15,15 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        children = nil;
+        user = nil;
         cellControllersLen = 0;
         cellControllers = calloc(cellControllersLen, sizeof(CheckInCellController*));
         cellControllersLock = [[NSObject alloc] init];
         
-        AllChildRequest *allChildRequest = [[AllChildRequest alloc] init];
-        [ChildManager requestAllChildren:allChildRequest withResponse:self];
-        [allChildRequest release];
+        UserRequest *userRequest = [[UserRequest alloc] init];
+        userRequest.token = [UserManager getLastUsedToken];
+        [UserManager requestUser:userRequest withResponse:self];
+        [userRequest release];
     }
     return self;
 }
@@ -70,7 +71,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     @synchronized (cellControllersLock) {
-        Child *child = [children objectAtIndex:indexPath.row];
+        Child *child = [[user sortedChildren] objectAtIndex:indexPath.row];
         
         if (!cellControllers[indexPath.row]) {
             cellControllers[indexPath.row] = [[CheckInCellController alloc] initWithNibName:@"CheckInCellController" bundle:nil];
@@ -102,19 +103,19 @@
 
 #pragma mark -
 #pragma mark AllChildResponse Methods
--(void)childrenRequestSuccess:(NSArray*)aChildren {
+-(void)userRequestSuccess:(User *)aUser {
     @synchronized (cellControllersLock) {
-        [aChildren retain];
-        [children release];
-        children = aChildren;
+        [aUser retain];
+        [user release];
+        user = aUser;
         
-        CheckInCellController **newCellControllers = calloc([children count], sizeof(CheckInCellController*));
+        CheckInCellController **newCellControllers = calloc([[user children] count], sizeof(CheckInCellController*));
         for (int i = 0; i < cellControllersLen; i++) {
-            if ([children count] > i) newCellControllers[i] = cellControllers[i];
+            if ([user.children count] > i) newCellControllers[i] = cellControllers[i];
             else [cellControllers[i] release];
         }
         free(cellControllers);
-        cellControllersLen = [children count];
+        cellControllersLen = [user.children count];
         cellControllers = newCellControllers;
         
         [checkInTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];

@@ -19,6 +19,12 @@
 @property (nonatomic, retain) NSDate * tokenStart;
 @property (nonatomic, retain) NSSet *children;
 @property (nonatomic, retain) NSSet *alerts;
+@property (nonatomic, retain) NSDate * userLastRequested;
+
+-(Child*)getChildForId:(NSNumber*)childId;
+-(Alert*)getAlertForId:(NSNumber*)alertId;
+-(NSArray*)sortedChildren;
+-(NSArray*)sortedAlerts;
 @end
 
 @interface User (CoreDataGeneratedAccessors)

@@ -44,10 +44,11 @@
     [loginViewController release];
 }
 
-- (void)displayLoginLoadViewController:(User*)credentials {
+- (void)displayLoginLoadViewController:(NSString*)login withPassword:(NSString*)password {
     LoginLoadViewController *loadLoginVC = [[LoginLoadViewController alloc] initWithNibName:@"LoadView" bundle:nil];
     [loadLoginVC setRootViewController:self];
-    loadLoginVC.credentials = credentials;
+    loadLoginVC.login = login;
+    loadLoginVC.password = password;
     [currentViewController.view removeFromSuperview];
     [self setCurrentViewController:loadLoginVC];
     [self.view addSubview:loadLoginVC.view];

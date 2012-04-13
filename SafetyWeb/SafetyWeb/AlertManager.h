@@ -27,15 +27,19 @@
 
 @interface AlertRangeRequest : NSObject {
 @private
+    User *user;
     NSRange range_;
 }
+@property (nonatomic, retain) User *user;
 @property (nonatomic) NSRange range;
 @end
 
 @interface AlertIdRequest : NSObject {
 @private
+    User *user;
     NSNumber *alertId;
 }
+@property (nonatomic, retain) User *user;
 @property (nonatomic, retain) NSNumber *alertId;
 @end
 

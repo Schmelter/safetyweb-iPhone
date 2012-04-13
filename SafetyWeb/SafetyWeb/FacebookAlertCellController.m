@@ -36,9 +36,10 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     FacebookAlert *fbAlert = (FacebookAlert*) alert;
     
-    ChildIdRequest *childRequest = [[ChildIdRequest alloc] init];
+    ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
     childRequest.childId = fbAlert.childId;
-    [ChildManager requestChildForId:childRequest withResponse:self];
+    childRequest.user = [UserManager getCurrentUser];
+    [ChildManager requestChildAccount:childRequest withResponse:self];
     [childRequest release];
     friendName.text = fbAlert.friendName;
     alertMessage.text = fbAlert.alertText;

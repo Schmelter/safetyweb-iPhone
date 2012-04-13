@@ -36,9 +36,10 @@
     // We know this is actually an SMSAlert, so just convert it over
     SMSAlert *smsAlert = (SMSAlert*)alert;
     
-    ChildIdRequest *childRequest = [[ChildIdRequest alloc] init];
+    ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
     childRequest.childId = smsAlert.childId;
-    [ChildManager requestChildForId:childRequest withResponse:self];
+    childRequest.user = [UserManager getCurrentUser];
+    [ChildManager requestChildAccount:childRequest withResponse:self];
     [childRequest release];
     
     messagePhoneNumber.text = smsAlert.messagePhoneNumber;

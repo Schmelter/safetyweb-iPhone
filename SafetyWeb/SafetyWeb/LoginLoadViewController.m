@@ -12,7 +12,7 @@
 @property (nonatomic, retain) LoginLoadViewController* callback;
 @end
 
-@interface ChildrenCallback : AllChildRequest <AllChildResponse>
+@interface UserCallback : UserRequest <UserResponse>
 @property (nonatomic, retain) LoginLoadViewController* callback;
 @end;
 
@@ -22,7 +22,8 @@
 
 @implementation LoginLoadViewController
 
-@synthesize credentials;
+@synthesize login;
+@synthesize password;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,8 +45,8 @@
     
     TokenCallback *tokenCallback = [[TokenCallback alloc] init];
     tokenCallback.callback = self;
-    tokenCallback.login = credentials.login;
-    tokenCallback.password = credentials.password;
+    tokenCallback.login = login;
+    tokenCallback.password = password;
     
     [UserManager requestToken:tokenCallback withResponse:tokenCallback];
     [tokenCallback release];
@@ -53,16 +54,17 @@
     [pool release];
 }
 
--(void)makeChildrenRequest {
-    [ChildManager clearAllChildren];
-    
+-(void)makeUserRequest {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    ChildrenCallback *childrenCallback = [[ChildrenCallback alloc] init];
-    childrenCallback.callback = self;
+    [UserManager setCurrentUser:nil];
     
-    [ChildManager requestAllChildren:childrenCallback withResponse:childrenCallback];
-    [childrenCallback release];
+    UserCallback *userCallback = [[UserCallback alloc] init];
+    userCallback.callback = self;
+    userCallback.token = token;
+    
+    [UserManager requestUser:userCallback withResponse:userCallback];
+    [userCallback release];
     progressView.progressCurrent = 40.0f;
     
     [pool release];
@@ -72,9 +74,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (credentials.token != nil) {
+    if (token != nil) {
         // The token is valid and has not expired
-        [self makeChildrenRequest];
+        [self makeUserRequest];
         progressView.progressCurrent = 30.0f;
     } else {
         // The token does not exist, or is not valid, get a new one
@@ -84,21 +86,27 @@
 }
 
 -(void)tokenRequestSuccess:(NSString*)aToken {
-    self.credentials.token = aToken;
+    [aToken retain];
+    [token release];
+    token = aToken;
     // TODO: Is this the proper place to set the credentials?  We haven't fully logged them in, but we have verified their login info...
-    [UserManager setLastUsedCredentials:self.credentials];
+    [UserManager setLastUsedLogin:self.login];
+    [UserManager setLastUsedPassword:self.password];
+    [UserManager setLastUsedToken:aToken];
     progressView.progressCurrent = 30.f;
-    [self makeChildrenRequest];
+    [self makeUserRequest];
 }
 
--(void)childrenRequestSuccess:(NSArray*)children {
+-(void)userRequestSuccess:(User*)user {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    [UserManager setCurrentUser:user];
     
     // For each child, fire off a request to get more information about that child
     // All ChildCallbacks are the same, so we only need one
-    totalChildRequests = [children count];
+    totalChildRequests = [[user children] count];
     totalChildRequests = totalChildRequests == 0 ? 1 : totalChildRequests;  // Just to guarantee we never divide by zero
-    for (Child *child in children) {
+    for (Child *child in [user children]) {
         @synchronized(self) {
             pendingChildRequests++;
         }
@@ -106,6 +114,7 @@
         ChildCallback *childCallback = [[ChildCallback alloc] init];
         childCallback.callback = self;
         childCallback.childId = child.childId;
+        childCallback.user = user;
         [ChildManager requestChildAccount:childCallback withResponse:childCallback];
         [childCallback release];
     }
@@ -124,7 +133,6 @@
         if (pendingChildRequests == 0) {
             // The login actually worked, and they got in just fine
             // Store the credentials, and show the main menu
-            [UserManager setLastUsedCredentials:credentials];
             [rootViewController displayMenuViewController];
         }
     }
@@ -166,7 +174,8 @@
 }
 
 -(void)dealloc {
-    [credentials release];
+    [login release];
+    [password release];
     
     [super dealloc];
 }
@@ -191,11 +200,11 @@
 }
 @end
 
-@implementation ChildrenCallback
+@implementation UserCallback
 @synthesize callback;
 
--(void)childrenRequestSuccess:(NSArray *)children {
-    [self.callback childrenRequestSuccess:children];
+-(void)userRequestSuccess:(User*)user {
+    [self.callback userRequestSuccess:user];
 }
 
 -(void)requestFailure:(NSError*)error {

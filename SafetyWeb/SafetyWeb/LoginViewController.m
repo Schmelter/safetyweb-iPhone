@@ -23,7 +23,6 @@
 - (void)viewDidLoad {
     // Get the current username/password from the last login, or the last time they used this
     // interface
-    User *credentials = [UserManager getLastUsedCredentials];
     self.username = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 48)];
     self.password = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 185, 48)];
     [username release];
@@ -49,10 +48,8 @@
     password.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [password addTarget:self action:@selector(passwordDoneEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    if (credentials != nil) {
-        [username setText:credentials.login];
-        [password setText:credentials.password];
-    }
+    [username setText:[UserManager getLastUsedLogin]];
+    [password setText:[UserManager getLastUsedPassword]];
     
     userPassTable.layer.cornerRadius = 10;
     userPassTable.scrollEnabled = NO;
@@ -90,13 +87,7 @@
         return;
     }
     
-    NSManagedObjectContext *context = ((SWAppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
-    
-    User *userCredentials = [[User alloc] initWithEntity:[NSEntityDescription entityForName:@"User" inManagedObjectContext:context] insertIntoManagedObjectContext:context];                                                                                                     
-    userCredentials.login = usernameStr;
-    userCredentials.password = passwordStr;
-    [rootViewController displayLoginLoadViewController:userCredentials];
-    [userCredentials release];
+    [rootViewController displayLoginLoadViewController:usernameStr withPassword:passwordStr];
 }
 
 #pragma mark -

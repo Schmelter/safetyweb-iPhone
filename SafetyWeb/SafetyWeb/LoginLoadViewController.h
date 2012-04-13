@@ -18,11 +18,14 @@
 
 @interface LoginLoadViewController : LoadViewController {
     @private
-    User *credentials;
+    NSString *login;
+    NSString *password;
+    NSString *token;
     double pendingChildRequests;
     double totalChildRequests;
 }
 
-@property (nonatomic, retain) User *credentials;
+@property (nonatomic, retain) NSString *login;
+@property (nonatomic, retain) NSString *password;
 
 @end
