@@ -10,10 +10,6 @@
 		8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */; };
 		8914514C1522541300800262 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914514A1522541300800262 /* SettingsViewController.m */; };
 		8914514D1522541300800262 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8914514B1522541300800262 /* SettingsViewController.xib */; };
-		893683BC152F753A008CC00C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 893683BB152F753A008CC00C /* libsqlite3.dylib */; };
-		893683BD152F7543008CC00C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 893683B1152F748B008CC00C /* libMapView.a */; };
-		893683BE152F7549008CC00C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 893683BB152F753A008CC00C /* libsqlite3.dylib */; };
-		893683BF152F754D008CC00C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 893683B1152F748B008CC00C /* libMapView.a */; };
 		8936AFE3150FC28B005C8237 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936AFE1150FC28B005C8237 /* MenuViewController.m */; };
 		8936AFE4150FC28B005C8237 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8936AFE2150FC28B005C8237 /* MenuViewController.xib */; };
 		8936AFE8150FC6D2005C8237 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8936AFE7150FC6D2005C8237 /* MenuItem.m */; };
@@ -307,48 +303,13 @@
 		89BD10F215250B2300141BFA /* CheckInAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10F015250B2200141BFA /* CheckInAlertCellController.m */; };
 		89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */; };
 		89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
+		89BDA89A1526323A004FEF30 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8991526323A004FEF30 /* libz.dylib */; };
+		89BDA89D15263246004FEF30 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA89C15263246004FEF30 /* libxml2.dylib */; };
+		89BDA89F15263259004FEF30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA89E15263259004FEF30 /* SystemConfiguration.framework */; };
+		89BDA8A11526326B004FEF30 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A01526326B004FEF30 /* OpenGLES.framework */; };
 		89BDA8A315263277004FEF30 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
-		89C3E284152DF5EF0002B0E7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
-		89C3E285152DF5FB0002B0E7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
+		89BDA8A5152632E9004FEF30 /* libBingMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A4152632E9004FEF30 /* libBingMaps.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		893683B0152F748B008CC00C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 893683A0152F748A008CC00C /* MapView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 17F31EFA1331050A00122B16;
-			remoteInfo = MapView;
-		};
-		893683B2152F748B008CC00C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 893683A0152F748A008CC00C /* MapView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 17157D87133BBC8300E28941;
-			remoteInfo = MapViewTests;
-		};
-		893683B4152F748B008CC00C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 893683A0152F748A008CC00C /* MapView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2BF3078F0F8AC5C0007014EE;
-			remoteInfo = "Unit Tests";
-		};
-		893683B7152F7497008CC00C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 893683A0152F748A008CC00C /* MapView.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
-			remoteInfo = MapView;
-		};
-		893683B9152F749A008CC00C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 893683A0152F748A008CC00C /* MapView.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
-			remoteInfo = MapView;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8901AE5D14EDCA7300059179 /* LoginLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLoadViewController.h; sourceTree = "<group>"; };
@@ -356,8 +317,6 @@
 		891451491522541300800262 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8914514A1522541300800262 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8914514B1522541300800262 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
-		893683A0152F748A008CC00C /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = ../../routme.git/MapView/MapView.xcodeproj; sourceTree = "<group>"; };
-		893683BB152F753A008CC00C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8936AFE0150FC28B005C8237 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		8936AFE1150FC28B005C8237 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		8936AFE2150FC28B005C8237 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
@@ -494,6 +453,16 @@
 		897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewProfileViewController.m; sourceTree = "<group>"; };
 		897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewProfileViewController.xib; sourceTree = "<group>"; };
 		8981393515238A38003B6A0D /* BingMaps.Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BingMaps.Resources.bundle; sourceTree = "<group>"; };
+		8981393915238A45003B6A0D /* BingMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingMaps.h; sourceTree = "<group>"; };
+		8981393A15238A45003B6A0D /* BMEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEntity.h; sourceTree = "<group>"; };
+		8981393B15238A45003B6A0D /* BMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMGeometry.h; sourceTree = "<group>"; };
+		8981393C15238A45003B6A0D /* BMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMapView.h; sourceTree = "<group>"; };
+		8981393D15238A45003B6A0D /* BMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarker.h; sourceTree = "<group>"; };
+		8981393E15238A45003B6A0D /* BMMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarkerView.h; sourceTree = "<group>"; };
+		8981393F15238A45003B6A0D /* BMPushpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPushpinView.h; sourceTree = "<group>"; };
+		8981394015238A45003B6A0D /* BMReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMReverseGeocoder.h; sourceTree = "<group>"; };
+		8981394115238A45003B6A0D /* BMTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTypes.h; sourceTree = "<group>"; };
+		8981394215238A45003B6A0D /* BMUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMUserLocation.h; sourceTree = "<group>"; };
 		898139461523A04B003B6A0D /* AlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertManager.h; sourceTree = "<group>"; };
 		898139471523A04B003B6A0D /* AlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertManager.m; sourceTree = "<group>"; };
 		8981394B1523BF95003B6A0D /* FacebookAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlertCellController.h; sourceTree = "<group>"; };
@@ -585,8 +554,12 @@
 		89BD10F015250B2200141BFA /* CheckInAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlertCellController.m; sourceTree = "<group>"; };
 		89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInAlertCellController.xib; sourceTree = "<group>"; };
 		89BD10F61525195400141BFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		89BDA8991526323A004FEF30 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		89BDA89C15263246004FEF30 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		89BDA89E15263259004FEF30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		89BDA8A01526326B004FEF30 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		89BDA8A215263277004FEF30 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		89BDA8A4152632E9004FEF30 /* libBingMaps.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBingMaps.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -594,14 +567,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				893683BD152F7543008CC00C /* libMapView.a in Frameworks */,
-				893683BC152F753A008CC00C /* libsqlite3.dylib in Frameworks */,
+				89BDA89D15263246004FEF30 /* libxml2.dylib in Frameworks */,
+				89BDA89A1526323A004FEF30 /* libz.dylib in Frameworks */,
+				89BDA89F15263259004FEF30 /* SystemConfiguration.framework in Frameworks */,
 				89964B5F14F80DB6006A0D7D /* QuartzCore.framework in Frameworks */,
+				89BDA8A11526326B004FEF30 /* OpenGLES.framework in Frameworks */,
 				89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */,
 				89BDA8A315263277004FEF30 /* CoreData.framework in Frameworks */,
 				897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */,
 				897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */,
 				897E980E14DB02C3007595A7 /* CoreGraphics.framework in Frameworks */,
+				89BDA8A5152632E9004FEF30 /* libBingMaps.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,10 +585,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				893683BF152F754D008CC00C /* libMapView.a in Frameworks */,
-				893683BE152F7549008CC00C /* libsqlite3.dylib in Frameworks */,
-				89C3E285152DF5FB0002B0E7 /* CoreData.framework in Frameworks */,
-				89C3E284152DF5EF0002B0E7 /* CoreLocation.framework in Frameworks */,
 				89964B6014F80DC0006A0D7D /* QuartzCore.framework in Frameworks */,
 				89AA20CD14F5869B0082C7B5 /* GHUnitIOS.framework in Frameworks */,
 				89AA20AB14F582500082C7B5 /* UIKit.framework in Frameworks */,
@@ -624,16 +596,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		893683A1152F748A008CC00C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				893683B1152F748B008CC00C /* libMapView.a */,
-				893683B3152F748B008CC00C /* MapViewTests.octest */,
-				893683B5152F748B008CC00C /* RM Unit Tests.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		8936AFDE150FB415005C8237 /* Login Setup UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,8 +722,8 @@
 		897E97FA14DB02C3007595A7 = {
 			isa = PBXGroup;
 			children = (
-				893683A0152F748A008CC00C /* MapView.xcodeproj */,
 				898441D614E48A240047CDFE /* images */,
+				8981393815238A45003B6A0D /* BingMaps */,
 				897E980F14DB02C3007595A7 /* SafetyWeb */,
 				89AA20AE14F582500082C7B5 /* SafetyWebTests */,
 				897E980814DB02C3007595A7 /* Frameworks */,
@@ -781,9 +743,11 @@
 		897E980814DB02C3007595A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				893683BB152F753A008CC00C /* libsqlite3.dylib */,
 				89BDA8A215263277004FEF30 /* CoreData.framework */,
+				89BDA8A01526326B004FEF30 /* OpenGLES.framework */,
 				89BDA89E15263259004FEF30 /* SystemConfiguration.framework */,
+				89BDA89C15263246004FEF30 /* libxml2.dylib */,
+				89BDA8991526323A004FEF30 /* libz.dylib */,
 				89BD10F61525195400141BFA /* CoreLocation.framework */,
 				89964B5E14F80DB6006A0D7D /* QuartzCore.framework */,
 				89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */,
@@ -791,6 +755,7 @@
 				897E980B14DB02C3007595A7 /* Foundation.framework */,
 				897E980D14DB02C3007595A7 /* CoreGraphics.framework */,
 				897E982114DB02C3007595A7 /* SenTestingKit.framework */,
+				89BDA8A4152632E9004FEF30 /* libBingMaps.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -827,6 +792,23 @@
 				89740ABC14EC70E40064E64A /* AppProperties.prod.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8981393815238A45003B6A0D /* BingMaps */ = {
+			isa = PBXGroup;
+			children = (
+				8981393915238A45003B6A0D /* BingMaps.h */,
+				8981393A15238A45003B6A0D /* BMEntity.h */,
+				8981393B15238A45003B6A0D /* BMGeometry.h */,
+				8981393C15238A45003B6A0D /* BMMapView.h */,
+				8981393D15238A45003B6A0D /* BMMarker.h */,
+				8981393E15238A45003B6A0D /* BMMarkerView.h */,
+				8981393F15238A45003B6A0D /* BMPushpinView.h */,
+				8981394015238A45003B6A0D /* BMReverseGeocoder.h */,
+				8981394115238A45003B6A0D /* BMTypes.h */,
+				8981394215238A45003B6A0D /* BMUserLocation.h */,
+			);
+			path = BingMaps;
 			sourceTree = "<group>";
 		};
 		898441D614E48A240047CDFE /* images */ = {
@@ -1002,7 +984,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				893683B8152F7497008CC00C /* PBXTargetDependency */,
 			);
 			name = SafetyWeb;
 			productName = SafetyWeb;
@@ -1020,7 +1001,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				893683BA152F749A008CC00C /* PBXTargetDependency */,
 			);
 			name = SafetyWebTests;
 			productName = SafetyWebTests;
@@ -1046,12 +1026,6 @@
 			mainGroup = 897E97FA14DB02C3007595A7;
 			productRefGroup = 897E980614DB02C3007595A7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 893683A1152F748A008CC00C /* Products */;
-					ProjectRef = 893683A0152F748A008CC00C /* MapView.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				897E980414DB02C3007595A7 /* SafetyWeb */,
@@ -1059,30 +1033,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		893683B1152F748B008CC00C /* libMapView.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMapView.a;
-			remoteRef = 893683B0152F748B008CC00C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		893683B3152F748B008CC00C /* MapViewTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MapViewTests.octest;
-			remoteRef = 893683B2152F748B008CC00C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		893683B5152F748B008CC00C /* RM Unit Tests.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "RM Unit Tests.app";
-			remoteRef = 893683B4152F748B008CC00C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		897E980314DB02C3007595A7 /* Resources */ = {
@@ -1404,19 +1354,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		893683B8152F7497008CC00C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MapView;
-			targetProxy = 893683B7152F7497008CC00C /* PBXContainerItemProxy */;
-		};
-		893683BA152F749A008CC00C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MapView;
-			targetProxy = 893683B9152F749A008CC00C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		897E981214DB02C3007595A7 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1441,10 +1378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1459,10 +1393,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../../routme.git/MapView/**",
-					"$(SRCROOT)",
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1476,10 +1407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1487,10 +1415,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../../routme.git/MapView/**",
-					"$(SRCROOT)",
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
