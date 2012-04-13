@@ -248,6 +248,8 @@
 		89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */; };
 		89964B5F14F80DB6006A0D7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B5E14F80DB6006A0D7D /* QuartzCore.framework */; };
 		89964B6014F80DC0006A0D7D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89964B5E14F80DB6006A0D7D /* QuartzCore.framework */; };
+		89968C141538D26900F3AD37 /* CheckInAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89968C131538D26900F3AD37 /* CheckInAlertCellController.xib */; };
+		89968C151538D26900F3AD37 /* CheckInAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89968C131538D26900F3AD37 /* CheckInAlertCellController.xib */; };
 		899754D014EEFCC40046B1DA /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 899754CF14EEFCC40046B1DA /* JSONKit.m */; };
 		899754D414EF0FB60046B1DA /* ChildManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 899754D314EF0FB60046B1DA /* ChildManager.m */; };
 		899C095014EAD9A000DDC780 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C094F14EAD9A000DDC780 /* LoadView.m */; };
@@ -301,7 +303,6 @@
 		89BD10E51524FAA600141BFA /* SMSAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10E31524FAA600141BFA /* SMSAlertCellController.m */; };
 		89BD10E61524FAA600141BFA /* SMSAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */; };
 		89BD10F215250B2300141BFA /* CheckInAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10F015250B2200141BFA /* CheckInAlertCellController.m */; };
-		89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */; };
 		89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
 		89BDA89A1526323A004FEF30 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8991526323A004FEF30 /* libz.dylib */; };
 		89BDA89D15263246004FEF30 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA89C15263246004FEF30 /* libxml2.dylib */; };
@@ -453,16 +454,6 @@
 		897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewProfileViewController.m; sourceTree = "<group>"; };
 		897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewProfileViewController.xib; sourceTree = "<group>"; };
 		8981393515238A38003B6A0D /* BingMaps.Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BingMaps.Resources.bundle; sourceTree = "<group>"; };
-		8981393915238A45003B6A0D /* BingMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingMaps.h; sourceTree = "<group>"; };
-		8981393A15238A45003B6A0D /* BMEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEntity.h; sourceTree = "<group>"; };
-		8981393B15238A45003B6A0D /* BMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMGeometry.h; sourceTree = "<group>"; };
-		8981393C15238A45003B6A0D /* BMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMapView.h; sourceTree = "<group>"; };
-		8981393D15238A45003B6A0D /* BMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarker.h; sourceTree = "<group>"; };
-		8981393E15238A45003B6A0D /* BMMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarkerView.h; sourceTree = "<group>"; };
-		8981393F15238A45003B6A0D /* BMPushpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPushpinView.h; sourceTree = "<group>"; };
-		8981394015238A45003B6A0D /* BMReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMReverseGeocoder.h; sourceTree = "<group>"; };
-		8981394115238A45003B6A0D /* BMTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTypes.h; sourceTree = "<group>"; };
-		8981394215238A45003B6A0D /* BMUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMUserLocation.h; sourceTree = "<group>"; };
 		898139461523A04B003B6A0D /* AlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertManager.h; sourceTree = "<group>"; };
 		898139471523A04B003B6A0D /* AlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertManager.m; sourceTree = "<group>"; };
 		8981394B1523BF95003B6A0D /* FacebookAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlertCellController.h; sourceTree = "<group>"; };
@@ -492,6 +483,17 @@
 		89867F2314E99FD500B054B2 /* MobileAlertSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileAlertSetup2ViewController.m; sourceTree = "<group>"; };
 		89867F2514E9A65700B054B2 /* MobileAlertSetup2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileAlertSetup2View.xib; sourceTree = "<group>"; };
 		89964B5E14F80DB6006A0D7D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		89968C091538D12E00F3AD37 /* BingMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingMaps.h; sourceTree = "<group>"; };
+		89968C0A1538D12E00F3AD37 /* BMEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEntity.h; sourceTree = "<group>"; };
+		89968C0B1538D12E00F3AD37 /* BMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMGeometry.h; sourceTree = "<group>"; };
+		89968C0C1538D12E00F3AD37 /* BMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMapView.h; sourceTree = "<group>"; };
+		89968C0D1538D12E00F3AD37 /* BMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarker.h; sourceTree = "<group>"; };
+		89968C0E1538D12E00F3AD37 /* BMMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMarkerView.h; sourceTree = "<group>"; };
+		89968C0F1538D12E00F3AD37 /* BMPushpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPushpinView.h; sourceTree = "<group>"; };
+		89968C101538D12E00F3AD37 /* BMReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMReverseGeocoder.h; sourceTree = "<group>"; };
+		89968C111538D12E00F3AD37 /* BMTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTypes.h; sourceTree = "<group>"; };
+		89968C121538D12E00F3AD37 /* BMUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMUserLocation.h; sourceTree = "<group>"; };
+		89968C131538D26900F3AD37 /* CheckInAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInAlertCellController.xib; sourceTree = "<group>"; };
 		899754CE14EEFCC40046B1DA /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		899754CF14EEFCC40046B1DA /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		899754D214EF0FB60046B1DA /* ChildManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildManager.h; sourceTree = "<group>"; };
@@ -552,7 +554,6 @@
 		89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSAlertCellController.xib; sourceTree = "<group>"; };
 		89BD10EF15250B2200141BFA /* CheckInAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInAlertCellController.h; sourceTree = "<group>"; };
 		89BD10F015250B2200141BFA /* CheckInAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlertCellController.m; sourceTree = "<group>"; };
-		89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInAlertCellController.xib; sourceTree = "<group>"; };
 		89BD10F61525195400141BFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		89BDA8991526323A004FEF30 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		89BDA89C15263246004FEF30 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -679,7 +680,7 @@
 				89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */,
 				89BD10EF15250B2200141BFA /* CheckInAlertCellController.h */,
 				89BD10F015250B2200141BFA /* CheckInAlertCellController.m */,
-				89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */,
+				89968C131538D26900F3AD37 /* CheckInAlertCellController.xib */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -722,8 +723,8 @@
 		897E97FA14DB02C3007595A7 = {
 			isa = PBXGroup;
 			children = (
+				89968C081538D12E00F3AD37 /* BingMaps */,
 				898441D614E48A240047CDFE /* images */,
-				8981393815238A45003B6A0D /* BingMaps */,
 				897E980F14DB02C3007595A7 /* SafetyWeb */,
 				89AA20AE14F582500082C7B5 /* SafetyWebTests */,
 				897E980814DB02C3007595A7 /* Frameworks */,
@@ -792,23 +793,6 @@
 				89740ABC14EC70E40064E64A /* AppProperties.prod.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8981393815238A45003B6A0D /* BingMaps */ = {
-			isa = PBXGroup;
-			children = (
-				8981393915238A45003B6A0D /* BingMaps.h */,
-				8981393A15238A45003B6A0D /* BMEntity.h */,
-				8981393B15238A45003B6A0D /* BMGeometry.h */,
-				8981393C15238A45003B6A0D /* BMMapView.h */,
-				8981393D15238A45003B6A0D /* BMMarker.h */,
-				8981393E15238A45003B6A0D /* BMMarkerView.h */,
-				8981393F15238A45003B6A0D /* BMPushpinView.h */,
-				8981394015238A45003B6A0D /* BMReverseGeocoder.h */,
-				8981394115238A45003B6A0D /* BMTypes.h */,
-				8981394215238A45003B6A0D /* BMUserLocation.h */,
-			);
-			path = BingMaps;
 			sourceTree = "<group>";
 		};
 		898441D614E48A240047CDFE /* images */ = {
@@ -910,6 +894,23 @@
 				8952CA201538A6DF00F47861 /* Verizon_btn_off@2x.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		89968C081538D12E00F3AD37 /* BingMaps */ = {
+			isa = PBXGroup;
+			children = (
+				89968C091538D12E00F3AD37 /* BingMaps.h */,
+				89968C0A1538D12E00F3AD37 /* BMEntity.h */,
+				89968C0B1538D12E00F3AD37 /* BMGeometry.h */,
+				89968C0C1538D12E00F3AD37 /* BMMapView.h */,
+				89968C0D1538D12E00F3AD37 /* BMMarker.h */,
+				89968C0E1538D12E00F3AD37 /* BMMarkerView.h */,
+				89968C0F1538D12E00F3AD37 /* BMPushpinView.h */,
+				89968C101538D12E00F3AD37 /* BMReverseGeocoder.h */,
+				89968C111538D12E00F3AD37 /* BMTypes.h */,
+				89968C121538D12E00F3AD37 /* BMUserLocation.h */,
+			);
+			path = BingMaps;
 			sourceTree = "<group>";
 		};
 		899754CD14EEFAF50046B1DA /* JSONKit */ = {
@@ -1064,7 +1065,6 @@
 				8981393615238A38003B6A0D /* BingMaps.Resources.bundle in Resources */,
 				8981394F1523BF96003B6A0D /* FacebookAlertCellController.xib in Resources */,
 				89BD10E61524FAA600141BFA /* SMSAlertCellController.xib in Resources */,
-				89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */,
 				8952CA211538A6DF00F47861 /* Add-Button@2x.png in Resources */,
 				8952CA231538A6DF00F47861 /* AlertDetail_DropShadow@2x.png in Resources */,
 				8952CA251538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png in Resources */,
@@ -1162,6 +1162,7 @@
 				8952CADD1538A6DF00F47861 /* StandardBackground@2x.png in Resources */,
 				8952CADF1538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */,
 				8952CAE21538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */,
+				89968C141538D26900F3AD37 /* CheckInAlertCellController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1270,6 +1271,7 @@
 				8952CADE1538A6DF00F47861 /* StandardBackground@2x.png in Resources */,
 				8952CAE01538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */,
 				8952CAE31538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */,
+				89968C151538D26900F3AD37 /* CheckInAlertCellController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

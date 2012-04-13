@@ -7,10 +7,6 @@
 //
 
 #import "CheckInAlertCellController.h"
-#import "RMCloudMadeMapSource.h"
-#import "RMVirtualEarthSource.h"
-#import "RMMarkerManager.h"
-#import "RMMarker.h"
 
 @implementation CheckInAlertCellController
 @synthesize childName;
@@ -41,11 +37,11 @@
     
     CheckInAlert *checkInAlert = (CheckInAlert*)alert;
     
-    ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
-    childRequest.childId = checkInAlert.childId;
-    childRequest.user = [UserManager getCurrentUser];
-    [ChildManager requestChildAccount:childRequest withResponse:self];
-    [childRequest release];
+    ChildAccountRequest *childAccountRequest = [[ChildAccountRequest alloc] init];
+    childAccountRequest.user = checkInAlert.user;
+    childAccountRequest.childId = checkInAlert.childId;
+    [ChildManager requestChildAccount:childAccountRequest withResponse:self];
+    [childAccountRequest release];
     
     locationStr.text = checkInAlert.locationStr;
     locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";
@@ -53,40 +49,6 @@
     
     if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"Alerts_Screen_ZebraStripe.png"];
     else backgroundImage.image = nil;
-    
-    mapView.delegate = self;
-    //mapContents = [[RMMapContents alloc] initWithView:mapView
-    //                                       tilesource:[[RMCloudMadeMapSource alloc] initWithAccessKey:@"0199bdee456e59ce950b0156029d6934" styleNumber:7]];
-    
-    //mapContents = [[RMMapContents alloc] initWithView:mapView
-    //                         tilesource:[[RMVirtualEarthSource alloc] initWithHybridThemeUsingAccessKey:@"invalidKey"]];
-    
-    [mapView setNeedsLayout];
-    [mapView setNeedsDisplay];
-    
-    mapView.enableDragging = NO;
-    mapView.enableZoom = NO;
-    mapView.enableRotate = NO;
-    CLLocationCoordinate2D location = CLLocationCoordinate2DMake([checkInAlert.locationLat floatValue], [checkInAlert.locationLong floatValue]);
-    [mapView moveToLatLong:location];
-    [mapView zoomByFactor:1.0 near:CGPointMake(mapView.frame.origin.x + (mapView.frame.size.width / 2), mapView.frame.origin.y + (mapView.frame.size.height / 2)) animated:NO];
-    
-    
-    UIImage *childImage = [UIImage imageNamed:@"point.png"];
-    RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:childImage];
-    [mapView.markerManager addMarker:childMarker AtLatLong:location];
-    [childMarker release];
-    
-    /*id<MKAnnotation> annotation = [[SWPointAnnotation alloc] init];
-    annotation.coordinate = checkInAlert.location;
-    annotation.title = @"Title";
-    annotation.subtitle = @"SubTitle";
-    
-    [mapView addAnnotation:annotation];
-    [annotation release];*/
-    
-    // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
-    mapView.userInteractionEnabled = NO;
     
     [pool release];
 }
@@ -97,9 +59,6 @@
     self.timeMessage = nil;
     self.backgroundImage = nil;
     self.mapView = nil;
-
-    [mapContents release];
-    mapContents = nil;
     
     [super viewDidUnload];
 }
@@ -107,6 +66,24 @@
 -(void)expand {
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, 320, 140);
     backgroundImage.frame = CGRectMake(backgroundImage.frame.origin.x, backgroundImage.frame.origin.y, 320, 140);
+    
+    CheckInAlert *checkInAlert = (CheckInAlert*)alert;
+    // Add the mapView
+    self.mapView = [[BMMapView alloc] initWithFrame:CGRectMake(10, 75, 300, 60)];
+    [mapView setDelegate:self];
+    mapView.scrollEnabled = NO;
+    mapView.zoomEnabled = NO;
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake([checkInAlert.locationLat floatValue], [checkInAlert.locationLong floatValue]);
+    [mapView setCenterCoordinate:location animated:NO];
+    [mapView setRegion:BMCoordinateRegionMake(location, BMCoordinateSpanMake(.005, .0025)) animated:NO];
+    BMEntity *childEntity = [[BMEntity alloc] initWithCoordinate:location bingAddressDictionary:nil];
+    [mapView addMarker:childEntity];
+    [childEntity release];
+    
+    // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
+    mapView.userInteractionEnabled = NO;
+    
+    [self.view addSubview:mapView];
     mapView.hidden = NO;
 }
 
@@ -114,6 +91,10 @@
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, 320, 70);
     backgroundImage.frame = CGRectMake(backgroundImage.frame.origin.x, backgroundImage.frame.origin.y, 320, 70);
     mapView.hidden = YES;
+    
+    // Remove the mapView
+    [mapView removeFromSuperview];
+    self.mapView = nil;
 }
 
 -(BOOL)expandable {
@@ -137,7 +118,6 @@
     [timeMessage release];
     [backgroundImage release];
     [mapView release];
-    [mapContents release];
     
     [super dealloc];
 }
