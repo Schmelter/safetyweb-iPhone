@@ -156,7 +156,10 @@
     cell.textLabel.text = account.serviceName;
     // TODO: Determine this based on the serviceName
     cell.imageView.image = [UIImage imageNamed:@"butterfly.png"];
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    UIButton *accessoryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 39)];
+    [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"SettingsScreen_Arrow.png"] forState:UIControlStateNormal];
+    cell.accessoryView = accessoryBtn;
+    [accessoryBtn release];
     
     [pool release];
     return cell;

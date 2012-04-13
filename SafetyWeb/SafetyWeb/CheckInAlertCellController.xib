@@ -70,7 +70,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">pin_icon.png</string>
+									<string key="NSResourceName">Location_Alert_Icon.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="788953334">
@@ -231,7 +231,7 @@
 							<object class="IBUIButton" id="581048003">
 								<reference key="NSNextResponder" ref="68357590"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{285, 20}, {29, 31}}</string>
+								<string key="NSFrame">{{290, 7}, {24, 55}}</string>
 								<reference key="NSSuperview" ref="68357590"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="68511876"/>
@@ -240,7 +240,6 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<int key="IBUIButtonType">2</int>
 								<object class="NSColor" key="IBUIHighlightedTitleColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -252,6 +251,10 @@
 								<object class="NSColor" key="IBUINormalTitleShadowColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
+								</object>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">AlertsScreen_Arrow.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">2</int>
@@ -537,10 +540,10 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">pin_icon.png</string>
-			<string key="NS.object.0">{64, 64}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="AlertsScreen_Arrow.png">{24, 55}</string>
+			<string key="Location_Alert_Icon.png">{84, 85}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
 </archive>

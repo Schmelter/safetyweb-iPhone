@@ -41,7 +41,7 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     if (row % 2 == 0) {
-        UIImage *backgroundImg = [UIImage imageNamed:@"dark_zebra_BG.png"];
+        UIImage *backgroundImg = [UIImage imageNamed:@"Alerts_Screen_ZebraStripe.png"];
         backgroundImage.image = backgroundImg;
     } else {
         

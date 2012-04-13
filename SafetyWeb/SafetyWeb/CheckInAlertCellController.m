@@ -51,7 +51,7 @@
     locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";
     timeMessage.text = [Utilities timeIntervalToHumanString:[checkInAlert.timestamp timeIntervalSince1970]];
     
-    if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"dark_zebra_BG.png"];
+    if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"Alerts_Screen_ZebraStripe.png"];
     else backgroundImage.image = nil;
     
     mapView.delegate = self;

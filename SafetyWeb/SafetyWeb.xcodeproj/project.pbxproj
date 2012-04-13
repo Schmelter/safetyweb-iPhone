@@ -21,54 +21,204 @@
 		893F9D4414E1F5990074C5EC /* AccountSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893F9D4314E1F5990074C5EC /* AccountSetup2View.xib */; };
 		893F9D4714E1F5CD0074C5EC /* AccountSetup1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */; };
 		893F9D4A14E1F5DE0074C5EC /* AccountSetup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */; };
-		89740A6E14EC56420064E64A /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A6C14EC56420064E64A /* Back.png */; };
-		89740A6F14EC56420064E64A /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A6D14EC56420064E64A /* Back@2x.png */; };
-		89740A7214EC56540064E64A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7014EC56540064E64A /* Default.png */; };
-		89740A7314EC56540064E64A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7114EC56540064E64A /* Default@2x.png */; };
-		89740A7814EC567A0064E64A /* StandardBackground_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7414EC567A0064E64A /* StandardBackground_Logo.png */; };
-		89740A7914EC567A0064E64A /* StandardBackground_Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7514EC567A0064E64A /* StandardBackground_Logo@2x.png */; };
-		89740A7A14EC567A0064E64A /* StandardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7614EC567A0064E64A /* StandardBackground.png */; };
-		89740A7B14EC567A0064E64A /* StandardBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7714EC567A0064E64A /* StandardBackground@2x.png */; };
-		89740A7E14EC573B0064E64A /* MobileOptIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7C14EC573B0064E64A /* MobileOptIn.png */; };
-		89740A7F14EC573B0064E64A /* MobileOptIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A7D14EC573B0064E64A /* MobileOptIn@2x.png */; };
-		89740A8214EC57B50064E64A /* Background_SignIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8014EC57B50064E64A /* Background_SignIn.png */; };
-		89740A8314EC57B50064E64A /* Background_SignIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8114EC57B50064E64A /* Background_SignIn@2x.png */; };
-		89740A8614EC58690064E64A /* Button_Blue_LG.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8414EC58690064E64A /* Button_Blue_LG.png */; };
-		89740A8714EC58690064E64A /* Button_Blue_LG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8514EC58690064E64A /* Button_Blue_LG@2x.png */; };
-		89740A8A14EC59320064E64A /* MobileAlertSetup1.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8814EC59320064E64A /* MobileAlertSetup1.png */; };
-		89740A8B14EC59320064E64A /* MobileAlertSetup1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8914EC59320064E64A /* MobileAlertSetup1@2x.png */; };
-		89740A8E14EC599E0064E64A /* MobileAlertSetup2.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8C14EC599E0064E64A /* MobileAlertSetup2.png */; };
-		89740A8F14EC599E0064E64A /* MobileAlertSetup2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740A8D14EC599E0064E64A /* MobileAlertSetup2@2x.png */; };
-		89740AA814EC5A620064E64A /* ServiceProviderATT.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA014EC5A620064E64A /* ServiceProviderATT.png */; };
-		89740AA914EC5A620064E64A /* ServiceProviderATT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA114EC5A620064E64A /* ServiceProviderATT@2x.png */; };
-		89740AAA14EC5A620064E64A /* ServiceProviderSprint.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA214EC5A620064E64A /* ServiceProviderSprint.png */; };
-		89740AAB14EC5A620064E64A /* ServiceProviderSprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA314EC5A620064E64A /* ServiceProviderSprint@2x.png */; };
-		89740AAC14EC5A620064E64A /* ServiceProviderTMobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA414EC5A620064E64A /* ServiceProviderTMobile.png */; };
-		89740AAD14EC5A620064E64A /* ServiceProviderTMobile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */; };
-		89740AAE14EC5A620064E64A /* ServiceProviderVerizon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */; };
-		89740AAF14EC5A620064E64A /* ServiceProviderVerizon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */; };
+		8952CA211538A6DF00F47861 /* Add-Button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C01538A6DF00F47861 /* Add-Button@2x.png */; };
+		8952CA221538A6DF00F47861 /* Add-Button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C01538A6DF00F47861 /* Add-Button@2x.png */; };
+		8952CA231538A6DF00F47861 /* AlertDetail_DropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C11538A6DF00F47861 /* AlertDetail_DropShadow@2x.png */; };
+		8952CA241538A6DF00F47861 /* AlertDetail_DropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C11538A6DF00F47861 /* AlertDetail_DropShadow@2x.png */; };
+		8952CA251538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C21538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png */; };
+		8952CA261538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C21538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png */; };
+		8952CA271538A6DF00F47861 /* AlertsScreen_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C31538A6DF00F47861 /* AlertsScreen_Arrow@2x.png */; };
+		8952CA281538A6DF00F47861 /* AlertsScreen_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C31538A6DF00F47861 /* AlertsScreen_Arrow@2x.png */; };
+		8952CA291538A6DF00F47861 /* AnnounceMyLocation-Btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C41538A6DF00F47861 /* AnnounceMyLocation-Btn@2x.png */; };
+		8952CA2A1538A6DF00F47861 /* AnnounceMyLocation-Btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C41538A6DF00F47861 /* AnnounceMyLocation-Btn@2x.png */; };
+		8952CA2B1538A6DF00F47861 /* FB_Alert_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C51538A6DF00F47861 /* FB_Alert_Icon@2x.png */; };
+		8952CA2C1538A6DF00F47861 /* FB_Alert_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C51538A6DF00F47861 /* FB_Alert_Icon@2x.png */; };
+		8952CA2D1538A6DF00F47861 /* FB_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C61538A6DF00F47861 /* FB_Icon@2x.png */; };
+		8952CA2E1538A6DF00F47861 /* FB_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C61538A6DF00F47861 /* FB_Icon@2x.png */; };
+		8952CA2F1538A6DF00F47861 /* Header-Bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C71538A6DF00F47861 /* Header-Bar@2x.png */; };
+		8952CA301538A6DF00F47861 /* Header-Bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C71538A6DF00F47861 /* Header-Bar@2x.png */; };
+		8952CA311538A6DF00F47861 /* Location_Alert_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C81538A6DF00F47861 /* Location_Alert_Icon@2x.png */; };
+		8952CA321538A6DF00F47861 /* Location_Alert_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C81538A6DF00F47861 /* Location_Alert_Icon@2x.png */; };
+		8952CA331538A6DF00F47861 /* Main_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C91538A6DF00F47861 /* Main_BG@2x.png */; };
+		8952CA341538A6DF00F47861 /* Main_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9C91538A6DF00F47861 /* Main_BG@2x.png */; };
+		8952CA351538A6DF00F47861 /* MapDetail_Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CA1538A6DF00F47861 /* MapDetail_Overlay@2x.png */; };
+		8952CA361538A6DF00F47861 /* MapDetail_Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CA1538A6DF00F47861 /* MapDetail_Overlay@2x.png */; };
+		8952CA371538A6DF00F47861 /* MapView-Button_Left_Off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CB1538A6DF00F47861 /* MapView-Button_Left_Off@2x.png */; };
+		8952CA381538A6DF00F47861 /* MapView-Button_Left_Off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CB1538A6DF00F47861 /* MapView-Button_Left_Off@2x.png */; };
+		8952CA391538A6DF00F47861 /* MapView-Button_Left_On@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CC1538A6DF00F47861 /* MapView-Button_Left_On@2x.png */; };
+		8952CA3A1538A6DF00F47861 /* MapView-Button_Left_On@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CC1538A6DF00F47861 /* MapView-Button_Left_On@2x.png */; };
+		8952CA3B1538A6DF00F47861 /* MapView-Button_Right_Off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CD1538A6DF00F47861 /* MapView-Button_Right_Off@2x.png */; };
+		8952CA3C1538A6DF00F47861 /* MapView-Button_Right_Off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CD1538A6DF00F47861 /* MapView-Button_Right_Off@2x.png */; };
+		8952CA3D1538A6DF00F47861 /* MapView-Button_Right_On@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CE1538A6DF00F47861 /* MapView-Button_Right_On@2x.png */; };
+		8952CA3E1538A6DF00F47861 /* MapView-Button_Right_On@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CE1538A6DF00F47861 /* MapView-Button_Right_On@2x.png */; };
+		8952CA3F1538A6DF00F47861 /* MenuButton-Off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CF1538A6DF00F47861 /* MenuButton-Off@2x.png */; };
+		8952CA401538A6DF00F47861 /* MenuButton-Off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9CF1538A6DF00F47861 /* MenuButton-Off@2x.png */; };
+		8952CA411538A6DF00F47861 /* MenuButton-On@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D01538A6DF00F47861 /* MenuButton-On@2x.png */; };
+		8952CA421538A6DF00F47861 /* MenuButton-On@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D01538A6DF00F47861 /* MenuButton-On@2x.png */; };
+		8952CA431538A6DF00F47861 /* MySpace_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D11538A6DF00F47861 /* MySpace_Icon@2x.png */; };
+		8952CA441538A6DF00F47861 /* MySpace_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D11538A6DF00F47861 /* MySpace_Icon@2x.png */; };
+		8952CA451538A6DF00F47861 /* Nav-On_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D21538A6DF00F47861 /* Nav-On_Arrow@2x.png */; };
+		8952CA461538A6DF00F47861 /* Nav-On_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D21538A6DF00F47861 /* Nav-On_Arrow@2x.png */; };
+		8952CA471538A6DF00F47861 /* SettingsScreen_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D31538A6DF00F47861 /* SettingsScreen_Arrow@2x.png */; };
+		8952CA481538A6DF00F47861 /* SettingsScreen_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D31538A6DF00F47861 /* SettingsScreen_Arrow@2x.png */; };
+		8952CA491538A6DF00F47861 /* SideNav-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D41538A6DF00F47861 /* SideNav-BG@2x.png */; };
+		8952CA4A1538A6DF00F47861 /* SideNav-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D41538A6DF00F47861 /* SideNav-BG@2x.png */; };
+		8952CA4B1538A6DF00F47861 /* SMS_Alert_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D51538A6DF00F47861 /* SMS_Alert_Icon@2x.png */; };
+		8952CA4C1538A6DF00F47861 /* SMS_Alert_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D51538A6DF00F47861 /* SMS_Alert_Icon@2x.png */; };
+		8952CA4D1538A6DF00F47861 /* Add-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D61538A6DF00F47861 /* Add-Button.png */; };
+		8952CA4E1538A6DF00F47861 /* Add-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D61538A6DF00F47861 /* Add-Button.png */; };
+		8952CA4F1538A6DF00F47861 /* AlertDetail_DropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D71538A6DF00F47861 /* AlertDetail_DropShadow.png */; };
+		8952CA501538A6DF00F47861 /* AlertDetail_DropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D71538A6DF00F47861 /* AlertDetail_DropShadow.png */; };
+		8952CA511538A6DF00F47861 /* Alerts_Screen_ZebraStripe.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D81538A6DF00F47861 /* Alerts_Screen_ZebraStripe.png */; };
+		8952CA521538A6DF00F47861 /* Alerts_Screen_ZebraStripe.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D81538A6DF00F47861 /* Alerts_Screen_ZebraStripe.png */; };
+		8952CA531538A6DF00F47861 /* AlertsScreen_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D91538A6DF00F47861 /* AlertsScreen_Arrow.png */; };
+		8952CA541538A6DF00F47861 /* AlertsScreen_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9D91538A6DF00F47861 /* AlertsScreen_Arrow.png */; };
+		8952CA551538A6DF00F47861 /* FB_Alert_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DA1538A6DF00F47861 /* FB_Alert_Icon.png */; };
+		8952CA561538A6DF00F47861 /* FB_Alert_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DA1538A6DF00F47861 /* FB_Alert_Icon.png */; };
+		8952CA571538A6DF00F47861 /* FB_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DB1538A6DF00F47861 /* FB_Icon.png */; };
+		8952CA581538A6DF00F47861 /* FB_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DB1538A6DF00F47861 /* FB_Icon.png */; };
+		8952CA591538A6DF00F47861 /* Header-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DC1538A6DF00F47861 /* Header-Bar.png */; };
+		8952CA5A1538A6DF00F47861 /* Header-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DC1538A6DF00F47861 /* Header-Bar.png */; };
+		8952CA5B1538A6DF00F47861 /* Location_Alert_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DD1538A6DF00F47861 /* Location_Alert_Icon.png */; };
+		8952CA5C1538A6DF00F47861 /* Location_Alert_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DD1538A6DF00F47861 /* Location_Alert_Icon.png */; };
+		8952CA5D1538A6DF00F47861 /* Main_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DE1538A6DF00F47861 /* Main_BG.png */; };
+		8952CA5E1538A6DF00F47861 /* Main_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DE1538A6DF00F47861 /* Main_BG.png */; };
+		8952CA5F1538A6DF00F47861 /* MapDetail_Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DF1538A6DF00F47861 /* MapDetail_Overlay.png */; };
+		8952CA601538A6DF00F47861 /* MapDetail_Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9DF1538A6DF00F47861 /* MapDetail_Overlay.png */; };
+		8952CA611538A6DF00F47861 /* MapView-Button_Left_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E01538A6DF00F47861 /* MapView-Button_Left_Off.png */; };
+		8952CA621538A6DF00F47861 /* MapView-Button_Left_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E01538A6DF00F47861 /* MapView-Button_Left_Off.png */; };
+		8952CA631538A6DF00F47861 /* MapView-Button_Left_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E11538A6DF00F47861 /* MapView-Button_Left_On.png */; };
+		8952CA641538A6DF00F47861 /* MapView-Button_Left_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E11538A6DF00F47861 /* MapView-Button_Left_On.png */; };
+		8952CA651538A6DF00F47861 /* MapView-Button_Right_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E21538A6DF00F47861 /* MapView-Button_Right_Off.png */; };
+		8952CA661538A6DF00F47861 /* MapView-Button_Right_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E21538A6DF00F47861 /* MapView-Button_Right_Off.png */; };
+		8952CA671538A6DF00F47861 /* MapView-Button_Right_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E31538A6DF00F47861 /* MapView-Button_Right_On.png */; };
+		8952CA681538A6DF00F47861 /* MapView-Button_Right_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E31538A6DF00F47861 /* MapView-Button_Right_On.png */; };
+		8952CA691538A6DF00F47861 /* MenuButton-Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E41538A6DF00F47861 /* MenuButton-Off.png */; };
+		8952CA6A1538A6DF00F47861 /* MenuButton-Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E41538A6DF00F47861 /* MenuButton-Off.png */; };
+		8952CA6B1538A6DF00F47861 /* MenuButton-On.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E51538A6DF00F47861 /* MenuButton-On.png */; };
+		8952CA6C1538A6DF00F47861 /* MenuButton-On.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E51538A6DF00F47861 /* MenuButton-On.png */; };
+		8952CA6D1538A6DF00F47861 /* MySpace_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E61538A6DF00F47861 /* MySpace_Icon.png */; };
+		8952CA6E1538A6DF00F47861 /* MySpace_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E61538A6DF00F47861 /* MySpace_Icon.png */; };
+		8952CA6F1538A6DF00F47861 /* Nav-On_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E71538A6DF00F47861 /* Nav-On_Arrow.png */; };
+		8952CA701538A6DF00F47861 /* Nav-On_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E71538A6DF00F47861 /* Nav-On_Arrow.png */; };
+		8952CA711538A6DF00F47861 /* SettingsScreen_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E81538A6DF00F47861 /* SettingsScreen_Arrow.png */; };
+		8952CA721538A6DF00F47861 /* SettingsScreen_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E81538A6DF00F47861 /* SettingsScreen_Arrow.png */; };
+		8952CA731538A6DF00F47861 /* SideNav-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E91538A6DF00F47861 /* SideNav-BG.png */; };
+		8952CA741538A6DF00F47861 /* SideNav-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9E91538A6DF00F47861 /* SideNav-BG.png */; };
+		8952CA751538A6DF00F47861 /* SMS_Alert_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EA1538A6DF00F47861 /* SMS_Alert_Icon.png */; };
+		8952CA761538A6DF00F47861 /* SMS_Alert_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EA1538A6DF00F47861 /* SMS_Alert_Icon.png */; };
+		8952CA771538A6DF00F47861 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EB1538A6DF00F47861 /* facebook_icon.png */; };
+		8952CA781538A6DF00F47861 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EB1538A6DF00F47861 /* facebook_icon.png */; };
+		8952CA791538A6DF00F47861 /* pin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EC1538A6DF00F47861 /* pin_icon.png */; };
+		8952CA7A1538A6DF00F47861 /* pin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EC1538A6DF00F47861 /* pin_icon.png */; };
+		8952CA7B1538A6DF00F47861 /* sms_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9ED1538A6DF00F47861 /* sms_icon.png */; };
+		8952CA7C1538A6DF00F47861 /* sms_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9ED1538A6DF00F47861 /* sms_icon.png */; };
+		8952CA7D1538A6DF00F47861 /* bottom_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EE1538A6DF00F47861 /* bottom_shadow.png */; };
+		8952CA7E1538A6DF00F47861 /* bottom_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EE1538A6DF00F47861 /* bottom_shadow.png */; };
+		8952CA7F1538A6DF00F47861 /* butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F01538A6DF00F47861 /* butterfly.png */; };
+		8952CA801538A6DF00F47861 /* butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F01538A6DF00F47861 /* butterfly.png */; };
+		8952CA811538A6DF00F47861 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F11538A6DF00F47861 /* dark_zebra_BG.png */; };
+		8952CA821538A6DF00F47861 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F11538A6DF00F47861 /* dark_zebra_BG.png */; };
+		8952CA831538A6DF00F47861 /* eiffel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F21538A6DF00F47861 /* eiffel.png */; };
+		8952CA841538A6DF00F47861 /* eiffel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F21538A6DF00F47861 /* eiffel.png */; };
+		8952CA851538A6DF00F47861 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F31538A6DF00F47861 /* point.png */; };
+		8952CA861538A6DF00F47861 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F31538A6DF00F47861 /* point.png */; };
+		8952CA871538A6DF00F47861 /* top_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F41538A6DF00F47861 /* top_shadow.png */; };
+		8952CA881538A6DF00F47861 /* top_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F41538A6DF00F47861 /* top_shadow.png */; };
+		8952CA891538A6DF00F47861 /* ATT_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F51538A6DF00F47861 /* ATT_btn_on.png */; };
+		8952CA8A1538A6DF00F47861 /* ATT_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F51538A6DF00F47861 /* ATT_btn_on.png */; };
+		8952CA8B1538A6DF00F47861 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F61538A6DF00F47861 /* Default.png */; };
+		8952CA8C1538A6DF00F47861 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F61538A6DF00F47861 /* Default.png */; };
+		8952CA8D1538A6DF00F47861 /* LoadingScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F71538A6DF00F47861 /* LoadingScreen@2x.png */; };
+		8952CA8E1538A6DF00F47861 /* LoadingScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F71538A6DF00F47861 /* LoadingScreen@2x.png */; };
+		8952CA8F1538A6DF00F47861 /* ServiceProviderSprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F81538A6DF00F47861 /* ServiceProviderSprint@2x.png */; };
+		8952CA901538A6DF00F47861 /* ServiceProviderSprint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F81538A6DF00F47861 /* ServiceProviderSprint@2x.png */; };
+		8952CA911538A6DF00F47861 /* ServiceProviderTMobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F91538A6DF00F47861 /* ServiceProviderTMobile.png */; };
+		8952CA921538A6DF00F47861 /* ServiceProviderTMobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F91538A6DF00F47861 /* ServiceProviderTMobile.png */; };
+		8952CA931538A6DF00F47861 /* ServiceProviderVerizon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FA1538A6DF00F47861 /* ServiceProviderVerizon.png */; };
+		8952CA941538A6DF00F47861 /* ServiceProviderVerizon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FA1538A6DF00F47861 /* ServiceProviderVerizon.png */; };
+		8952CA951538A6DF00F47861 /* Sprint_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FB1538A6DF00F47861 /* Sprint_btn_off@2x.png */; };
+		8952CA961538A6DF00F47861 /* Sprint_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FB1538A6DF00F47861 /* Sprint_btn_off@2x.png */; };
+		8952CA971538A6DF00F47861 /* Sprint_btn_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FC1538A6DF00F47861 /* Sprint_btn_on@2x.png */; };
+		8952CA981538A6DF00F47861 /* Sprint_btn_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FC1538A6DF00F47861 /* Sprint_btn_on@2x.png */; };
+		8952CA991538A6DF00F47861 /* StandardBackground_Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FD1538A6DF00F47861 /* StandardBackground_Logo@2x.png */; };
+		8952CA9A1538A6DF00F47861 /* StandardBackground_Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FD1538A6DF00F47861 /* StandardBackground_Logo@2x.png */; };
+		8952CA9B1538A6DF00F47861 /* TMobile_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FE1538A6DF00F47861 /* TMobile_btn_off.png */; };
+		8952CA9C1538A6DF00F47861 /* TMobile_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FE1538A6DF00F47861 /* TMobile_btn_off.png */; };
+		8952CA9D1538A6DF00F47861 /* TMobile_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FF1538A6DF00F47861 /* TMobile_btn_on.png */; };
+		8952CA9E1538A6DF00F47861 /* TMobile_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9FF1538A6DF00F47861 /* TMobile_btn_on.png */; };
+		8952CA9F1538A6DF00F47861 /* Verizon_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA001538A6DF00F47861 /* Verizon_btn_off.png */; };
+		8952CAA01538A6DF00F47861 /* Verizon_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA001538A6DF00F47861 /* Verizon_btn_off.png */; };
+		8952CAA11538A6DF00F47861 /* ATT_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA011538A6DF00F47861 /* ATT_btn_off.png */; };
+		8952CAA21538A6DF00F47861 /* ATT_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA011538A6DF00F47861 /* ATT_btn_off.png */; };
+		8952CAA31538A6DF00F47861 /* ATT_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA021538A6DF00F47861 /* ATT_btn_off@2x.png */; };
+		8952CAA41538A6DF00F47861 /* ATT_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA021538A6DF00F47861 /* ATT_btn_off@2x.png */; };
+		8952CAA51538A6DF00F47861 /* Background_SignIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA031538A6DF00F47861 /* Background_SignIn.png */; };
+		8952CAA61538A6DF00F47861 /* Background_SignIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA031538A6DF00F47861 /* Background_SignIn.png */; };
+		8952CAA71538A6DF00F47861 /* Background_SignIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA041538A6DF00F47861 /* Background_SignIn@2x.png */; };
+		8952CAA81538A6DF00F47861 /* Background_SignIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA041538A6DF00F47861 /* Background_SignIn@2x.png */; };
+		8952CAA91538A6DF00F47861 /* Button_Blue_LG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA051538A6DF00F47861 /* Button_Blue_LG.png */; };
+		8952CAAA1538A6DF00F47861 /* Button_Blue_LG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA051538A6DF00F47861 /* Button_Blue_LG.png */; };
+		8952CAAB1538A6DF00F47861 /* Button_Blue_LG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA061538A6DF00F47861 /* Button_Blue_LG@2x.png */; };
+		8952CAAC1538A6DF00F47861 /* Button_Blue_LG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA061538A6DF00F47861 /* Button_Blue_LG@2x.png */; };
+		8952CAAD1538A6DF00F47861 /* LoadingScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA071538A6DF00F47861 /* LoadingScreen.png */; };
+		8952CAAE1538A6DF00F47861 /* LoadingScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA071538A6DF00F47861 /* LoadingScreen.png */; };
+		8952CAAF1538A6DF00F47861 /* MobileAlertSetup1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA081538A6DF00F47861 /* MobileAlertSetup1@2x.png */; };
+		8952CAB01538A6DF00F47861 /* MobileAlertSetup1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA081538A6DF00F47861 /* MobileAlertSetup1@2x.png */; };
+		8952CAB11538A6DF00F47861 /* MobileAlertSetup2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA091538A6DF00F47861 /* MobileAlertSetup2@2x.png */; };
+		8952CAB21538A6DF00F47861 /* MobileAlertSetup2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA091538A6DF00F47861 /* MobileAlertSetup2@2x.png */; };
+		8952CAB31538A6DF00F47861 /* MobileOptIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0A1538A6DF00F47861 /* MobileOptIn.png */; };
+		8952CAB41538A6DF00F47861 /* MobileOptIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0A1538A6DF00F47861 /* MobileOptIn.png */; };
+		8952CAB51538A6DF00F47861 /* MobileOptIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0B1538A6DF00F47861 /* MobileOptIn@2x.png */; };
+		8952CAB61538A6DF00F47861 /* MobileOptIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0B1538A6DF00F47861 /* MobileOptIn@2x.png */; };
+		8952CAB71538A6DF00F47861 /* ServiceProviderATT.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0C1538A6DF00F47861 /* ServiceProviderATT.png */; };
+		8952CAB81538A6DF00F47861 /* ServiceProviderATT.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0C1538A6DF00F47861 /* ServiceProviderATT.png */; };
+		8952CAB91538A6DF00F47861 /* ServiceProviderATT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0D1538A6DF00F47861 /* ServiceProviderATT@2x.png */; };
+		8952CABA1538A6DF00F47861 /* ServiceProviderATT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0D1538A6DF00F47861 /* ServiceProviderATT@2x.png */; };
+		8952CABB1538A6DF00F47861 /* ServiceProviderTMobile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0E1538A6DF00F47861 /* ServiceProviderTMobile@2x.png */; };
+		8952CABC1538A6DF00F47861 /* ServiceProviderTMobile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0E1538A6DF00F47861 /* ServiceProviderTMobile@2x.png */; };
+		8952CABD1538A6DF00F47861 /* Sprint_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0F1538A6DF00F47861 /* Sprint_btn_on.png */; };
+		8952CABE1538A6DF00F47861 /* Sprint_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA0F1538A6DF00F47861 /* Sprint_btn_on.png */; };
+		8952CABF1538A6DF00F47861 /* StandardBackground_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA101538A6DF00F47861 /* StandardBackground_Logo.png */; };
+		8952CAC01538A6DF00F47861 /* StandardBackground_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA101538A6DF00F47861 /* StandardBackground_Logo.png */; };
+		8952CAC11538A6DF00F47861 /* TMobile_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA111538A6DF00F47861 /* TMobile_btn_off@2x.png */; };
+		8952CAC21538A6DF00F47861 /* TMobile_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA111538A6DF00F47861 /* TMobile_btn_off@2x.png */; };
+		8952CAC31538A6DF00F47861 /* TMobile_btn_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA121538A6DF00F47861 /* TMobile_btn_on@2x.png */; };
+		8952CAC41538A6DF00F47861 /* TMobile_btn_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA121538A6DF00F47861 /* TMobile_btn_on@2x.png */; };
+		8952CAC51538A6DF00F47861 /* Verizon_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA131538A6DF00F47861 /* Verizon_btn_on.png */; };
+		8952CAC61538A6DF00F47861 /* Verizon_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA131538A6DF00F47861 /* Verizon_btn_on.png */; };
+		8952CAC71538A6DF00F47861 /* Verizon_btn_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA141538A6DF00F47861 /* Verizon_btn_on@2x.png */; };
+		8952CAC81538A6DF00F47861 /* Verizon_btn_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA141538A6DF00F47861 /* Verizon_btn_on@2x.png */; };
+		8952CAC91538A6DF00F47861 /* ATT_btn_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA151538A6DF00F47861 /* ATT_btn_on@2x.png */; };
+		8952CACA1538A6DF00F47861 /* ATT_btn_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA151538A6DF00F47861 /* ATT_btn_on@2x.png */; };
+		8952CACB1538A6DF00F47861 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA161538A6DF00F47861 /* Back.png */; };
+		8952CACC1538A6DF00F47861 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA161538A6DF00F47861 /* Back.png */; };
+		8952CACD1538A6DF00F47861 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA171538A6DF00F47861 /* Back@2x.png */; };
+		8952CACE1538A6DF00F47861 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA171538A6DF00F47861 /* Back@2x.png */; };
+		8952CACF1538A6DF00F47861 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA181538A6DF00F47861 /* Default@2x.png */; };
+		8952CAD01538A6DF00F47861 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA181538A6DF00F47861 /* Default@2x.png */; };
+		8952CAD11538A6DF00F47861 /* MobileAlertSetup1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA191538A6DF00F47861 /* MobileAlertSetup1.png */; };
+		8952CAD21538A6DF00F47861 /* MobileAlertSetup1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA191538A6DF00F47861 /* MobileAlertSetup1.png */; };
+		8952CAD31538A6DF00F47861 /* MobileAlertSetup2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1A1538A6DF00F47861 /* MobileAlertSetup2.png */; };
+		8952CAD41538A6DF00F47861 /* MobileAlertSetup2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1A1538A6DF00F47861 /* MobileAlertSetup2.png */; };
+		8952CAD51538A6DF00F47861 /* ServiceProviderSprint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1B1538A6DF00F47861 /* ServiceProviderSprint.png */; };
+		8952CAD61538A6DF00F47861 /* ServiceProviderSprint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1B1538A6DF00F47861 /* ServiceProviderSprint.png */; };
+		8952CAD71538A6DF00F47861 /* ServiceProviderVerizon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1C1538A6DF00F47861 /* ServiceProviderVerizon@2x.png */; };
+		8952CAD81538A6DF00F47861 /* ServiceProviderVerizon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1C1538A6DF00F47861 /* ServiceProviderVerizon@2x.png */; };
+		8952CAD91538A6DF00F47861 /* Sprint_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1D1538A6DF00F47861 /* Sprint_btn_off.png */; };
+		8952CADA1538A6DF00F47861 /* Sprint_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1D1538A6DF00F47861 /* Sprint_btn_off.png */; };
+		8952CADB1538A6DF00F47861 /* StandardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1E1538A6DF00F47861 /* StandardBackground.png */; };
+		8952CADC1538A6DF00F47861 /* StandardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1E1538A6DF00F47861 /* StandardBackground.png */; };
+		8952CADD1538A6DF00F47861 /* StandardBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1F1538A6DF00F47861 /* StandardBackground@2x.png */; };
+		8952CADE1538A6DF00F47861 /* StandardBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA1F1538A6DF00F47861 /* StandardBackground@2x.png */; };
+		8952CADF1538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA201538A6DF00F47861 /* Verizon_btn_off@2x.png */; };
+		8952CAE01538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA201538A6DF00F47861 /* Verizon_btn_off@2x.png */; };
+		8952CAE21538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CAE11538A9E500F47861 /* AnnounceMyLocation-Btn.png */; };
+		8952CAE31538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CAE11538A9E500F47861 /* AnnounceMyLocation-Btn.png */; };
 		89740AB414EC6D4A0064E64A /* AppProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 89740AB314EC6D4A0064E64A /* AppProperties.m */; };
 		89740AB614EC6D8C0064E64A /* AppProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740AB514EC6D8C0064E64A /* AppProperties.plist */; };
 		89740ABD14EC70E40064E64A /* AppProperties.dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABB14EC70E40064E64A /* AppProperties.dev.plist */; };
 		89740ABE14EC70E40064E64A /* AppProperties.prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABC14EC70E40064E64A /* AppProperties.prod.plist */; };
-		897BBC6B14F4171700377684 /* LoadingScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC6914F4171700377684 /* LoadingScreen.png */; };
-		897BBC6C14F4171700377684 /* LoadingScreen@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC6A14F4171700377684 /* LoadingScreen@2X.png */; };
-		897BBC7E14F41D6B00377684 /* ATT_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC6E14F41D6800377684 /* ATT_btn_off.png */; };
-		897BBC7F14F41D6B00377684 /* ATT_btn_off@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC6F14F41D6800377684 /* ATT_btn_off@2X.png */; };
-		897BBC8014F41D6B00377684 /* ATT_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7014F41D6800377684 /* ATT_btn_on.png */; };
-		897BBC8114F41D6B00377684 /* ATT_btn_on@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7114F41D6900377684 /* ATT_btn_on@2X.png */; };
-		897BBC8214F41D6B00377684 /* Sprint_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7214F41D6900377684 /* Sprint_btn_off.png */; };
-		897BBC8314F41D6B00377684 /* Sprint_btn_off@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7314F41D6900377684 /* Sprint_btn_off@2X.png */; };
-		897BBC8414F41D6B00377684 /* Sprint_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7414F41D6900377684 /* Sprint_btn_on.png */; };
-		897BBC8514F41D6B00377684 /* Sprint_btn_on@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7514F41D6900377684 /* Sprint_btn_on@2X.png */; };
-		897BBC8614F41D6B00377684 /* TMobile_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7614F41D6900377684 /* TMobile_btn_off.png */; };
-		897BBC8714F41D6B00377684 /* TMobile_btn_off@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7714F41D6A00377684 /* TMobile_btn_off@2X.png */; };
-		897BBC8814F41D6B00377684 /* TMobile_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7814F41D6A00377684 /* TMobile_btn_on.png */; };
-		897BBC8914F41D6B00377684 /* TMobile_btn_on@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7914F41D6A00377684 /* TMobile_btn_on@2X.png */; };
-		897BBC8A14F41D6B00377684 /* Verizon_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7A14F41D6A00377684 /* Verizon_btn_off.png */; };
-		897BBC8B14F41D6B00377684 /* Verizon_btn_off@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7B14F41D6A00377684 /* Verizon_btn_off@2X.png */; };
-		897BBC8C14F41D6B00377684 /* Verizon_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7C14F41D6A00377684 /* Verizon_btn_on.png */; };
-		897BBC8D14F41D6B00377684 /* Verizon_btn_on@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 897BBC7D14F41D6B00377684 /* Verizon_btn_on@2X.png */; };
 		897D348715114BFE00967F5D /* ResetPasswordLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D348615114BFD00967F5D /* ResetPasswordLoadViewController.m */; };
 		897E980A14DB02C3007595A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980914DB02C3007595A7 /* UIKit.framework */; };
 		897E980C14DB02C3007595A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897E980B14DB02C3007595A7 /* Foundation.framework */; };
@@ -79,15 +229,12 @@
 		897E984214DB1255007595A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984114DB1255007595A7 /* RootViewController.m */; };
 		897E984514DB12AE007595A7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984414DB12AE007595A7 /* LoginViewController.m */; };
 		897E984814DB1478007595A7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E984714DB1478007595A7 /* UserManager.m */; };
-		897FD2551517E7EB00B7F0D0 /* top_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 897FD2541517E7EB00B7F0D0 /* top_shadow.png */; };
-		897FD2581517E80D00B7F0D0 /* bottom_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 897FD2571517E80D00B7F0D0 /* bottom_shadow.png */; };
 		897FD25C1517E9DF00B7F0D0 /* ViewProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */; };
 		897FD25D1517E9DF00B7F0D0 /* ViewProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */; };
 		8981393615238A38003B6A0D /* BingMaps.Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8981393515238A38003B6A0D /* BingMaps.Resources.bundle */; };
 		898139481523A04B003B6A0D /* AlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 898139471523A04B003B6A0D /* AlertManager.m */; };
 		8981394E1523BF96003B6A0D /* FacebookAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8981394C1523BF96003B6A0D /* FacebookAlertCellController.m */; };
 		8981394F1523BF96003B6A0D /* FacebookAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8981394D1523BF96003B6A0D /* FacebookAlertCellController.xib */; };
-		898139511523C066003B6A0D /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 898139501523C066003B6A0D /* facebook_icon.png */; };
 		89838DB214E30F8C00CDCDBC /* AccountSetupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */; };
 		898441D014E474540047CDFE /* AccountSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441CF14E474540047CDFE /* AccountSetupViewController.m */; };
 		898441D314E483E80047CDFE /* MobileOptInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898441D214E483E80047CDFE /* MobileOptInViewController.m */; };
@@ -120,11 +267,8 @@
 		89A15E5914F59AE100BF1A18 /* AppProperties.prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABC14EC70E40064E64A /* AppProperties.prod.plist */; };
 		89A1C508150FFEA90097F2F1 /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A1C506150FFEA80097F2F1 /* AlertsViewController.m */; };
 		89A1C50B150FFF720097F2F1 /* AlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C50A150FFF720097F2F1 /* AlertsViewController.xib */; };
-		89A1C510151000300097F2F1 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C50E151000300097F2F1 /* point.png */; };
-		89A1C512151000530097F2F1 /* eiffel.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C511151000530097F2F1 /* eiffel.png */; };
 		89A1C516151005EC0097F2F1 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A1C514151005EC0097F2F1 /* CheckInViewController.m */; };
 		89A1C517151005EC0097F2F1 /* CheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C515151005EC0097F2F1 /* CheckInViewController.xib */; };
-		89A1C519151006510097F2F1 /* butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1C518151006510097F2F1 /* butterfly.png */; };
 		89A401141534D7DD0027FE7D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89A401121534D7DD0027FE7D /* DataModel.xcdatamodeld */; };
 		89A401151534D7DD0027FE7D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89A401121534D7DD0027FE7D /* DataModel.xcdatamodeld */; };
 		89A401181534E6CB0027FE7D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A401171534E6CB0027FE7D /* User.m */; };
@@ -156,15 +300,12 @@
 		89B630C315127EE800E25970 /* MyPeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B630C115127EE700E25970 /* MyPeopleViewController.xib */; };
 		89B630E815129A6A00E25970 /* CheckInCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630E615129A6900E25970 /* CheckInCellController.m */; };
 		89B630E915129A6A00E25970 /* CheckInCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B630E715129A6A00E25970 /* CheckInCellController.xib */; };
-		89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B630EC1512A4E700E25970 /* dark_zebra_BG.png */; };
 		89B977971517905E0046E102 /* MyPeopleCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B977951517905E0046E102 /* MyPeopleCellController.m */; };
 		89B977981517905E0046E102 /* MyPeopleCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B977961517905E0046E102 /* MyPeopleCellController.xib */; };
 		89BD10E51524FAA600141BFA /* SMSAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10E31524FAA600141BFA /* SMSAlertCellController.m */; };
 		89BD10E61524FAA600141BFA /* SMSAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */; };
-		89BD10E81524FB7700141BFA /* sms_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10E71524FB7700141BFA /* sms_icon.png */; };
 		89BD10F215250B2300141BFA /* CheckInAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10F015250B2200141BFA /* CheckInAlertCellController.m */; };
 		89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */; };
-		89BD10F515250BFE00141BFA /* pin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BD10F415250BFE00141BFA /* pin_icon.png */; };
 		89BD10F71525195400141BFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
 		89BDA8A315263277004FEF30 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
 		89C3E284152DF5EF0002B0E7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
@@ -228,55 +369,108 @@
 		893F9D4614E1F5CD0074C5EC /* AccountSetup1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetup1ViewController.m; sourceTree = "<group>"; };
 		893F9D4814E1F5DE0074C5EC /* AccountSetup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetup2ViewController.h; sourceTree = "<group>"; };
 		893F9D4914E1F5DE0074C5EC /* AccountSetup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetup2ViewController.m; sourceTree = "<group>"; };
-		89740A6C14EC56420064E64A /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
-		89740A6D14EC56420064E64A /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
-		89740A7014EC56540064E64A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		89740A7114EC56540064E64A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		89740A7414EC567A0064E64A /* StandardBackground_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StandardBackground_Logo.png; sourceTree = "<group>"; };
-		89740A7514EC567A0064E64A /* StandardBackground_Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground_Logo@2x.png"; sourceTree = "<group>"; };
-		89740A7614EC567A0064E64A /* StandardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StandardBackground.png; sourceTree = "<group>"; };
-		89740A7714EC567A0064E64A /* StandardBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground@2x.png"; sourceTree = "<group>"; };
-		89740A7C14EC573B0064E64A /* MobileOptIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileOptIn.png; sourceTree = "<group>"; };
-		89740A7D14EC573B0064E64A /* MobileOptIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileOptIn@2x.png"; sourceTree = "<group>"; };
-		89740A8014EC57B50064E64A /* Background_SignIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_SignIn.png; sourceTree = "<group>"; };
-		89740A8114EC57B50064E64A /* Background_SignIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background_SignIn@2x.png"; sourceTree = "<group>"; };
-		89740A8414EC58690064E64A /* Button_Blue_LG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Blue_LG.png; sourceTree = "<group>"; };
-		89740A8514EC58690064E64A /* Button_Blue_LG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Blue_LG@2x.png"; sourceTree = "<group>"; };
-		89740A8814EC59320064E64A /* MobileAlertSetup1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileAlertSetup1.png; sourceTree = "<group>"; };
-		89740A8914EC59320064E64A /* MobileAlertSetup1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileAlertSetup1@2x.png"; sourceTree = "<group>"; };
-		89740A8C14EC599E0064E64A /* MobileAlertSetup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileAlertSetup2.png; sourceTree = "<group>"; };
-		89740A8D14EC599E0064E64A /* MobileAlertSetup2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileAlertSetup2@2x.png"; sourceTree = "<group>"; };
-		89740AA014EC5A620064E64A /* ServiceProviderATT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderATT.png; sourceTree = "<group>"; };
-		89740AA114EC5A620064E64A /* ServiceProviderATT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderATT@2x.png"; sourceTree = "<group>"; };
-		89740AA214EC5A620064E64A /* ServiceProviderSprint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderSprint.png; sourceTree = "<group>"; };
-		89740AA314EC5A620064E64A /* ServiceProviderSprint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderSprint@2x.png"; sourceTree = "<group>"; };
-		89740AA414EC5A620064E64A /* ServiceProviderTMobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderTMobile.png; sourceTree = "<group>"; };
-		89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderTMobile@2x.png"; sourceTree = "<group>"; };
-		89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderVerizon.png; sourceTree = "<group>"; };
-		89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderVerizon@2x.png"; sourceTree = "<group>"; };
+		8952C9C01538A6DF00F47861 /* Add-Button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add-Button@2x.png"; sourceTree = "<group>"; };
+		8952C9C11538A6DF00F47861 /* AlertDetail_DropShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AlertDetail_DropShadow@2x.png"; sourceTree = "<group>"; };
+		8952C9C21538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Alerts_Screen_ZebraStripe@2x.png"; sourceTree = "<group>"; };
+		8952C9C31538A6DF00F47861 /* AlertsScreen_Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AlertsScreen_Arrow@2x.png"; sourceTree = "<group>"; };
+		8952C9C41538A6DF00F47861 /* AnnounceMyLocation-Btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AnnounceMyLocation-Btn@2x.png"; sourceTree = "<group>"; };
+		8952C9C51538A6DF00F47861 /* FB_Alert_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB_Alert_Icon@2x.png"; sourceTree = "<group>"; };
+		8952C9C61538A6DF00F47861 /* FB_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB_Icon@2x.png"; sourceTree = "<group>"; };
+		8952C9C71538A6DF00F47861 /* Header-Bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Header-Bar@2x.png"; sourceTree = "<group>"; };
+		8952C9C81538A6DF00F47861 /* Location_Alert_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location_Alert_Icon@2x.png"; sourceTree = "<group>"; };
+		8952C9C91538A6DF00F47861 /* Main_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_BG@2x.png"; sourceTree = "<group>"; };
+		8952C9CA1538A6DF00F47861 /* MapDetail_Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapDetail_Overlay@2x.png"; sourceTree = "<group>"; };
+		8952C9CB1538A6DF00F47861 /* MapView-Button_Left_Off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapView-Button_Left_Off@2x.png"; sourceTree = "<group>"; };
+		8952C9CC1538A6DF00F47861 /* MapView-Button_Left_On@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapView-Button_Left_On@2x.png"; sourceTree = "<group>"; };
+		8952C9CD1538A6DF00F47861 /* MapView-Button_Right_Off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapView-Button_Right_Off@2x.png"; sourceTree = "<group>"; };
+		8952C9CE1538A6DF00F47861 /* MapView-Button_Right_On@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapView-Button_Right_On@2x.png"; sourceTree = "<group>"; };
+		8952C9CF1538A6DF00F47861 /* MenuButton-Off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuButton-Off@2x.png"; sourceTree = "<group>"; };
+		8952C9D01538A6DF00F47861 /* MenuButton-On@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuButton-On@2x.png"; sourceTree = "<group>"; };
+		8952C9D11538A6DF00F47861 /* MySpace_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MySpace_Icon@2x.png"; sourceTree = "<group>"; };
+		8952C9D21538A6DF00F47861 /* Nav-On_Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nav-On_Arrow@2x.png"; sourceTree = "<group>"; };
+		8952C9D31538A6DF00F47861 /* SettingsScreen_Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsScreen_Arrow@2x.png"; sourceTree = "<group>"; };
+		8952C9D41538A6DF00F47861 /* SideNav-BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SideNav-BG@2x.png"; sourceTree = "<group>"; };
+		8952C9D51538A6DF00F47861 /* SMS_Alert_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SMS_Alert_Icon@2x.png"; sourceTree = "<group>"; };
+		8952C9D61538A6DF00F47861 /* Add-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add-Button.png"; sourceTree = "<group>"; };
+		8952C9D71538A6DF00F47861 /* AlertDetail_DropShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlertDetail_DropShadow.png; sourceTree = "<group>"; };
+		8952C9D81538A6DF00F47861 /* Alerts_Screen_ZebraStripe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alerts_Screen_ZebraStripe.png; sourceTree = "<group>"; };
+		8952C9D91538A6DF00F47861 /* AlertsScreen_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlertsScreen_Arrow.png; sourceTree = "<group>"; };
+		8952C9DA1538A6DF00F47861 /* FB_Alert_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FB_Alert_Icon.png; sourceTree = "<group>"; };
+		8952C9DB1538A6DF00F47861 /* FB_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FB_Icon.png; sourceTree = "<group>"; };
+		8952C9DC1538A6DF00F47861 /* Header-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Header-Bar.png"; sourceTree = "<group>"; };
+		8952C9DD1538A6DF00F47861 /* Location_Alert_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Location_Alert_Icon.png; sourceTree = "<group>"; };
+		8952C9DE1538A6DF00F47861 /* Main_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Main_BG.png; sourceTree = "<group>"; };
+		8952C9DF1538A6DF00F47861 /* MapDetail_Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapDetail_Overlay.png; sourceTree = "<group>"; };
+		8952C9E01538A6DF00F47861 /* MapView-Button_Left_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapView-Button_Left_Off.png"; sourceTree = "<group>"; };
+		8952C9E11538A6DF00F47861 /* MapView-Button_Left_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapView-Button_Left_On.png"; sourceTree = "<group>"; };
+		8952C9E21538A6DF00F47861 /* MapView-Button_Right_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapView-Button_Right_Off.png"; sourceTree = "<group>"; };
+		8952C9E31538A6DF00F47861 /* MapView-Button_Right_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapView-Button_Right_On.png"; sourceTree = "<group>"; };
+		8952C9E41538A6DF00F47861 /* MenuButton-Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuButton-Off.png"; sourceTree = "<group>"; };
+		8952C9E51538A6DF00F47861 /* MenuButton-On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuButton-On.png"; sourceTree = "<group>"; };
+		8952C9E61538A6DF00F47861 /* MySpace_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MySpace_Icon.png; sourceTree = "<group>"; };
+		8952C9E71538A6DF00F47861 /* Nav-On_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nav-On_Arrow.png"; sourceTree = "<group>"; };
+		8952C9E81538A6DF00F47861 /* SettingsScreen_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsScreen_Arrow.png; sourceTree = "<group>"; };
+		8952C9E91538A6DF00F47861 /* SideNav-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SideNav-BG.png"; sourceTree = "<group>"; };
+		8952C9EA1538A6DF00F47861 /* SMS_Alert_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SMS_Alert_Icon.png; sourceTree = "<group>"; };
+		8952C9EB1538A6DF00F47861 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
+		8952C9EC1538A6DF00F47861 /* pin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_icon.png; sourceTree = "<group>"; };
+		8952C9ED1538A6DF00F47861 /* sms_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms_icon.png; sourceTree = "<group>"; };
+		8952C9EE1538A6DF00F47861 /* bottom_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_shadow.png; sourceTree = "<group>"; };
+		8952C9F01538A6DF00F47861 /* butterfly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = butterfly.png; sourceTree = "<group>"; };
+		8952C9F11538A6DF00F47861 /* dark_zebra_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_zebra_BG.png; sourceTree = "<group>"; };
+		8952C9F21538A6DF00F47861 /* eiffel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eiffel.png; sourceTree = "<group>"; };
+		8952C9F31538A6DF00F47861 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
+		8952C9F41538A6DF00F47861 /* top_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_shadow.png; sourceTree = "<group>"; };
+		8952C9F51538A6DF00F47861 /* ATT_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ATT_btn_on.png; sourceTree = "<group>"; };
+		8952C9F61538A6DF00F47861 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8952C9F71538A6DF00F47861 /* LoadingScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadingScreen@2x.png"; sourceTree = "<group>"; };
+		8952C9F81538A6DF00F47861 /* ServiceProviderSprint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderSprint@2x.png"; sourceTree = "<group>"; };
+		8952C9F91538A6DF00F47861 /* ServiceProviderTMobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderTMobile.png; sourceTree = "<group>"; };
+		8952C9FA1538A6DF00F47861 /* ServiceProviderVerizon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderVerizon.png; sourceTree = "<group>"; };
+		8952C9FB1538A6DF00F47861 /* Sprint_btn_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprint_btn_off@2x.png"; sourceTree = "<group>"; };
+		8952C9FC1538A6DF00F47861 /* Sprint_btn_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprint_btn_on@2x.png"; sourceTree = "<group>"; };
+		8952C9FD1538A6DF00F47861 /* StandardBackground_Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground_Logo@2x.png"; sourceTree = "<group>"; };
+		8952C9FE1538A6DF00F47861 /* TMobile_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TMobile_btn_off.png; sourceTree = "<group>"; };
+		8952C9FF1538A6DF00F47861 /* TMobile_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TMobile_btn_on.png; sourceTree = "<group>"; };
+		8952CA001538A6DF00F47861 /* Verizon_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verizon_btn_off.png; sourceTree = "<group>"; };
+		8952CA011538A6DF00F47861 /* ATT_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ATT_btn_off.png; sourceTree = "<group>"; };
+		8952CA021538A6DF00F47861 /* ATT_btn_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ATT_btn_off@2x.png"; sourceTree = "<group>"; };
+		8952CA031538A6DF00F47861 /* Background_SignIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_SignIn.png; sourceTree = "<group>"; };
+		8952CA041538A6DF00F47861 /* Background_SignIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background_SignIn@2x.png"; sourceTree = "<group>"; };
+		8952CA051538A6DF00F47861 /* Button_Blue_LG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Blue_LG.png; sourceTree = "<group>"; };
+		8952CA061538A6DF00F47861 /* Button_Blue_LG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Blue_LG@2x.png"; sourceTree = "<group>"; };
+		8952CA071538A6DF00F47861 /* LoadingScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingScreen.png; sourceTree = "<group>"; };
+		8952CA081538A6DF00F47861 /* MobileAlertSetup1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileAlertSetup1@2x.png"; sourceTree = "<group>"; };
+		8952CA091538A6DF00F47861 /* MobileAlertSetup2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileAlertSetup2@2x.png"; sourceTree = "<group>"; };
+		8952CA0A1538A6DF00F47861 /* MobileOptIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileOptIn.png; sourceTree = "<group>"; };
+		8952CA0B1538A6DF00F47861 /* MobileOptIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MobileOptIn@2x.png"; sourceTree = "<group>"; };
+		8952CA0C1538A6DF00F47861 /* ServiceProviderATT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderATT.png; sourceTree = "<group>"; };
+		8952CA0D1538A6DF00F47861 /* ServiceProviderATT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderATT@2x.png"; sourceTree = "<group>"; };
+		8952CA0E1538A6DF00F47861 /* ServiceProviderTMobile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderTMobile@2x.png"; sourceTree = "<group>"; };
+		8952CA0F1538A6DF00F47861 /* Sprint_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sprint_btn_on.png; sourceTree = "<group>"; };
+		8952CA101538A6DF00F47861 /* StandardBackground_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StandardBackground_Logo.png; sourceTree = "<group>"; };
+		8952CA111538A6DF00F47861 /* TMobile_btn_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TMobile_btn_off@2x.png"; sourceTree = "<group>"; };
+		8952CA121538A6DF00F47861 /* TMobile_btn_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TMobile_btn_on@2x.png"; sourceTree = "<group>"; };
+		8952CA131538A6DF00F47861 /* Verizon_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verizon_btn_on.png; sourceTree = "<group>"; };
+		8952CA141538A6DF00F47861 /* Verizon_btn_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verizon_btn_on@2x.png"; sourceTree = "<group>"; };
+		8952CA151538A6DF00F47861 /* ATT_btn_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ATT_btn_on@2x.png"; sourceTree = "<group>"; };
+		8952CA161538A6DF00F47861 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
+		8952CA171538A6DF00F47861 /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
+		8952CA181538A6DF00F47861 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8952CA191538A6DF00F47861 /* MobileAlertSetup1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileAlertSetup1.png; sourceTree = "<group>"; };
+		8952CA1A1538A6DF00F47861 /* MobileAlertSetup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MobileAlertSetup2.png; sourceTree = "<group>"; };
+		8952CA1B1538A6DF00F47861 /* ServiceProviderSprint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ServiceProviderSprint.png; sourceTree = "<group>"; };
+		8952CA1C1538A6DF00F47861 /* ServiceProviderVerizon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ServiceProviderVerizon@2x.png"; sourceTree = "<group>"; };
+		8952CA1D1538A6DF00F47861 /* Sprint_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sprint_btn_off.png; sourceTree = "<group>"; };
+		8952CA1E1538A6DF00F47861 /* StandardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StandardBackground.png; sourceTree = "<group>"; };
+		8952CA1F1538A6DF00F47861 /* StandardBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground@2x.png"; sourceTree = "<group>"; };
+		8952CA201538A6DF00F47861 /* Verizon_btn_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verizon_btn_off@2x.png"; sourceTree = "<group>"; };
+		8952CAE11538A9E500F47861 /* AnnounceMyLocation-Btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AnnounceMyLocation-Btn.png"; sourceTree = "<group>"; };
 		89740AB214EC6D4A0064E64A /* AppProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppProperties.h; sourceTree = "<group>"; };
 		89740AB314EC6D4A0064E64A /* AppProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppProperties.m; sourceTree = "<group>"; };
 		89740AB514EC6D8C0064E64A /* AppProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppProperties.plist; sourceTree = "<group>"; };
 		89740ABB14EC70E40064E64A /* AppProperties.dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppProperties.dev.plist; sourceTree = "<group>"; };
 		89740ABC14EC70E40064E64A /* AppProperties.prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppProperties.prod.plist; sourceTree = "<group>"; };
-		897BBC6914F4171700377684 /* LoadingScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingScreen.png; sourceTree = "<group>"; };
-		897BBC6A14F4171700377684 /* LoadingScreen@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadingScreen@2X.png"; sourceTree = "<group>"; };
-		897BBC6E14F41D6800377684 /* ATT_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ATT_btn_off.png; sourceTree = "<group>"; };
-		897BBC6F14F41D6800377684 /* ATT_btn_off@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ATT_btn_off@2X.png"; sourceTree = "<group>"; };
-		897BBC7014F41D6800377684 /* ATT_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ATT_btn_on.png; sourceTree = "<group>"; };
-		897BBC7114F41D6900377684 /* ATT_btn_on@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ATT_btn_on@2X.png"; sourceTree = "<group>"; };
-		897BBC7214F41D6900377684 /* Sprint_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sprint_btn_off.png; sourceTree = "<group>"; };
-		897BBC7314F41D6900377684 /* Sprint_btn_off@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprint_btn_off@2X.png"; sourceTree = "<group>"; };
-		897BBC7414F41D6900377684 /* Sprint_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sprint_btn_on.png; sourceTree = "<group>"; };
-		897BBC7514F41D6900377684 /* Sprint_btn_on@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprint_btn_on@2X.png"; sourceTree = "<group>"; };
-		897BBC7614F41D6900377684 /* TMobile_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TMobile_btn_off.png; sourceTree = "<group>"; };
-		897BBC7714F41D6A00377684 /* TMobile_btn_off@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TMobile_btn_off@2X.png"; sourceTree = "<group>"; };
-		897BBC7814F41D6A00377684 /* TMobile_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TMobile_btn_on.png; sourceTree = "<group>"; };
-		897BBC7914F41D6A00377684 /* TMobile_btn_on@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TMobile_btn_on@2X.png"; sourceTree = "<group>"; };
-		897BBC7A14F41D6A00377684 /* Verizon_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verizon_btn_off.png; sourceTree = "<group>"; };
-		897BBC7B14F41D6A00377684 /* Verizon_btn_off@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verizon_btn_off@2X.png"; sourceTree = "<group>"; };
-		897BBC7C14F41D6A00377684 /* Verizon_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verizon_btn_on.png; sourceTree = "<group>"; };
-		897BBC7D14F41D6B00377684 /* Verizon_btn_on@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verizon_btn_on@2X.png"; sourceTree = "<group>"; };
 		897D348515114BFD00967F5D /* ResetPasswordLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordLoadViewController.h; sourceTree = "<group>"; };
 		897D348615114BFD00967F5D /* ResetPasswordLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordLoadViewController.m; sourceTree = "<group>"; };
 		897E980514DB02C3007595A7 /* SafetyWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafetyWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,8 +490,6 @@
 		897E984414DB12AE007595A7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		897E984614DB1478007595A7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		897E984714DB1478007595A7 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
-		897FD2541517E7EB00B7F0D0 /* top_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_shadow.png; sourceTree = "<group>"; };
-		897FD2571517E80D00B7F0D0 /* bottom_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_shadow.png; sourceTree = "<group>"; };
 		897FD2591517E9DE00B7F0D0 /* ViewProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewProfileViewController.h; sourceTree = "<group>"; };
 		897FD25A1517E9DF00B7F0D0 /* ViewProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewProfileViewController.m; sourceTree = "<group>"; };
 		897FD25B1517E9DF00B7F0D0 /* ViewProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewProfileViewController.xib; sourceTree = "<group>"; };
@@ -307,7 +499,6 @@
 		8981394B1523BF95003B6A0D /* FacebookAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlertCellController.h; sourceTree = "<group>"; };
 		8981394C1523BF96003B6A0D /* FacebookAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAlertCellController.m; sourceTree = "<group>"; };
 		8981394D1523BF96003B6A0D /* FacebookAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookAlertCellController.xib; sourceTree = "<group>"; };
-		898139501523C066003B6A0D /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
 		89838DB014E30F8B00CDCDBC /* AccountSetupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetupModel.h; sourceTree = "<group>"; };
 		89838DB114E30F8B00CDCDBC /* AccountSetupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSetupModel.m; sourceTree = "<group>"; };
 		898441CE14E474530047CDFE /* AccountSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSetupViewController.h; sourceTree = "<group>"; };
@@ -346,12 +537,9 @@
 		89A1C505150FFEA80097F2F1 /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
 		89A1C506150FFEA80097F2F1 /* AlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsViewController.m; sourceTree = "<group>"; };
 		89A1C50A150FFF720097F2F1 /* AlertsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertsViewController.xib; sourceTree = "<group>"; };
-		89A1C50E151000300097F2F1 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = point.png; path = "test images/point.png"; sourceTree = "<group>"; };
-		89A1C511151000530097F2F1 /* eiffel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eiffel.png; path = "test images/eiffel.png"; sourceTree = "<group>"; };
 		89A1C513151005EB0097F2F1 /* CheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInViewController.h; sourceTree = "<group>"; };
 		89A1C514151005EC0097F2F1 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
 		89A1C515151005EC0097F2F1 /* CheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInViewController.xib; sourceTree = "<group>"; };
-		89A1C518151006510097F2F1 /* butterfly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = butterfly.png; path = "test images/butterfly.png"; sourceTree = "<group>"; };
 		89A401131534D7DD0027FE7D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		89A401161534E6CA0027FE7D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		89A401171534E6CB0027FE7D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -387,18 +575,15 @@
 		89B630E515129A6900E25970 /* CheckInCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInCellController.h; sourceTree = "<group>"; };
 		89B630E615129A6900E25970 /* CheckInCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInCellController.m; sourceTree = "<group>"; };
 		89B630E715129A6A00E25970 /* CheckInCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInCellController.xib; sourceTree = "<group>"; };
-		89B630EC1512A4E700E25970 /* dark_zebra_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dark_zebra_BG.png; path = "test images/dark_zebra_BG.png"; sourceTree = "<group>"; };
 		89B977941517905E0046E102 /* MyPeopleCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPeopleCellController.h; sourceTree = "<group>"; };
 		89B977951517905E0046E102 /* MyPeopleCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPeopleCellController.m; sourceTree = "<group>"; };
 		89B977961517905E0046E102 /* MyPeopleCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPeopleCellController.xib; sourceTree = "<group>"; };
 		89BD10E21524FAA600141BFA /* SMSAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSAlertCellController.h; sourceTree = "<group>"; };
 		89BD10E31524FAA600141BFA /* SMSAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSAlertCellController.m; sourceTree = "<group>"; };
 		89BD10E41524FAA600141BFA /* SMSAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSAlertCellController.xib; sourceTree = "<group>"; };
-		89BD10E71524FB7700141BFA /* sms_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms_icon.png; sourceTree = "<group>"; };
 		89BD10EF15250B2200141BFA /* CheckInAlertCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInAlertCellController.h; sourceTree = "<group>"; };
 		89BD10F015250B2200141BFA /* CheckInAlertCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlertCellController.m; sourceTree = "<group>"; };
 		89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInAlertCellController.xib; sourceTree = "<group>"; };
-		89BD10F415250BFE00141BFA /* pin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_icon.png; sourceTree = "<group>"; };
 		89BD10F61525195400141BFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		89BDA89E15263259004FEF30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89BDA8A215263277004FEF30 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -537,6 +722,17 @@
 			name = "Main UI";
 			sourceTree = "<group>";
 		};
+		8952C9EF1538A6DF00F47861 /* test images */ = {
+			isa = PBXGroup;
+			children = (
+				8952C9F01538A6DF00F47861 /* butterfly.png */,
+				8952C9F11538A6DF00F47861 /* dark_zebra_BG.png */,
+				8952C9F21538A6DF00F47861 /* eiffel.png */,
+				8952C9F31538A6DF00F47861 /* point.png */,
+			);
+			path = "test images";
+			sourceTree = "<group>";
+		};
 		89740AB014EC6C5E0064E64A /* WebInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,56 +832,100 @@
 		898441D614E48A240047CDFE /* images */ = {
 			isa = PBXGroup;
 			children = (
-				89BD10F415250BFE00141BFA /* pin_icon.png */,
-				89BD10E71524FB7700141BFA /* sms_icon.png */,
-				898139501523C066003B6A0D /* facebook_icon.png */,
-				897BBC6E14F41D6800377684 /* ATT_btn_off.png */,
-				897BBC6F14F41D6800377684 /* ATT_btn_off@2X.png */,
-				897BBC7014F41D6800377684 /* ATT_btn_on.png */,
-				897BBC7114F41D6900377684 /* ATT_btn_on@2X.png */,
-				89740A6C14EC56420064E64A /* Back.png */,
-				89740A6D14EC56420064E64A /* Back@2x.png */,
-				89740A8014EC57B50064E64A /* Background_SignIn.png */,
-				89740A8114EC57B50064E64A /* Background_SignIn@2x.png */,
-				897FD2571517E80D00B7F0D0 /* bottom_shadow.png */,
-				89740A8414EC58690064E64A /* Button_Blue_LG.png */,
-				89740A8514EC58690064E64A /* Button_Blue_LG@2x.png */,
-				89740A7014EC56540064E64A /* Default.png */,
-				89740A7114EC56540064E64A /* Default@2x.png */,
-				897BBC6914F4171700377684 /* LoadingScreen.png */,
-				897BBC6A14F4171700377684 /* LoadingScreen@2X.png */,
-				89740A8814EC59320064E64A /* MobileAlertSetup1.png */,
-				89740A8914EC59320064E64A /* MobileAlertSetup1@2x.png */,
-				89740A8C14EC599E0064E64A /* MobileAlertSetup2.png */,
-				89740A8D14EC599E0064E64A /* MobileAlertSetup2@2x.png */,
-				89740A7C14EC573B0064E64A /* MobileOptIn.png */,
-				89740A7D14EC573B0064E64A /* MobileOptIn@2x.png */,
-				89740AA014EC5A620064E64A /* ServiceProviderATT.png */,
-				89740AA114EC5A620064E64A /* ServiceProviderATT@2x.png */,
-				89740AA214EC5A620064E64A /* ServiceProviderSprint.png */,
-				89740AA314EC5A620064E64A /* ServiceProviderSprint@2x.png */,
-				89740AA414EC5A620064E64A /* ServiceProviderTMobile.png */,
-				89740AA514EC5A620064E64A /* ServiceProviderTMobile@2x.png */,
-				89740AA614EC5A620064E64A /* ServiceProviderVerizon.png */,
-				89740AA714EC5A620064E64A /* ServiceProviderVerizon@2x.png */,
-				897BBC7214F41D6900377684 /* Sprint_btn_off.png */,
-				897BBC7314F41D6900377684 /* Sprint_btn_off@2X.png */,
-				897BBC7414F41D6900377684 /* Sprint_btn_on.png */,
-				897BBC7514F41D6900377684 /* Sprint_btn_on@2X.png */,
-				89740A7614EC567A0064E64A /* StandardBackground.png */,
-				89740A7714EC567A0064E64A /* StandardBackground@2x.png */,
-				89740A7414EC567A0064E64A /* StandardBackground_Logo.png */,
-				89740A7514EC567A0064E64A /* StandardBackground_Logo@2x.png */,
-				89A1C50C150FFFD30097F2F1 /* test images */,
-				897BBC7614F41D6900377684 /* TMobile_btn_off.png */,
-				897BBC7714F41D6A00377684 /* TMobile_btn_off@2X.png */,
-				897BBC7814F41D6A00377684 /* TMobile_btn_on.png */,
-				897BBC7914F41D6A00377684 /* TMobile_btn_on@2X.png */,
-				897FD2541517E7EB00B7F0D0 /* top_shadow.png */,
-				897BBC7A14F41D6A00377684 /* Verizon_btn_off.png */,
-				897BBC7B14F41D6A00377684 /* Verizon_btn_off@2X.png */,
-				897BBC7C14F41D6A00377684 /* Verizon_btn_on.png */,
-				897BBC7D14F41D6B00377684 /* Verizon_btn_on@2X.png */,
+				8952CAE11538A9E500F47861 /* AnnounceMyLocation-Btn.png */,
+				8952C9C01538A6DF00F47861 /* Add-Button@2x.png */,
+				8952C9C11538A6DF00F47861 /* AlertDetail_DropShadow@2x.png */,
+				8952C9C21538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png */,
+				8952C9C31538A6DF00F47861 /* AlertsScreen_Arrow@2x.png */,
+				8952C9C41538A6DF00F47861 /* AnnounceMyLocation-Btn@2x.png */,
+				8952C9C51538A6DF00F47861 /* FB_Alert_Icon@2x.png */,
+				8952C9C61538A6DF00F47861 /* FB_Icon@2x.png */,
+				8952C9C71538A6DF00F47861 /* Header-Bar@2x.png */,
+				8952C9C81538A6DF00F47861 /* Location_Alert_Icon@2x.png */,
+				8952C9C91538A6DF00F47861 /* Main_BG@2x.png */,
+				8952C9CA1538A6DF00F47861 /* MapDetail_Overlay@2x.png */,
+				8952C9CB1538A6DF00F47861 /* MapView-Button_Left_Off@2x.png */,
+				8952C9CC1538A6DF00F47861 /* MapView-Button_Left_On@2x.png */,
+				8952C9CD1538A6DF00F47861 /* MapView-Button_Right_Off@2x.png */,
+				8952C9CE1538A6DF00F47861 /* MapView-Button_Right_On@2x.png */,
+				8952C9CF1538A6DF00F47861 /* MenuButton-Off@2x.png */,
+				8952C9D01538A6DF00F47861 /* MenuButton-On@2x.png */,
+				8952C9D11538A6DF00F47861 /* MySpace_Icon@2x.png */,
+				8952C9D21538A6DF00F47861 /* Nav-On_Arrow@2x.png */,
+				8952C9D31538A6DF00F47861 /* SettingsScreen_Arrow@2x.png */,
+				8952C9D41538A6DF00F47861 /* SideNav-BG@2x.png */,
+				8952C9D51538A6DF00F47861 /* SMS_Alert_Icon@2x.png */,
+				8952C9D61538A6DF00F47861 /* Add-Button.png */,
+				8952C9D71538A6DF00F47861 /* AlertDetail_DropShadow.png */,
+				8952C9D81538A6DF00F47861 /* Alerts_Screen_ZebraStripe.png */,
+				8952C9D91538A6DF00F47861 /* AlertsScreen_Arrow.png */,
+				8952C9DA1538A6DF00F47861 /* FB_Alert_Icon.png */,
+				8952C9DB1538A6DF00F47861 /* FB_Icon.png */,
+				8952C9DC1538A6DF00F47861 /* Header-Bar.png */,
+				8952C9DD1538A6DF00F47861 /* Location_Alert_Icon.png */,
+				8952C9DE1538A6DF00F47861 /* Main_BG.png */,
+				8952C9DF1538A6DF00F47861 /* MapDetail_Overlay.png */,
+				8952C9E01538A6DF00F47861 /* MapView-Button_Left_Off.png */,
+				8952C9E11538A6DF00F47861 /* MapView-Button_Left_On.png */,
+				8952C9E21538A6DF00F47861 /* MapView-Button_Right_Off.png */,
+				8952C9E31538A6DF00F47861 /* MapView-Button_Right_On.png */,
+				8952C9E41538A6DF00F47861 /* MenuButton-Off.png */,
+				8952C9E51538A6DF00F47861 /* MenuButton-On.png */,
+				8952C9E61538A6DF00F47861 /* MySpace_Icon.png */,
+				8952C9E71538A6DF00F47861 /* Nav-On_Arrow.png */,
+				8952C9E81538A6DF00F47861 /* SettingsScreen_Arrow.png */,
+				8952C9E91538A6DF00F47861 /* SideNav-BG.png */,
+				8952C9EA1538A6DF00F47861 /* SMS_Alert_Icon.png */,
+				8952C9EB1538A6DF00F47861 /* facebook_icon.png */,
+				8952C9EC1538A6DF00F47861 /* pin_icon.png */,
+				8952C9ED1538A6DF00F47861 /* sms_icon.png */,
+				8952C9EE1538A6DF00F47861 /* bottom_shadow.png */,
+				8952C9EF1538A6DF00F47861 /* test images */,
+				8952C9F41538A6DF00F47861 /* top_shadow.png */,
+				8952C9F51538A6DF00F47861 /* ATT_btn_on.png */,
+				8952C9F61538A6DF00F47861 /* Default.png */,
+				8952C9F71538A6DF00F47861 /* LoadingScreen@2x.png */,
+				8952C9F81538A6DF00F47861 /* ServiceProviderSprint@2x.png */,
+				8952C9F91538A6DF00F47861 /* ServiceProviderTMobile.png */,
+				8952C9FA1538A6DF00F47861 /* ServiceProviderVerizon.png */,
+				8952C9FB1538A6DF00F47861 /* Sprint_btn_off@2x.png */,
+				8952C9FC1538A6DF00F47861 /* Sprint_btn_on@2x.png */,
+				8952C9FD1538A6DF00F47861 /* StandardBackground_Logo@2x.png */,
+				8952C9FE1538A6DF00F47861 /* TMobile_btn_off.png */,
+				8952C9FF1538A6DF00F47861 /* TMobile_btn_on.png */,
+				8952CA001538A6DF00F47861 /* Verizon_btn_off.png */,
+				8952CA011538A6DF00F47861 /* ATT_btn_off.png */,
+				8952CA021538A6DF00F47861 /* ATT_btn_off@2x.png */,
+				8952CA031538A6DF00F47861 /* Background_SignIn.png */,
+				8952CA041538A6DF00F47861 /* Background_SignIn@2x.png */,
+				8952CA051538A6DF00F47861 /* Button_Blue_LG.png */,
+				8952CA061538A6DF00F47861 /* Button_Blue_LG@2x.png */,
+				8952CA071538A6DF00F47861 /* LoadingScreen.png */,
+				8952CA081538A6DF00F47861 /* MobileAlertSetup1@2x.png */,
+				8952CA091538A6DF00F47861 /* MobileAlertSetup2@2x.png */,
+				8952CA0A1538A6DF00F47861 /* MobileOptIn.png */,
+				8952CA0B1538A6DF00F47861 /* MobileOptIn@2x.png */,
+				8952CA0C1538A6DF00F47861 /* ServiceProviderATT.png */,
+				8952CA0D1538A6DF00F47861 /* ServiceProviderATT@2x.png */,
+				8952CA0E1538A6DF00F47861 /* ServiceProviderTMobile@2x.png */,
+				8952CA0F1538A6DF00F47861 /* Sprint_btn_on.png */,
+				8952CA101538A6DF00F47861 /* StandardBackground_Logo.png */,
+				8952CA111538A6DF00F47861 /* TMobile_btn_off@2x.png */,
+				8952CA121538A6DF00F47861 /* TMobile_btn_on@2x.png */,
+				8952CA131538A6DF00F47861 /* Verizon_btn_on.png */,
+				8952CA141538A6DF00F47861 /* Verizon_btn_on@2x.png */,
+				8952CA151538A6DF00F47861 /* ATT_btn_on@2x.png */,
+				8952CA161538A6DF00F47861 /* Back.png */,
+				8952CA171538A6DF00F47861 /* Back@2x.png */,
+				8952CA181538A6DF00F47861 /* Default@2x.png */,
+				8952CA191538A6DF00F47861 /* MobileAlertSetup1.png */,
+				8952CA1A1538A6DF00F47861 /* MobileAlertSetup2.png */,
+				8952CA1B1538A6DF00F47861 /* ServiceProviderSprint.png */,
+				8952CA1C1538A6DF00F47861 /* ServiceProviderVerizon@2x.png */,
+				8952CA1D1538A6DF00F47861 /* Sprint_btn_off.png */,
+				8952CA1E1538A6DF00F47861 /* StandardBackground.png */,
+				8952CA1F1538A6DF00F47861 /* StandardBackground@2x.png */,
+				8952CA201538A6DF00F47861 /* Verizon_btn_off@2x.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -725,17 +965,6 @@
 				89A4012B1534E7B50027FE7D /* SMSAlert.m */,
 			);
 			name = DataModel;
-			sourceTree = "<group>";
-		};
-		89A1C50C150FFFD30097F2F1 /* test images */ = {
-			isa = PBXGroup;
-			children = (
-				89B630EC1512A4E700E25970 /* dark_zebra_BG.png */,
-				89A1C518151006510097F2F1 /* butterfly.png */,
-				89A1C511151000530097F2F1 /* eiffel.png */,
-				89A1C50E151000300097F2F1 /* point.png */,
-			);
-			name = "test images";
 			sourceTree = "<group>";
 		};
 		89AA20AE14F582500082C7B5 /* SafetyWebTests */ = {
@@ -871,74 +1100,118 @@
 				89867F2114E9928600B054B2 /* MobileAlertSetup1View.xib in Resources */,
 				89867F2614E9A65700B054B2 /* MobileAlertSetup2View.xib in Resources */,
 				899C095614EAE57000DDC780 /* LoadView.xib in Resources */,
-				89740A6E14EC56420064E64A /* Back.png in Resources */,
-				89740A6F14EC56420064E64A /* Back@2x.png in Resources */,
-				89740A7214EC56540064E64A /* Default.png in Resources */,
-				89740A7314EC56540064E64A /* Default@2x.png in Resources */,
-				89740A7814EC567A0064E64A /* StandardBackground_Logo.png in Resources */,
-				89740A7914EC567A0064E64A /* StandardBackground_Logo@2x.png in Resources */,
-				89740A7A14EC567A0064E64A /* StandardBackground.png in Resources */,
-				89740A7B14EC567A0064E64A /* StandardBackground@2x.png in Resources */,
-				89740A7E14EC573B0064E64A /* MobileOptIn.png in Resources */,
-				89740A7F14EC573B0064E64A /* MobileOptIn@2x.png in Resources */,
-				89740A8214EC57B50064E64A /* Background_SignIn.png in Resources */,
-				89740A8314EC57B50064E64A /* Background_SignIn@2x.png in Resources */,
-				89740A8614EC58690064E64A /* Button_Blue_LG.png in Resources */,
-				89740A8714EC58690064E64A /* Button_Blue_LG@2x.png in Resources */,
-				89740A8A14EC59320064E64A /* MobileAlertSetup1.png in Resources */,
-				89740A8B14EC59320064E64A /* MobileAlertSetup1@2x.png in Resources */,
-				89740A8E14EC599E0064E64A /* MobileAlertSetup2.png in Resources */,
-				89740A8F14EC599E0064E64A /* MobileAlertSetup2@2x.png in Resources */,
-				89740AA814EC5A620064E64A /* ServiceProviderATT.png in Resources */,
-				89740AA914EC5A620064E64A /* ServiceProviderATT@2x.png in Resources */,
-				89740AAA14EC5A620064E64A /* ServiceProviderSprint.png in Resources */,
-				89740AAB14EC5A620064E64A /* ServiceProviderSprint@2x.png in Resources */,
-				89740AAC14EC5A620064E64A /* ServiceProviderTMobile.png in Resources */,
-				89740AAD14EC5A620064E64A /* ServiceProviderTMobile@2x.png in Resources */,
-				89740AAE14EC5A620064E64A /* ServiceProviderVerizon.png in Resources */,
-				89740AAF14EC5A620064E64A /* ServiceProviderVerizon@2x.png in Resources */,
 				89740AB614EC6D8C0064E64A /* AppProperties.plist in Resources */,
 				89740ABD14EC70E40064E64A /* AppProperties.dev.plist in Resources */,
 				89740ABE14EC70E40064E64A /* AppProperties.prod.plist in Resources */,
-				897BBC6B14F4171700377684 /* LoadingScreen.png in Resources */,
-				897BBC6C14F4171700377684 /* LoadingScreen@2X.png in Resources */,
-				897BBC7E14F41D6B00377684 /* ATT_btn_off.png in Resources */,
-				897BBC7F14F41D6B00377684 /* ATT_btn_off@2X.png in Resources */,
-				897BBC8014F41D6B00377684 /* ATT_btn_on.png in Resources */,
-				897BBC8114F41D6B00377684 /* ATT_btn_on@2X.png in Resources */,
-				897BBC8214F41D6B00377684 /* Sprint_btn_off.png in Resources */,
-				897BBC8314F41D6B00377684 /* Sprint_btn_off@2X.png in Resources */,
-				897BBC8414F41D6B00377684 /* Sprint_btn_on.png in Resources */,
-				897BBC8514F41D6B00377684 /* Sprint_btn_on@2X.png in Resources */,
-				897BBC8614F41D6B00377684 /* TMobile_btn_off.png in Resources */,
-				897BBC8714F41D6B00377684 /* TMobile_btn_off@2X.png in Resources */,
-				897BBC8814F41D6B00377684 /* TMobile_btn_on.png in Resources */,
-				897BBC8914F41D6B00377684 /* TMobile_btn_on@2X.png in Resources */,
-				897BBC8A14F41D6B00377684 /* Verizon_btn_off.png in Resources */,
-				897BBC8B14F41D6B00377684 /* Verizon_btn_off@2X.png in Resources */,
-				897BBC8C14F41D6B00377684 /* Verizon_btn_on.png in Resources */,
-				897BBC8D14F41D6B00377684 /* Verizon_btn_on@2X.png in Resources */,
 				8936AFE4150FC28B005C8237 /* MenuViewController.xib in Resources */,
 				89A1C50B150FFF720097F2F1 /* AlertsViewController.xib in Resources */,
-				89A1C510151000300097F2F1 /* point.png in Resources */,
-				89A1C512151000530097F2F1 /* eiffel.png in Resources */,
 				89A1C517151005EC0097F2F1 /* CheckInViewController.xib in Resources */,
-				89A1C519151006510097F2F1 /* butterfly.png in Resources */,
 				89B630C315127EE800E25970 /* MyPeopleViewController.xib in Resources */,
 				89B630E915129A6A00E25970 /* CheckInCellController.xib in Resources */,
-				89B630ED1512A4E700E25970 /* dark_zebra_BG.png in Resources */,
 				89B977981517905E0046E102 /* MyPeopleCellController.xib in Resources */,
-				897FD2551517E7EB00B7F0D0 /* top_shadow.png in Resources */,
-				897FD2581517E80D00B7F0D0 /* bottom_shadow.png in Resources */,
 				897FD25D1517E9DF00B7F0D0 /* ViewProfileViewController.xib in Resources */,
 				8914514D1522541300800262 /* SettingsViewController.xib in Resources */,
 				8981393615238A38003B6A0D /* BingMaps.Resources.bundle in Resources */,
 				8981394F1523BF96003B6A0D /* FacebookAlertCellController.xib in Resources */,
-				898139511523C066003B6A0D /* facebook_icon.png in Resources */,
 				89BD10E61524FAA600141BFA /* SMSAlertCellController.xib in Resources */,
-				89BD10E81524FB7700141BFA /* sms_icon.png in Resources */,
 				89BD10F315250B2300141BFA /* CheckInAlertCellController.xib in Resources */,
-				89BD10F515250BFE00141BFA /* pin_icon.png in Resources */,
+				8952CA211538A6DF00F47861 /* Add-Button@2x.png in Resources */,
+				8952CA231538A6DF00F47861 /* AlertDetail_DropShadow@2x.png in Resources */,
+				8952CA251538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png in Resources */,
+				8952CA271538A6DF00F47861 /* AlertsScreen_Arrow@2x.png in Resources */,
+				8952CA291538A6DF00F47861 /* AnnounceMyLocation-Btn@2x.png in Resources */,
+				8952CA2B1538A6DF00F47861 /* FB_Alert_Icon@2x.png in Resources */,
+				8952CA2D1538A6DF00F47861 /* FB_Icon@2x.png in Resources */,
+				8952CA2F1538A6DF00F47861 /* Header-Bar@2x.png in Resources */,
+				8952CA311538A6DF00F47861 /* Location_Alert_Icon@2x.png in Resources */,
+				8952CA331538A6DF00F47861 /* Main_BG@2x.png in Resources */,
+				8952CA351538A6DF00F47861 /* MapDetail_Overlay@2x.png in Resources */,
+				8952CA371538A6DF00F47861 /* MapView-Button_Left_Off@2x.png in Resources */,
+				8952CA391538A6DF00F47861 /* MapView-Button_Left_On@2x.png in Resources */,
+				8952CA3B1538A6DF00F47861 /* MapView-Button_Right_Off@2x.png in Resources */,
+				8952CA3D1538A6DF00F47861 /* MapView-Button_Right_On@2x.png in Resources */,
+				8952CA3F1538A6DF00F47861 /* MenuButton-Off@2x.png in Resources */,
+				8952CA411538A6DF00F47861 /* MenuButton-On@2x.png in Resources */,
+				8952CA431538A6DF00F47861 /* MySpace_Icon@2x.png in Resources */,
+				8952CA451538A6DF00F47861 /* Nav-On_Arrow@2x.png in Resources */,
+				8952CA471538A6DF00F47861 /* SettingsScreen_Arrow@2x.png in Resources */,
+				8952CA491538A6DF00F47861 /* SideNav-BG@2x.png in Resources */,
+				8952CA4B1538A6DF00F47861 /* SMS_Alert_Icon@2x.png in Resources */,
+				8952CA4D1538A6DF00F47861 /* Add-Button.png in Resources */,
+				8952CA4F1538A6DF00F47861 /* AlertDetail_DropShadow.png in Resources */,
+				8952CA511538A6DF00F47861 /* Alerts_Screen_ZebraStripe.png in Resources */,
+				8952CA531538A6DF00F47861 /* AlertsScreen_Arrow.png in Resources */,
+				8952CA551538A6DF00F47861 /* FB_Alert_Icon.png in Resources */,
+				8952CA571538A6DF00F47861 /* FB_Icon.png in Resources */,
+				8952CA591538A6DF00F47861 /* Header-Bar.png in Resources */,
+				8952CA5B1538A6DF00F47861 /* Location_Alert_Icon.png in Resources */,
+				8952CA5D1538A6DF00F47861 /* Main_BG.png in Resources */,
+				8952CA5F1538A6DF00F47861 /* MapDetail_Overlay.png in Resources */,
+				8952CA611538A6DF00F47861 /* MapView-Button_Left_Off.png in Resources */,
+				8952CA631538A6DF00F47861 /* MapView-Button_Left_On.png in Resources */,
+				8952CA651538A6DF00F47861 /* MapView-Button_Right_Off.png in Resources */,
+				8952CA671538A6DF00F47861 /* MapView-Button_Right_On.png in Resources */,
+				8952CA691538A6DF00F47861 /* MenuButton-Off.png in Resources */,
+				8952CA6B1538A6DF00F47861 /* MenuButton-On.png in Resources */,
+				8952CA6D1538A6DF00F47861 /* MySpace_Icon.png in Resources */,
+				8952CA6F1538A6DF00F47861 /* Nav-On_Arrow.png in Resources */,
+				8952CA711538A6DF00F47861 /* SettingsScreen_Arrow.png in Resources */,
+				8952CA731538A6DF00F47861 /* SideNav-BG.png in Resources */,
+				8952CA751538A6DF00F47861 /* SMS_Alert_Icon.png in Resources */,
+				8952CA771538A6DF00F47861 /* facebook_icon.png in Resources */,
+				8952CA791538A6DF00F47861 /* pin_icon.png in Resources */,
+				8952CA7B1538A6DF00F47861 /* sms_icon.png in Resources */,
+				8952CA7D1538A6DF00F47861 /* bottom_shadow.png in Resources */,
+				8952CA7F1538A6DF00F47861 /* butterfly.png in Resources */,
+				8952CA811538A6DF00F47861 /* dark_zebra_BG.png in Resources */,
+				8952CA831538A6DF00F47861 /* eiffel.png in Resources */,
+				8952CA851538A6DF00F47861 /* point.png in Resources */,
+				8952CA871538A6DF00F47861 /* top_shadow.png in Resources */,
+				8952CA891538A6DF00F47861 /* ATT_btn_on.png in Resources */,
+				8952CA8B1538A6DF00F47861 /* Default.png in Resources */,
+				8952CA8D1538A6DF00F47861 /* LoadingScreen@2x.png in Resources */,
+				8952CA8F1538A6DF00F47861 /* ServiceProviderSprint@2x.png in Resources */,
+				8952CA911538A6DF00F47861 /* ServiceProviderTMobile.png in Resources */,
+				8952CA931538A6DF00F47861 /* ServiceProviderVerizon.png in Resources */,
+				8952CA951538A6DF00F47861 /* Sprint_btn_off@2x.png in Resources */,
+				8952CA971538A6DF00F47861 /* Sprint_btn_on@2x.png in Resources */,
+				8952CA991538A6DF00F47861 /* StandardBackground_Logo@2x.png in Resources */,
+				8952CA9B1538A6DF00F47861 /* TMobile_btn_off.png in Resources */,
+				8952CA9D1538A6DF00F47861 /* TMobile_btn_on.png in Resources */,
+				8952CA9F1538A6DF00F47861 /* Verizon_btn_off.png in Resources */,
+				8952CAA11538A6DF00F47861 /* ATT_btn_off.png in Resources */,
+				8952CAA31538A6DF00F47861 /* ATT_btn_off@2x.png in Resources */,
+				8952CAA51538A6DF00F47861 /* Background_SignIn.png in Resources */,
+				8952CAA71538A6DF00F47861 /* Background_SignIn@2x.png in Resources */,
+				8952CAA91538A6DF00F47861 /* Button_Blue_LG.png in Resources */,
+				8952CAAB1538A6DF00F47861 /* Button_Blue_LG@2x.png in Resources */,
+				8952CAAD1538A6DF00F47861 /* LoadingScreen.png in Resources */,
+				8952CAAF1538A6DF00F47861 /* MobileAlertSetup1@2x.png in Resources */,
+				8952CAB11538A6DF00F47861 /* MobileAlertSetup2@2x.png in Resources */,
+				8952CAB31538A6DF00F47861 /* MobileOptIn.png in Resources */,
+				8952CAB51538A6DF00F47861 /* MobileOptIn@2x.png in Resources */,
+				8952CAB71538A6DF00F47861 /* ServiceProviderATT.png in Resources */,
+				8952CAB91538A6DF00F47861 /* ServiceProviderATT@2x.png in Resources */,
+				8952CABB1538A6DF00F47861 /* ServiceProviderTMobile@2x.png in Resources */,
+				8952CABD1538A6DF00F47861 /* Sprint_btn_on.png in Resources */,
+				8952CABF1538A6DF00F47861 /* StandardBackground_Logo.png in Resources */,
+				8952CAC11538A6DF00F47861 /* TMobile_btn_off@2x.png in Resources */,
+				8952CAC31538A6DF00F47861 /* TMobile_btn_on@2x.png in Resources */,
+				8952CAC51538A6DF00F47861 /* Verizon_btn_on.png in Resources */,
+				8952CAC71538A6DF00F47861 /* Verizon_btn_on@2x.png in Resources */,
+				8952CAC91538A6DF00F47861 /* ATT_btn_on@2x.png in Resources */,
+				8952CACB1538A6DF00F47861 /* Back.png in Resources */,
+				8952CACD1538A6DF00F47861 /* Back@2x.png in Resources */,
+				8952CACF1538A6DF00F47861 /* Default@2x.png in Resources */,
+				8952CAD11538A6DF00F47861 /* MobileAlertSetup1.png in Resources */,
+				8952CAD31538A6DF00F47861 /* MobileAlertSetup2.png in Resources */,
+				8952CAD51538A6DF00F47861 /* ServiceProviderSprint.png in Resources */,
+				8952CAD71538A6DF00F47861 /* ServiceProviderVerizon@2x.png in Resources */,
+				8952CAD91538A6DF00F47861 /* Sprint_btn_off.png in Resources */,
+				8952CADB1538A6DF00F47861 /* StandardBackground.png in Resources */,
+				8952CADD1538A6DF00F47861 /* StandardBackground@2x.png in Resources */,
+				8952CADF1538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */,
+				8952CAE21538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +1223,103 @@
 				89A15E5814F59AE100BF1A18 /* AppProperties.dev.plist in Resources */,
 				89A15E5914F59AE100BF1A18 /* AppProperties.prod.plist in Resources */,
 				89AA20B314F582500082C7B5 /* InfoPlist.strings in Resources */,
+				8952CA221538A6DF00F47861 /* Add-Button@2x.png in Resources */,
+				8952CA241538A6DF00F47861 /* AlertDetail_DropShadow@2x.png in Resources */,
+				8952CA261538A6DF00F47861 /* Alerts_Screen_ZebraStripe@2x.png in Resources */,
+				8952CA281538A6DF00F47861 /* AlertsScreen_Arrow@2x.png in Resources */,
+				8952CA2A1538A6DF00F47861 /* AnnounceMyLocation-Btn@2x.png in Resources */,
+				8952CA2C1538A6DF00F47861 /* FB_Alert_Icon@2x.png in Resources */,
+				8952CA2E1538A6DF00F47861 /* FB_Icon@2x.png in Resources */,
+				8952CA301538A6DF00F47861 /* Header-Bar@2x.png in Resources */,
+				8952CA321538A6DF00F47861 /* Location_Alert_Icon@2x.png in Resources */,
+				8952CA341538A6DF00F47861 /* Main_BG@2x.png in Resources */,
+				8952CA361538A6DF00F47861 /* MapDetail_Overlay@2x.png in Resources */,
+				8952CA381538A6DF00F47861 /* MapView-Button_Left_Off@2x.png in Resources */,
+				8952CA3A1538A6DF00F47861 /* MapView-Button_Left_On@2x.png in Resources */,
+				8952CA3C1538A6DF00F47861 /* MapView-Button_Right_Off@2x.png in Resources */,
+				8952CA3E1538A6DF00F47861 /* MapView-Button_Right_On@2x.png in Resources */,
+				8952CA401538A6DF00F47861 /* MenuButton-Off@2x.png in Resources */,
+				8952CA421538A6DF00F47861 /* MenuButton-On@2x.png in Resources */,
+				8952CA441538A6DF00F47861 /* MySpace_Icon@2x.png in Resources */,
+				8952CA461538A6DF00F47861 /* Nav-On_Arrow@2x.png in Resources */,
+				8952CA481538A6DF00F47861 /* SettingsScreen_Arrow@2x.png in Resources */,
+				8952CA4A1538A6DF00F47861 /* SideNav-BG@2x.png in Resources */,
+				8952CA4C1538A6DF00F47861 /* SMS_Alert_Icon@2x.png in Resources */,
+				8952CA4E1538A6DF00F47861 /* Add-Button.png in Resources */,
+				8952CA501538A6DF00F47861 /* AlertDetail_DropShadow.png in Resources */,
+				8952CA521538A6DF00F47861 /* Alerts_Screen_ZebraStripe.png in Resources */,
+				8952CA541538A6DF00F47861 /* AlertsScreen_Arrow.png in Resources */,
+				8952CA561538A6DF00F47861 /* FB_Alert_Icon.png in Resources */,
+				8952CA581538A6DF00F47861 /* FB_Icon.png in Resources */,
+				8952CA5A1538A6DF00F47861 /* Header-Bar.png in Resources */,
+				8952CA5C1538A6DF00F47861 /* Location_Alert_Icon.png in Resources */,
+				8952CA5E1538A6DF00F47861 /* Main_BG.png in Resources */,
+				8952CA601538A6DF00F47861 /* MapDetail_Overlay.png in Resources */,
+				8952CA621538A6DF00F47861 /* MapView-Button_Left_Off.png in Resources */,
+				8952CA641538A6DF00F47861 /* MapView-Button_Left_On.png in Resources */,
+				8952CA661538A6DF00F47861 /* MapView-Button_Right_Off.png in Resources */,
+				8952CA681538A6DF00F47861 /* MapView-Button_Right_On.png in Resources */,
+				8952CA6A1538A6DF00F47861 /* MenuButton-Off.png in Resources */,
+				8952CA6C1538A6DF00F47861 /* MenuButton-On.png in Resources */,
+				8952CA6E1538A6DF00F47861 /* MySpace_Icon.png in Resources */,
+				8952CA701538A6DF00F47861 /* Nav-On_Arrow.png in Resources */,
+				8952CA721538A6DF00F47861 /* SettingsScreen_Arrow.png in Resources */,
+				8952CA741538A6DF00F47861 /* SideNav-BG.png in Resources */,
+				8952CA761538A6DF00F47861 /* SMS_Alert_Icon.png in Resources */,
+				8952CA781538A6DF00F47861 /* facebook_icon.png in Resources */,
+				8952CA7A1538A6DF00F47861 /* pin_icon.png in Resources */,
+				8952CA7C1538A6DF00F47861 /* sms_icon.png in Resources */,
+				8952CA7E1538A6DF00F47861 /* bottom_shadow.png in Resources */,
+				8952CA801538A6DF00F47861 /* butterfly.png in Resources */,
+				8952CA821538A6DF00F47861 /* dark_zebra_BG.png in Resources */,
+				8952CA841538A6DF00F47861 /* eiffel.png in Resources */,
+				8952CA861538A6DF00F47861 /* point.png in Resources */,
+				8952CA881538A6DF00F47861 /* top_shadow.png in Resources */,
+				8952CA8A1538A6DF00F47861 /* ATT_btn_on.png in Resources */,
+				8952CA8C1538A6DF00F47861 /* Default.png in Resources */,
+				8952CA8E1538A6DF00F47861 /* LoadingScreen@2x.png in Resources */,
+				8952CA901538A6DF00F47861 /* ServiceProviderSprint@2x.png in Resources */,
+				8952CA921538A6DF00F47861 /* ServiceProviderTMobile.png in Resources */,
+				8952CA941538A6DF00F47861 /* ServiceProviderVerizon.png in Resources */,
+				8952CA961538A6DF00F47861 /* Sprint_btn_off@2x.png in Resources */,
+				8952CA981538A6DF00F47861 /* Sprint_btn_on@2x.png in Resources */,
+				8952CA9A1538A6DF00F47861 /* StandardBackground_Logo@2x.png in Resources */,
+				8952CA9C1538A6DF00F47861 /* TMobile_btn_off.png in Resources */,
+				8952CA9E1538A6DF00F47861 /* TMobile_btn_on.png in Resources */,
+				8952CAA01538A6DF00F47861 /* Verizon_btn_off.png in Resources */,
+				8952CAA21538A6DF00F47861 /* ATT_btn_off.png in Resources */,
+				8952CAA41538A6DF00F47861 /* ATT_btn_off@2x.png in Resources */,
+				8952CAA61538A6DF00F47861 /* Background_SignIn.png in Resources */,
+				8952CAA81538A6DF00F47861 /* Background_SignIn@2x.png in Resources */,
+				8952CAAA1538A6DF00F47861 /* Button_Blue_LG.png in Resources */,
+				8952CAAC1538A6DF00F47861 /* Button_Blue_LG@2x.png in Resources */,
+				8952CAAE1538A6DF00F47861 /* LoadingScreen.png in Resources */,
+				8952CAB01538A6DF00F47861 /* MobileAlertSetup1@2x.png in Resources */,
+				8952CAB21538A6DF00F47861 /* MobileAlertSetup2@2x.png in Resources */,
+				8952CAB41538A6DF00F47861 /* MobileOptIn.png in Resources */,
+				8952CAB61538A6DF00F47861 /* MobileOptIn@2x.png in Resources */,
+				8952CAB81538A6DF00F47861 /* ServiceProviderATT.png in Resources */,
+				8952CABA1538A6DF00F47861 /* ServiceProviderATT@2x.png in Resources */,
+				8952CABC1538A6DF00F47861 /* ServiceProviderTMobile@2x.png in Resources */,
+				8952CABE1538A6DF00F47861 /* Sprint_btn_on.png in Resources */,
+				8952CAC01538A6DF00F47861 /* StandardBackground_Logo.png in Resources */,
+				8952CAC21538A6DF00F47861 /* TMobile_btn_off@2x.png in Resources */,
+				8952CAC41538A6DF00F47861 /* TMobile_btn_on@2x.png in Resources */,
+				8952CAC61538A6DF00F47861 /* Verizon_btn_on.png in Resources */,
+				8952CAC81538A6DF00F47861 /* Verizon_btn_on@2x.png in Resources */,
+				8952CACA1538A6DF00F47861 /* ATT_btn_on@2x.png in Resources */,
+				8952CACC1538A6DF00F47861 /* Back.png in Resources */,
+				8952CACE1538A6DF00F47861 /* Back@2x.png in Resources */,
+				8952CAD01538A6DF00F47861 /* Default@2x.png in Resources */,
+				8952CAD21538A6DF00F47861 /* MobileAlertSetup1.png in Resources */,
+				8952CAD41538A6DF00F47861 /* MobileAlertSetup2.png in Resources */,
+				8952CAD61538A6DF00F47861 /* ServiceProviderSprint.png in Resources */,
+				8952CAD81538A6DF00F47861 /* ServiceProviderVerizon@2x.png in Resources */,
+				8952CADA1538A6DF00F47861 /* Sprint_btn_off.png in Resources */,
+				8952CADC1538A6DF00F47861 /* StandardBackground.png in Resources */,
+				8952CADE1538A6DF00F47861 /* StandardBackground@2x.png in Resources */,
+				8952CAE01538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */,
+				8952CAE31538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

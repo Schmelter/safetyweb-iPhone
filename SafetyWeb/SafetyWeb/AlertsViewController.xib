@@ -39,7 +39,7 @@
 					<object class="IBUIImageView" id="66911599">
 						<reference key="NSNextResponder" ref="184516713"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, -44}, {320, 460}}</string>
+						<string key="NSFrameSize">{320, 416}</string>
 						<reference key="NSSuperview" ref="184516713"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="126359584"/>
@@ -48,7 +48,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">StandardBackground.png</string>
+							<string key="NSResourceName">Main_BG.png</string>
 						</object>
 					</object>
 					<object class="IBUITableView" id="126359584">
@@ -259,7 +259,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="StandardBackground.png">{320, 480}</string>
+			<string key="Main_BG.png">{640, 834}</string>
 			<string key="bottom_shadow.png">{320, 17}</string>
 			<string key="top_shadow.png">{320, 17}</string>
 		</dictionary>
