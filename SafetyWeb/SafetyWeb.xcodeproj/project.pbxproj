@@ -117,8 +117,6 @@
 		8952CA7E1538A6DF00F47861 /* bottom_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9EE1538A6DF00F47861 /* bottom_shadow.png */; };
 		8952CA7F1538A6DF00F47861 /* butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F01538A6DF00F47861 /* butterfly.png */; };
 		8952CA801538A6DF00F47861 /* butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F01538A6DF00F47861 /* butterfly.png */; };
-		8952CA811538A6DF00F47861 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F11538A6DF00F47861 /* dark_zebra_BG.png */; };
-		8952CA821538A6DF00F47861 /* dark_zebra_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F11538A6DF00F47861 /* dark_zebra_BG.png */; };
 		8952CA831538A6DF00F47861 /* eiffel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F21538A6DF00F47861 /* eiffel.png */; };
 		8952CA841538A6DF00F47861 /* eiffel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F21538A6DF00F47861 /* eiffel.png */; };
 		8952CA851538A6DF00F47861 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952C9F31538A6DF00F47861 /* point.png */; };
@@ -417,7 +415,6 @@
 		8952C9ED1538A6DF00F47861 /* sms_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms_icon.png; sourceTree = "<group>"; };
 		8952C9EE1538A6DF00F47861 /* bottom_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_shadow.png; sourceTree = "<group>"; };
 		8952C9F01538A6DF00F47861 /* butterfly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = butterfly.png; sourceTree = "<group>"; };
-		8952C9F11538A6DF00F47861 /* dark_zebra_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_zebra_BG.png; sourceTree = "<group>"; };
 		8952C9F21538A6DF00F47861 /* eiffel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eiffel.png; sourceTree = "<group>"; };
 		8952C9F31538A6DF00F47861 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
 		8952C9F41538A6DF00F47861 /* top_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_shadow.png; sourceTree = "<group>"; };
@@ -726,7 +723,6 @@
 			isa = PBXGroup;
 			children = (
 				8952C9F01538A6DF00F47861 /* butterfly.png */,
-				8952C9F11538A6DF00F47861 /* dark_zebra_BG.png */,
 				8952C9F21538A6DF00F47861 /* eiffel.png */,
 				8952C9F31538A6DF00F47861 /* point.png */,
 			);
@@ -1163,7 +1159,6 @@
 				8952CA7B1538A6DF00F47861 /* sms_icon.png in Resources */,
 				8952CA7D1538A6DF00F47861 /* bottom_shadow.png in Resources */,
 				8952CA7F1538A6DF00F47861 /* butterfly.png in Resources */,
-				8952CA811538A6DF00F47861 /* dark_zebra_BG.png in Resources */,
 				8952CA831538A6DF00F47861 /* eiffel.png in Resources */,
 				8952CA851538A6DF00F47861 /* point.png in Resources */,
 				8952CA871538A6DF00F47861 /* top_shadow.png in Resources */,
@@ -1271,7 +1266,6 @@
 				8952CA7C1538A6DF00F47861 /* sms_icon.png in Resources */,
 				8952CA7E1538A6DF00F47861 /* bottom_shadow.png in Resources */,
 				8952CA801538A6DF00F47861 /* butterfly.png in Resources */,
-				8952CA821538A6DF00F47861 /* dark_zebra_BG.png in Resources */,
 				8952CA841538A6DF00F47861 /* eiffel.png in Resources */,
 				8952CA861538A6DF00F47861 /* point.png in Resources */,
 				8952CA881538A6DF00F47861 /* top_shadow.png in Resources */,
@@ -1463,7 +1457,7 @@
 					"$(SRCROOT)/../../routme.git/MapView/**",
 					"$(SRCROOT)",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1491,7 +1485,7 @@
 					"$(SRCROOT)/../../routme.git/MapView/**",
 					"$(SRCROOT)",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1509,6 +1503,7 @@
 				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "SafetyWeb/SafetyWeb-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1525,6 +1520,7 @@
 				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "SafetyWeb/SafetyWeb-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1547,6 +1543,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafetyWebTests/SafetyWebTests-Prefix.pch";
 				INFOPLIST_FILE = "SafetyWebTests/SafetyWebTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1570,6 +1567,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafetyWebTests/SafetyWebTests-Prefix.pch";
 				INFOPLIST_FILE = "SafetyWebTests/SafetyWebTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
