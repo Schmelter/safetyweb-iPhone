@@ -27,4 +27,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *timeMessage;
 @property (nonatomic, retain) IBOutlet UIImageView *backgroundImage;
 
+-(IBAction)detailPressed:(id)sender;
+
 @end

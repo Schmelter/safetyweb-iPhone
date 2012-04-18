@@ -1,25 +1,25 @@
 //
-//  CheckInAlertCellController.m
+//  CheckInAlertViewController.m
 //  SafetyWeb
 //
-//  Created by Gregory Schmelter on 3/29/12.
+//  Created by Gregory Schmelter on 4/17/12.
 //  Copyright (c) 2012 SafetyWeb. All rights reserved.
 //
 
-#import "CheckInAlertCellController.h"
-//#import "RMCloudMadeMapSource.h"
-//#import "RMVirtualEarthSource.h"
+#import "CheckInAlertViewController.h"
+#import "Utilities.h"
 #import "RMMarkerManager.h"
 #import "RMMarker.h"
-#import "CheckInAlertViewController.h"
 
-@implementation CheckInAlertCellController
+@implementation CheckInAlertViewController
+@synthesize alert;
+@synthesize childImage;
 @synthesize childName;
 @synthesize locationStr;
 @synthesize locationApproved;
 @synthesize timeMessage;
-@synthesize backgroundImage;
 @synthesize mapView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,11 +30,6 @@
     return self;
 }
 
--(CGFloat)expandedHeight {
-    return 140;
-}
-
-#pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -51,9 +46,6 @@
     locationStr.text = checkInAlert.locationStr;
     locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";
     timeMessage.text = [Utilities timeIntervalToHumanString:[checkInAlert.timestamp timeIntervalSince1970]];
-    
-    if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"Alerts_Screen_ZebraStripe.png"];
-    else backgroundImage.image = nil;
     
     mapView.delegate = self;
     //mapContents = [[RMMapContents alloc] initWithView:mapView
@@ -73,80 +65,67 @@
     mapView.enableDragging = NO;
     mapView.enableZoom = NO;
     mapView.enableRotate = NO;
+
     
-    
-    UIImage *childImage = [UIImage imageNamed:@"point.png"];
-    RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:childImage];
+    UIImage *pinImage = [UIImage imageNamed:@"point.png"];
+    RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:pinImage];
     [mapView.markerManager addMarker:childMarker AtLatLong:location];
     [childMarker release];
-    
-    /*id<MKAnnotation> annotation = [[SWPointAnnotation alloc] init];
-    annotation.coordinate = checkInAlert.location;
-    annotation.title = @"Title";
-    annotation.subtitle = @"SubTitle";
-    
-    [mapView addAnnotation:annotation];
-    [annotation release];*/
-    
-    // I set this in Interface Builder... but it doesn't seem to do anything unless I set it here as well
-    mapView.userInteractionEnabled = NO;
     
     [pool release];
 }
 
 - (void)viewDidUnload {
+    self.childImage = nil;
     self.childName = nil;
     self.locationStr = nil;
+    self.locationApproved = nil;
     self.timeMessage = nil;
-    self.backgroundImage = nil;
     self.mapView = nil;
     
     [super viewDidUnload];
 }
 
--(void)expand {
-    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, 320, 140);
-    backgroundImage.frame = CGRectMake(backgroundImage.frame.origin.x, backgroundImage.frame.origin.y, 320, 140);
-    mapView.hidden = NO;
-}
-
--(void)contract {
-    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, 320, 70);
-    backgroundImage.frame = CGRectMake(backgroundImage.frame.origin.x, backgroundImage.frame.origin.y, 320, 70);
-    mapView.hidden = YES;
-}
-
--(BOOL)expandable {
-    return YES;
-}
-
 #pragma mark -
 #pragma mark IBAction Methods
--(IBAction)detailPressed:(id)sender {
-    CheckInAlertViewController *viewAlert = [[CheckInAlertViewController alloc] initWithNibName:@"CheckInAlertViewController" bundle:nil];
-    viewAlert.alert = (CheckInAlert*)alert;
-    [[[self.alertsViewController getMenuViewController] getRootViewController] displayGenericViewController:viewAlert];
-    [viewAlert release];
+-(IBAction)backPressed:(id)sender {
+    [rootViewController displayMenuViewController];
 }
 
 #pragma mark -
 #pragma mark ChildResponse Methods
--(void)childRequestSuccess:(Child*)child {
+-(void)childRequestSuccess:(Child *)child {
     [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName] waitUntilDone:NO];
+    
+    ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
+    [cacheManager requestImage:self ForUrl:[child.profilePicUrl description]];
+    [cacheManager release];
 }
 
--(void)requestFailure:(NSError*)error {
+-(void)requestFailure:(NSError *)error {
     
 }
 
+#pragma mark -
+#pragma mark CachedImage Methods
+-(void)setImage:(UIImage*)imageData {
+    childImage.image = imageData;
+}
+
+-(BOOL)expires {
+    return YES;
+}
+
 -(void)dealloc {
+    [alert release];
+    [childImage release];
     [childName release];
     [locationStr release];
     [locationApproved release];
     [timeMessage release];
-    [backgroundImage release];
     [mapView release];
     
     [super dealloc];
 }
+
 @end

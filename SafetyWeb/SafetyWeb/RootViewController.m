@@ -16,6 +16,7 @@
 #import "LoadViewController.h"
 #import "SWMenuViewController.h"
 #import "ViewProfileViewController.h"
+#import "FacebookAlertViewController.h"
 
 @implementation RootViewController
 
@@ -111,14 +112,11 @@
     [loadViewController release];
 }
 
-- (void)displayViewProfileViewController:(Child*)child {
-    ViewProfileViewController *viewProfile = [[ViewProfileViewController alloc] initWithNibName:@"ViewProfileViewController" bundle:nil];
-    [viewProfile setRootViewController:self];
-    viewProfile.child = child;
+- (void)displayGenericViewController:(SubRootViewController*)subRootViewController {
+    [subRootViewController setRootViewController:self];
     [currentViewController.view removeFromSuperview];
-    [self setCurrentViewController:viewProfile];
-    [self.view addSubview:viewProfile.view];
-    [viewProfile release];
+    [self setCurrentViewController:subRootViewController];
+    [self.view addSubview:currentViewController.view];
 }
 
 - (void)dealloc {

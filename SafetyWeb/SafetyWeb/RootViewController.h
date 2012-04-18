@@ -11,6 +11,9 @@
 #import "AccountSetupModel.h"
 #import "UserManager.h"
 #import "ChildManager.h"
+#import "FacebookAlert.h"
+
+@class SubRootViewController;
 
 @interface RootViewController : UIViewController {
     @private
@@ -25,7 +28,7 @@
 - (void)displayResetPasswordViewController;
 - (void)displayResetPasswordLoadViewController:(NSString*)emailAddress;
 - (void)displayLoadViewController;
-- (void)displayViewProfileViewController:(Child*)child;
+- (void)displayGenericViewController:(SubRootViewController*)subRootViewController;
 
 @end
 

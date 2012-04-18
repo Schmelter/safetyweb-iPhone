@@ -10,6 +10,18 @@
 		8901AE5F14EDCA7300059179 /* LoginLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901AE5E14EDCA7300059179 /* LoginLoadViewController.m */; };
 		8914514C1522541300800262 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914514A1522541300800262 /* SettingsViewController.m */; };
 		8914514D1522541300800262 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8914514B1522541300800262 /* SettingsViewController.xib */; };
+		89241BA4153E1BB5000E34D8 /* FacebookAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89241BA2153E1BB5000E34D8 /* FacebookAlertViewController.m */; };
+		89241BA5153E1BB5000E34D8 /* FacebookAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89241BA2153E1BB5000E34D8 /* FacebookAlertViewController.m */; };
+		89241BA6153E1BB5000E34D8 /* FacebookAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89241BA3153E1BB5000E34D8 /* FacebookAlertViewController.xib */; };
+		89241BA7153E1BB5000E34D8 /* FacebookAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89241BA3153E1BB5000E34D8 /* FacebookAlertViewController.xib */; };
+		89241BAB153E29A3000E34D8 /* SMSAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89241BA9153E29A1000E34D8 /* SMSAlertViewController.m */; };
+		89241BAC153E29A3000E34D8 /* SMSAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89241BA9153E29A1000E34D8 /* SMSAlertViewController.m */; };
+		89241BAD153E29A3000E34D8 /* SMSAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89241BAA153E29A2000E34D8 /* SMSAlertViewController.xib */; };
+		89241BAE153E29A3000E34D8 /* SMSAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89241BAA153E29A2000E34D8 /* SMSAlertViewController.xib */; };
+		89241BB2153E33E6000E34D8 /* CheckInAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89241BB0153E33E3000E34D8 /* CheckInAlertViewController.m */; };
+		89241BB3153E33E6000E34D8 /* CheckInAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89241BB0153E33E3000E34D8 /* CheckInAlertViewController.m */; };
+		89241BB4153E33E6000E34D8 /* CheckInAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89241BB1153E33E4000E34D8 /* CheckInAlertViewController.xib */; };
+		89241BB5153E33E6000E34D8 /* CheckInAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89241BB1153E33E4000E34D8 /* CheckInAlertViewController.xib */; };
 		893683BC152F753A008CC00C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 893683BB152F753A008CC00C /* libsqlite3.dylib */; };
 		893683BD152F7543008CC00C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 893683B1152F748B008CC00C /* libMapView.a */; };
 		893683BE152F7549008CC00C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 893683BB152F753A008CC00C /* libsqlite3.dylib */; };
@@ -354,6 +366,15 @@
 		891451491522541300800262 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8914514A1522541300800262 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8914514B1522541300800262 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		89241BA1153E1BB5000E34D8 /* FacebookAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlertViewController.h; sourceTree = "<group>"; };
+		89241BA2153E1BB5000E34D8 /* FacebookAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAlertViewController.m; sourceTree = "<group>"; };
+		89241BA3153E1BB5000E34D8 /* FacebookAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookAlertViewController.xib; sourceTree = "<group>"; };
+		89241BA8153E29A0000E34D8 /* SMSAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSAlertViewController.h; sourceTree = "<group>"; };
+		89241BA9153E29A1000E34D8 /* SMSAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSAlertViewController.m; sourceTree = "<group>"; };
+		89241BAA153E29A2000E34D8 /* SMSAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSAlertViewController.xib; sourceTree = "<group>"; };
+		89241BAF153E33E2000E34D8 /* CheckInAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInAlertViewController.h; sourceTree = "<group>"; };
+		89241BB0153E33E3000E34D8 /* CheckInAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInAlertViewController.m; sourceTree = "<group>"; };
+		89241BB1153E33E4000E34D8 /* CheckInAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInAlertViewController.xib; sourceTree = "<group>"; };
 		893683A0152F748A008CC00C /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = ../../routme.git/MapView/MapView.xcodeproj; sourceTree = "<group>"; };
 		893683BB152F753A008CC00C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8936AFE0150FC28B005C8237 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -715,6 +736,15 @@
 				89BD10EF15250B2200141BFA /* CheckInAlertCellController.h */,
 				89BD10F015250B2200141BFA /* CheckInAlertCellController.m */,
 				89BD10F115250B2300141BFA /* CheckInAlertCellController.xib */,
+				89241BA1153E1BB5000E34D8 /* FacebookAlertViewController.h */,
+				89241BA2153E1BB5000E34D8 /* FacebookAlertViewController.m */,
+				89241BA3153E1BB5000E34D8 /* FacebookAlertViewController.xib */,
+				89241BA8153E29A0000E34D8 /* SMSAlertViewController.h */,
+				89241BA9153E29A1000E34D8 /* SMSAlertViewController.m */,
+				89241BAA153E29A2000E34D8 /* SMSAlertViewController.xib */,
+				89241BAF153E33E2000E34D8 /* CheckInAlertViewController.h */,
+				89241BB0153E33E3000E34D8 /* CheckInAlertViewController.m */,
+				89241BB1153E33E4000E34D8 /* CheckInAlertViewController.xib */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -1207,6 +1237,9 @@
 				8952CADD1538A6DF00F47861 /* StandardBackground@2x.png in Resources */,
 				8952CADF1538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */,
 				8952CAE21538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */,
+				89241BA6153E1BB5000E34D8 /* FacebookAlertViewController.xib in Resources */,
+				89241BAD153E29A3000E34D8 /* SMSAlertViewController.xib in Resources */,
+				89241BB4153E33E6000E34D8 /* CheckInAlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1314,6 +1347,9 @@
 				8952CADE1538A6DF00F47861 /* StandardBackground@2x.png in Resources */,
 				8952CAE01538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */,
 				8952CAE31538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */,
+				89241BA7153E1BB5000E34D8 /* FacebookAlertViewController.xib in Resources */,
+				89241BAE153E29A3000E34D8 /* SMSAlertViewController.xib in Resources */,
+				89241BB5153E33E6000E34D8 /* CheckInAlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1371,6 +1407,9 @@
 				89A401281534E78B0027FE7D /* FacebookAlert.m in Sources */,
 				89A4012C1534E7B60027FE7D /* SMSAlert.m in Sources */,
 				89A401301534E7B80027FE7D /* CheckInAlert.m in Sources */,
+				89241BA4153E1BB5000E34D8 /* FacebookAlertViewController.m in Sources */,
+				89241BAB153E29A3000E34D8 /* SMSAlertViewController.m in Sources */,
+				89241BB2153E33E6000E34D8 /* CheckInAlertViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1393,6 +1432,9 @@
 				89A401291534E78B0027FE7D /* FacebookAlert.m in Sources */,
 				89A4012D1534E7B60027FE7D /* SMSAlert.m in Sources */,
 				89A401311534E7B80027FE7D /* CheckInAlert.m in Sources */,
+				89241BA5153E1BB5000E34D8 /* FacebookAlertViewController.m in Sources */,
+				89241BAC153E29A3000E34D8 /* SMSAlertViewController.m in Sources */,
+				89241BB3153E33E6000E34D8 /* CheckInAlertViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

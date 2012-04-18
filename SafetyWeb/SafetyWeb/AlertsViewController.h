@@ -31,6 +31,8 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *alertsTable;
 
+-(MenuViewController*)getMenuViewController;
+
 @end
 
 
@@ -38,12 +40,12 @@
     @protected
     NSInteger row;
     Alert *alert;
-    AlertsViewController *parentController;
+    AlertsViewController *alertsViewController;
 }
 
 @property (nonatomic) NSInteger row;
 @property (nonatomic, retain) Alert *alert;
-@property (nonatomic, assign) AlertsViewController *parentController;
+@property (nonatomic, assign) AlertsViewController *alertsViewController;
 
 -(void)expand;
 -(void)contract;

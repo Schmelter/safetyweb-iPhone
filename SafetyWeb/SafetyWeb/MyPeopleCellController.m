@@ -7,6 +7,7 @@
 //
 
 #import "MyPeopleCellController.h"
+#import "ViewProfileViewController.h"
 
 @implementation MyPeopleCellController
 @synthesize child;
@@ -81,7 +82,10 @@
 #pragma mark -
 #pragma mark IBAction Methods
 -(IBAction)viewProfilePressed:(id)sender {
-    [[menuViewController getRootViewController] displayViewProfileViewController:child];
+    ViewProfileViewController *viewProfile = [[ViewProfileViewController alloc] initWithNibName:@"ViewProfileViewController" bundle:nil];
+    viewProfile.child = child;
+    [[menuViewController getRootViewController] displayGenericViewController:viewProfile];
+    [viewProfile release];
 }
 
 #pragma mark -

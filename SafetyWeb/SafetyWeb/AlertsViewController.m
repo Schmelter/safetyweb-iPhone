@@ -82,7 +82,7 @@
         
         cellControllers[indexPath.row].row = indexPath.row;
         cellControllers[indexPath.row].alert = alert;
-        cellControllers[indexPath.row].parentController = self;
+        cellControllers[indexPath.row].alertsViewController = self;
         
         NSNumber *rowNum = [[NSNumber alloc] initWithInt:indexPath.row];
         if ([selectedRowSet containsObject:rowNum]) [cellControllers[indexPath.row] expand];
@@ -179,6 +179,10 @@
     }
 }
 
+-(MenuViewController*)getMenuViewController {
+    return menuViewController;
+}
+
 -(void)dealloc {
     if (cellControllers) {
         for (int i = 0; i < cellControllersLen; i++) {
@@ -201,7 +205,7 @@
 @implementation AlertCellController
 @synthesize row;
 @synthesize alert;
-@synthesize parentController;
+@synthesize alertsViewController;
 
 -(AlertCellController*)init {
     self = [super init];
