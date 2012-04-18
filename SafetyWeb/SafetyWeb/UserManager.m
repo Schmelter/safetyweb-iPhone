@@ -14,13 +14,6 @@ static NSString *lastUsedLogin;
 static NSString *lastUsedPassword;
 static NSString *lastUsedToken;
 
-@interface TokenRequest () {
-    @private
-    id<TokenResponse> response;
-}
-@property (nonatomic, retain) id<TokenResponse> response;
-@end
-
 @interface UserRequest () {
     @private
     id<UserResponse> response;
@@ -69,11 +62,6 @@ static NSString *lastUsedToken;
         }
     }
     [fetchRequest release];
-}
-
-+(void)requestToken:(TokenRequest*)request withResponse:(id<TokenResponse>)response {
-    request.response = response;
-    [request performSelectorInBackground:@selector(performRequest) withObject:nil];
 }
 
 +(void)requestUser:(UserRequest*)request withResponse:(id<UserResponse>)response{
@@ -173,36 +161,41 @@ static NSString *lastUsedToken;
 @implementation TokenRequest
 @synthesize login;
 @synthesize password;
-@synthesize response;
+@synthesize responseBlock;
 
 -(void)performRequest {
-    @autoreleasepool {
-        SafetyWebRequest *tokenRequest = [[SafetyWebRequest alloc] init];
-        [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:login, password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]] withCallback:self];
+    void (^block)(void) = [^{
+        @autoreleasepool {
+            SafetyWebRequest *tokenRequest = [[SafetyWebRequest alloc] init];
+            [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:login, password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]] withCallback:self];
         
-        [tokenRequest release];
-    }
+            [tokenRequest release];
+        }
+    } copy];
+    dispatch_async([SWAppDelegate dataModelQ], block);
+    
+    [block release];
 }
 
 -(void)gotResponse:(id)aResponse {
     NSDictionary *responseDict = (NSDictionary*)aResponse;
     NSString* result = [responseDict objectForKey:@"result"];
     if ([result isEqualToString:@"OK"]) {
-        [response tokenRequestSuccess:[responseDict objectForKey:@"token"]];
+        responseBlock(YES, [responseDict objectForKey:@"token"], nil);
     } else {
-        [response requestFailure:nil];
+        responseBlock(NO, nil, nil);
     }
-    self.response = nil;
+    self.responseBlock = nil;
 }
 -(void)notGotResponse:(NSError *)aError {
-    [response requestFailure:aError];
-    self.response = nil;
+    responseBlock(NO, nil, aError);
+    self.responseBlock = nil;
 }
 
 -(void)dealloc {
     [login release];
     [password release];
-    [response release];
+    [responseBlock release];
     
     [super dealloc];
 }

@@ -8,10 +8,6 @@
 
 #import "LoginLoadViewController.h"
 
-@interface TokenCallback : TokenRequest <TokenResponse> 
-@property (nonatomic, retain) LoginLoadViewController* callback;
-@end
-
 @interface UserCallback : UserRequest <UserResponse>
 @property (nonatomic, retain) LoginLoadViewController* callback;
 @end;
@@ -43,13 +39,26 @@
 -(void)makeTokenRequest {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    TokenCallback *tokenCallback = [[TokenCallback alloc] init];
+    /*TokenCallback *tokenCallback = [[TokenCallback alloc] init];
     tokenCallback.callback = self;
     tokenCallback.login = login;
     tokenCallback.password = password;
     
     [UserManager requestToken:tokenCallback withResponse:tokenCallback];
-    [tokenCallback release];
+    [tokenCallback release];*/
+    TokenRequest *tokenRequest = [[TokenRequest alloc] init];
+    tokenRequest.login = login;
+    tokenRequest.password = password;
+    __block LoginLoadViewController *selff = self;
+    tokenRequest.responseBlock = ^(BOOL success, NSString *aToken, NSError *aError) {
+        if (success) {
+            [selff tokenRequestSuccess:aToken];
+        } else {
+            [selff requestFailure:aError];
+        }    
+    };
+    [tokenRequest performRequest];
+    [tokenRequest release];
     
     [pool release];
 }
@@ -182,23 +191,6 @@
 
 @end
 
-
-@implementation TokenCallback
-@synthesize callback;
--(void)tokenRequestSuccess:(NSString*)token {
-    [self.callback tokenRequestSuccess:token];
-}
-
--(void)requestFailure:(NSError *)error {
-    [self.callback requestFailure:error];
-}
-
--(void)dealloc {
-    [callback release];
-    
-    [super dealloc];
-}
-@end
 
 @implementation UserCallback
 @synthesize callback;

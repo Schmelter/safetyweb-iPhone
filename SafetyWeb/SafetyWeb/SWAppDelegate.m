@@ -8,6 +8,8 @@
 
 #import "SWAppDelegate.h"
 
+static dispatch_queue_t dataModelQ;
+
 @implementation SWAppDelegate
 
 @synthesize window;
@@ -15,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    dataModelQ = dispatch_queue_create("com.safetyweb.datamodelq", DISPATCH_QUEUE_SERIAL);
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -147,6 +151,10 @@
         [managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return managedObjectContext;
+}
+
++(dispatch_queue_t)dataModelQ {
+    return dataModelQ;
 }
 
 -(void)dealloc {

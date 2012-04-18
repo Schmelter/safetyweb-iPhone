@@ -25,4 +25,6 @@
 @property (nonatomic, retain) IBOutlet RootViewController *viewController;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
++(dispatch_queue_t)dataModelQ;
+
 @end
