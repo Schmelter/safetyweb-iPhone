@@ -43,19 +43,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    // Start the password reset request
-    ResetPasswordCallback *rpCallback = [[ResetPasswordCallback alloc] init];
-    rpCallback.callback = self;
-    
-    SafetyWebRequest *rpRequest = [[SafetyWebRequest alloc] init];
-    [rpRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_ForgotPassword" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:emailAddress, @"json", nil] forKeys:[NSArray arrayWithObjects:@"email", @"type", nil]] withCallback:rpCallback];
-//    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.username, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
-    [rpCallback release];
-    [rpRequest release];
-    
-    [pool release];
+    @autoreleasepool {
+        
+        // Start the password reset request
+        ResetPasswordCallback *rpCallback = [[ResetPasswordCallback alloc] init];
+        rpCallback.callback = self;
+        
+        SafetyWebRequest *rpRequest = [[SafetyWebRequest alloc] init];
+        [rpRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_ForgotPassword" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:emailAddress, @"json", nil] forKeys:[NSArray arrayWithObjects:@"email", @"type", nil]] withCallback:rpCallback];
+        //    [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:credentials.username, credentials.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]]];
+        [rpCallback release];
+        [rpRequest release];
+        
+    }
 }
 
 -(void)requestFailure:(NSError*)aError {

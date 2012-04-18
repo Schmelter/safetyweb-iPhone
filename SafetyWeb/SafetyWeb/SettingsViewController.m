@@ -65,26 +65,26 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    if (indexPath.row == kRowAlertSettings) {
-        cell.textLabel.text = @"Alert Settings";
-        cell.imageView.image = nil;
-        UIButton *accessoryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 39)];
-        [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"SettingsScreen_Arrow.png"] forState:UIControlStateNormal];
-        cell.accessoryView = accessoryBtn;
-        [accessoryBtn release];
-    } else if (indexPath.row == kRowMapSettings) {
-        cell.textLabel.text = @"Map Settings";
-        cell.imageView.image = nil;
-        UIButton *accessoryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 39)];
-        [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"SettingsScreen_Arrow.png"] forState:UIControlStateNormal];
-        cell.accessoryView = accessoryBtn;
-        [accessoryBtn release];
+    @autoreleasepool {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        if (indexPath.row == kRowAlertSettings) {
+            cell.textLabel.text = @"Alert Settings";
+            cell.imageView.image = nil;
+            UIButton *accessoryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 39)];
+            [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"SettingsScreen_Arrow.png"] forState:UIControlStateNormal];
+            cell.accessoryView = accessoryBtn;
+            [accessoryBtn release];
+        } else if (indexPath.row == kRowMapSettings) {
+            cell.textLabel.text = @"Map Settings";
+            cell.imageView.image = nil;
+            UIButton *accessoryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 39)];
+            [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"SettingsScreen_Arrow.png"] forState:UIControlStateNormal];
+            cell.accessoryView = accessoryBtn;
+            [accessoryBtn release];
+        }
+        
     }
-    
-    [pool release];
     return cell;
 }
 

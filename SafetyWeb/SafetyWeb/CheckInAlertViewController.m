@@ -33,46 +33,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    CheckInAlert *checkInAlert = (CheckInAlert*)alert;
-    
-    ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
-    childRequest.childId = checkInAlert.childId;
-    childRequest.user = [UserManager getCurrentUser];
-    [ChildManager requestChildAccount:childRequest withResponse:self];
-    [childRequest release];
-    
-    locationStr.text = checkInAlert.locationStr;
-    locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";
-    timeMessage.text = [Utilities timeIntervalToHumanString:[checkInAlert.timestamp timeIntervalSince1970]];
-    
-    mapView.delegate = self;
-    //mapContents = [[RMMapContents alloc] initWithView:mapView
-    //                                       tilesource:[[RMCloudMadeMapSource alloc] initWithAccessKey:@"0199bdee456e59ce950b0156029d6934" styleNumber:7]];
-    
-    //mapContents = [[RMMapContents alloc] initWithView:mapView
-    //                         tilesource:[[RMVirtualEarthSource alloc] initWithHybridThemeUsingAccessKey:@"invalidKey"]];
-    
-    [mapView setNeedsLayout];
-    [mapView setNeedsDisplay];
-    
-    CLLocationCoordinate2D location = CLLocationCoordinate2DMake([checkInAlert.locationLat floatValue], [checkInAlert.locationLong floatValue]);
-    [mapView moveToLatLong:location];
-    [mapView zoomByFactor:1.0 near:CGPointMake(mapView.frame.origin.x + (mapView.frame.size.width / 2), mapView.frame.origin.y + (mapView.frame.size.height / 2)) animated:NO];
-    
-    // All of these need to be after the moveToLatLong call, because that will call the initial setup of the map
-    mapView.enableDragging = NO;
-    mapView.enableZoom = NO;
-    mapView.enableRotate = NO;
-
-    
-    UIImage *pinImage = [UIImage imageNamed:@"point.png"];
-    RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:pinImage];
-    [mapView.markerManager addMarker:childMarker AtLatLong:location];
-    [childMarker release];
-    
-    [pool release];
+    @autoreleasepool {
+        
+        CheckInAlert *checkInAlert = (CheckInAlert*)alert;
+        
+        ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
+        childRequest.childId = checkInAlert.childId;
+        childRequest.user = [UserManager getCurrentUser];
+        [ChildManager requestChildAccount:childRequest withResponse:self];
+        [childRequest release];
+        
+        locationStr.text = checkInAlert.locationStr;
+        locationApproved.text = checkInAlert.locationApproved ? @"Location Approved" : @"Location NOT Approved";
+        timeMessage.text = [Utilities timeIntervalToHumanString:[checkInAlert.timestamp timeIntervalSince1970]];
+        
+        mapView.delegate = self;
+        //mapContents = [[RMMapContents alloc] initWithView:mapView
+        //                                       tilesource:[[RMCloudMadeMapSource alloc] initWithAccessKey:@"0199bdee456e59ce950b0156029d6934" styleNumber:7]];
+        
+        //mapContents = [[RMMapContents alloc] initWithView:mapView
+        //                         tilesource:[[RMVirtualEarthSource alloc] initWithHybridThemeUsingAccessKey:@"invalidKey"]];
+        
+        [mapView setNeedsLayout];
+        [mapView setNeedsDisplay];
+        
+        CLLocationCoordinate2D location = CLLocationCoordinate2DMake([checkInAlert.locationLat floatValue], [checkInAlert.locationLong floatValue]);
+        [mapView moveToLatLong:location];
+        [mapView zoomByFactor:1.0 near:CGPointMake(mapView.frame.origin.x + (mapView.frame.size.width / 2), mapView.frame.origin.y + (mapView.frame.size.height / 2)) animated:NO];
+        
+        // All of these need to be after the moveToLatLong call, because that will call the initial setup of the map
+        mapView.enableDragging = NO;
+        mapView.enableZoom = NO;
+        mapView.enableRotate = NO;
+        
+        
+        UIImage *pinImage = [UIImage imageNamed:@"point.png"];
+        RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:pinImage];
+        [mapView.markerManager addMarker:childMarker AtLatLong:location];
+        [childMarker release];
+        
+    }
 }
 
 - (void)viewDidUnload {

@@ -61,26 +61,26 @@ NSInteger stringSort(id string1, id string2, void *context);
     [url release];
     url = aURL;
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    NSString *fullURL = [SafetyWebRequest buildRequestURL:aRequestMethod andURL:aURL andParams:paramDict andDate:[SafetyWebRequest getFormattedTimestamp]];
-    
-    // Now, we have the URL necessary, so let's call the service, and get the data
-	NSURL *requestURL = [NSURL URLWithString:fullURL];
-    NSLog(@"Full Url: %@", fullURL);
-    
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:requestURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
-    
-	NSURLConnection *connection = [[NSURLConnection alloc]  initWithRequest:request delegate:self ] ;
-    
-	if (connection) {
-        [connection start];
+    @autoreleasepool {
         
+        NSString *fullURL = [SafetyWebRequest buildRequestURL:aRequestMethod andURL:aURL andParams:paramDict andDate:[SafetyWebRequest getFormattedTimestamp]];
         
-	} else {
-		NSLog(@"No connection");
-	}
-    [pool release];
+        // Now, we have the URL necessary, so let's call the service, and get the data
+        NSURL *requestURL = [NSURL URLWithString:fullURL];
+        NSLog(@"Full Url: %@", fullURL);
+        
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:requestURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
+        
+        NSURLConnection *connection = [[NSURLConnection alloc]  initWithRequest:request delegate:self ] ;
+        
+        if (connection) {
+            [connection start];
+            
+            
+        } else {
+            NSLog(@"No connection");
+        }
+    }
     CFRunLoopRun(); // Keep the thread from exiting before we get a response
 }
 
@@ -257,20 +257,20 @@ NSInteger stringSort(id string1, id string2, void *context) {
     
 	[conn release];
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    NSString* metadataStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"Result: %@", metadataStr);
-    
-	if (callbackObj) 
-		[callbackObj gotResponse:[responseData objectFromJSONData]];
-    
-    id<SafetyWebRequestCallback> oldCallbackObj = callbackObj;
-    callbackObj = nil;
-    [oldCallbackObj release];
-    
-    [metadataStr release];
-    [pool release];
+    @autoreleasepool {
+        NSString* metadataStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"Result: %@", metadataStr);
+        
+        if (callbackObj) 
+            [callbackObj gotResponse:[responseData objectFromJSONData]];
+        
+        id<SafetyWebRequestCallback> oldCallbackObj = callbackObj;
+        callbackObj = nil;
+        [oldCallbackObj release];
+        
+        [metadataStr release];
+    }
 	[self release]; // Alright, our job is finally done
     CFRunLoopStop(CFRunLoopGetCurrent());
 }

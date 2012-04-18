@@ -30,19 +30,20 @@
     [super viewDidLoad];
     
     // We know the Alert is actually a FacebookAlert, so let's switch it over
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    FacebookAlert *fbAlert = (FacebookAlert*) alert;
-    
-    ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
-    childRequest.childId = fbAlert.childId;
-    childRequest.user = [UserManager getCurrentUser];
-    [ChildManager requestChildAccount:childRequest withResponse:self];
-    [childRequest release];
-    friendName.text = fbAlert.friendName;
-    alertMessage.text = fbAlert.alertText;
-    timeMessage.text = [Utilities timeIntervalToHumanString:[fbAlert.timestamp timeIntervalSince1970]];
-    
-    [pool release];
+    @autoreleasepool {
+        
+        FacebookAlert *fbAlert = (FacebookAlert*) alert;
+        
+        ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
+        childRequest.childId = fbAlert.childId;
+        childRequest.user = [UserManager getCurrentUser];
+        [ChildManager requestChildAccount:childRequest withResponse:self];
+        [childRequest release];
+        friendName.text = fbAlert.friendName;
+        alertMessage.text = fbAlert.alertText;
+        timeMessage.text = [Utilities timeIntervalToHumanString:[fbAlert.timestamp timeIntervalSince1970]];
+        
+    }
 }
 
 - (void)viewDidUnload {

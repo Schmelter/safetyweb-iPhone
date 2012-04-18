@@ -96,17 +96,16 @@
 
 +(void)initialize {
     // TODO: Take this out later when we're actually hitting the server
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
     
-    UserAlertResponse *userResponse = [[UserAlertResponse alloc] init];
-    UserRequest *userRequest = [[UserRequest alloc] init];
-    userRequest.token = [UserManager getLastUsedToken];
-    [UserManager requestUser:userRequest withResponse:userResponse];
-    [userRequest release];
-    [userResponse release];
-    NSLog(@"UserResponse Retain Count: %i", [userResponse retainCount]);
+        UserAlertResponse *userResponse = [[UserAlertResponse alloc] init];
+        UserRequest *userRequest = [[UserRequest alloc] init];
+        userRequest.token = [UserManager getLastUsedToken];
+        [UserManager requestUser:userRequest withResponse:userResponse];
+        [userRequest release];
+        [userResponse release];
     
-    [pool release];
+    }
 }
 
 +(void)requestAlertsWithinRange:(AlertRangeRequest*)request withResponse:(id<AlertRangeResponse>)response {

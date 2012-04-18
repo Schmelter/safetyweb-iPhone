@@ -39,24 +39,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    if (row % 2 == 0) {
-        UIImage *backgroundImg = [UIImage imageNamed:@"Alerts_Screen_ZebraStripe.png"];
-        backgroundImage.image = backgroundImg;
-    } else {
+    @autoreleasepool {
         
+        if (row % 2 == 0) {
+            UIImage *backgroundImg = [UIImage imageNamed:@"Alerts_Screen_ZebraStripe.png"];
+            backgroundImage.image = backgroundImg;
+        } else {
+            
+        }
+        
+        firstName.text = child.firstName;
+        lastName.text = child.lastName;
+        
+        if (child.profilePicUrl) {
+            ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
+            [cacheManager requestImage:self ForUrl:[child.profilePicUrl description]];
+            [cacheManager release];
+        }
     }
-    
-    firstName.text = child.firstName;
-    lastName.text = child.lastName;
-    
-    if (child.profilePicUrl) {
-        ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
-        [cacheManager requestImage:self ForUrl:[child.profilePicUrl description]];
-        [cacheManager release];
-    }
-    [pool release];
 }
 
 - (void)viewDidUnload

@@ -32,24 +32,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    // We know this is actually an SMSAlert, so just convert it over
-    SMSAlert *smsAlert = (SMSAlert*)alert;
-    
-    ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
-    childRequest.childId = smsAlert.childId;
-    childRequest.user = [UserManager getCurrentUser];
-    [ChildManager requestChildAccount:childRequest withResponse:self];
-    [childRequest release];
-    
-    messagePhoneNumber.text = smsAlert.messagePhoneNumber;
-    timeMessage.text = [Utilities timeIntervalToHumanString:[smsAlert.timestamp timeIntervalSince1970]];
-    
-    if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"Alerts_Screen_ZebraStripe.png"];
-    else backgroundImage.image = nil;
-    
-    [pool release];
+    @autoreleasepool {
+        
+        // We know this is actually an SMSAlert, so just convert it over
+        SMSAlert *smsAlert = (SMSAlert*)alert;
+        
+        ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
+        childRequest.childId = smsAlert.childId;
+        childRequest.user = [UserManager getCurrentUser];
+        [ChildManager requestChildAccount:childRequest withResponse:self];
+        [childRequest release];
+        
+        messagePhoneNumber.text = smsAlert.messagePhoneNumber;
+        timeMessage.text = [Utilities timeIntervalToHumanString:[smsAlert.timestamp timeIntervalSince1970]];
+        
+        if (row % 2 == 0) backgroundImage.image = [UIImage imageNamed:@"Alerts_Screen_ZebraStripe.png"];
+        else backgroundImage.image = nil;
+        
+    }
 }
 
 - (void)viewDidUnload {

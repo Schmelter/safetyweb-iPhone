@@ -37,46 +37,46 @@
 }
 
 -(void)makeTokenRequest {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    /*TokenCallback *tokenCallback = [[TokenCallback alloc] init];
-    tokenCallback.callback = self;
-    tokenCallback.login = login;
-    tokenCallback.password = password;
-    
-    [UserManager requestToken:tokenCallback withResponse:tokenCallback];
-    [tokenCallback release];*/
-    TokenRequest *tokenRequest = [[TokenRequest alloc] init];
-    tokenRequest.login = login;
-    tokenRequest.password = password;
-    __block LoginLoadViewController *selff = self;
-    tokenRequest.responseBlock = ^(BOOL success, NSString *aToken, NSError *aError) {
-        if (success) {
-            [selff tokenRequestSuccess:aToken];
-        } else {
-            [selff requestFailure:aError];
-        }    
-    };
-    [tokenRequest performRequest];
-    [tokenRequest release];
-    
-    [pool release];
+    @autoreleasepool {
+        
+        /*TokenCallback *tokenCallback = [[TokenCallback alloc] init];
+         tokenCallback.callback = self;
+         tokenCallback.login = login;
+         tokenCallback.password = password;
+         
+         [UserManager requestToken:tokenCallback withResponse:tokenCallback];
+         [tokenCallback release];*/
+        TokenRequest *tokenRequest = [[TokenRequest alloc] init];
+        tokenRequest.login = login;
+        tokenRequest.password = password;
+        __block LoginLoadViewController *selff = self;
+        tokenRequest.responseBlock = ^(BOOL success, NSString *aToken, NSError *aError) {
+            if (success) {
+                [selff tokenRequestSuccess:aToken];
+            } else {
+                [selff requestFailure:aError];
+            }    
+        };
+        [tokenRequest performRequest];
+        [tokenRequest release];
+        
+    }
 }
 
 -(void)makeUserRequest {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    [UserManager setCurrentUser:nil];
-    
-    UserCallback *userCallback = [[UserCallback alloc] init];
-    userCallback.callback = self;
-    userCallback.token = token;
-    
-    [UserManager requestUser:userCallback withResponse:userCallback];
-    [userCallback release];
-    progressView.progressCurrent = 40.0f;
-    
-    [pool release];
+    @autoreleasepool {
+        
+        [UserManager setCurrentUser:nil];
+        
+        UserCallback *userCallback = [[UserCallback alloc] init];
+        userCallback.callback = self;
+        userCallback.token = token;
+        
+        [UserManager requestUser:userCallback withResponse:userCallback];
+        [userCallback release];
+        progressView.progressCurrent = 40.0f;
+        
+    }
 }
 
 #pragma mark - View lifecycle
@@ -107,28 +107,28 @@
 }
 
 -(void)userRequestSuccess:(User*)user {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    [UserManager setCurrentUser:user];
-    
-    // For each child, fire off a request to get more information about that child
-    // All ChildCallbacks are the same, so we only need one
-    totalChildRequests = [[user children] count];
-    totalChildRequests = totalChildRequests == 0 ? 1 : totalChildRequests;  // Just to guarantee we never divide by zero
-    for (Child *child in [user children]) {
-        @synchronized(self) {
-            pendingChildRequests++;
+    @autoreleasepool {
+        
+        [UserManager setCurrentUser:user];
+        
+        // For each child, fire off a request to get more information about that child
+        // All ChildCallbacks are the same, so we only need one
+        totalChildRequests = [[user children] count];
+        totalChildRequests = totalChildRequests == 0 ? 1 : totalChildRequests;  // Just to guarantee we never divide by zero
+        for (Child *child in [user children]) {
+            @synchronized(self) {
+                pendingChildRequests++;
+            }
+            
+            ChildCallback *childCallback = [[ChildCallback alloc] init];
+            childCallback.callback = self;
+            childCallback.childId = child.childId;
+            childCallback.user = user;
+            [ChildManager requestChildAccount:childCallback withResponse:childCallback];
+            [childCallback release];
         }
         
-        ChildCallback *childCallback = [[ChildCallback alloc] init];
-        childCallback.callback = self;
-        childCallback.childId = child.childId;
-        childCallback.user = user;
-        [ChildManager requestChildAccount:childCallback withResponse:childCallback];
-        [childCallback release];
     }
-    
-    [pool release];
     progressView.progressCurrent = 50.0;
 }
 

@@ -45,16 +45,16 @@
 {
     [super viewDidLoad];
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    [menuItems release];
-    menuItems = [[NSMutableArray alloc] initWithCapacity:10];
-    
-    menuView.frame = CGRectMake(-[self getMenuWidth], menuView.frame.origin.y, [self getMenuWidth], menuView.frame.size.height);
-    
-    if (selectedMI) [self setSelectedMenuItem:selectedMI animated:NO];
-    
-    [pool release];
+    @autoreleasepool {
+        
+        [menuItems release];
+        menuItems = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        menuView.frame = CGRectMake(-[self getMenuWidth], menuView.frame.origin.y, [self getMenuWidth], menuView.frame.size.height);
+        
+        if (selectedMI) [self setSelectedMenuItem:selectedMI animated:NO];
+        
+    }
 }
 
 #pragma mark -

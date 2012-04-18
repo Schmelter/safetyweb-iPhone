@@ -46,41 +46,41 @@
 {
     [super viewDidLoad];
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    isEditing = NO;
-    contentView.autoresizesSubviews = NO;  // We're going to resize ourselves
-    
-    // Stretch out the socialMediaTable based on how many accounts this child has
-    CGFloat oldTableHeight = socialMediaTable.frame.size.height;
-    socialMediaTable.frame = CGRectMake(socialMediaTable.frame.origin.x, socialMediaTable.frame.origin.y, socialMediaTable.frame.size.width, (CGFloat)(kTableRowHeight * [[child accounts] count]));
-    // Stretch out the scroll view just as much as we stretched out the socialMediaTable
-    contentView.frame = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y, contentView.frame.size.width, contentView.frame.size.height + ((CGFloat)(kTableRowHeight * [[child accounts] count]) - oldTableHeight));
-    scrollView.contentSize = contentView.frame.size;
-    
-    // Round some corners, and make everything look nice
-    [address layer].cornerRadius = 10;
-    [mobilePhone layer].cornerRadius = 10;
-    [socialMediaTable layer].cornerRadius = 10;
-    
-    // Load the simple data into the interface
-    if (child.profilePicUrl) {
-        ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
-        [cacheManager requestImage:self ForUrl:[child.profilePicUrl description]];
-        [cacheManager release];
+    @autoreleasepool {
+        
+        isEditing = NO;
+        contentView.autoresizesSubviews = NO;  // We're going to resize ourselves
+        
+        // Stretch out the socialMediaTable based on how many accounts this child has
+        CGFloat oldTableHeight = socialMediaTable.frame.size.height;
+        socialMediaTable.frame = CGRectMake(socialMediaTable.frame.origin.x, socialMediaTable.frame.origin.y, socialMediaTable.frame.size.width, (CGFloat)(kTableRowHeight * [[child accounts] count]));
+        // Stretch out the scroll view just as much as we stretched out the socialMediaTable
+        contentView.frame = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y, contentView.frame.size.width, contentView.frame.size.height + ((CGFloat)(kTableRowHeight * [[child accounts] count]) - oldTableHeight));
+        scrollView.contentSize = contentView.frame.size;
+        
+        // Round some corners, and make everything look nice
+        [address layer].cornerRadius = 10;
+        [mobilePhone layer].cornerRadius = 10;
+        [socialMediaTable layer].cornerRadius = 10;
+        
+        // Load the simple data into the interface
+        if (child.profilePicUrl) {
+            ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
+            [cacheManager requestImage:self ForUrl:[child.profilePicUrl description]];
+            [cacheManager release];
+        }
+        NSString *childNameStr = [[NSString alloc] initWithFormat:@"%@ %@", child.firstName, child.lastName];
+        childName.text = childNameStr;
+        [childNameStr release];
+        address.text = child.address;
+        mobilePhone.text = child.mobilePhone;
+        
+        // Hide the call button if the current iOS device is incapable of phone calls
+        if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]]) {
+            callButton.hidden = YES;
+        }
+        
     }
-    NSString *childNameStr = [[NSString alloc] initWithFormat:@"%@ %@", child.firstName, child.lastName];
-    childName.text = childNameStr;
-    [childNameStr release];
-    address.text = child.address;
-    mobilePhone.text = child.mobilePhone;
-    
-    // Hide the call button if the current iOS device is incapable of phone calls
-    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]]) {
-        callButton.hidden = YES;
-    }
-    
-    [pool release];
 }
 
 - (void)viewDidUnload
@@ -148,20 +148,20 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    Account *account = [[child sortedAccounts] objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = account.serviceName;
-    // TODO: Determine this based on the serviceName
-    cell.imageView.image = [UIImage imageNamed:@"butterfly.png"];
-    UIButton *accessoryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 39)];
-    [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"SettingsScreen_Arrow.png"] forState:UIControlStateNormal];
-    cell.accessoryView = accessoryBtn;
-    [accessoryBtn release];
-    
-    [pool release];
+    @autoreleasepool {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        Account *account = [[child sortedAccounts] objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = account.serviceName;
+        // TODO: Determine this based on the serviceName
+        cell.imageView.image = [UIImage imageNamed:@"butterfly.png"];
+        UIButton *accessoryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 39)];
+        [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"SettingsScreen_Arrow.png"] forState:UIControlStateNormal];
+        cell.accessoryView = accessoryBtn;
+        [accessoryBtn release];
+        
+    }
     return cell;
 }
 

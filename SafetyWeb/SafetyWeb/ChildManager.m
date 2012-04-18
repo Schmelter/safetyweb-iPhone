@@ -161,32 +161,32 @@
 }
 
 +(NSSet*)initChildAccounts:(NSDictionary *)childJson {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
     NSMutableSet *childAccounts = [[NSMutableSet alloc] init];
-    NSDictionary *jsonChildDict = [childJson objectForKey:@"child"];
-    if (!jsonChildDict) return childAccounts;
-    
-    // Go through the childJson, and add it's information to the childDict we already have
-    NSDictionary *accountsDict = [childJson objectForKey:@"accounts"];
-    if (!accountsDict) return childAccounts;
-    
-    // Build the accounts, and add them to the child
-    NSObject *accountObj = [accountsDict objectForKey:@"account"];
-    if ([accountObj isKindOfClass:[NSArray class]]) {
-        // Multiple accounts
-        for (NSDictionary *jsonAccountDict in (NSArray*)accountObj) {
-            Account *account = [self initAccountFromJson:jsonAccountDict];
+    @autoreleasepool {
+        
+        NSDictionary *jsonChildDict = [childJson objectForKey:@"child"];
+        if (!jsonChildDict) return childAccounts;
+        
+        // Go through the childJson, and add it's information to the childDict we already have
+        NSDictionary *accountsDict = [childJson objectForKey:@"accounts"];
+        if (!accountsDict) return childAccounts;
+        
+        // Build the accounts, and add them to the child
+        NSObject *accountObj = [accountsDict objectForKey:@"account"];
+        if ([accountObj isKindOfClass:[NSArray class]]) {
+            // Multiple accounts
+            for (NSDictionary *jsonAccountDict in (NSArray*)accountObj) {
+                Account *account = [self initAccountFromJson:jsonAccountDict];
+                [childAccounts addObject:account];
+                [account release];
+            }
+        } else if ([accountObj isKindOfClass:[NSDictionary class]]) {
+            Account *account = [self initAccountFromJson:(NSDictionary*)accountObj];
             [childAccounts addObject:account];
             [account release];
         }
-    } else if ([accountObj isKindOfClass:[NSDictionary class]]) {
-        Account *account = [self initAccountFromJson:(NSDictionary*)accountObj];
-        [childAccounts addObject:account];
-        [account release];
+        
     }
-    
-    [pool release];
     return childAccounts;
 }
 
