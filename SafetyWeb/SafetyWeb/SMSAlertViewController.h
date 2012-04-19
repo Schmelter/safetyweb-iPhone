@@ -11,7 +11,7 @@
 #import "RootViewController.h"
 #import "ImageCacheManager.h"
 
-@interface SMSAlertViewController : SubRootViewController <ChildResponse, CachedImage> {
+@interface SMSAlertViewController : SubRootViewController <CachedImage> {
     @private
     SMSAlert *alert;
     

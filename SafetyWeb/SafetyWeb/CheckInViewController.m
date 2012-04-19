@@ -22,7 +22,29 @@
         
         UserRequest *userRequest = [[UserRequest alloc] init];
         userRequest.token = [UserManager getLastUsedToken];
-        [UserManager requestUser:userRequest withResponse:self];
+        userRequest.responseBlock = ^(BOOL success, User *aUser, NSError *error){
+            if (success) {
+                @synchronized (cellControllersLock) {
+                    [aUser retain];
+                    [user release];
+                    user = aUser;
+                    
+                    CheckInCellController **newCellControllers = calloc([[user children] count], sizeof(CheckInCellController*));
+                    for (int i = 0; i < cellControllersLen; i++) {
+                        if ([user.children count] > i) newCellControllers[i] = cellControllers[i];
+                        else [cellControllers[i] release];
+                    }
+                    free(cellControllers);
+                    cellControllersLen = [user.children count];
+                    cellControllers = newCellControllers;
+                    
+                    [checkInTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                }
+            } else {
+                
+            }
+        };
+        [userRequest performRequest];
         [userRequest release];
     }
     return self;
@@ -99,31 +121,6 @@
     [announceLocAlert show];
     [announceLocAlert release];
     return;
-}
-
-#pragma mark -
-#pragma mark AllChildResponse Methods
--(void)userRequestSuccess:(User *)aUser {
-    @synchronized (cellControllersLock) {
-        [aUser retain];
-        [user release];
-        user = aUser;
-        
-        CheckInCellController **newCellControllers = calloc([[user children] count], sizeof(CheckInCellController*));
-        for (int i = 0; i < cellControllersLen; i++) {
-            if ([user.children count] > i) newCellControllers[i] = cellControllers[i];
-            else [cellControllers[i] release];
-        }
-        free(cellControllers);
-        cellControllersLen = [user.children count];
-        cellControllers = newCellControllers;
-        
-        [checkInTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-    }
-}
-
--(void)requestFailure:(NSError*)error {
-    
 }
 
 -(void)dealloc {

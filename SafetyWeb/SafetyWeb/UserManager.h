@@ -19,6 +19,7 @@
 #define kTwoHourTimeInterval    7200
 
 typedef void (^TokenResponseBlock)(BOOL, NSString*, NSError*);
+typedef void (^UserResponseBlock)(BOOL, User*, NSError*);
 
 @interface TokenRequest : NSObject <SafetyWebRequestCallback> {
 @private
@@ -36,19 +37,16 @@ typedef void (^TokenResponseBlock)(BOOL, NSString*, NSError*);
 @interface UserRequest : NSObject <SafetyWebRequestCallback> {
 @private
     NSString *token;
+    UserResponseBlock responseBlock;
 }
 @property (nonatomic, retain) NSString *token;
-@end
+@property (nonatomic, copy) UserResponseBlock responseBlock;
 
-@protocol UserResponse <NSObject>
--(void)userRequestSuccess:(User*)user;
--(void)requestFailure:(NSError*)error;
+-(void)performRequest;
 @end
 
 @interface UserManager : NSObject {
 }
-
-+(void)requestUser:(UserRequest*)request withResponse:(id<UserResponse>)response;
 
 + (User*)getCurrentUser;
 + (void)setCurrentUser:(User*)aUser;

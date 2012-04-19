@@ -15,7 +15,7 @@
 
 @class AlertCellController;
 
-@interface AlertsViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource, AlertRangeResponse> {
+@interface AlertsViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource> {
     @private
     NSInteger cellControllersLen;
     AlertCellController** cellControllers;

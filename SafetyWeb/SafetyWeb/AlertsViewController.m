@@ -37,7 +37,37 @@
         AlertRangeRequest *request = [[AlertRangeRequest alloc] init];
         request.user = [UserManager getCurrentUser];
         request.range = NSMakeRange([alerts count], kDefaultAlertsShown);
-        [AlertManager requestAlertsWithinRange:request withResponse:self];
+        request.responseBlock = ^(BOOL success, NSArray *aAlerts, NSError *error){
+            if (success) {
+                // We just got all new alerts, so add them to our array
+                if (request.range.length == 0) return; // No new alerts
+                
+                @synchronized(alertLoadLock) {
+                    AlertCellController** newCellControllers = calloc(request.range.length + request.range.location, sizeof(AlertCellController*));
+                    for (int i = 0; i < cellControllersLen; i++) {
+                        newCellControllers[i] = cellControllers[i];
+                    }  
+                    free(cellControllers);
+                    cellControllersLen = request.range.length + request.range.location;
+                    cellControllers = newCellControllers;
+                    
+                    for (int i = 0; i < request.range.length; i++) {
+                        if ([alerts count] > request.range.location + i) {
+                            [alerts replaceObjectAtIndex:request.range.location + i withObject:[aAlerts objectAtIndex:i]];
+                        } else if ([alerts count] == request.range.location + i) {
+                            [alerts addObject:[aAlerts objectAtIndex:i]];
+                        } else {
+                            // Out of bounds!  We're making gaps, so just skip it
+                        }
+                    }
+                    
+                    [alertsTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                }
+            } else {
+                
+            }
+        };
+        [request performRequest];
         [request release];
     }
 }
@@ -149,33 +179,6 @@
     // Check if we're at the bottomof our bounds, and ask for more rows
     if (scrollView.contentSize.height - scrollView.contentOffset.y <= kTableHeight) {
         [self requestMoreAlerts];
-    }
-}
-
-#pragma mark -
-#pragma mark AlertRangeResponse Methods
--(void)receiveResponse:(NSArray*)aAlerts forRange:(NSRange)range {
-    // We just got all new alerts, so add them to our array
-    @synchronized(alertLoadLock) {
-        AlertCellController** newCellControllers = calloc(range.length + range.location, sizeof(AlertCellController*));
-        for (int i = 0; i < cellControllersLen; i++) {
-            newCellControllers[i] = cellControllers[i];
-        }  
-        free(cellControllers);
-        cellControllersLen = range.length + range.location;
-        cellControllers = newCellControllers;
-        
-        for (int i = 0; i < range.length; i++) {
-            if ([alerts count] > range.location + i) {
-                [alerts replaceObjectAtIndex:range.location + i withObject:[aAlerts objectAtIndex:i]];
-            } else if ([alerts count] == range.location + i) {
-                [alerts addObject:[aAlerts objectAtIndex:i]];
-            } else {
-                // Out of bounds!  We're making gaps, so just skip it
-            }
-        }
-        
-        [alertsTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 }
 

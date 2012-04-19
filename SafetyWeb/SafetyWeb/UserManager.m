@@ -14,13 +14,6 @@ static NSString *lastUsedLogin;
 static NSString *lastUsedPassword;
 static NSString *lastUsedToken;
 
-@interface UserRequest () {
-    @private
-    id<UserResponse> response;
-}
-@property (nonatomic, retain) id<UserResponse> response;
-@end
-
 @interface UserManager (PrivateMethods)
 +(User*)initUserFromJson:(NSDictionary*)userJson withToken:(NSString*)token;
 @end
@@ -62,11 +55,6 @@ static NSString *lastUsedToken;
         }
     }
     [fetchRequest release];
-}
-
-+(void)requestUser:(UserRequest*)request withResponse:(id<UserResponse>)response{
-    request.response = response;
-    [request performSelectorInBackground:@selector(performRequest) withObject:nil];
 }
 
 + (void)setCurrentUser:(User *)aUser {
@@ -167,7 +155,7 @@ static NSString *lastUsedToken;
     void (^block)(void) = [^{
         @autoreleasepool {
             SafetyWebRequest *tokenRequest = [[SafetyWebRequest alloc] init];
-            [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:login, password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]] withCallback:self];
+            [tokenRequest request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Login" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.login, self.password, @"json", nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", @"type", nil]] withCallback:self];
         
             [tokenRequest release];
         }
@@ -204,25 +192,30 @@ static NSString *lastUsedToken;
 
 @implementation UserRequest
 @synthesize token;
-@synthesize response;
+@synthesize responseBlock;
 
 -(void)performRequest {
-    @autoreleasepool {
-        @synchronized([UserManager class]) {
-            if (currentUser != nil) {
-                NSLog(@"Time Interval Since Now: %f", [[currentUser userLastRequested]  timeIntervalSinceNow]);
-                if ([currentUser.token isEqualToString:token] && [currentUser userLastRequested] != nil && [[currentUser userLastRequested] timeIntervalSinceNow] > -kTwoHourTimeInterval) {
-                    [response userRequestSuccess:currentUser];
-                    self.response = nil;
-                    return;
-                }
+    @synchronized([UserManager class]) {
+        if (currentUser != nil) {
+            NSLog(@"Time Interval Since Now: %f", [[currentUser userLastRequested]  timeIntervalSinceNow]);
+            if ([currentUser.token isEqualToString:token] && [currentUser userLastRequested] != nil && [[currentUser userLastRequested] timeIntervalSinceNow] > -kTwoHourTimeInterval) {
+                responseBlock(YES, currentUser, nil);
+                self.responseBlock = nil;
+                return;
             }
         }
-        
-        SafetyWebRequest *request = [[SafetyWebRequest alloc] init];
-        [request request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:token, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]] withCallback:self];
-        [request release];
     }
+    void(^block)(void) = [^{
+        @autoreleasepool {
+            SafetyWebRequest *request = [[SafetyWebRequest alloc] init];
+            [request request:@"GET" andURL:[NSURL URLWithString:[AppProperties getProperty:@"Endpoint_Children" withDefault:@"No API Endpoint"]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:token, @"json", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", nil]] withCallback:self];
+            [request release];
+        }
+    } copy];
+    dispatch_async([SWAppDelegate dataModelQ], block);
+    
+    
+    [block release];
 }
 
 -(void)gotResponse:(id)aResponse {
@@ -232,22 +225,22 @@ static NSString *lastUsedToken;
         // Parse the response Dictionary
         @synchronized ([UserManager class]) {
             User *user = [UserManager initUserFromJson:responseDict withToken:token];
-            [response userRequestSuccess:user];
+            responseBlock(YES, user, nil);
             [user release];
         }
     } else {
-        [response requestFailure:nil];
+        responseBlock(NO, nil, nil);
     }
-    self.response = nil;
+    self.responseBlock = nil;
 }
 -(void)notGotResponse:(NSError *)aError {
-    [response requestFailure:aError];
-    self.response = nil;
+    responseBlock(NO, nil, aError);
+    self.responseBlock = nil;
 }
 
 -(void)dealloc {
     [token release];
-    [response release];
+    [responseBlock release];
     
     [super dealloc];
 }

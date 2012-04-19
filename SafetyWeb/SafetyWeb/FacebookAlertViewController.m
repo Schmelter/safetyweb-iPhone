@@ -37,7 +37,21 @@
         ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
         childRequest.childId = fbAlert.childId;
         childRequest.user = [UserManager getCurrentUser];
-        [ChildManager requestChildAccount:childRequest withResponse:self];
+        childRequest.responseBlock = ^(BOOL success, Child *aChild, NSError *error) {
+            if (success) {
+                [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", aChild.firstName, aChild.lastName] waitUntilDone:NO];
+                
+                ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
+                [cacheManager requestImage:self ForUrl:[aChild.profilePicUrl description]];
+                [cacheManager release];
+                
+                [callChildBtn setTitle:[NSString stringWithFormat:@"Call %@", aChild.firstName] forState:UIControlStateNormal];
+                [messageChildBtn setTitle:[NSString stringWithFormat:@"Message %@", aChild.firstName] forState:UIControlStateNormal];
+            } else {
+                
+            }
+        };
+        [childRequest performRequest];
         [childRequest release];
         friendName.text = fbAlert.friendName;
         alertMessage.text = fbAlert.alertText;
@@ -78,23 +92,6 @@
 
 -(IBAction)backPressed:(id)sender {
     [rootViewController displayMenuViewController];
-}
-
-#pragma mark -
-#pragma mark ChildResponse Methods
--(void)childRequestSuccess:(Child *)child {
-    [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName] waitUntilDone:NO];
-    
-    ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
-    [cacheManager requestImage:self ForUrl:[child.profilePicUrl description]];
-    [cacheManager release];
-    
-    [callChildBtn setTitle:[NSString stringWithFormat:@"Call %@", child.firstName] forState:UIControlStateNormal];
-    [messageChildBtn setTitle:[NSString stringWithFormat:@"Message %@", child.firstName] forState:UIControlStateNormal];
-}
-
--(void)requestFailure:(NSError *)error {
-    
 }
 
 #pragma mark -

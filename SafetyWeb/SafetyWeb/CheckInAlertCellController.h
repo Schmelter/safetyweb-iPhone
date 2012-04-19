@@ -13,7 +13,7 @@
 #import "Utilities.h"
 #import "CheckInAlert.h"
 
-@interface CheckInAlertCellController : AlertCellController <RMMapViewDelegate, ChildResponse> {
+@interface CheckInAlertCellController : AlertCellController <RMMapViewDelegate> {
     @private
     UILabel *childName;
     UILabel *locationStr;

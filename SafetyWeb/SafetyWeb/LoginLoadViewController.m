@@ -8,14 +8,6 @@
 
 #import "LoginLoadViewController.h"
 
-@interface UserCallback : UserRequest <UserResponse>
-@property (nonatomic, retain) LoginLoadViewController* callback;
-@end;
-
-@interface ChildCallback : ChildAccountRequest <ChildResponse>
-@property (nonatomic, retain) LoginLoadViewController* callback;
-@end
-
 @implementation LoginLoadViewController
 
 @synthesize login;
@@ -49,12 +41,11 @@
         TokenRequest *tokenRequest = [[TokenRequest alloc] init];
         tokenRequest.login = login;
         tokenRequest.password = password;
-        __block LoginLoadViewController *selff = self;
         tokenRequest.responseBlock = ^(BOOL success, NSString *aToken, NSError *aError) {
             if (success) {
-                [selff tokenRequestSuccess:aToken];
+                [self tokenRequestSuccess:aToken];
             } else {
-                [selff requestFailure:aError];
+                [self requestFailure:aError];
             }    
         };
         [tokenRequest performRequest];
@@ -68,14 +59,21 @@
         
         [UserManager setCurrentUser:nil];
         
-        UserCallback *userCallback = [[UserCallback alloc] init];
-        userCallback.callback = self;
-        userCallback.token = token;
+        UserRequest *userRequest = [[UserRequest alloc] init];
+        userRequest.token = token;
+        userRequest.responseBlock = ^(BOOL success, User *user, NSError *aError) {
+            @autoreleasepool {
+                if (success) {
+                    [self userRequestSuccess:user];
+                } else {
+                    [self requestFailure:aError];
+                }
+            }
+        };
+        [userRequest performRequest];
+        [userRequest release];
         
-        [UserManager requestUser:userCallback withResponse:userCallback];
-        [userCallback release];
         progressView.progressCurrent = 40.0f;
-        
     }
 }
 
@@ -94,6 +92,35 @@
     }
 }
 
+-(void)userRequestSuccess:(User*)user {
+    [UserManager setCurrentUser:user];
+    
+    // For each child, fire off a request to get more information about that child
+    // All ChildCallbacks are the same, so we only need one
+    totalChildRequests = [[user children] count];
+    totalChildRequests = totalChildRequests == 0 ? 1 : totalChildRequests;  // Just to guarantee we never divide by zero
+    for (Child *child in [user children]) {
+        @synchronized(self) {
+            pendingChildRequests++;
+        }
+        
+        ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
+        childRequest.childId = child.childId;
+        childRequest.user = user;
+        childRequest.responseBlock = ^(BOOL success, Child *aChild, NSError *error) {
+            if (success) {
+                [self childRequestSuccess:aChild];
+            } else {
+                [self requestFailure:error];
+            }
+        };
+        [childRequest performRequest];
+        [childRequest release];
+    }
+    
+    progressView.progressCurrent = 50.0;
+}
+
 -(void)tokenRequestSuccess:(NSString*)aToken {
     [aToken retain];
     [token release];
@@ -104,32 +131,6 @@
     [UserManager setLastUsedToken:aToken];
     progressView.progressCurrent = 30.f;
     [self makeUserRequest];
-}
-
--(void)userRequestSuccess:(User*)user {
-    @autoreleasepool {
-        
-        [UserManager setCurrentUser:user];
-        
-        // For each child, fire off a request to get more information about that child
-        // All ChildCallbacks are the same, so we only need one
-        totalChildRequests = [[user children] count];
-        totalChildRequests = totalChildRequests == 0 ? 1 : totalChildRequests;  // Just to guarantee we never divide by zero
-        for (Child *child in [user children]) {
-            @synchronized(self) {
-                pendingChildRequests++;
-            }
-            
-            ChildCallback *childCallback = [[ChildCallback alloc] init];
-            childCallback.callback = self;
-            childCallback.childId = child.childId;
-            childCallback.user = user;
-            [ChildManager requestChildAccount:childCallback withResponse:childCallback];
-            [childCallback release];
-        }
-        
-    }
-    progressView.progressCurrent = 50.0;
 }
 
 -(void)childRequestSuccess:(Child*)aChild {
@@ -189,43 +190,6 @@
     [super dealloc];
 }
 
-@end
-
-
-@implementation UserCallback
-@synthesize callback;
-
--(void)userRequestSuccess:(User*)user {
-    [self.callback userRequestSuccess:user];
-}
-
--(void)requestFailure:(NSError*)error {
-    [self.callback requestFailure:error];
-}
-
--(void)dealloc {
-    [callback release];
-    
-    [super dealloc];
-}
-@end
-
-@implementation ChildCallback
-@synthesize callback;
-
--(void)childRequestSuccess:(Child*)child {
-    [self.callback childRequestSuccess:child];
-}
-
--(void)requestFailure:(NSError*)error {
-    [self.callback requestFailure:error];
-}
-
--(void)dealloc {
-    [callback release];
-    
-    [super dealloc];
-}
 @end
 
 

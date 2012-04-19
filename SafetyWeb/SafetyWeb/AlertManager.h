@@ -15,38 +15,38 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Alert.h"
 
-@protocol AlertRangeResponse <NSObject>
--(void)receiveResponse:(NSArray*)alerts forRange:(NSRange)range;
-@end
-
-
-@protocol AlertIdResponse <NSObject>
--(void)receiveResponse:(Alert*)alert;
-@end
-
+typedef void (^AlertRangeResponseBlock)(BOOL, NSArray*, NSError*);
+typedef void (^AlertIdResponseBlock)(BOOL, Alert*, NSError*);
 
 @interface AlertRangeRequest : NSObject {
 @private
     User *user;
     NSRange range_;
+    AlertRangeResponseBlock responseBlock;
 }
 @property (nonatomic, retain) User *user;
 @property (nonatomic) NSRange range;
+@property (nonatomic, copy) AlertRangeResponseBlock responseBlock;
+
+-(void)performRequest;
 @end
 
 @interface AlertIdRequest : NSObject {
 @private
     User *user;
     NSNumber *alertId;
+    AlertIdResponseBlock responseBlock;
 }
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) NSNumber *alertId;
+@property (nonatomic, copy) AlertIdResponseBlock responseBlock;
+
+-(void)performRequest;
 @end
 
 
 @interface AlertManager : NSObject
 
-+(void)requestAlertsWithinRange:(AlertRangeRequest*)request withResponse:(id<AlertRangeResponse>)response;
-+(void)requestAlertById:(AlertIdRequest*)request withResponse:(id<AlertIdResponse>)response;
++(void)generateFakeAlertsForUser:(User*)user;
 
 @end

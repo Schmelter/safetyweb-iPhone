@@ -40,7 +40,14 @@
         ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
         childRequest.childId = smsAlert.childId;
         childRequest.user = [UserManager getCurrentUser];
-        [ChildManager requestChildAccount:childRequest withResponse:self];
+        childRequest.responseBlock = ^(BOOL success, Child *aChild, NSError *error) {
+            if (success) {
+                [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", aChild.firstName, aChild.lastName] waitUntilDone:NO];
+            } else {
+                
+            }
+        };
+        [childRequest performRequest];
         [childRequest release];
         
         messagePhoneNumber.text = smsAlert.messagePhoneNumber;
@@ -68,16 +75,6 @@
     viewAlert.alert = (SMSAlert*)alert;
     [[[self.alertsViewController getMenuViewController] getRootViewController] displayGenericViewController:viewAlert];
     [viewAlert release];
-}
-
-#pragma mark -
-#pragma mark ChildResponse Methods
--(void)childRequestSuccess:(Child *)child {
-    [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName] waitUntilDone:NO];
-}
-
--(void)requestFailure:(NSError *)error {
-    
 }
 
 -(void)dealloc {

@@ -12,7 +12,7 @@
 #import "ChildManager.h"
 #import "Utilities.h"
 
-@interface FacebookAlertCellController : AlertCellController <ChildResponse> {
+@interface FacebookAlertCellController : AlertCellController {
     @private
     UILabel *childName;
     UILabel *friendName;

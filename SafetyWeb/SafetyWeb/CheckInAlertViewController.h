@@ -12,7 +12,7 @@
 #import "RMMapView.h"
 #import "ImageCacheManager.h"
 
-@interface CheckInAlertViewController : SubRootViewController <RMMapViewDelegate, ChildResponse, CachedImage> {
+@interface CheckInAlertViewController : SubRootViewController <RMMapViewDelegate, CachedImage> {
     @private
     CheckInAlert *alert;
     

@@ -13,12 +13,6 @@
 #import "ChildManager.h"
 #import "SWAppDelegate.h"
 
-@interface ChildAccountRequest () {
-    id<ChildResponse> response;
-}
-@property (nonatomic, retain) id<ChildResponse> response;
-@end
-
 @interface ChildManager (PrivateMethods)
 +(Account*)initAccountFromJson:(NSDictionary*)jsonAccountDict;
 +(NSSet*)initChildAccounts:(NSDictionary *)childJson;
@@ -28,24 +22,27 @@
 @implementation ChildAccountRequest
 @synthesize childId;
 @synthesize user;
-@synthesize response;
+@synthesize responseBlock;
 
 -(void)performRequest {
-    @autoreleasepool {
-        
-        @synchronized(user) {
-            Child *child = [user getChildForId:childId];
-            if (child != nil && child.lastQueried != nil && [child.lastQueried timeIntervalSinceNow] > -kTwoHourTimeInterval) {
-                [response childRequestSuccess:child];
-                self.response = nil;
-                return;
-            }
+    @synchronized(user) {
+        Child *child = [user getChildForId:childId];
+        if (child != nil && child.lastQueried != nil && [child.lastQueried timeIntervalSinceNow] > -kTwoHourTimeInterval) {
+            responseBlock(YES, child, nil);
+            self.responseBlock = nil;
+            return;
         }
-    
-        SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
-        [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:user.token, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", [childId description], nil]] withCallback:self];
-        [childRequest release];
     }
+    void(^block)(void) = [^{
+        @autoreleasepool {
+            SafetyWebRequest *childRequest = [[SafetyWebRequest alloc] init];
+            [childRequest request:@"GET" andURL:[NSURL URLWithString:[NSString stringWithFormat:[AppProperties getProperty:@"Endpoint_Child" withDefault:@"No API Endpoint"], childId]] andParams:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:user.token, @"json", @"id", nil] forKeys:[NSArray arrayWithObjects:@"token", @"type", [childId description], nil]] withCallback:self];
+            [childRequest release];
+        }
+    } copy];
+    
+    dispatch_async([SWAppDelegate dataModelQ], block);
+    [block release];
 }
 
 -(void)gotResponse:(id)aResponse {
@@ -57,25 +54,26 @@
             NSSet *childAccounts = [ChildManager initChildAccounts:responseDict];
             
             Child *child = [user getChildForId:childId];
-            child.lastQueried = [NSDate dateWithTimeIntervalSince1970:0.0];
+            child.lastQueried = [NSDate date];
             child.accounts = childAccounts;
             [childAccounts release];
             
-            [response childRequestSuccess:child];
+            responseBlock(YES, child, nil);
         }
     } else {
-        [response requestFailure:nil];
+        responseBlock(NO, nil, nil);
     }
-    self.response = nil;
+    self.responseBlock = nil;
 }
 -(void)notGotResponse:(NSError *)aError {
-    [response requestFailure:aError];
-    self.response = nil;
+    responseBlock(NO, nil, aError);
+    self.responseBlock = nil;
 }
 
 -(void)dealloc {
     [childId release];
     [user release];
+    [responseBlock release];
     
     [super dealloc];
 }
@@ -188,14 +186,6 @@
         
     }
     return childAccounts;
-}
-
-#pragma mark -
-#pragma mark ChildManager Public static functions
-
-+(void)requestChildAccount:(ChildAccountRequest*)request withResponse:(id<ChildResponse>)response {
-    request.response = response;
-    [request performSelectorInBackground:@selector(performRequest) withObject:nil];
 }
 
 -(void)dealloc {

@@ -11,7 +11,7 @@
 #import "MenuViewController.h"
 #import "MyPeopleCellController.h"
 
-@interface MyPeopleViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource, UserResponse> {
+@interface MyPeopleViewController : SubMenuViewController <UITableViewDelegate, UITableViewDataSource> {
     @private
     MyPeopleCellController** cellControllers;
     NSInteger cellControllersLen;

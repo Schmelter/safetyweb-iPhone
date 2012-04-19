@@ -21,8 +21,30 @@
         cellControllersLock = [[NSObject alloc] init];
         
         UserRequest *userRequest = [[UserRequest alloc] init];
-        userRequest.token = [UserManager getLastUsedToken]; 
-        [UserManager requestUser:userRequest withResponse:self];
+        userRequest.token = [UserManager getLastUsedToken];
+        userRequest.responseBlock = ^(BOOL success, User *aUser, NSError *error){
+            if (success) {
+                @synchronized (cellControllersLock) {
+                    [aUser retain];
+                    [user release];
+                    user = aUser;
+                    
+                    MyPeopleCellController **newCellControllers = calloc([[user children] count], sizeof(MyPeopleCellController*));
+                    for (int i = 0; i < cellControllersLen; i++) {
+                        if ([[user children] count] > i) newCellControllers[i] = cellControllers[i];
+                        else [cellControllers[i] release];
+                    }
+                    free(cellControllers);
+                    cellControllersLen = [[user children] count];
+                    cellControllers = newCellControllers;
+                    
+                    [myPeopleTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                }
+            } else {
+                
+            }
+        };
+        [userRequest performRequest];
         [userRequest release];
     }
     return self;
@@ -84,31 +106,6 @@
     
         return cellControllers[indexPath.row].tableViewCell;
     }
-}
-
-#pragma mark -
-#pragma mark AllChildResponse Methods
--(void)userRequestSuccess:(User *)aUser {
-    @synchronized (cellControllersLock) {
-        [aUser retain];
-        [user release];
-        user = aUser;
-        
-        MyPeopleCellController **newCellControllers = calloc([[user children] count], sizeof(MyPeopleCellController*));
-        for (int i = 0; i < cellControllersLen; i++) {
-            if ([[user children] count] > i) newCellControllers[i] = cellControllers[i];
-            else [cellControllers[i] release];
-        }
-        free(cellControllers);
-        cellControllersLen = [[user children] count];
-        cellControllers = newCellControllers;
-        
-        [myPeopleTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-    }
-}
-
--(void)requestFailure:(NSError*)error {
-    
 }
 
 -(void)dealloc {

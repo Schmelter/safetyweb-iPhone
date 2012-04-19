@@ -17,7 +17,7 @@ static dispatch_queue_t dataModelQ;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    dataModelQ = dispatch_queue_create("com.safetyweb.datamodelq", DISPATCH_QUEUE_SERIAL);
+    dataModelQ = dispatch_queue_create("com.safetyweb.datamodelq", DISPATCH_QUEUE_CONCURRENT);
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.

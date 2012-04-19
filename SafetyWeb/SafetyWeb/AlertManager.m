@@ -15,46 +15,38 @@
 #import "CheckInAlert.h"
 #import "ChildManager.h"
 
-@interface AlertRangeRequest () {
-    @private
-    id<AlertRangeResponse> response;
-}
-@property (nonatomic, retain) id<AlertRangeResponse> response;
-@end
-
-@interface AlertIdRequest () {
-    @private
-    id<AlertIdResponse> response;
-}
-@property (nonatomic, retain) id<AlertIdResponse> response;
-@end
-
 @implementation AlertRangeRequest
 @synthesize user;
 @synthesize range = range_;
-@synthesize response;
+@synthesize responseBlock;
 
 -(void)performRequest {
-    @autoreleasepool {
-        
-        usleep(1000000);  // 1 seconds
-        
-        NSRange range = self.range;
-        
-        NSArray *alertArr = [user sortedAlerts];
-        
-        range.location = range.location > [alertArr count] ? [alertArr count] : range.location;
-        range.length = range.location + range.length > [alertArr count] ? [alertArr count] - range.location : range.length;
-        
-        [self.response receiveResponse:[alertArr subarrayWithRange:range] forRange:range];
-    }
+    void(^block)() = [^{
+        @autoreleasepool {
+            if (user.alerts == nil || [user.alerts count] == 0) {
+                usleep(1000000); // 1 seconds
+                // TODO: Get this working with the server, and get the timeout for alerts working.
+                // For now, just check if they don't have any alerts, and give them some
+                [AlertManager generateFakeAlertsForUser:user];
+            }
+            
+            NSArray *alertArr = [user sortedAlerts];
+            
+            range_.location = range_.location > [alertArr count] ? [alertArr count] : range_.location;
+            range_.length = range_.location + range_.length > [alertArr count] ? [alertArr count] - range_.location : range_.length;
+            
+            responseBlock(YES, [alertArr subarrayWithRange:range_], nil);
+        }
+        self.responseBlock = nil;
+    } copy];
+    dispatch_async([SWAppDelegate dataModelQ], block);
     
-    self.response = nil;
+    [block release];
 }
 
 -(void)dealloc {
     [user release];
-    [response release];
+    [responseBlock release];
     
     [super dealloc];
 }
@@ -64,27 +56,35 @@
 @implementation AlertIdRequest
 @synthesize user;
 @synthesize alertId;
-@synthesize response;
+@synthesize responseBlock;
 
 -(void)performRequest {
-    [self.response receiveResponse:[user getAlertForId:self.alertId]];
+    void(^block)(void) = [^{
+        if (user.alerts == nil || [user.alerts count] == 0) {
+            usleep(1000000); // 1 seconds
+            // TODO: Get this working with the server, and get the timeout for alerts working.
+            // For now, just check if they don't have any alerts, and give them some
+            [AlertManager generateFakeAlertsForUser:user];
+        }
+        
+        responseBlock(YES, [user getAlertForId:alertId], nil);
+        self.responseBlock = nil;
+    } copy];
+    dispatch_async([SWAppDelegate dataModelQ], block);
     
-    self.response = nil;
+    [block release];
 }
 
 -(void)dealloc {
     [user release];
     [alertId release];
-    [response release];
+    [responseBlock release];
     
     [super dealloc];
 }
 
 @end
 
-// TODO: Take this out later when we're actually hitting the server
-@interface UserAlertResponse : NSObject <UserResponse>
-@end
 
 @implementation AlertManager
 
@@ -94,44 +94,7 @@
     return nil;
 }
 
-+(void)initialize {
-    // TODO: Take this out later when we're actually hitting the server
-    @autoreleasepool {
-    
-        UserAlertResponse *userResponse = [[UserAlertResponse alloc] init];
-        UserRequest *userRequest = [[UserRequest alloc] init];
-        userRequest.token = [UserManager getLastUsedToken];
-        [UserManager requestUser:userRequest withResponse:userResponse];
-        [userRequest release];
-        [userResponse release];
-    
-    }
-}
-
-+(void)requestAlertsWithinRange:(AlertRangeRequest*)request withResponse:(id<AlertRangeResponse>)response {
-    // TODO: Take this out later when we're actually hitting the server
-    // Check that the range is within the size of our array
-    // NOTE: Make sure to retain the AlertRangeRequest when the request will be asynchronous
-    request.response = response;
-    [request performSelectorInBackground:@selector(performRequest) withObject:nil];
-}
-
-+(void)requestAlertById:(AlertIdRequest*)request withResponse:(id<AlertIdResponse>)response {
-    // TODO: Alter this when we're actually hitting the server
-    // NOTE: Make sure to retain the AlertIdRequest when the request will be asynchronous
-    request.response = response;
-    [request performSelectorInBackground:@selector(performRequest) withObject:nil];
-}
-
--(void)dealloc {    
-    [super dealloc];
-}
-
-@end
-
-
-@implementation UserAlertResponse
--(void)userRequestSuccess:(User *)user {
++(void)generateFakeAlertsForUser:(User*)user {
     @autoreleasepool {
         
         NSInteger alertId = 1;
@@ -190,7 +153,8 @@
     }
 }
 
--(void)requestFailure:(NSError*)error {
-    
+-(void)dealloc {    
+    [super dealloc];
 }
+
 @end

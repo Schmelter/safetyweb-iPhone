@@ -15,19 +15,20 @@
 
 #define kTwoHourTimeInterval    7200
 
-@protocol ChildResponse <NSObject>
--(void)childRequestSuccess:(Child*)child;
--(void)requestFailure:(NSError*)error;
-@end
+typedef void(^ChildAccountResponseBlock)(BOOL, Child*, NSError*);
 
 @interface ChildAccountRequest : NSObject <SafetyWebRequestCallback> {
 @private
     NSNumber *childId;
     User *user;
+    ChildAccountResponseBlock responseBlock;
 }
 
 @property (nonatomic, retain) NSNumber *childId;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, copy) ChildAccountResponseBlock responseBlock;
+
+-(void)performRequest;
 @end
 
 @interface ChildManager : NSObject {
@@ -35,7 +36,5 @@
 }
 
 +(Child*)initChildFromJson:(NSDictionary*)jsonChildDict;
-
-+(void)requestChildAccount:(ChildAccountRequest*)request withResponse:(id<ChildResponse>)response;
 
 @end

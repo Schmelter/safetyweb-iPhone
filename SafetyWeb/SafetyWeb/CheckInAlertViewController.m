@@ -40,7 +40,18 @@
         ChildAccountRequest *childRequest = [[ChildAccountRequest alloc] init];
         childRequest.childId = checkInAlert.childId;
         childRequest.user = [UserManager getCurrentUser];
-        [ChildManager requestChildAccount:childRequest withResponse:self];
+        childRequest.responseBlock = ^(BOOL success, Child *aChild, NSError *error) {
+            if (success) {
+                [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", aChild.firstName, aChild.lastName] waitUntilDone:NO];
+                
+                ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
+                [cacheManager requestImage:self ForUrl:[aChild.profilePicUrl description]];
+                [cacheManager release];
+            } else {
+                
+            }
+        };
+        [childRequest performRequest];
         [childRequest release];
         
         locationStr.text = checkInAlert.locationStr;
@@ -90,20 +101,6 @@
 #pragma mark IBAction Methods
 -(IBAction)backPressed:(id)sender {
     [rootViewController displayMenuViewController];
-}
-
-#pragma mark -
-#pragma mark ChildResponse Methods
--(void)childRequestSuccess:(Child *)child {
-    [childName performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName] waitUntilDone:NO];
-    
-    ImageCacheManager *cacheManager = [[ImageCacheManager alloc] init];
-    [cacheManager requestImage:self ForUrl:[child.profilePicUrl description]];
-    [cacheManager release];
-}
-
--(void)requestFailure:(NSError *)error {
-    
 }
 
 #pragma mark -

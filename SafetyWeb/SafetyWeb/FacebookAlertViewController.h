@@ -16,7 +16,7 @@
 #import "Utilities.h"
 #import "ImageCacheManager.h"
 
-@interface FacebookAlertViewController : SubRootViewController <ChildResponse, CachedImage> {
+@interface FacebookAlertViewController : SubRootViewController <CachedImage> {
     @private
     FacebookAlert *alert;
     
