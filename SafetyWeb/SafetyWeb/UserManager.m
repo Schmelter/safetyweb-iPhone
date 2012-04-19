@@ -10,7 +10,7 @@
 #import "SWAppDelegate.h"
 
 static User* currentUser;
-static NSString *lastUsedLogin;
+static  NSString *lastUsedLogin;
 static NSString *lastUsedPassword;
 static NSString *lastUsedToken;
 
@@ -35,9 +35,9 @@ static NSString *lastUsedToken;
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     
-    [self setCurrentUser:nil];
-    [self setLastUsedLogin:nil];
-    [self setLastUsedPassword:nil];
+    currentUser = nil;
+    lastUsedLogin = nil;
+    lastUsedPassword = nil;
     
     NSError *error = nil;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
@@ -48,7 +48,12 @@ static NSString *lastUsedToken;
     } else if (fetchedObjects != nil) {
         if ([fetchedObjects count] > 0) {
             User *user = [fetchedObjects objectAtIndex:0];
-            [self setCurrentUser:user];
+            
+            // DO NOT use [self setCurrentUser:user] here as it will delete the user we just got out of the DB, which will
+            // invalidate what we're trying to do here
+            //[self setCurrentUser:user];
+            currentUser = user;
+            [currentUser retain];
             
             [self setLastUsedLogin:user.login];
             [self setLastUsedPassword:user.password];
@@ -63,12 +68,16 @@ static NSString *lastUsedToken;
     SWAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
-    if (currentUser != nil) [context deleteObject:currentUser];
+    if (currentUser != nil && [currentUser isInserted]) {
+        [context deleteObject:currentUser];
+    }
     
     [currentUser release];
     currentUser = aUser;
     
-    if (currentUser != nil) [context insertObject:currentUser];
+    if (currentUser != nil && ![currentUser isInserted]) {
+        [context insertObject:currentUser];
+    }
 }
 
 + (User*)getCurrentUser {

@@ -93,6 +93,9 @@
 }
 
 -(void)userRequestSuccess:(User*)user {
+    user.login = login;
+    user.password = password;
+    user.token = token;
     [UserManager setCurrentUser:user];
     
     // For each child, fire off a request to get more information about that child

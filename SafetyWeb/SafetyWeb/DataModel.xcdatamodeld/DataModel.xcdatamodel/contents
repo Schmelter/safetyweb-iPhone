@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Account" representedClassName="Account" syncable="YES">
         <attribute name="accountId" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="profilePicUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serviceId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="serviceName" attributeType="String" syncable="YES"/>
         <attribute name="status" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="url" attributeType="String" syncable="YES"/>
-        <attribute name="username" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="child" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="accounts" inverseEntity="Child" syncable="YES"/>
     </entity>
     <entity name="Alert" representedClassName="Alert" isAbstract="YES" syncable="YES">
