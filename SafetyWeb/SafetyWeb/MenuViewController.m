@@ -13,6 +13,7 @@
 @synthesize contentView;
 @synthesize menuView;
 @synthesize delegate;
+@synthesize menuButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,6 +80,8 @@
         if (animated) {
             [UIView commitAnimations];
         }
+        
+        [menuButton setBackgroundImage:[UIImage imageNamed:@"MenuButton-On.png"] forState:UIControlStateNormal];
     }
     
     isMenuShowing = YES;
@@ -105,6 +108,8 @@
         if (animated) {
             [UIView commitAnimations];
         }
+        
+        [menuButton setBackgroundImage:[UIImage imageNamed:@"MenuButton-Off.png"] forState:UIControlStateNormal];
     }
     
     isMenuShowing = NO;
@@ -164,6 +169,7 @@
     selectedMI = nil;
     [menuItems release];
     menuItems = nil;
+    self.menuButton = nil;
     
     [super viewDidUnload];
 }
@@ -181,6 +187,7 @@
 -(void)dealloc {
     [contentView release];
     [menuView release];
+    [menuButton release];
     
     [super dealloc];
 }

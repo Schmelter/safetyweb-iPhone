@@ -33,11 +33,14 @@
     
     UIView *contentView;
     UIView *menuView;
+    
+    UIButton *menuButton;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *contentView;
 @property (nonatomic, retain) IBOutlet UIView *menuView;
 @property (nonatomic, assign) id<MenuViewControllerDelegate> delegate;
+@property (nonatomic, retain) IBOutlet UIButton *menuButton;
 
 -(IBAction)menuItemPressed:(id)sender;
 -(IBAction)menuButtonPressed:(id)sender;

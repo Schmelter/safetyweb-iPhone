@@ -46,7 +46,7 @@ static enum __MenuSelected {
     
     @autoreleasepool {
         
-        UIImage *selectedImage = [UIImage imageNamed:@"point.png"];
+        UIImage *selectedImage = [UIImage imageNamed:@"Nav-On_Arrow.png"];
         UIFont *unselectedFont = [UIFont fontWithName:@"Helvetica" size:21];
         UIFont *selectedFont = [UIFont fontWithName:@"Helvetica-Bold" size:21];
         
