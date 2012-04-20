@@ -42,6 +42,26 @@
         <attribute name="messagePhoneNumber" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" syncable="YES"/>
     </entity>
+    <entity name="SWArea" representedClassName="SWArea" isAbstract="YES" syncable="YES">
+        <attribute name="areaId" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="SWCircleArea" representedClassName="SWCircleArea" parentEntity="SWArea" syncable="YES">
+        <attribute name="radius" attributeType="Float" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="centerPoint" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="SWPoint" syncable="YES"/>
+    </entity>
+    <entity name="SWLocation" representedClassName="SWLocation" syncable="YES">
+        <attribute name="latitude" attributeType="Float" minValueString="-180.1" maxValueString="180.1" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" attributeType="Float" minValueString="-180.1" maxValueString="180.1" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="SWPoint" representedClassName="SWPoint" parentEntity="SWLocation" syncable="YES">
+        <relationship name="area" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SWArea" syncable="YES"/>
+    </entity>
+    <entity name="SWPolygonArea" representedClassName="SWPolygonArea" parentEntity="SWArea" syncable="YES">
+        <relationship name="points" toMany="YES" minCount="3" deletionRule="Cascade" destinationEntity="SWPolygonPoint" syncable="YES"/>
+    </entity>
+    <entity name="SWPolygonPoint" representedClassName="SWPolygonPoint" parentEntity="SWPoint" syncable="YES">
+        <attribute name="order" attributeType="Integer 16" maxValueString="0" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="login" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="password" attributeType="String" syncable="YES"/>
@@ -54,9 +74,15 @@
     <elements>
         <element name="Account" positionX="-155" positionY="135" width="128" height="165"/>
         <element name="Alert" positionX="-119" positionY="225" width="128" height="90"/>
+        <element name="SWArea" positionX="160" positionY="192" width="128" height="60"/>
         <element name="CheckInAlert" positionX="16" positionY="447" width="128" height="120"/>
         <element name="Child" positionX="9" positionY="36" width="128" height="180"/>
+        <element name="SWCircleArea" positionX="160" positionY="192" width="128" height="75"/>
         <element name="FacebookAlert" positionX="-297" positionY="387" width="128" height="90"/>
+        <element name="SWLocation" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="SWPoint" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="SWPolygonArea" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="SWPolygonPoint" positionX="160" positionY="192" width="128" height="60"/>
         <element name="SMSAlert" positionX="-128" positionY="375" width="128" height="75"/>
         <element name="User" positionX="97" positionY="237" width="128" height="90"/>
     </elements>

@@ -304,6 +304,18 @@
 		89AA20CB14F585A70082C7B5 /* SampleTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20CA14F585A70082C7B5 /* SampleTestCase.m */; };
 		89AA20CD14F5869B0082C7B5 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */; };
 		89AA20D014F58AC30082C7B5 /* SafetyWebRequestTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA20CF14F58AC30082C7B5 /* SafetyWebRequestTestCase.m */; };
+		89B59B631541FC33002438EA /* AreaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59B621541FC33002438EA /* AreaManager.m */; };
+		89B59B641541FC33002438EA /* AreaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59B621541FC33002438EA /* AreaManager.m */; };
+		89B59BAE15420AEC002438EA /* SWCircleArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BAD15420AEC002438EA /* SWCircleArea.m */; };
+		89B59BB115420AED002438EA /* SWArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BB015420AED002438EA /* SWArea.m */; };
+		89B59BB415420AED002438EA /* SWLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BB315420AED002438EA /* SWLocation.m */; };
+		89B59BB715420AED002438EA /* SWPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BB615420AED002438EA /* SWPoint.m */; };
+		89B59BC015420B8D002438EA /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BBF15420B8D002438EA /* LocationManager.m */; };
+		89B59BC115420B8D002438EA /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BBF15420B8D002438EA /* LocationManager.m */; };
+		89B59BC6154212C4002438EA /* SWPolygonArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BC3154212C2002438EA /* SWPolygonArea.m */; };
+		89B59BC7154212C4002438EA /* SWPolygonArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BC3154212C2002438EA /* SWPolygonArea.m */; };
+		89B59BC8154212C4002438EA /* SWPolygonPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BC5154212C3002438EA /* SWPolygonPoint.m */; };
+		89B59BC9154212C4002438EA /* SWPolygonPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B59BC5154212C3002438EA /* SWPolygonPoint.m */; };
 		89B630BA1512628400E25970 /* ImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630B91512628400E25970 /* ImageCacheManager.m */; };
 		89B630BE1512630A00E25970 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630BD1512630A00E25970 /* NSString+MD5.m */; };
 		89B630C215127EE800E25970 /* MyPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630C015127EE700E25970 /* MyPeopleViewController.m */; };
@@ -583,6 +595,22 @@
 		89AA20CA14F585A70082C7B5 /* SampleTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTestCase.m; sourceTree = "<group>"; };
 		89AA20CC14F5869B0082C7B5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = SafetyWebTests/GHUnitIOS.framework; sourceTree = SOURCE_ROOT; };
 		89AA20CF14F58AC30082C7B5 /* SafetyWebRequestTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyWebRequestTestCase.m; sourceTree = "<group>"; };
+		89B59B611541FC33002438EA /* AreaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaManager.h; sourceTree = "<group>"; };
+		89B59B621541FC33002438EA /* AreaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AreaManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		89B59BAC15420AEC002438EA /* SWCircleArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCircleArea.h; sourceTree = "<group>"; };
+		89B59BAD15420AEC002438EA /* SWCircleArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCircleArea.m; sourceTree = "<group>"; };
+		89B59BAF15420AED002438EA /* SWArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWArea.h; sourceTree = "<group>"; };
+		89B59BB015420AED002438EA /* SWArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWArea.m; sourceTree = "<group>"; };
+		89B59BB215420AED002438EA /* SWLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLocation.h; sourceTree = "<group>"; };
+		89B59BB315420AED002438EA /* SWLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLocation.m; sourceTree = "<group>"; };
+		89B59BB515420AED002438EA /* SWPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPoint.h; sourceTree = "<group>"; };
+		89B59BB615420AED002438EA /* SWPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPoint.m; sourceTree = "<group>"; };
+		89B59BBE15420B8D002438EA /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		89B59BBF15420B8D002438EA /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		89B59BC2154212C2002438EA /* SWPolygonArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPolygonArea.h; sourceTree = "<group>"; };
+		89B59BC3154212C2002438EA /* SWPolygonArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPolygonArea.m; sourceTree = "<group>"; };
+		89B59BC4154212C2002438EA /* SWPolygonPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPolygonPoint.h; sourceTree = "<group>"; };
+		89B59BC5154212C3002438EA /* SWPolygonPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPolygonPoint.m; sourceTree = "<group>"; };
 		89B630B81512628400E25970 /* ImageCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCacheManager.h; sourceTree = "<group>"; };
 		89B630B91512628400E25970 /* ImageCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCacheManager.m; sourceTree = "<group>"; };
 		89B630BC1512630A00E25970 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
@@ -989,6 +1017,22 @@
 				89A4012F1534E7B70027FE7D /* CheckInAlert.m */,
 				89A4012A1534E7B50027FE7D /* SMSAlert.h */,
 				89A4012B1534E7B50027FE7D /* SMSAlert.m */,
+				89B59B611541FC33002438EA /* AreaManager.h */,
+				89B59B621541FC33002438EA /* AreaManager.m */,
+				89B59BB515420AED002438EA /* SWPoint.h */,
+				89B59BB615420AED002438EA /* SWPoint.m */,
+				89B59BC2154212C2002438EA /* SWPolygonArea.h */,
+				89B59BC3154212C2002438EA /* SWPolygonArea.m */,
+				89B59BC4154212C2002438EA /* SWPolygonPoint.h */,
+				89B59BC5154212C3002438EA /* SWPolygonPoint.m */,
+				89B59BB215420AED002438EA /* SWLocation.h */,
+				89B59BB315420AED002438EA /* SWLocation.m */,
+				89B59BAF15420AED002438EA /* SWArea.h */,
+				89B59BB015420AED002438EA /* SWArea.m */,
+				89B59BAC15420AEC002438EA /* SWCircleArea.h */,
+				89B59BAD15420AEC002438EA /* SWCircleArea.m */,
+				89B59BBE15420B8D002438EA /* LocationManager.h */,
+				89B59BBF15420B8D002438EA /* LocationManager.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -1410,6 +1454,14 @@
 				89241BA4153E1BB5000E34D8 /* FacebookAlertViewController.m in Sources */,
 				89241BAB153E29A3000E34D8 /* SMSAlertViewController.m in Sources */,
 				89241BB2153E33E6000E34D8 /* CheckInAlertViewController.m in Sources */,
+				89B59B631541FC33002438EA /* AreaManager.m in Sources */,
+				89B59BAE15420AEC002438EA /* SWCircleArea.m in Sources */,
+				89B59BB115420AED002438EA /* SWArea.m in Sources */,
+				89B59BB415420AED002438EA /* SWLocation.m in Sources */,
+				89B59BB715420AED002438EA /* SWPoint.m in Sources */,
+				89B59BC015420B8D002438EA /* LocationManager.m in Sources */,
+				89B59BC6154212C4002438EA /* SWPolygonArea.m in Sources */,
+				89B59BC8154212C4002438EA /* SWPolygonPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,6 +1487,10 @@
 				89241BA5153E1BB5000E34D8 /* FacebookAlertViewController.m in Sources */,
 				89241BAC153E29A3000E34D8 /* SMSAlertViewController.m in Sources */,
 				89241BB3153E33E6000E34D8 /* CheckInAlertViewController.m in Sources */,
+				89B59B641541FC33002438EA /* AreaManager.m in Sources */,
+				89B59BC115420B8D002438EA /* LocationManager.m in Sources */,
+				89B59BC7154212C4002438EA /* SWPolygonArea.m in Sources */,
+				89B59BC9154212C4002438EA /* SWPolygonPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
