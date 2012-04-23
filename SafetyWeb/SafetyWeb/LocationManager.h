@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SWLocation.h"
+
+typedef void(^LocationsResponseBlock)(BOOL, NSArray*, NSError*);
+typedef void(^LocationResponseBlock)(BOOL, SWLocation*, NSError*);
 
 @interface LocationManager : NSObject
 
