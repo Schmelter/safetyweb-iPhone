@@ -31,6 +31,7 @@
         <attribute name="mobilePhone" attributeType="String" syncable="YES"/>
         <attribute name="profilePicUrl" attributeType="String" syncable="YES"/>
         <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Account" inverseName="child" inverseEntity="Account" syncable="YES"/>
+        <relationship name="location" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="SWLocation" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="children" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="FacebookAlert" representedClassName="FacebookAlert" parentEntity="Alert" syncable="YES">
@@ -50,7 +51,7 @@
         <relationship name="centerPoint" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="SWPoint" syncable="YES"/>
     </entity>
     <entity name="SWLocation" representedClassName="SWLocation" syncable="YES">
-        <attribute name="latitude" attributeType="Float" minValueString="-180.1" maxValueString="180.1" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" attributeType="Float" minValueString="-90.09999999999999" maxValueString="90.09999999999999" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" attributeType="Float" minValueString="-180.1" maxValueString="180.1" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <entity name="SWPoint" representedClassName="SWPoint" parentEntity="SWLocation" syncable="YES">
@@ -74,16 +75,16 @@
     <elements>
         <element name="Account" positionX="-155" positionY="135" width="128" height="165"/>
         <element name="Alert" positionX="-119" positionY="225" width="128" height="90"/>
-        <element name="SWArea" positionX="160" positionY="192" width="128" height="60"/>
         <element name="CheckInAlert" positionX="16" positionY="447" width="128" height="120"/>
         <element name="Child" positionX="9" positionY="36" width="128" height="180"/>
-        <element name="SWCircleArea" positionX="160" positionY="192" width="128" height="75"/>
         <element name="FacebookAlert" positionX="-297" positionY="387" width="128" height="90"/>
+        <element name="SMSAlert" positionX="-128" positionY="375" width="128" height="75"/>
+        <element name="SWArea" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="SWCircleArea" positionX="160" positionY="192" width="128" height="75"/>
         <element name="SWLocation" positionX="160" positionY="192" width="128" height="75"/>
         <element name="SWPoint" positionX="160" positionY="192" width="128" height="60"/>
         <element name="SWPolygonArea" positionX="160" positionY="192" width="128" height="60"/>
         <element name="SWPolygonPoint" positionX="160" positionY="192" width="128" height="60"/>
-        <element name="SMSAlert" positionX="-128" positionY="375" width="128" height="75"/>
         <element name="User" positionX="97" positionY="237" width="128" height="90"/>
     </elements>
 </model>

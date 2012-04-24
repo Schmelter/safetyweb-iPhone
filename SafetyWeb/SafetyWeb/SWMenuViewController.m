@@ -11,6 +11,7 @@
 #import "CheckInViewController.h"
 #import "MyPeopleViewController.h"
 #import "SettingsViewController.h"
+#import "MyPlacesViewController.h"
 
 static enum __MenuSelected {
     alertsMS,
@@ -165,7 +166,7 @@ static enum __MenuSelected {
     if (aMenuItem == alertsMI) { selectedMS = alertsMS; return [[AlertsViewController alloc] initWithNibName:@"AlertsViewController" bundle:nil]; }
     else if (aMenuItem == checkInMI) { selectedMS = checkInMS;  return [[CheckInViewController alloc] initWithNibName:@"CheckInViewController" bundle:nil]; }
     else if (aMenuItem == myPeopleMI) { selectedMS = myPeopleMS; return [[MyPeopleViewController alloc] initWithNibName:@"MyPeopleViewController" bundle:nil]; }
-    else if (aMenuItem == myPlacesMI) { selectedMS = myPlacesMS; return nil; }
+    else if (aMenuItem == myPlacesMI) { selectedMS = myPlacesMS; return [[MyPlacesViewController alloc] initWithNibName:@"MyPlacesViewController" bundle:nil]; }
     else if (aMenuItem == settingsMI) { selectedMS = settingsMS; return [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil]; }
     else { selectedMS = alertsMS; return [[AlertsViewController alloc] initWithNibName:@"AlertsViewController" bundle:nil]; }
 }

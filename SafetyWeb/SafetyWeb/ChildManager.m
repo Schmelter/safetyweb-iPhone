@@ -113,6 +113,13 @@
     // TODO: Parse out the actual mobile phone
     child.mobilePhone = @"720-982-6931";
     
+    // TODO: Parse out the child's actual location
+    SWLocation *location = [[SWLocation alloc] initWithEntity:[NSEntityDescription entityForName:@"SWLocation" inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+    location.latitude = [NSNumber numberWithFloat:(((float) random()/RAND_MAX) * 4.0) + 37.0]; // Always in the northern hemisphere
+    location.longitude = [NSNumber numberWithFloat:(((float) random()/RAND_MAX) * -7.0) - 102.03]; // Always in the western hemisphere
+    child.location = location;
+    [location release];
+    
     NSString *profilePicUrl = [jsonChildDict objectForKey:@"profile_pic"];
     if ([profilePicUrl isKindOfClass:[NSString class]]) child.profilePicUrl = [[NSURL URLWithString:profilePicUrl] description];
     

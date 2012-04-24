@@ -332,6 +332,10 @@
 		89BDA8A315263277004FEF30 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
 		89C3E284152DF5EF0002B0E7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
 		89C3E285152DF5FB0002B0E7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
+		89E515361546148E0005C44B /* MyPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E515341546148E0005C44B /* MyPlacesViewController.m */; };
+		89E515371546148E0005C44B /* MyPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E515341546148E0005C44B /* MyPlacesViewController.m */; };
+		89E515381546148E0005C44B /* MyPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89E515351546148E0005C44B /* MyPlacesViewController.xib */; };
+		89E515391546148E0005C44B /* MyPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89E515351546148E0005C44B /* MyPlacesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -633,6 +637,9 @@
 		89BD10F61525195400141BFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		89BDA89E15263259004FEF30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89BDA8A215263277004FEF30 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		89E515331546148E0005C44B /* MyPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlacesViewController.h; sourceTree = "<group>"; };
+		89E515341546148E0005C44B /* MyPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlacesViewController.m; sourceTree = "<group>"; };
+		89E515351546148E0005C44B /* MyPlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPlacesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -852,6 +859,7 @@
 		897E980F14DB02C3007595A7 /* SafetyWeb */ = {
 			isa = PBXGroup;
 			children = (
+				89E5152B154609130005C44B /* My Places UI */,
 				8936AFE5150FC3B3005C8237 /* Main UI */,
 				899754D114EF0F270046B1DA /* DataModel */,
 				8936AFDE150FB415005C8237 /* Login Setup UI */,
@@ -1056,6 +1064,16 @@
 				89AA20B614F582500082C7B5 /* SafetyWebTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89E5152B154609130005C44B /* My Places UI */ = {
+			isa = PBXGroup;
+			children = (
+				89E515331546148E0005C44B /* MyPlacesViewController.h */,
+				89E515341546148E0005C44B /* MyPlacesViewController.m */,
+				89E515351546148E0005C44B /* MyPlacesViewController.xib */,
+			);
+			name = "My Places UI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1284,6 +1302,7 @@
 				89241BA6153E1BB5000E34D8 /* FacebookAlertViewController.xib in Resources */,
 				89241BAD153E29A3000E34D8 /* SMSAlertViewController.xib in Resources */,
 				89241BB4153E33E6000E34D8 /* CheckInAlertViewController.xib in Resources */,
+				89E515381546148E0005C44B /* MyPlacesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1394,6 +1413,7 @@
 				89241BA7153E1BB5000E34D8 /* FacebookAlertViewController.xib in Resources */,
 				89241BAE153E29A3000E34D8 /* SMSAlertViewController.xib in Resources */,
 				89241BB5153E33E6000E34D8 /* CheckInAlertViewController.xib in Resources */,
+				89E515391546148E0005C44B /* MyPlacesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1462,6 +1482,7 @@
 				89B59BC015420B8D002438EA /* LocationManager.m in Sources */,
 				89B59BC6154212C4002438EA /* SWPolygonArea.m in Sources */,
 				89B59BC8154212C4002438EA /* SWPolygonPoint.m in Sources */,
+				89E515361546148E0005C44B /* MyPlacesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1491,6 +1512,7 @@
 				89B59BC115420B8D002438EA /* LocationManager.m in Sources */,
 				89B59BC7154212C4002438EA /* SWPolygonArea.m in Sources */,
 				89B59BC9154212C4002438EA /* SWPolygonPoint.m in Sources */,
+				89E515371546148E0005C44B /* MyPlacesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

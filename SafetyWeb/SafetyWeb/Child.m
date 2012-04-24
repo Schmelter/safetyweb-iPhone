@@ -18,6 +18,7 @@ NSInteger accountSort(id alert1, id alert2, void *context);
 @dynamic firstName;
 @dynamic lastName;
 @dynamic profilePicUrl;
+@dynamic location;
 @dynamic address;
 @dynamic mobilePhone;
 @dynamic lastQueried;

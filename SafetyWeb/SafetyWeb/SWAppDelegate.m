@@ -17,6 +17,7 @@ static dispatch_queue_t dataModelQ;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    srand((unsigned)time(0));
     dataModelQ = dispatch_queue_create("com.safetyweb.datamodelq", DISPATCH_QUEUE_CONCURRENT);
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];

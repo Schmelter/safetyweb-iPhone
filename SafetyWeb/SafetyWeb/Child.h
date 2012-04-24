@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "SWLocation.h"
 
 @class Account, User;
 
@@ -17,6 +18,7 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * profilePicUrl;
+@property (nonatomic, retain) SWLocation* location;
 @property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) NSString * mobilePhone;
 @property (nonatomic, retain) NSDate * lastQueried;
