@@ -116,21 +116,21 @@
 }
 
 -(void)setSelectedMenuItem:(MenuItem*)aSelected animated:(BOOL)animated {
-    NSTimeInterval menuDelay = kMenuItemAnim + 0.5;
+    NSTimeInterval menuDelay = 0;
     if (selectedMI != aSelected) {
         [selectedMI setSelected:NO animated:animated];
         selectedMI = aSelected;
         [selectedMI setSelected:YES animated:animated];
-        menuDelay = 0.5;
+        menuDelay = kMenuItemAnim;
+        
+        SubMenuViewController *nextViewController = [delegate initContentViewControllerForMenuItem:selectedMI];
+        
+        [nextViewController setMenuViewController:self];
+        [currentViewController.view removeFromSuperview];
+        [self setCurrentViewController:nextViewController];
+        [contentView addSubview:currentViewController.view];
+        [nextViewController release];
     }
-    
-    SubMenuViewController *nextViewController = [delegate initContentViewControllerForMenuItem:selectedMI];
-    
-    [nextViewController setMenuViewController:self];
-    [currentViewController.view removeFromSuperview];
-    [self setCurrentViewController:nextViewController];
-    [contentView addSubview:currentViewController.view];
-    [nextViewController release];
     
     [self hideMenu:animated withDelay:menuDelay];
 }
