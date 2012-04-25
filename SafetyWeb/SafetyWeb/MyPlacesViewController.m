@@ -7,35 +7,29 @@
 //
 
 #import "MyPlacesViewController.h"
+#import "ChildMarker.h"
 #import "RMMarker.h"
 #import "UserManager.h"
 #import "RMMarkerManager.h"
-
-@interface ChildMarkerWrapper : NSObject {
-    @private
-    Child *child;
-    RMMarker *marker;
-}
-@property (nonatomic, retain) Child *child;
-@property (nonatomic, retain) RMMarker *marker;
-@end
+#import "RMOpenStreetMapSource.h"
+#import "RMProjection.h"
 
 @interface MyPlacesViewController () {
-    NSMutableDictionary *childIdToWrapper;
+    NSMutableDictionary *childIdToMarker;
 }
-@property (nonatomic, retain) NSMutableDictionary *childIdToWrapper;
+@property (nonatomic, retain) NSMutableDictionary *childIdToMarker;
 -(void)removeChildMarker:(Child*)aChild;
 -(void)addChildMarker:(Child*)aChild;
 @end
 
 @implementation MyPlacesViewController
 @synthesize mapView;
-@synthesize childIdToWrapper;
+@synthesize childIdToMarker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        mySpacesQ = dispatch_queue_create("com.safetyweb.myspacesq", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
@@ -43,9 +37,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSMutableDictionary *newChildIdToWrapper = [[NSMutableDictionary alloc] initWithCapacity:10];
-    self.childIdToWrapper = newChildIdToWrapper;
-    [newChildIdToWrapper release];
+    NSMutableDictionary *newChildIdToMarker = [[NSMutableDictionary alloc] initWithCapacity:10];
+    self.childIdToMarker = newChildIdToMarker;
+    [newChildIdToMarker release];
+    
+    mapView.delegate = self;
+    RMOpenStreetMapSource *source = [[RMOpenStreetMapSource alloc] init];
+    RMMapContents *contents = [[RMMapContents alloc] initWithView:mapView
+                                                       tilesource:source
+                                                     //centerLatLon:CLLocationCoordinate2DMake(northernMostLat - southernMostLat, easternMostLong - westernMostLong)
+                                                     centerLatLon:CLLocationCoordinate2DMake(0, 0)
+                                                        zoomLevel:13.0
+                                                     maxZoomLevel:kDefaultMaximumZoomLevel
+                                                     minZoomLevel:kDefaultMinimumZoomLevel
+                                                  backgroundImage:nil
+                                                      screenScale:0];
+    mapView.contents = contents;
+    [source release];
+    [contents release];
     
     User *currentUser = [UserManager getCurrentUser];
     
@@ -69,11 +78,10 @@
             if (location.longitude > easternMostLong) easternMostLong = location.longitude;
             if (location.longitude < westernMostLong) westernMostLong = location.longitude;
         }
-        [child addObserver:self forKeyPath:@"location" options:NSKeyValueObservingOptionNew context:nil];
+        [child addObserver:self forKeyPath:@"location" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+        NSLog(@"Observation Info: %@", [child observationInfo]);
         [self addChildMarker:child];
     }
-    
-    mapView.delegate = self;
     
     [mapView setNeedsLayout];
     [mapView setNeedsDisplay];
@@ -90,47 +98,82 @@
     mapView.enableRotate = NO;
     
     
+    /*
     // TODO: Take out later
-    void(^moveChild)(void) = [^{
+    __block int childCount = 0;
+    __block void(^moveChild)(void) = [^{
         sleep(1); // 1 second
-        self.childIdToWrapper
+        
+        int count = [[[UserManager getCurrentUser] children] count];
+        int childNum = childCount % count;
+        for (Child *child in [[UserManager getCurrentUser] children]) {
+            if (childNum == 0){
+                SWLocation *location = child.location;
+                location.latitude = [NSNumber numberWithFloat:[location.latitude floatValue] + 1.0];
+                NSLog(@"New Latitude: %@", location.latitude);
+                child.location = location;
+            }
+            childNum--;
+        }
+        childCount++;
+        dispatch_async(mySpacesQ, moveChild);
     } copy];
-    
-    
-    
+    dispatch_async(mySpacesQ, moveChild);
     [moveChild release];
+     */
 }
 
 - (void)viewDidUnload {
     self.mapView = nil;
     // Remove observers from each child before releasing the children
-    for (ChildMarkerWrapper *wrapper in [childIdToWrapper allValues]) {
-        [wrapper.child removeObserver:self forKeyPath:@"location"];
+    for (ChildMarker *marker in [childIdToMarker allValues]) {
+        [(Child*)marker.data removeObserver:self forKeyPath:@"location"];
     }
-    self.childIdToWrapper = nil;
+    self.childIdToMarker = nil;
     
     [super viewDidUnload];
 }
 
 -(void)addChildMarker:(Child *)aChild {
     CLLocationCoordinate2D location = [aChild.location getLocation];
-    UIImage *pinImage = [UIImage imageNamed:@"point.png"];
-    RMMarker *childMarker = [[RMMarker alloc] initWithUIImage:pinImage];
+    ChildMarker *childMarker = [[ChildMarker alloc] init];
+    [childMarker setChildData:aChild];
+    childMarker.data = aChild;
+    //UIImage *pinImage = [UIImage imageNamed:@"point.png"];
+    //[childMarker replaceUIImage:pinImage anchorPoint:CGPointMake(0.5,0.5)];
     [mapView.markerManager addMarker:childMarker AtLatLong:location];
-    ChildMarkerWrapper *wrapper = [[ChildMarkerWrapper alloc] init];
-    wrapper.child = aChild;
-    wrapper.marker = childMarker;
-    [childIdToWrapper setObject:wrapper forKey:aChild.childId];
+    [childIdToMarker setObject:childMarker forKey:aChild.childId];
     [childMarker release];
-    [wrapper release];
+    NSLog(@"Location Lat: %f Location Long: %f ChildMarker: %@", location.latitude, location.longitude, childMarker);
 }
 
 -(void)removeChildMarker:(Child *)aChild {
-    RMMarker *childMarker = [childIdToWrapper objectForKey:aChild.childId];
-    if (childMarker) {
-        [mapView.markerManager removeMarker:childMarker];
-        [childIdToWrapper removeObjectForKey:aChild.childId];
+    ChildMarker *marker = [childIdToMarker objectForKey:aChild.childId];
+    if (marker) {
+        [mapView.markerManager removeMarker:marker];
+        [childIdToMarker removeObjectForKey:aChild.childId];
     }
+}
+
+#pragma mark -
+#pragma mark RMMapViewDelegate Methods
+-(void)tapOnMarker:(RMMarker*)marker onMap:(RMMapView*)map {
+    ChildMarker *childMarker = (ChildMarker*)marker;
+    [childMarker setExpanded:![childMarker isExpanded] animated:YES];
+    
+    
+    NSLog(@"Marker tapped");
+    NSLog(@"Marker: %@", marker);
+    NSLog(@"Marker Data: %@", marker.data);
+}
+
+-(void)tapOnMarker:(RMMarker*)marker subLayer:(CALayer*)subLayer onMap:(RMMapView*)map {
+    ChildMarker *childMarker = (ChildMarker*)marker;
+    [childMarker setExpanded:![childMarker isExpanded] animated:YES];
+    
+    NSLog(@"Marker tapped");
+    NSLog(@"Marker: %@", marker);
+    NSLog(@"Marker Data: %@", marker.data);
 }
 
 #pragma mark -
@@ -138,33 +181,21 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([@"location" isEqualToString:keyPath]) {
         Child *child = (Child*)object;
-        [self removeChildMarker:child];
-        [self addChildMarker:child];
+        ChildMarker *marker = [childIdToMarker objectForKey:child.childId];
+        
+        [mapView.markerManager moveMarker:marker AtLatLon:(RMLatLong)[child.location getLocation]];
     }
 }
 
 -(void)dealloc {
     [mapView release];
     // Remove observers from each child before releasing the children
-    for (ChildMarkerWrapper *wrapper in [childIdToWrapper allValues]) {
-        [wrapper.child removeObserver:self forKeyPath:@"location"];
+    for (ChildMarker *marker in [childIdToMarker allValues]) {
+        [(Child*)marker.data removeObserver:self forKeyPath:@"location"];
     }
-    self.childIdToWrapper = nil;
+    [childIdToMarker release];
     
     [super dealloc];
 }
 
-@end
-
-
-@implementation ChildMarkerWrapper
-@synthesize child;
-@synthesize marker;
-
--(void)dealloc {
-    [child release];
-    [marker release];
-    
-    [super dealloc];
-}
 @end

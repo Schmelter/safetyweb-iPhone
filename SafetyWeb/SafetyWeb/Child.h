@@ -14,6 +14,7 @@
 
 @interface Child : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * color;
 @property (nonatomic, retain) NSNumber * childId;
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;

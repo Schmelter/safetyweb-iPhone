@@ -25,6 +25,7 @@
     <entity name="Child" representedClassName="Child" syncable="YES">
         <attribute name="address" attributeType="String" syncable="YES"/>
         <attribute name="childId" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="color" transient="YES" attributeType="Integer 32" defaultValueString="16777215" syncable="YES"/>
         <attribute name="firstName" attributeType="String" syncable="YES"/>
         <attribute name="lastName" attributeType="String" syncable="YES"/>
         <attribute name="lastQueried" optional="YES" attributeType="Date" syncable="YES"/>
@@ -76,7 +77,7 @@
         <element name="Account" positionX="-155" positionY="135" width="128" height="165"/>
         <element name="Alert" positionX="-119" positionY="225" width="128" height="90"/>
         <element name="CheckInAlert" positionX="16" positionY="447" width="128" height="120"/>
-        <element name="Child" positionX="9" positionY="36" width="128" height="180"/>
+        <element name="Child" positionX="9" positionY="36" width="128" height="210"/>
         <element name="FacebookAlert" positionX="-297" positionY="387" width="128" height="90"/>
         <element name="SMSAlert" positionX="-128" positionY="375" width="128" height="75"/>
         <element name="SWArea" positionX="160" positionY="192" width="128" height="60"/>
@@ -85,6 +86,6 @@
         <element name="SWPoint" positionX="160" positionY="192" width="128" height="60"/>
         <element name="SWPolygonArea" positionX="160" positionY="192" width="128" height="60"/>
         <element name="SWPolygonPoint" positionX="160" positionY="192" width="128" height="60"/>
-        <element name="User" positionX="97" positionY="237" width="128" height="90"/>
+        <element name="User" positionX="97" positionY="237" width="128" height="150"/>
     </elements>
 </model>

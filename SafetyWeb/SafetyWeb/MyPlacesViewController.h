@@ -12,6 +12,7 @@
 
 @interface MyPlacesViewController : SubMenuViewController <RMMapViewDelegate> {
     RMMapView *mapView;
+    dispatch_queue_t mySpacesQ;
 }
 
 @property (nonatomic, retain) IBOutlet RMMapView *mapView;

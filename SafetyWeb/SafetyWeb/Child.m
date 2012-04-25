@@ -14,6 +14,7 @@ NSInteger accountSort(id alert1, id alert2, void *context);
 
 @implementation Child
 
+@dynamic color;
 @dynamic childId;
 @dynamic firstName;
 @dynamic lastName;

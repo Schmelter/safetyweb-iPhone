@@ -120,6 +120,9 @@
     child.location = location;
     [location release];
     
+    // TODO: Parse out the child's actual color, or generate a consistent color from childId
+    child.color = [NSNumber numberWithInt:random()%16777215];
+    
     NSString *profilePicUrl = [jsonChildDict objectForKey:@"profile_pic"];
     if ([profilePicUrl isKindOfClass:[NSString class]]) child.profilePicUrl = [[NSURL URLWithString:profilePicUrl] description];
     

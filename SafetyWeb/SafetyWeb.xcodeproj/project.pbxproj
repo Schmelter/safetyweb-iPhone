@@ -332,6 +332,10 @@
 		89BDA8A315263277004FEF30 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
 		89C3E284152DF5EF0002B0E7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD10F61525195400141BFA /* CoreLocation.framework */; };
 		89C3E285152DF5FB0002B0E7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BDA8A215263277004FEF30 /* CoreData.framework */; };
+		89E42CE915475F220052CF34 /* ChildMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E42CE815475F220052CF34 /* ChildMarker.m */; };
+		89E42CEA15475F220052CF34 /* ChildMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E42CE815475F220052CF34 /* ChildMarker.m */; };
+		89E42CED154767400052CF34 /* ChildMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E42CEC154767400052CF34 /* ChildMarkerView.m */; };
+		89E42CEE154767400052CF34 /* ChildMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E42CEC154767400052CF34 /* ChildMarkerView.m */; };
 		89E515361546148E0005C44B /* MyPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E515341546148E0005C44B /* MyPlacesViewController.m */; };
 		89E515371546148E0005C44B /* MyPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E515341546148E0005C44B /* MyPlacesViewController.m */; };
 		89E515381546148E0005C44B /* MyPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89E515351546148E0005C44B /* MyPlacesViewController.xib */; };
@@ -637,6 +641,10 @@
 		89BD10F61525195400141BFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		89BDA89E15263259004FEF30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89BDA8A215263277004FEF30 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		89E42CE715475F220052CF34 /* ChildMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildMarker.h; sourceTree = "<group>"; };
+		89E42CE815475F220052CF34 /* ChildMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildMarker.m; sourceTree = "<group>"; };
+		89E42CEB154767400052CF34 /* ChildMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildMarkerView.h; sourceTree = "<group>"; };
+		89E42CEC154767400052CF34 /* ChildMarkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildMarkerView.m; sourceTree = "<group>"; };
 		89E515331546148E0005C44B /* MyPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlacesViewController.h; sourceTree = "<group>"; };
 		89E515341546148E0005C44B /* MyPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlacesViewController.m; sourceTree = "<group>"; };
 		89E515351546148E0005C44B /* MyPlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPlacesViewController.xib; sourceTree = "<group>"; };
@@ -1072,6 +1080,10 @@
 				89E515331546148E0005C44B /* MyPlacesViewController.h */,
 				89E515341546148E0005C44B /* MyPlacesViewController.m */,
 				89E515351546148E0005C44B /* MyPlacesViewController.xib */,
+				89E42CE715475F220052CF34 /* ChildMarker.h */,
+				89E42CE815475F220052CF34 /* ChildMarker.m */,
+				89E42CEB154767400052CF34 /* ChildMarkerView.h */,
+				89E42CEC154767400052CF34 /* ChildMarkerView.m */,
 			);
 			name = "My Places UI";
 			sourceTree = "<group>";
@@ -1483,6 +1495,8 @@
 				89B59BC6154212C4002438EA /* SWPolygonArea.m in Sources */,
 				89B59BC8154212C4002438EA /* SWPolygonPoint.m in Sources */,
 				89E515361546148E0005C44B /* MyPlacesViewController.m in Sources */,
+				89E42CE915475F220052CF34 /* ChildMarker.m in Sources */,
+				89E42CED154767400052CF34 /* ChildMarkerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1513,6 +1527,8 @@
 				89B59BC7154212C4002438EA /* SWPolygonArea.m in Sources */,
 				89B59BC9154212C4002438EA /* SWPolygonPoint.m in Sources */,
 				89E515371546148E0005C44B /* MyPlacesViewController.m in Sources */,
+				89E42CEA15475F220052CF34 /* ChildMarker.m in Sources */,
+				89E42CEE154767400052CF34 /* ChildMarkerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
