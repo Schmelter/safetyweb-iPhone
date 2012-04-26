@@ -275,19 +275,6 @@ NSInteger stringSort(id string1, id string2, void *context) {
     CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
-- (void)didFailWithError:(NSError*)error
-{
-    
-	if (callbackObj) 
-		[callbackObj notGotResponse:error];
-    id<SafetyWebRequestCallback> oldCallbackObj = callbackObj;
-    callbackObj = nil;
-    [oldCallbackObj release];
-    
-	[self release]; // Alright, our job is finally done
-    CFRunLoopStop(CFRunLoopGetCurrent());
-}
-
 - (void)connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
 {
     

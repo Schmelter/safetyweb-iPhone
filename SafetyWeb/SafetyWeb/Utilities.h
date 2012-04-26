@@ -20,4 +20,6 @@
 
 +(NSString*)timeIntervalToHumanString:(NSTimeInterval)timeInterval;
 
++(float)convertGoogleMapsZoomToRouteMeZoom:(NSInteger)gmZoom;
+
 @end

@@ -47,4 +47,31 @@
     return [NSString stringWithFormat:@"%i Minutes Ago", minutesAgo];
 }
 
++(float)convertGoogleMapsZoomToRouteMeZoom:(NSInteger)gmZoom {
+    // There are only a few different zoom levels returned by Google, so we can do this case by case
+    switch (gmZoom) {
+        case 1:
+            // Country level
+            return 3;
+        case 2:
+            // State level
+            return 6;
+        case 3:
+            // County Level
+            return 11;
+        case 5:
+            // Zip code level
+            return 12;
+        case 4:
+            // City level
+            return 10;
+        case 8:
+            // Specific address level, as big as a house.  Show the street
+            return 15;
+        default:
+            // Huh, this shouldn't happen
+            return gmZoom * 2;
+    }
+}
+
 @end

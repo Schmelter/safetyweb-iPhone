@@ -13,6 +13,8 @@
 #import "RMProjection.h"
 #import "ViewProfileViewController.h"
 #import "SWAppDelegate.h"
+#import "BasicWebRequest.h"
+#import "Utilities.h"
 
 @interface MyPlacesViewController () {
     NSMutableDictionary *childIdToMarker;
@@ -90,7 +92,8 @@
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake((northernMostLat + southernMostLat)/2, (westernMostLong + easternMostLong)/2);
     
     [mapView moveToLatLong:location];
-    [mapView zoomByFactor:0.01 near:CGPointMake(mapView.frame.origin.x + (mapView.frame.size.width / 2), mapView.frame.origin.y + (mapView.frame.size.height / 2)) animated:NO];
+    // TODO: Change this later to create a bounding box around the current children shown, or default to 8
+    mapView.contents.zoom = 6;
     
     // All of these need to be after the moveToLatLong call, because that will call the initial setup of the map
     mapView.enableDragging = YES;
@@ -159,12 +162,39 @@
 -(IBAction)locationSearchButtonPressed:(id)sender {
     NSLog(@"Location Search: %@", [locationSearch text]);
     NSString *locationText = [locationSearch text];
+    if ([locationText length] <= 1) return;
     
-    void(^requestLatLong)(void) = [^{
-        NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv", locationText];
+    void(^requestLatLong)(void) = [^(void){
+        NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv", [locationText stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
         NSLog(@"URL String: %@", urlString);
-        NSString *locationString = [[[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:urlString]] autorelease];
-        NSLog(@"Locaton String: %@", locationString);
+        
+        BasicWebRequest *webRequest = [[BasicWebRequest alloc] init];
+        webRequest.url = [NSURL URLWithString:urlString];
+        webRequest.callback = ^(BOOL success, NSData *responseData, NSError *error){
+            if (success) {
+                NSString *responseStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+                
+                NSArray *splitString = [responseStr componentsSeparatedByString:@","];
+                // For the above array:
+                // [0] = Query Success (200 is expected)
+                // [1] = Zoom Level
+                // [2] = Central Latitude
+                // [3] = Central Longitude
+                if ([splitString count] < 4) return;
+                
+                CLLocationCoordinate2D location = CLLocationCoordinate2DMake([(NSString*)[splitString objectAtIndex:2] floatValue], [(NSString*)[splitString objectAtIndex:3] floatValue]);
+                
+                [mapView moveToLatLong:location];
+                mapView.contents.zoom = [Utilities convertGoogleMapsZoomToRouteMeZoom:[(NSString*)[splitString objectAtIndex:1] intValue]];
+                
+                NSLog(@"ResponseData: %@", responseStr);
+                [responseStr release];
+            } else {
+                NSLog(@"Error: %@", [error localizedDescription]);
+            }
+        };
+        [webRequest sendRequest];
+        [webRequest release];
     } copy];
     dispatch_async([SWAppDelegate dataModelQ], requestLatLong);
     

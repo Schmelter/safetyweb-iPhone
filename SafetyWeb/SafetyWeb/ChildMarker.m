@@ -34,9 +34,40 @@
     if (isExpanded == expanded) return;
     isExpanded = expanded;
     
-    [childMarkerView setExpanded:isExpanded animated:NO];
+    /*float anchorX;
+    float anchorY;
+    if (isExpanded) {
+        CGRect expandedFrame = [childMarkerView getExpandedFrame];
+        CGRect contractedFrame = [childMarkerView getContractedFrame];
+        
+        float slideX = (expandedFrame.size.width - contractedFrame.size.width) / 2;
+        anchorX = (slideX / contractedFrame.size.width);
+        float slideY = (expandedFrame.size.height - contractedFrame.size.height) / 2;
+        anchorY = (slideY / contractedFrame.size.height);
+    } else {
+        CGRect expandedFrame = [childMarkerView getExpandedFrame];
+        CGRect contractedFrame = [childMarkerView getContractedFrame];
+        
+        float slideX = -(expandedFrame.size.width - contractedFrame.size.width) / 2;
+        anchorX = (slideX / contractedFrame.size.width);
+        float slideY = -(expandedFrame.size.height - contractedFrame.size.height) / 2;
+        anchorY = (slideY / contractedFrame.size.height);
+    }
     
-    void(^slideLeft)(void) = ^{
+    void(^slide)(void) = ^{
+        self.anchorPoint = CGPointMake(self.anchorPoint.x + anchorX, self.anchorPoint.y + anchorY);
+    };*/
+    
+    void(^resize)(void) = ^{
+        [childMarkerView setExpanded:isExpanded animated:NO];
+        //self.anchorPoint = CGPointMake(0.5 + anchorX,0.5 + anchorY);
+        self.bounds = childMarkerView.frame;
+    };
+    
+    resize();
+    
+    
+   /* void(^slideLeft)(void) = ^{
         NSLog(@"Slide Left");
         CGRect expandedFrame = [childMarkerView getExpandedFrame];
         CGRect contractedFrame = [childMarkerView getContractedFrame];
@@ -62,6 +93,7 @@
     
     
     void(^resize)(void) = ^{
+        [childMarkerView setExpanded:isExpanded animated:NO];
         self.anchorPoint = CGPointMake(0.5,0.5);
         self.bounds = childMarkerView.frame;
     };
@@ -69,35 +101,29 @@
     
     if (isExpanded) {
         if (animated) {
-            [UIView animateWithDuration:0.5 animations:slideLeft completion:^(BOOL finished){
+            [UIView animateWithDuration:2.0 delay:0 options:UIViewAnimationOptionOverrideInheritedDuration|UIViewAnimationOptionCurveEaseInOut animations:slideLeft completion:^(BOOL finished){
                 NSLog(@"Animation complete 1!");
-                sleep(1);
-                [UIView animateWithDuration:0.5 animations:slideRight completion:^(BOOL finished){
+                [UIView animateWithDuration:2.0 delay:2.0 options:0 animations:resize completion:^(BOOL finished){
                     NSLog(@"Animation complete 2!");
                 }];
             }];
-            //sleep(1);
-            //[UIView animateWithDuration:0.5 animations:resize];
         } else {
             slideLeft();
             resize();
         }
     } else {
-        if (animated) { 
-            [UIView animateWithDuration:0.5 animations:slideLeft completion:^(BOOL finished){
+        if (animated) {
+            [UIView animateWithDuration:2.0 delay:0 options:UIViewAnimationOptionOverrideInheritedDuration|UIViewAnimationOptionCurveEaseInOut animations:resize completion:^(BOOL finished){
                 NSLog(@"Animation complete 1!");
-                sleep(1);
-                [UIView animateWithDuration:0.5 animations:slideRight completion:^(BOOL finished){
+                [UIView animateWithDuration:2.0 delay:2.0 options:0 animations:slideRight completion:^(BOOL finished){
                     NSLog(@"Animation complete 2!");
                 }];
             }];
-            //sleep(1);
-            //[UIView animateWithDuration:0.5 animations:resize];
         } else {
             slideRight();
             resize();
         }
-    }
+    } */
     
     /*if (animated) {
         [UIView beginAnimations:@"ChildMarkerAnimation" context:nil];

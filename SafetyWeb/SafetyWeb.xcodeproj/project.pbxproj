@@ -225,6 +225,8 @@
 		8952CAE01538A6DF00F47861 /* Verizon_btn_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CA201538A6DF00F47861 /* Verizon_btn_off@2x.png */; };
 		8952CAE21538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CAE11538A9E500F47861 /* AnnounceMyLocation-Btn.png */; };
 		8952CAE31538A9E500F47861 /* AnnounceMyLocation-Btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8952CAE11538A9E500F47861 /* AnnounceMyLocation-Btn.png */; };
+		896B92551549EDB100CC7F5F /* BasicWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 896B92541549EDB100CC7F5F /* BasicWebRequest.m */; };
+		896B92561549EDB100CC7F5F /* BasicWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 896B92541549EDB100CC7F5F /* BasicWebRequest.m */; };
 		89740AB414EC6D4A0064E64A /* AppProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 89740AB314EC6D4A0064E64A /* AppProperties.m */; };
 		89740AB614EC6D8C0064E64A /* AppProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740AB514EC6D8C0064E64A /* AppProperties.plist */; };
 		89740ABD14EC70E40064E64A /* AppProperties.dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89740ABB14EC70E40064E64A /* AppProperties.dev.plist */; };
@@ -504,6 +506,8 @@
 		8952CA1F1538A6DF00F47861 /* StandardBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StandardBackground@2x.png"; sourceTree = "<group>"; };
 		8952CA201538A6DF00F47861 /* Verizon_btn_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verizon_btn_off@2x.png"; sourceTree = "<group>"; };
 		8952CAE11538A9E500F47861 /* AnnounceMyLocation-Btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AnnounceMyLocation-Btn.png"; sourceTree = "<group>"; };
+		896B92531549EDB100CC7F5F /* BasicWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicWebRequest.h; sourceTree = "<group>"; };
+		896B92541549EDB100CC7F5F /* BasicWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicWebRequest.m; sourceTree = "<group>"; };
 		89740AB214EC6D4A0064E64A /* AppProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppProperties.h; sourceTree = "<group>"; };
 		89740AB314EC6D4A0064E64A /* AppProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppProperties.m; sourceTree = "<group>"; };
 		89740AB514EC6D8C0064E64A /* AppProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppProperties.plist; sourceTree = "<group>"; };
@@ -807,6 +811,8 @@
 			children = (
 				899F4C7214ED7E9400B8C553 /* SafetyWebRequest.h */,
 				899F4C7314ED7E9400B8C553 /* SafetyWebRequest.m */,
+				896B92531549EDB100CC7F5F /* BasicWebRequest.h */,
+				896B92541549EDB100CC7F5F /* BasicWebRequest.m */,
 			);
 			name = WebInterface;
 			sourceTree = "<group>";
@@ -1133,7 +1139,7 @@
 		897E97FC14DB02C3007595A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = SafetyWeb;
 			};
 			buildConfigurationList = 897E97FF14DB02C3007595A7 /* Build configuration list for PBXProject "SafetyWeb" */;
@@ -1497,6 +1503,7 @@
 				89E515361546148E0005C44B /* MyPlacesViewController.m in Sources */,
 				89E42CE915475F220052CF34 /* ChildMarker.m in Sources */,
 				89E42CED154767400052CF34 /* ChildMarkerView.m in Sources */,
+				896B92551549EDB100CC7F5F /* BasicWebRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1529,6 +1536,7 @@
 				89E515371546148E0005C44B /* MyPlacesViewController.m in Sources */,
 				89E42CEA15475F220052CF34 /* ChildMarker.m in Sources */,
 				89E42CEE154767400052CF34 /* ChildMarkerView.m in Sources */,
+				896B92561549EDB100CC7F5F /* BasicWebRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1585,6 +1593,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1613,6 +1622,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1638,6 +1648,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "SafetyWeb/SafetyWeb-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1655,6 +1666,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafetyWeb/SafetyWeb-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "SafetyWeb/SafetyWeb-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1678,6 +1690,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafetyWebTests/SafetyWebTests-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "SafetyWebTests/SafetyWebTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
@@ -1702,6 +1715,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafetyWebTests/SafetyWebTests-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "SafetyWebTests/SafetyWebTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
