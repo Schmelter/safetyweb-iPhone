@@ -13,6 +13,7 @@
 
 @implementation ChildMarker
 @synthesize isExpanded;
+@synthesize delegate;
 
 -(ChildMarker*)init {
     self = [super init];
@@ -22,8 +23,6 @@
         self.anchorPoint = defaultMarkerAnchorPoint;
         
         [childMarkerView.layer removeFromSuperlayer];
-        NSLog(@"Super Layer: %i", self);
-        NSLog(@"Layer: %i", childMarkerView.layer);
         [self insertSublayer:childMarkerView.layer below:self];
         self.masksToBounds = YES;
         
@@ -35,47 +34,116 @@
     if (isExpanded == expanded) return;
     isExpanded = expanded;
     
-    if (animated) {
+    [childMarkerView setExpanded:isExpanded animated:NO];
+    
+    void(^slideLeft)(void) = ^{
+        NSLog(@"Slide Left");
+        CGRect expandedFrame = [childMarkerView getExpandedFrame];
+        CGRect contractedFrame = [childMarkerView getContractedFrame];
+        
+        float slideX = (expandedFrame.size.width - contractedFrame.size.width) / 2;
+        float anchorX = (slideX / contractedFrame.size.width) + 0.5;
+        float slideY = (expandedFrame.size.height - contractedFrame.size.height) / 2;
+        float anchorY = (slideY / contractedFrame.size.height) + 0.5;
+        self.anchorPoint = CGPointMake(anchorX, anchorY);
+    };
+    
+    void(^slideRight)(void) = ^{
+        NSLog(@"Slide Right");
+        CGRect expandedFrame = [childMarkerView getExpandedFrame];
+        CGRect contractedFrame = [childMarkerView getContractedFrame];
+        
+        float slideX = (contractedFrame.size.width - expandedFrame.size.width) / 2;
+        float anchorX = (slideX / expandedFrame.size.width) + 0.5;
+        float slideY = (contractedFrame.size.height - expandedFrame.size.height) / 2;
+        float anchorY = (slideY / expandedFrame.size.height) + 0.5;
+        self.anchorPoint = CGPointMake(anchorX, anchorY);
+    };
+    
+    
+    void(^resize)(void) = ^{
+        self.anchorPoint = CGPointMake(0.5,0.5);
+        self.bounds = childMarkerView.frame;
+    };
+    
+    
+    if (isExpanded) {
+        if (animated) {
+            [UIView animateWithDuration:0.5 animations:slideLeft completion:^(BOOL finished){
+                NSLog(@"Animation complete 1!");
+                sleep(1);
+                [UIView animateWithDuration:0.5 animations:slideRight completion:^(BOOL finished){
+                    NSLog(@"Animation complete 2!");
+                }];
+            }];
+            //sleep(1);
+            //[UIView animateWithDuration:0.5 animations:resize];
+        } else {
+            slideLeft();
+            resize();
+        }
+    } else {
+        if (animated) { 
+            [UIView animateWithDuration:0.5 animations:slideLeft completion:^(BOOL finished){
+                NSLog(@"Animation complete 1!");
+                sleep(1);
+                [UIView animateWithDuration:0.5 animations:slideRight completion:^(BOOL finished){
+                    NSLog(@"Animation complete 2!");
+                }];
+            }];
+            //sleep(1);
+            //[UIView animateWithDuration:0.5 animations:resize];
+        } else {
+            slideRight();
+            resize();
+        }
+    }
+    
+    /*if (animated) {
         [UIView beginAnimations:@"ChildMarkerAnimation" context:nil];
         [UIView setAnimationDuration:0.5];
         [UIView setAnimationBeginsFromCurrentState:YES];
     }
     
+    CGRect previousFrame = childMarkerView.frame;
+    
+    [childMarkerView setExpanded:isExpanded animated:animated];
+    
+    [childMarkerView.layer removeFromSuperlayer];
+    [self insertSublayer:childMarkerView.layer below:self];
+    self.bounds = childMarkerView.frame;
+    
     if (isExpanded) {
         // Calculate the difference in the frame, to determine the proper anchor point
-        float heightCenter = childMarkerView.frame.size.height * 0.5;
-        float widthCenter = childMarkerView.frame.size.width * 0.5;
-        
-        [childMarkerView setExpanded:isExpanded animated:animated];
+        float heightCenter = previousFrame.size.height * 0.5;
+        float widthCenter = previousFrame.size.width * 0.5;
         
         float heightAnchor = heightCenter / childMarkerView.frame.size.height;
         float widthAnchor = widthCenter / childMarkerView.frame.size.width;
         
         self.anchorPoint = CGPointMake(widthAnchor, heightAnchor);
     } else {
-        [childMarkerView setExpanded:isExpanded animated:animated];
         self.anchorPoint = CGPointMake(0.5, 0.5);
     }
     
-    [childMarkerView.layer removeFromSuperlayer];
-    NSLog(@"Super Layer: %i", self);
-    NSLog(@"Layer: %i", childMarkerView.layer);
-    [self insertSublayer:childMarkerView.layer below:self];
-    self.bounds = childMarkerView.frame;
-    
     if (animated) {
         [UIView commitAnimations];
-    }
+    }*/
 }
 
 -(void)setChildData:(Child*)child {
     [childMarkerView setChildName:[NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName]];
-    [childMarkerView setChildLocation:@"Test Child Location"];
+    [childMarkerView setChildLocation:child.address];
     [childMarkerView setBackgroundColor:UIColorFromRGB([child.color intValue])];
     ImageCacheManager *imageCacheManager = [[ImageCacheManager alloc] init];
     [imageCacheManager requestImage:self ForUrl:child.profilePicUrl];
     [ImageCacheManager release];
     
+}
+
+-(void)markerPressed:(CALayer*)subLayer {
+    if ([childMarkerView isDetailButtonLayer:subLayer]) [delegate childDetailsPressed:self ForData:self.data];
+    else [self setExpanded:!isExpanded animated:YES];
 }
 
 #pragma mark -
@@ -84,8 +152,6 @@
     [childMarkerView setChildImage:imageData];
     [childMarkerView.layer removeFromSuperlayer];
     [childMarkerView drawRect:childMarkerView.frame];
-    NSLog(@"Super Layer: %i", self);
-    NSLog(@"Layer: %i", childMarkerView.layer);
     [self insertSublayer:childMarkerView.layer below:self];
     //self.contents = (id)[imageData CGImage];
 	self.bounds = childMarkerView.frame;

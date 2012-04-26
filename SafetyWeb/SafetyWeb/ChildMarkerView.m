@@ -37,17 +37,17 @@
             
             childName = [[UILabel alloc] initWithFrame:CGRectMake(markerBorderSize + childImage.frame.origin.x + childImage.frame.size.width, markerBorderSize, detailsButton.frame.origin.x - (markerBorderSize + childImage.frame.origin.x + childImage.frame.size.width), childImage.frame.size.height/2)];
             childName.adjustsFontSizeToFitWidth = YES;
-            childName.font = [UIFont boldSystemFontOfSize:12];
+            childName.font = [UIFont boldSystemFontOfSize:13];
             childName.hidden = YES;
             childName.backgroundColor = [UIColor clearColor];
             childName.textColor = [UIColor whiteColor];
             [self addSubview:childName];
             childLocation = [[UILabel alloc] initWithFrame:CGRectMake(childName.frame.origin.x, childName.frame.origin.y+childName.frame.size.height,childName.frame.size.width,childName.frame.size.height)];
             childLocation.adjustsFontSizeToFitWidth = YES;
-            childLocation.font = [UIFont systemFontOfSize:12];
+            childLocation.font = [UIFont systemFontOfSize:13];
             childLocation.hidden = YES;
             childLocation.backgroundColor = [UIColor clearColor];
-            childLocation.textColor = [UIColor whiteColor];
+            childLocation.textColor = [UIColor grayColor];
             [self addSubview:childLocation];
             
             isExpanded = NO;
@@ -90,17 +90,17 @@
             
             childName = [[UILabel alloc] initWithFrame:CGRectMake(markerBorderSize + childImage.frame.origin.x + childImage.frame.size.width, markerBorderSize, detailsButton.frame.origin.x - (markerBorderSize + childImage.frame.origin.x + childImage.frame.size.width), childImage.frame.size.height/2)];
             childName.adjustsFontSizeToFitWidth = YES;
-            childName.font = [UIFont boldSystemFontOfSize:12];
+            childName.font = [UIFont boldSystemFontOfSize:13];
             childName.hidden = YES;
             childName.backgroundColor = [UIColor clearColor];
             childName.textColor = [UIColor whiteColor];
             [self addSubview:childName];
             childLocation = [[UILabel alloc] initWithFrame:CGRectMake(childName.frame.origin.x, childName.frame.origin.y+childName.frame.size.height,childName.frame.size.width,childName.frame.size.height)];
             childLocation.adjustsFontSizeToFitWidth = YES;
-            childLocation.font = [UIFont systemFontOfSize:12];
+            childLocation.font = [UIFont systemFontOfSize:13];
             childLocation.hidden = YES;
             childLocation.backgroundColor = [UIColor clearColor];
-            childLocation.textColor = [UIColor whiteColor];
+            childLocation.textColor = [UIColor grayColor];
             [self addSubview:childLocation];
             
             isExpanded = NO;
@@ -129,35 +129,44 @@
     return self;
 }
 
+-(CGRect)getContractedFrame {
+    return CGRectMake(0,0,markerSmallWidth,markerHeight);
+}
+
+-(CGRect)getExpandedFrame {
+    return CGRectMake(0,0,markerLargeWidth,markerHeight);
+}
+
 #pragma mark -
 #pragma mark Expand and Contract code
 -(void)setExpanded:(BOOL)aExpanded animated:(BOOL)animated {
     if (aExpanded == isExpanded) return;
     isExpanded = aExpanded;
     
-    if (animated) {
-        [UIView beginAnimations:@"ChildMarkerViewAnimation" context:nil];
-        [UIView setAnimationDuration:0.5];
-        [UIView setAnimationBeginsFromCurrentState:YES];
-    }
+    void (^animationBlock)(void) = ^{
+        if (animated) {
+            [UIView beginAnimations:@"ChildMarkerViewAnimation" context:nil];
+            [UIView setAnimationDuration:0.5];
+            [UIView setAnimationBeginsFromCurrentState:YES];
+        }
+        
+        if (isExpanded) {
+            // Show the additional content, and expand the frame
+            childName.hidden = NO;
+            childLocation.hidden = NO;
+            detailsButton.hidden = NO;
+            self.frame = CGRectMake(0,0,markerLargeWidth,markerHeight);
+        } else {
+            // Hide the additional content, and contract the frame
+            childName.hidden = YES;
+            childLocation.hidden = YES;
+            detailsButton.hidden = YES;
+            self.frame = CGRectMake(0,0,markerSmallWidth,markerHeight);
+        }
+    };
     
-    if (isExpanded) {
-        // Show the additional content, and expand the frame
-        childName.hidden = NO;
-        childLocation.hidden = NO;
-        detailsButton.hidden = NO;
-        self.frame = CGRectMake(0,0,markerLargeWidth,markerHeight);
-    } else {
-        // Hide the additional content, and contract the frame
-        childName.hidden = YES;
-        childLocation.hidden = YES;
-        detailsButton.hidden = YES;
-        self.frame = CGRectMake(0,0,markerSmallWidth,markerHeight);
-    }
-    
-    if (animated) {
-        [UIView commitAnimations];
-    }
+    if (animated) [UIView animateWithDuration:0.5 animations:animationBlock];
+    else animationBlock();
 }
 
 #pragma mark -
@@ -172,6 +181,15 @@
 
 -(void)setChildImage:(UIImage*)aChildImage {
     childImage.image = aChildImage;
+}
+
+-(BOOL)isDetailButtonLayer:(CALayer*)aSubLayer {
+    CALayer *layer = detailsButton.layer;
+    if (layer == aSubLayer) return YES;
+    for (CALayer *subLayer in [layer sublayers]) {
+        if (subLayer == aSubLayer) return YES;
+    }
+    return NO;
 }
 
 -(void)dealloc {

@@ -27,6 +27,9 @@
 
 @property (nonatomic, readonly) BOOL isExpanded;
 
+-(CGRect)getContractedFrame;
+-(CGRect)getExpandedFrame;
+
 -(ChildMarkerView*)initDefaultSize;
 
 -(void)setExpanded:(BOOL)expanded animated:(BOOL)animated;
@@ -34,5 +37,7 @@
 -(void)setChildName:(NSString*)aChildName;
 -(void)setChildLocation:(NSString*)aChildLocation;
 -(void)setChildImage:(UIImage*)aChildImage;
+
+-(BOOL)isDetailButtonLayer:(CALayer*)aSubLayer;
 
 @end

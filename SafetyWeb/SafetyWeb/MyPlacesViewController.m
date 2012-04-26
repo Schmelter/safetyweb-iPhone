@@ -7,12 +7,12 @@
 //
 
 #import "MyPlacesViewController.h"
-#import "ChildMarker.h"
-#import "RMMarker.h"
 #import "UserManager.h"
 #import "RMMarkerManager.h"
 #import "RMOpenStreetMapSource.h"
 #import "RMProjection.h"
+#import "ViewProfileViewController.h"
+#import "SWAppDelegate.h"
 
 @interface MyPlacesViewController () {
     NSMutableDictionary *childIdToMarker;
@@ -25,6 +25,7 @@
 @implementation MyPlacesViewController
 @synthesize mapView;
 @synthesize childIdToMarker;
+@synthesize locationSearch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -79,7 +80,6 @@
             if (location.longitude < westernMostLong) westernMostLong = location.longitude;
         }
         [child addObserver:self forKeyPath:@"location" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
-        NSLog(@"Observation Info: %@", [child observationInfo]);
         [self addChildMarker:child];
     }
     
@@ -130,6 +130,7 @@
         [(Child*)marker.data removeObserver:self forKeyPath:@"location"];
     }
     self.childIdToMarker = nil;
+    self.locationSearch = nil;
     
     [super viewDidUnload];
 }
@@ -137,6 +138,7 @@
 -(void)addChildMarker:(Child *)aChild {
     CLLocationCoordinate2D location = [aChild.location getLocation];
     ChildMarker *childMarker = [[ChildMarker alloc] init];
+    childMarker.delegate = self;
     [childMarker setChildData:aChild];
     childMarker.data = aChild;
     //UIImage *pinImage = [UIImage imageNamed:@"point.png"];
@@ -144,7 +146,6 @@
     [mapView.markerManager addMarker:childMarker AtLatLong:location];
     [childIdToMarker setObject:childMarker forKey:aChild.childId];
     [childMarker release];
-    NSLog(@"Location Lat: %f Location Long: %f ChildMarker: %@", location.latitude, location.longitude, childMarker);
 }
 
 -(void)removeChildMarker:(Child *)aChild {
@@ -155,25 +156,47 @@
     }
 }
 
+-(IBAction)locationSearchButtonPressed:(id)sender {
+    NSLog(@"Location Search: %@", [locationSearch text]);
+    NSString *locationText = [locationSearch text];
+    
+    void(^requestLatLong)(void) = [^{
+        NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv", locationText];
+        NSLog(@"URL String: %@", urlString);
+        NSString *locationString = [[[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:urlString]] autorelease];
+        NSLog(@"Locaton String: %@", locationString);
+    } copy];
+    dispatch_async([SWAppDelegate dataModelQ], requestLatLong);
+    
+    [requestLatLong release];
+}
+
 #pragma mark -
 #pragma mark RMMapViewDelegate Methods
 -(void)tapOnMarker:(RMMarker*)marker onMap:(RMMapView*)map {
+    [locationSearch resignFirstResponder];
     ChildMarker *childMarker = (ChildMarker*)marker;
     [childMarker setExpanded:![childMarker isExpanded] animated:YES];
-    
-    
-    NSLog(@"Marker tapped");
-    NSLog(@"Marker: %@", marker);
-    NSLog(@"Marker Data: %@", marker.data);
 }
 
 -(void)tapOnMarker:(RMMarker*)marker subLayer:(CALayer*)subLayer onMap:(RMMapView*)map {
+    [locationSearch resignFirstResponder];
     ChildMarker *childMarker = (ChildMarker*)marker;
-    [childMarker setExpanded:![childMarker isExpanded] animated:YES];
-    
-    NSLog(@"Marker tapped");
-    NSLog(@"Marker: %@", marker);
-    NSLog(@"Marker Data: %@", marker.data);
+    [childMarker markerPressed:subLayer];
+}
+
+-(void)singleTapOnMap:(RMMapView*)map At:(CGPoint)point {
+    [locationSearch resignFirstResponder];
+}
+
+#pragma mark -
+#pragma mark ChildMarkerDelegate Methods
+-(void)childDetailsPressed:(ChildMarker*)aMarker ForData:(id)aData {
+    Child *child = (Child*)aData;
+    ViewProfileViewController *viewProfile = [[ViewProfileViewController alloc] initWithNibName:@"ViewProfileViewController" bundle:nil];
+    viewProfile.child = child;
+    [[menuViewController getRootViewController] displayGenericViewController:viewProfile];
+    [viewProfile release];
 }
 
 #pragma mark -
@@ -194,6 +217,7 @@
         [(Child*)marker.data removeObserver:self forKeyPath:@"location"];
     }
     [childIdToMarker release];
+    [locationSearch release];
     
     [super dealloc];
 }
