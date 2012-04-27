@@ -25,7 +25,7 @@
     <entity name="Child" representedClassName="Child" syncable="YES">
         <attribute name="address" attributeType="String" syncable="YES"/>
         <attribute name="childId" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
-        <attribute name="color" transient="YES" attributeType="Integer 32" defaultValueString="16777215" syncable="YES"/>
+        <attribute name="color" attributeType="Integer 32" defaultValueString="6052956" syncable="YES"/>
         <attribute name="firstName" attributeType="String" syncable="YES"/>
         <attribute name="lastName" attributeType="String" syncable="YES"/>
         <attribute name="lastQueried" optional="YES" attributeType="Date" syncable="YES"/>

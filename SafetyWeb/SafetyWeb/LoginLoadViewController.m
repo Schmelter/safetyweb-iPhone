@@ -7,6 +7,7 @@
 //
 
 #import "LoginLoadViewController.h"
+#import "NetworkManager.h"
 
 @implementation LoginLoadViewController
 
@@ -156,24 +157,58 @@
     // If there's no error, then the login failed and we need to ask for a new login
     if (aError == nil) {
         UIAlertView *loginFailedAlert = [[UIAlertView alloc]
-                                     initWithTitle:@"Login Failed"
-                                     message:@"Please check your username and password and try again"
-                                     delegate:nil
-                                     cancelButtonTitle:@"OK"
-                                     otherButtonTitles:nil];
+                                         initWithTitle:@"Login Failed"
+                                         message:@"Please check your username and password and try again"
+                                         delegate:self
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
         [loginFailedAlert show];
         [loginFailedAlert release];
     } else {
-        UIAlertView *serverUnreachable = [[UIAlertView alloc]
-                                     initWithTitle:@"Server Unreachable"
-                                     message:@"The service is currently down.  Please try again later."
-                                     delegate:nil
-                                     cancelButtonTitle:@"OK"
-                                     otherButtonTitles:nil];
-        [serverUnreachable show];
-        [serverUnreachable release];
+        // We had a network failure.  Ask them if they'd like to use the cached data, if it exists
+        if ([UserManager getCurrentUser]) {
+            // They have a cached user
+            UIAlertView *serverUnreachable = [[UIAlertView alloc]
+                                              initWithTitle:@"Server Unreachable"
+                                              message:@"Service unreachable. Use prevous session data?"
+                                              delegate:self
+                                              cancelButtonTitle:@"No"
+                                              otherButtonTitles:@"Yes", nil];
+            [serverUnreachable show];
+            [serverUnreachable release];
+        } else {
+            // They don't have a cached user
+            UIAlertView *serverUnreachable = [[UIAlertView alloc]
+                                              initWithTitle:@"Server Unreachable"
+                                              message:@"Service unreachable.  Please try again later."
+                                              delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+            [serverUnreachable show];
+            [serverUnreachable release];
+        }
+        
     }
-    [rootViewController displayLoginViewController];
+}
+
+#pragma mark -
+#pragma mark UIAlertViewDelegate Methods
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // They cancelled the dialog, back to the login view
+        [rootViewController displayLoginViewController];
+    } else if (buttonIndex == 1) {
+        // They said yes to using cached data
+        [NetworkManager setUseCached:YES];
+        User  *lastUsedUser = [UserManager getCurrentUser];
+        
+        NSLog(@"User Info: %@ %@ %@", lastUsedUser.login, lastUsedUser.password, lastUsedUser.token);
+        
+        [UserManager setLastUsedLogin:lastUsedUser.login];
+        [UserManager setLastUsedPassword:lastUsedUser.password];
+        [UserManager setLastUsedToken:lastUsedUser.token];
+        [rootViewController displayMenuViewController];
+    }
 }
 
 - (void)viewDidUnload

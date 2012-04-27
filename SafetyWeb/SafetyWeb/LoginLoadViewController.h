@@ -16,7 +16,7 @@
 #import "JSONKit.h"
 #import "ChildManager.h"
 
-@interface LoginLoadViewController : LoadViewController {
+@interface LoginLoadViewController : LoadViewController <UIAlertViewDelegate> {
     @private
     NSString *login;
     NSString *password;

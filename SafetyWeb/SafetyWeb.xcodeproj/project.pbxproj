@@ -324,6 +324,8 @@
 		89B630C315127EE800E25970 /* MyPeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B630C115127EE700E25970 /* MyPeopleViewController.xib */; };
 		89B630E815129A6A00E25970 /* CheckInCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B630E615129A6900E25970 /* CheckInCellController.m */; };
 		89B630E915129A6A00E25970 /* CheckInCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B630E715129A6A00E25970 /* CheckInCellController.xib */; };
+		89B6ED66154B0BD90004E921 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B6ED65154B0BD90004E921 /* NetworkManager.m */; };
+		89B6ED67154B0BD90004E921 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B6ED65154B0BD90004E921 /* NetworkManager.m */; };
 		89B977971517905E0046E102 /* MyPeopleCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B977951517905E0046E102 /* MyPeopleCellController.m */; };
 		89B977981517905E0046E102 /* MyPeopleCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B977961517905E0046E102 /* MyPeopleCellController.xib */; };
 		89BD10E51524FAA600141BFA /* SMSAlertCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BD10E31524FAA600141BFA /* SMSAlertCellController.m */; };
@@ -633,6 +635,8 @@
 		89B630E515129A6900E25970 /* CheckInCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInCellController.h; sourceTree = "<group>"; };
 		89B630E615129A6900E25970 /* CheckInCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInCellController.m; sourceTree = "<group>"; };
 		89B630E715129A6A00E25970 /* CheckInCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInCellController.xib; sourceTree = "<group>"; };
+		89B6ED64154B0BD90004E921 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		89B6ED65154B0BD90004E921 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		89B977941517905E0046E102 /* MyPeopleCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPeopleCellController.h; sourceTree = "<group>"; };
 		89B977951517905E0046E102 /* MyPeopleCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPeopleCellController.m; sourceTree = "<group>"; };
 		89B977961517905E0046E102 /* MyPeopleCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPeopleCellController.xib; sourceTree = "<group>"; };
@@ -1055,6 +1059,8 @@
 				89B59BAD15420AEC002438EA /* SWCircleArea.m */,
 				89B59BBE15420B8D002438EA /* LocationManager.h */,
 				89B59BBF15420B8D002438EA /* LocationManager.m */,
+				89B6ED64154B0BD90004E921 /* NetworkManager.h */,
+				89B6ED65154B0BD90004E921 /* NetworkManager.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -1504,6 +1510,7 @@
 				89E42CE915475F220052CF34 /* ChildMarker.m in Sources */,
 				89E42CED154767400052CF34 /* ChildMarkerView.m in Sources */,
 				896B92551549EDB100CC7F5F /* BasicWebRequest.m in Sources */,
+				89B6ED66154B0BD90004E921 /* NetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1537,6 +1544,7 @@
 				89E42CEA15475F220052CF34 /* ChildMarker.m in Sources */,
 				89E42CEE154767400052CF34 /* ChildMarkerView.m in Sources */,
 				896B92561549EDB100CC7F5F /* BasicWebRequest.m in Sources */,
+				89B6ED67154B0BD90004E921 /* NetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
