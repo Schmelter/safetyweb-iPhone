@@ -1,6 +1,85 @@
-
-# Ignore anything for SVN
+# Ignore anything from SVN #
+##############
 .svn
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Eclipse Metadata #
+############
+.metadata
+
+# OS X #
+############
+.DS_Store
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Editor Files #
+################
+*~
+
+# Gradle Files #
+################
+.gradle
+
+# Build output directories #
+############################
+/target
+*/target
+/build
+*/build
+*/bin
+/bin
+
+# IntelliJ specific files/directories #
+#######################################
+out
+.idea
+*.ipr
+*.iws
+*.iml
+atlassian-ide-plugin.xml
+
+# Eclipse specific files/directories #
+######################################
+.classpath
+.project
+.settings
+.metadata
+
+# NetBeans specific files/directories #
+#######################################
+.nbattrs
+
 
 # Ignore any compiled source
 *.class
@@ -9,9 +88,6 @@
 *.exe
 *.o
 *.so
-
-# Ignore the Mac directory structore store file
-.DS_Store
 
 # Ignore the X-Code user data crap
 *xcuserdatad*
